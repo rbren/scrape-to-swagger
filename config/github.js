@@ -15,7 +15,7 @@ var config = module.exports = {
   parameterName: {selector: 'td:first-of-type', regex: /(\S+)/},
   parameterType: {selector: 'td:nth-of-type(2)'},
   parameterDescription: {selector: 'td:nth-of-type(3)'},
-  requestBody: {selector: 'h3:nth-of-type(1) + h4 + pre + h4 + pre + h4 + pre', isExample: true},
+  requestBody: {selector: 'h4:contains(Example) ~ pre.highlight-json', isExample: true, sibling: true},
   responses: {selector: 'h3:contains(Response)', sibling: true},
   responseStatus: {selector: 'pre.highlight-headers', regex: /Status: (\d+) /, sibling: true},
   responseDescription: {selector: 'pre.highlight-headers', regex: /Status: \d+ (.*)/, sibling: true},

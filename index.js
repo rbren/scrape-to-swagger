@@ -150,6 +150,8 @@ function fixErrors() {
         var bestParamWithName = op.parameters.filter(function(p2) {
           return p2.name === p.name
         }).sort(function(p1, p2) {
+          if (p1.in === 'query' && !p2.in === 'query') return 1;
+          if (p2.in === 'query' && !p1.in === 'query') return -1;
           if (p1.schema && !p2.schema) return -1;
           if (p2.schema && !p1.schema) return 1;
           if (p1.type && !p2.type) return -1;
