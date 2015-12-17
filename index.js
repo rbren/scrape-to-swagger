@@ -89,18 +89,21 @@ function addPageToSwagger($) {
       sOp.parameters.unshift({name: 'body', in: 'body', schema: body});
     }
 
-    var responses = config.responses ? op.find(config.responses.selector) : op;
-    var response = config.response ? responses.find(config.response.selector) : responses;
-    var responseStatus = extractText(response, config.responseStatus);
-    if (responseStatus) {
-      var responseDescription = extractText(response, config.responseDescription);
-      var responseSchema = extractJSON(response, config.responseSchema);
-      responseStatus = parseInt(responseStatus);
-      sOp.responses[responseStatus] = {
-          description: responseDescription || '',
-          schema: responseSchema || undefined,
-      };
-    }
+    var responses = resolveSelector(op, config.responses);
+    responses = resolveSelector(responses, config.response);
+    responses.each(function() {
+      var response = $(this); 
+      var responseStatus = extractText(response, config.responseStatus);
+      if (responseStatus) {
+        var responseDescription = extractText(response, config.responseDescription);
+        var responseSchema = extractJSON(response, config.responseSchema);
+        responseStatus = parseInt(responseStatus);
+        sOp.responses[responseStatus] = {
+            description: responseDescription || '',
+            schema: responseSchema || undefined,
+        };
+      }
+    })
   })
 }
 
