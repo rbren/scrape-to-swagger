@@ -60,10 +60,13 @@ function addPageToSwagger($) {
       sParameter.in = extractText(param, config.parameterIn) || 'query';
       sParameter.type = extractText(param, config.parameterType) || 'string';
     });
-    (config.pathParameters || []).forEach(function(pathParam) {
-      var origParam = sOp.parameters.filter(function(p) {return p.name === pathParam.name})[0];
+    while (match = /{([^}]*?)}/.exec(path)) {
+      var paramName = match[1];
+      path = path.replace(match[0], paramName);
+      var origParam = sOp.parameters.filter(function(p) {return p.name === paramName})[0];
       if (origParam) origParam.in = 'path';
-    })
+      else sOp.parameters.push({in: 'path', name: paramName, type: 'string'})
+    }
   })
 }
 
