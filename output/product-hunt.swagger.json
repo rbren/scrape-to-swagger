@@ -65,14 +65,14 @@
       "get": {
         "parameters": [
           {
-            "name": "days_ago",
-            "description": "Parameter for pagination",
+            "name": "day",
+            "description": "Alternate parameter for requesting specific days (Format: day=YYYY-MM-DD)",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "day",
-            "description": "Alternate parameter for requesting specific days (Format: day=YYYY-MM-DD)",
+            "name": "days_ago",
+            "description": "Parameter for pagination",
             "in": "query",
             "type": "string"
           },
@@ -438,14 +438,20 @@
       "get": {
         "parameters": [
           {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
             "name": "older",
             "description": "Filter parameter: get only records older than the provided id",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "newer",
-            "description": "Filter parameter: get only records newer than the provided id",
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
             "in": "query",
             "type": "string"
           },
@@ -464,12 +470,6 @@
           {
             "name": "sort_by",
             "description": "Filter parameter: valid values are created_at, updated_at or featured_at",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "order",
-            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
             "in": "query",
             "type": "string"
           }
@@ -753,6 +753,12 @@
       "post": {
         "parameters": [
           {
+            "name": "background_image",
+            "description": "The background image of the collection. Recommended: width: 1250px, height: 250px.",
+            "in": "query",
+            "type": "string"
+          },
+          {
             "name": "body",
             "in": "body",
             "schema": {
@@ -789,6 +795,12 @@
             }
           },
           {
+            "name": "color",
+            "description": "The color of the collection. Valid values are: brown,red,blue,light_green,green",
+            "in": "query",
+            "type": "string"
+          },
+          {
             "name": "name",
             "description": "The name of the collection",
             "in": "query",
@@ -797,18 +809,6 @@
           {
             "name": "title",
             "description": "The title of the collection",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "color",
-            "description": "The color of the collection. Valid values are: brown,red,blue,light_green,green",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "background_image",
-            "description": "The background image of the collection. Recommended: width: 1250px, height: 250px.",
             "in": "query",
             "type": "string"
           }
@@ -2009,6 +2009,12 @@
       "put": {
         "parameters": [
           {
+            "name": "background_image",
+            "description": "The background image of the collection. Recommended: width: 1250px, height: 250px.",
+            "in": "query",
+            "type": "string"
+          },
+          {
             "name": "body",
             "in": "body",
             "schema": {
@@ -2035,6 +2041,12 @@
             }
           },
           {
+            "name": "color",
+            "description": "The color of the collection. Valid values are: brown,red,blue,light_green,green",
+            "in": "query",
+            "type": "string"
+          },
+          {
             "name": "name",
             "description": "The name of the collection",
             "in": "query",
@@ -2043,18 +2055,6 @@
           {
             "name": "title",
             "description": "The title of the collection",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "color",
-            "description": "The color of the collection. Valid values are: brown,red,blue,light_green,green",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "background_image",
-            "description": "The background image of the collection. Recommended: width: 1250px, height: 250px.",
             "in": "query",
             "type": "string"
           },
@@ -2394,15 +2394,15 @@
             }
           },
           {
-            "name": "id",
-            "description": "The ID of the collection you want to subscribe",
-            "in": "path",
-            "type": "string"
-          },
-          {
             "name": "email",
             "description": "The email you want to subscribe to a collection (if not logged)",
             "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "description": "The ID of the collection you want to subscribe",
+            "in": "path",
             "type": "string"
           }
         ],
@@ -2417,26 +2417,26 @@
       "get": {
         "parameters": [
           {
-            "name": "older",
-            "description": "Filter parameter: get only records older than the provided id",
-            "in": "query",
-            "type": "string"
-          },
-          {
             "name": "newer",
             "description": "Filter parameter: get only records newer than the provided id",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "per_page",
-            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
             "in": "query",
             "type": "string"
           },
           {
             "name": "order",
             "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
             "in": "query",
             "type": "string"
           },
@@ -2464,12 +2464,12 @@
                       "id",
                       "body",
                       "created_at",
-                      "parent_comment_id",
                       "user_id",
                       "votes",
                       "subject_id",
                       "child_comments_count",
                       "url",
+                      "post_id",
                       "subject_type",
                       "sticky"
                     ],
@@ -2485,9 +2485,7 @@
                         "type": "string",
                         "minLength": 1
                       },
-                      "parent_comment_id": {
-                        "type": "number"
-                      },
+                      "parent_comment_id": {},
                       "user_id": {
                         "type": "number"
                       },
@@ -2504,7 +2502,9 @@
                         "type": "string",
                         "minLength": 1
                       },
-                      "post_id": {},
+                      "post_id": {
+                        "type": "number"
+                      },
                       "subject_type": {
                         "type": "string",
                         "minLength": 1
@@ -2519,207 +2519,8 @@
                       },
                       "user": {
                         "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "number"
-                          },
-                          "name": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "headline": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "created_at": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "username": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "twitter_username": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "website_url": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "image_url": {
-                            "type": "object",
-                            "properties": {
-                              "30px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "32px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "40px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "44px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "48px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "50px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "60px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "64px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "73px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "80px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "88px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "96px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "100px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "110px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "120px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "132px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "146px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "160px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "176px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "220px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "264px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "32px@2X": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "40px@2X": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "44px@2X": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "88px@2X": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "32px@3X": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "40px@3X": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "44px@3X": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "88px@3X": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "original": {
-                                "type": "string",
-                                "minLength": 1
-                              }
-                            },
-                            "required": [
-                              "30px",
-                              "32px",
-                              "40px",
-                              "44px",
-                              "48px",
-                              "50px",
-                              "60px",
-                              "64px",
-                              "73px",
-                              "80px",
-                              "88px",
-                              "96px",
-                              "100px",
-                              "110px",
-                              "120px",
-                              "132px",
-                              "146px",
-                              "160px",
-                              "176px",
-                              "220px",
-                              "264px",
-                              "32px@2X",
-                              "40px@2X",
-                              "44px@2X",
-                              "88px@2X",
-                              "32px@3X",
-                              "40px@3X",
-                              "44px@3X",
-                              "88px@3X",
-                              "original"
-                            ]
-                          },
-                          "profile_url": {
-                            "type": "string",
-                            "minLength": 1
-                          }
-                        },
-                        "required": [
-                          "id",
-                          "name",
-                          "headline",
-                          "created_at",
-                          "username",
-                          "twitter_username",
-                          "website_url",
-                          "image_url",
-                          "profile_url"
-                        ]
+                        "properties": {},
+                        "required": []
                       }
                     }
                   }
@@ -2765,12 +2566,6 @@
             }
           },
           {
-            "name": "post_id",
-            "description": "The id the post the comment belongs to (passed via URL)",
-            "in": "query",
-            "type": "string"
-          },
-          {
             "name": "live_event_id",
             "description": "The id the LIVE event the comment belongs to (passed via URL)",
             "in": "query",
@@ -2779,6 +2574,12 @@
           {
             "name": "parent_comment_id",
             "description": "The id of the parent comment if this is a nested reply",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "post_id",
+            "description": "The id the post the comment belongs to (passed via URL)",
             "in": "query",
             "type": "string"
           }
@@ -4277,8 +4078,8 @@
       "get": {
         "parameters": [
           {
-            "name": "older",
-            "description": "Filter parameter: get only records older than the provided id",
+            "name": "comment_id",
+            "description": "The ID of the comment you want to find votes for",
             "in": "query",
             "type": "string"
           },
@@ -4289,8 +4090,8 @@
             "type": "string"
           },
           {
-            "name": "per_page",
-            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
             "in": "query",
             "type": "string"
           },
@@ -4301,8 +4102,8 @@
             "type": "string"
           },
           {
-            "name": "comment_id",
-            "description": "The ID of the comment you want to find votes for",
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
             "in": "query",
             "type": "string"
           },
@@ -4565,14 +4366,14 @@
       "get": {
         "parameters": [
           {
-            "name": "offset",
-            "description": "Filter parameter: define the amount of records to be skipped",
+            "name": "newer",
+            "description": "Filter parameter: get only records with newer \"start_at\" date (includes events with unspeficifed date) than the provided date (format \"YYYY-MM-DD\")",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "per_page",
-            "description": "Filter parameter: define the amount of records sent per call (default 20, max 50)",
+            "name": "offset",
+            "description": "Filter parameter: define the amount of records to be skipped",
             "in": "query",
             "type": "string"
           },
@@ -4583,8 +4384,8 @@
             "type": "string"
           },
           {
-            "name": "newer",
-            "description": "Filter parameter: get only records with newer \"start_at\" date (includes events with unspeficifed date) than the provided date (format \"YYYY-MM-DD\")",
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (default 20, max 50)",
             "in": "query",
             "type": "string"
           },
@@ -4966,26 +4767,26 @@
             "type": "string"
           },
           {
-            "name": "older",
-            "description": "Filter parameter: get only records older than the provided id",
-            "in": "query",
-            "type": "string"
-          },
-          {
             "name": "newer",
             "description": "Filter parameter: get only records newer than the provided id",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "per_page",
-            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
             "in": "query",
             "type": "string"
           },
           {
             "name": "order",
             "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
             "in": "query",
             "type": "string"
           },
@@ -5621,27 +5422,20 @@
               "$schema": "http://json-schema.org/draft-04/schema#",
               "description": "",
               "type": "object",
-              "properties": {
-                "email": {
-                  "type": "string",
-                  "minLength": 1
-                }
-              },
-              "required": [
-                "email"
-              ]
+              "properties": {},
+              "required": []
             }
-          },
-          {
-            "name": "id",
-            "description": "The ID of the LIVE event you want to subscribe",
-            "in": "path",
-            "type": "string"
           },
           {
             "name": "email",
             "description": "The email you want to subscribe to a LIVE event (if not logged)",
             "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "description": "The ID of the LIVE event you want to subscribe",
+            "in": "path",
             "type": "string"
           }
         ],
@@ -7218,6 +7012,12 @@
             "type": "string"
           },
           {
+            "name": "code",
+            "description": "The access grant code you received via the callback from the previous step",
+            "in": "query",
+            "type": "string"
+          },
+          {
             "name": "grant_type",
             "description": "use `client_credentials`",
             "in": "query",
@@ -7226,12 +7026,6 @@
           {
             "name": "redirect_uri",
             "description": "Where shall we redirect the client afterwards to?",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "code",
-            "description": "The access grant code you received via the callback from the previous step",
             "in": "query",
             "type": "string"
           }
@@ -7270,14 +7064,14 @@
       "get": {
         "parameters": [
           {
-            "name": "days_ago",
-            "description": "Parameter for pagination",
+            "name": "day",
+            "description": "Alternate parameter for requesting specific days (Format: day=YYYY-MM-DD)",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "day",
-            "description": "Alternate parameter for requesting specific days (Format: day=YYYY-MM-DD)",
+            "name": "days_ago",
+            "description": "Parameter for pagination",
             "in": "query",
             "type": "string"
           }
@@ -7675,12 +7469,6 @@
             }
           },
           {
-            "name": "url",
-            "description": "The url of the product",
-            "in": "query",
-            "type": "string"
-          },
-          {
             "name": "name",
             "description": "The name of the product",
             "in": "query",
@@ -7689,6 +7477,12 @@
           {
             "name": "tagline",
             "description": "Your short description of the product",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "url",
+            "description": "The url of the product",
             "in": "query",
             "type": "string"
           }
@@ -8439,8 +8233,8 @@
       "get": {
         "parameters": [
           {
-            "name": "search",
-            "description": "Filter parameter: can filter posts by url",
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
             "in": "query",
             "type": "string"
           },
@@ -8451,14 +8245,14 @@
             "type": "string"
           },
           {
-            "name": "newer",
-            "description": "Filter parameter: get only records newer than the provided id",
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "per_page",
-            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "name": "search",
+            "description": "Filter parameter: can filter posts by url",
             "in": "query",
             "type": "string"
           }
@@ -8530,7 +8324,227 @@
                         "type": "string",
                         "minLength": 1
                       },
-                      "exclusive": {},
+                      "exclusive": {
+                        "type": "object",
+                        "properties": {
+                          "exclusive": {
+                            "type": "boolean"
+                          },
+                          "text": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "user": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "name": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "headline": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "created_at": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "username": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "twitter_username": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "website_url": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "image_url": {
+                                "type": "object",
+                                "properties": {
+                                  "30px": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "32px": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "40px": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "44px": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "48px": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "50px": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "60px": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "64px": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "73px": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "80px": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "88px": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "96px": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "100px": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "110px": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "120px": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "132px": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "146px": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "160px": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "176px": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "220px": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "264px": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "32px@2X": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "40px@2X": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "44px@2X": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "88px@2X": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "32px@3X": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "40px@3X": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "44px@3X": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "88px@3X": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "original": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  }
+                                },
+                                "required": [
+                                  "30px",
+                                  "32px",
+                                  "40px",
+                                  "44px",
+                                  "48px",
+                                  "50px",
+                                  "60px",
+                                  "64px",
+                                  "73px",
+                                  "80px",
+                                  "88px",
+                                  "96px",
+                                  "100px",
+                                  "110px",
+                                  "120px",
+                                  "132px",
+                                  "146px",
+                                  "160px",
+                                  "176px",
+                                  "220px",
+                                  "264px",
+                                  "32px@2X",
+                                  "40px@2X",
+                                  "44px@2X",
+                                  "88px@2X",
+                                  "32px@3X",
+                                  "40px@3X",
+                                  "44px@3X",
+                                  "88px@3X",
+                                  "original"
+                                ]
+                              },
+                              "profile_url": {
+                                "type": "string",
+                                "minLength": 1
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "name",
+                              "headline",
+                              "created_at",
+                              "username",
+                              "twitter_username",
+                              "website_url",
+                              "image_url",
+                              "profile_url"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "exclusive",
+                          "text",
+                          "user"
+                        ]
+                      },
                       "featured": {
                         "type": "boolean"
                       },
@@ -11518,6 +11532,12 @@
       "get": {
         "parameters": [
           {
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          },
+          {
             "name": "page",
             "description": "Parameter for pagination",
             "in": "query",
@@ -11538,12 +11558,6 @@
           {
             "name": "sort_by",
             "description": "Filter parameter: valid values are created_at, updated_at or featured_at",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "order",
-            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
             "in": "query",
             "type": "string"
           },
@@ -11834,8 +11848,8 @@
       "get": {
         "parameters": [
           {
-            "name": "post_id",
-            "description": "The id the post the comment belongs to (passed via URL)",
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
             "in": "query",
             "type": "string"
           },
@@ -11846,8 +11860,8 @@
             "type": "string"
           },
           {
-            "name": "newer",
-            "description": "Filter parameter: get only records newer than the provided id",
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
             "in": "query",
             "type": "string"
           },
@@ -11858,8 +11872,8 @@
             "type": "string"
           },
           {
-            "name": "order",
-            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "name": "post_id",
+            "description": "The id the post the comment belongs to (passed via URL)",
             "in": "query",
             "type": "string"
           },
@@ -13264,26 +13278,26 @@
       "get": {
         "parameters": [
           {
-            "name": "older",
-            "description": "Filter parameter: get only records older than the provided id",
-            "in": "query",
-            "type": "string"
-          },
-          {
             "name": "newer",
             "description": "Filter parameter: get only records newer than the provided id",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "per_page",
-            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
             "in": "query",
             "type": "string"
           },
           {
             "name": "order",
             "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
             "in": "query",
             "type": "string"
           },
@@ -13987,26 +14001,26 @@
             "type": "string"
           },
           {
-            "name": "name",
-            "description": "Let's make this one a riddle. What's Nane's bame?",
-            "in": "query",
-            "type": "string"
-          },
-          {
             "name": "headline",
             "description": "A one line description of the user - eg CTO of Wayne Industries",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "send_mention_email",
-            "description": "Does the user want to receive emails when mentioned in comments? true or false",
+            "name": "name",
+            "description": "Let's make this one a riddle. What's Nane's bame?",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "send_mention_push",
-            "description": "Does the user want to receive push notifications when mentioned in comments? true or false",
+            "name": "send_announcement_email",
+            "description": "Does the user want to receive emails when there is a new Product Hunt announcement? true or false",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "send_announcement_push",
+            "description": "Does the user want to receive push notifications when there is a new Product Hunt announcement? true or false",
             "in": "query",
             "type": "string"
           },
@@ -14023,8 +14037,14 @@
             "type": "string"
           },
           {
-            "name": "send_new_follower_push",
-            "description": "Does the user want to receive push notifications when they get a new follower? true or false",
+            "name": "send_mention_email",
+            "description": "Does the user want to receive emails when mentioned in comments? true or false",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "send_mention_push",
+            "description": "Does the user want to receive push notifications when mentioned in comments? true or false",
             "in": "query",
             "type": "string"
           },
@@ -14035,26 +14055,20 @@
             "type": "string"
           },
           {
-            "name": "send_announcement_push",
-            "description": "Does the user want to receive push notifications when there is a new Product Hunt announcement? true or false",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "send_announcement_email",
-            "description": "Does the user want to receive emails when there is a new Product Hunt announcement? true or false",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "send_product_recommendation_push",
-            "description": "Does the user want to recieve product recommendations via push (popular products, similar interests)? true or false",
+            "name": "send_new_follower_push",
+            "description": "Does the user want to receive push notifications when they get a new follower? true or false",
             "in": "query",
             "type": "string"
           },
           {
             "name": "send_product_recommendation_email",
             "description": "Does the user want to recieve product recommendations via email (popular products, similar interests)? true or false",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "send_product_recommendation_push",
+            "description": "Does the user want to recieve product recommendations via push (popular products, similar interests)? true or false",
             "in": "query",
             "type": "string"
           },
@@ -14854,26 +14868,26 @@
       "get": {
         "parameters": [
           {
-            "name": "older",
-            "description": "Filter parameter: get only records older than the provided id",
-            "in": "query",
-            "type": "string"
-          },
-          {
             "name": "newer",
             "description": "Filter parameter: get only records newer than the provided id",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "per_page",
-            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
             "in": "query",
             "type": "string"
           },
           {
             "name": "order",
             "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
             "in": "query",
             "type": "string"
           }
@@ -15959,6 +15973,12 @@
       "get": {
         "parameters": [
           {
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          },
+          {
             "name": "page",
             "description": "Parameter for pagination",
             "in": "query",
@@ -15979,12 +15999,6 @@
           {
             "name": "sort_by",
             "description": "Filter parameter: valid values are created_at, updated_at or featured_at",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "order",
-            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
             "in": "query",
             "type": "string"
           },
@@ -17223,8 +17237,8 @@
       "get": {
         "parameters": [
           {
-            "name": "user_id",
-            "description": "The ID of the user you want to fetch all followers from",
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
             "in": "query",
             "type": "string"
           },
@@ -17235,8 +17249,8 @@
             "type": "string"
           },
           {
-            "name": "newer",
-            "description": "Filter parameter: get only records newer than the provided id",
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
             "in": "query",
             "type": "string"
           },
@@ -17247,8 +17261,8 @@
             "type": "string"
           },
           {
-            "name": "order",
-            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "name": "user_id",
+            "description": "The ID of the user you want to fetch all followers from",
             "in": "query",
             "type": "string"
           },
@@ -17498,8 +17512,8 @@
       "get": {
         "parameters": [
           {
-            "name": "user_id",
-            "description": "The ID of the user from whom you want to fetch all people who follows",
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
             "in": "query",
             "type": "string"
           },
@@ -17510,8 +17524,8 @@
             "type": "string"
           },
           {
-            "name": "newer",
-            "description": "Filter parameter: get only records newer than the provided id",
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
             "in": "query",
             "type": "string"
           },
@@ -17522,8 +17536,8 @@
             "type": "string"
           },
           {
-            "name": "order",
-            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "name": "user_id",
+            "description": "The ID of the user from whom you want to fetch all people who follows",
             "in": "query",
             "type": "string"
           },
@@ -17773,14 +17787,14 @@
       "get": {
         "parameters": [
           {
-            "name": "older",
-            "description": "Filter parameter: get only records older than the provided id",
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "newer",
-            "description": "Filter parameter: get only records newer than the provided id",
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
             "in": "query",
             "type": "string"
           },
@@ -18152,14 +18166,14 @@
       "get": {
         "parameters": [
           {
-            "name": "older",
-            "description": "Filter parameter: get only records older than the provided id",
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "newer",
-            "description": "Filter parameter: get only records newer than the provided id",
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
             "in": "query",
             "type": "string"
           },
@@ -18731,26 +18745,26 @@
       "get": {
         "parameters": [
           {
-            "name": "older",
-            "description": "Filter parameter: get only records older than the provided id",
-            "in": "query",
-            "type": "string"
-          },
-          {
             "name": "newer",
             "description": "Filter parameter: get only records newer than the provided id",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "per_page",
-            "description": "Filter parameter: define the amount of records sent per call (50)",
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
             "in": "query",
             "type": "string"
           },
           {
             "name": "order",
             "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (50)",
             "in": "query",
             "type": "string"
           },
