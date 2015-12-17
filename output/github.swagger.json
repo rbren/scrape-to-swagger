@@ -194,9 +194,15 @@
         "responses": {}
       }
     },
-    "/admin/ldap/users/:username/mapping": {
+    "/admin/ldap/users/{username}/mapping": {
       "patch": {
-        "parameters": [],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "username",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
@@ -311,7 +317,7 @@
         "responses": {}
       }
     },
-    "/enterprise/stats/:type": {
+    "/enterprise/stats/{type}": {
       "get": {
         "parameters": [
           {
@@ -379,6 +385,11 @@
             "description": "All of the statistics listed above.",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "type",
+            "type": "string"
           }
         ],
         "responses": {}
@@ -396,13 +407,18 @@
         "responses": {}
       }
     },
-    "/gists/:gist_id/comments": {
+    "/gists/{gist_id}/comments": {
       "get": {
         "parameters": [
           {
             "name": "body",
             "description": "string",
             "in": "query",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "gist_id",
             "type": "string"
           }
         ],
@@ -494,19 +510,19 @@
         "responses": {}
       }
     },
-    "/legacy/issues/search/:owner/:repository/:state/:keyword": {
+    "/legacy/issues/search/{owner}/{repository}/{state}/{keyword}": {
       "get": {
         "parameters": [
           {
             "name": "state",
             "description": "string",
-            "in": "query",
+            "in": "path",
             "type": "string"
           },
           {
             "name": "keyword",
             "description": "string",
-            "in": "query",
+            "in": "path",
             "type": "string"
           },
           {
@@ -537,6 +553,16 @@
             "name": "email",
             "description": "string",
             "in": "query",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repository",
             "type": "string"
           }
         ],
@@ -774,7 +800,7 @@
         "responses": {}
       }
     },
-    "/orgs/:org/hooks": {
+    "/orgs/{org}/hooks": {
       "get": {
         "parameters": [
           {
@@ -830,12 +856,17 @@
             "description": "The event type that was triggered.",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "org",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/orgs/:org/members": {
+    "/orgs/{org}/members": {
       "get": {
         "parameters": [
           {
@@ -855,12 +886,17 @@
             "description": "string",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "org",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/orgs/:org/migrations": {
+    "/orgs/{org}/migrations": {
       "post": {
         "parameters": [
           {
@@ -880,12 +916,17 @@
             "description": "boolean",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "org",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/orgs/:org/teams": {
+    "/orgs/{org}/teams": {
       "get": {
         "parameters": [
           {
@@ -922,6 +963,11 @@
             "name": "role",
             "description": "string",
             "in": "query",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "org",
             "type": "string"
           }
         ],
@@ -1091,13 +1137,24 @@
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/assignees": {
+    "/repos/{owner}/{repo}/assignees": {
       "get": {
-        "parameters": [],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/collaborators": {
+    "/repos/{owner}/{repo}/collaborators": {
       "get": {
         "parameters": [
           {
@@ -1105,12 +1162,22 @@
             "description": "string",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/comments": {
+    "/repos/{owner}/{repo}/comments": {
       "get": {
         "parameters": [
           {
@@ -1136,12 +1203,22 @@
             "description": "integer",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/commits": {
+    "/repos/{owner}/{repo}/commits": {
       "get": {
         "parameters": [
           {
@@ -1173,12 +1250,22 @@
             "description": "string",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/deployments": {
+    "/repos/{owner}/{repo}/deployments": {
       "get": {
         "parameters": [
           {
@@ -1246,18 +1333,39 @@
             "description": "string",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/downloads": {
+    "/repos/{owner}/{repo}/downloads": {
       "get": {
-        "parameters": [],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/forks": {
+    "/repos/{owner}/{repo}/forks": {
       "get": {
         "parameters": [
           {
@@ -1271,12 +1379,22 @@
             "description": "string",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/git/blobs/:sha": {
+    "/repos/{owner}/{repo}/git/blobs/{sha}": {
       "get": {
         "parameters": [
           {
@@ -1290,12 +1408,27 @@
             "description": "string",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "sha",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/git/commits/:sha": {
+    "/repos/{owner}/{repo}/git/commits/{sha}": {
       "get": {
         "parameters": [
           {
@@ -1333,18 +1466,33 @@
             "description": "string",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "sha",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/git/refs/:ref": {
+    "/repos/{owner}/{repo}/git/refs/{ref}": {
       "get": {
         "parameters": [
           {
             "name": "ref",
             "description": "type",
-            "in": "query",
+            "in": "path",
             "type": "string"
           },
           {
@@ -1358,12 +1506,22 @@
             "description": "boolean",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/git/tags/:sha": {
+    "/repos/{owner}/{repo}/git/tags/{sha}": {
       "get": {
         "parameters": [
           {
@@ -1413,12 +1571,27 @@
             "description": "string",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "sha",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/git/trees/:sha": {
+    "/repos/{owner}/{repo}/git/trees/{sha}": {
       "get": {
         "parameters": [
           {
@@ -1454,7 +1627,7 @@
           {
             "name": "sha",
             "description": "string",
-            "in": "query",
+            "in": "path",
             "type": "string"
           },
           {
@@ -1462,12 +1635,22 @@
             "description": "string",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/hooks": {
+    "/repos/{owner}/{repo}/hooks": {
       "get": {
         "parameters": [
           {
@@ -1517,18 +1700,44 @@
             "description": "string",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/issues/:issue_number/events": {
+    "/repos/{owner}/{repo}/issues/{issue_number}/events": {
       "get": {
-        "parameters": [],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "issue_number",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/issues/:number/comments": {
+    "/repos/{owner}/{repo}/issues/{number}/comments": {
       "get": {
         "parameters": [
           {
@@ -1554,12 +1763,27 @@
             "description": "string",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "number",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/keys": {
+    "/repos/{owner}/{repo}/keys": {
       "get": {
         "parameters": [
           {
@@ -1579,12 +1803,22 @@
             "description": "boolean",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/labels": {
+    "/repos/{owner}/{repo}/labels": {
       "get": {
         "parameters": [
           {
@@ -1598,12 +1832,22 @@
             "description": "string",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/merges": {
+    "/repos/{owner}/{repo}/merges": {
       "post": {
         "parameters": [
           {
@@ -1623,12 +1867,22 @@
             "description": "string",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/milestones": {
+    "/repos/{owner}/{repo}/milestones": {
       "get": {
         "parameters": [
           {
@@ -1666,18 +1920,39 @@
             "description": "string",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/pages": {
+    "/repos/{owner}/{repo}/pages": {
       "get": {
-        "parameters": [],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/pulls": {
+    "/repos/{owner}/{repo}/pulls": {
       "get": {
         "parameters": [
           {
@@ -1781,12 +2056,22 @@
             "description": "string",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/pulls/:number/comments": {
+    "/repos/{owner}/{repo}/pulls/{number}/comments": {
       "get": {
         "parameters": [
           {
@@ -1836,12 +2121,27 @@
             "description": "integer",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "number",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/readme": {
+    "/repos/{owner}/{repo}/readme": {
       "get": {
         "parameters": [
           {
@@ -1897,12 +2197,22 @@
             "description": "string",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/releases": {
+    "/repos/{owner}/{repo}/releases": {
       "get": {
         "parameters": [
           {
@@ -1952,12 +2262,22 @@
             "description": "string",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/stargazers": {
+    "/repos/{owner}/{repo}/stargazers": {
       "get": {
         "parameters": [
           {
@@ -1971,18 +2291,39 @@
             "description": "string",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/stats/contributors": {
+    "/repos/{owner}/{repo}/stats/contributors": {
       "get": {
-        "parameters": [],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/statuses/:sha": {
+    "/repos/{owner}/{repo}/statuses/{sha}": {
       "post": {
         "parameters": [
           {
@@ -2014,12 +2355,27 @@
             "description": "string",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "sha",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/repos/:owner/:repo/subscribers": {
+    "/repos/{owner}/{repo}/subscribers": {
       "get": {
         "parameters": [
           {
@@ -2032,6 +2388,16 @@
             "name": "ignored",
             "description": "boolean",
             "in": "query",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "repo",
             "type": "string"
           }
         ],
@@ -2336,7 +2702,7 @@
         "responses": {}
       }
     },
-    "/users/:username": {
+    "/users/{username}": {
       "get": {
         "parameters": [
           {
@@ -2386,18 +2752,29 @@
             "description": "string",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "username",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/users/:username/followers": {
+    "/users/{username}/followers": {
       "get": {
-        "parameters": [],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "username",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
-    "/users/:username/gists": {
+    "/users/{username}/gists": {
       "get": {
         "parameters": [
           {
@@ -2435,14 +2812,25 @@
             "description": "string",
             "in": "query",
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "username",
+            "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/users/:username/keys": {
+    "/users/{username}/keys": {
       "get": {
-        "parameters": [],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "username",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     }

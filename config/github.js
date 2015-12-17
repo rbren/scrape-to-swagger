@@ -16,4 +16,13 @@ var config = module.exports = {
   responseStatus: {selector: 'h3:nth-of-type(2) + h4 + pre', regex: /(\d+) .*/},
   responseDescription: {selector: 'h3:nth-of-type(2) + h4 + pre', regex: /\d+ (.*)/},
   responseSchema: {selector: 'h3:nth-of-type(2) + h4 + pre + h4 + pre + h4 + pre', isExample: true},
+
+  extractPathParameters: function(path) {
+    pieces = path.split('/');
+    pieces = pieces.map(function(p) {
+      if (p.indexOf(':') === 0) return '{' + p.substring(1) + '}';
+      else return p;
+    })
+    return pieces.join('/');
+  }
 }
