@@ -11,7 +11,7 @@ var config = module.exports = {
   operation: {selector: '.section.toc-el'},
   path: {selector: 'h3.method-title', regex: /(\/\S*)/},
   method: {selector: 'dl dt:contains(Method) + dd', regex: /(\w+)/},
-  parameters: {selector: 'dl dt:contains(Parameters) + dd > ul.parameters', sibling: true},
+  parameters: {selector: 'dl dt:contains(Parameters) + dd > ul.parameters'},
   parameter: {selector: 'li'},
   parameterName: {selector: 'span.param'},
   parameterDescription: {selector: ''},

@@ -8,13 +8,50 @@
   "paths": {
     "/chunked_uploadPythonJavaRubyPHP": {
       "put": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "upload_id",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
     "/commit_chunked_upload": {
       "post": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "autorename",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "overwrite",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "parent_rev",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "upload_id",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
@@ -26,13 +63,45 @@
     },
     "/delta/latest_cursor": {
       "post": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "include_media_info",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "path_prefix",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
     "/deltaPythonJavaRubyPHP": {
       "post": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "cursor",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "include_media_info",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "path_prefix",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
@@ -44,55 +113,239 @@
     },
     "/fileops/create_folder": {
       "post": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "locale",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "path",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "root",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
     "/fileops/delete": {
       "post": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "locale",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "path",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "root",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
     "/fileops/move": {
       "post": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "from_path",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "root",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "to_path",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
     "/fileops/permanently_delete": {
       "post": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "path",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "root",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
     "/files_put": {
       "put": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "autorename",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "overwrite",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "parent_rev",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
     "/longpoll_delta": {
       "get": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "cursor",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "timeout",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
     "/mediaPythonJavaRubyPHP": {
       "post": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "locale",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
     "/metadata": {
       "get": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "file_limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hash",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "include_deleted",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "include_media_info",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "include_membership",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "list",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "rev",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
     "/metadata/link": {
       "post": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "client_secret",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "file_limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hash",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "include_media_info",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "link",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "list",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "path",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
@@ -104,19 +357,102 @@
     },
     "/oauth/authorize": {
       "get": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "disable_signup",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "oauth_callback",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "oauth_token",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
     "/oauth2/authorizePythonJavaRubyPHP": {
       "get": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "disable_signup",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "force_reapprove",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "redirect_uri",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "require_role",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "response_type",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
     "/oauth2/tokenPythonJavaRubyPHP": {
       "post": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "client_secret",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "grant_type",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "redirect_uri",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
@@ -128,19 +464,47 @@
     },
     "/previews": {
       "get": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "rev",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
     "/restorePythonJavaRubyPHP": {
       "post": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "locale",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "rev",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
     "/revisionsPythonJavaRubyPHP": {
       "get": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "locale",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "rev_limit",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
@@ -158,7 +522,33 @@
     },
     "/searchPythonJavaRubyPHP": {
       "get": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "file_limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "include_deleted",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "include_membership",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
@@ -170,13 +560,35 @@
     },
     "/sharesPythonJavaRubyPHP": {
       "post": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "locale",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "short_url",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     },
     "/thumbnailsPythonJavaRubyPHP": {
       "get": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "format",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {}
       }
     }
