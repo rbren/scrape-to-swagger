@@ -1,0 +1,213 @@
+{
+  "swagger": "2.0",
+  "paths": {
+    "/v1/categories/games/posts?day=2015-12-03": {
+      "get": {}
+    },
+    "/v1/posts/1/related_links": {
+      "post": {}
+    },
+    "/v1/users/1/comments": {
+      "get": {}
+    },
+    "/v1/collections": {
+      "post": {},
+      "get": {}
+    },
+    "/v1/comments/1/votes?newer=3": {
+      "get": {}
+    },
+    "/v1/posts/all?search[url]=http%3A%2F%2Fwww.example.com": {
+      "get": {}
+    },
+    "/v1/collections/1": {
+      "delete": {},
+      "get": {},
+      "put": {}
+    },
+    "/v1/me": {
+      "get": {}
+    },
+    "/v1/posts/1/vote": {
+      "delete": {},
+      "post": {}
+    },
+    "/v1/live?older=2015-12-4": {
+      "get": {}
+    },
+    "/v1/users/6/products": {
+      "get": {}
+    },
+    "/v1/comments": {
+      "post": {},
+      "get": {}
+    },
+    "/v1/users": {
+      "get": {}
+    },
+    "/v1/posts/1/collect": {
+      "post": {},
+      "delete": {}
+    },
+    "/v1/posts": {
+      "post": {},
+      "get": {}
+    },
+    "/v1/me/interactions?include=following_user_ids": {
+      "get": {}
+    },
+    "/v1/posts?day=2015-12-03": {
+      "get": {}
+    },
+    "/v1/posts/1": {
+      "get": {}
+    },
+    "/v1/collections?search[category]=category-1": {
+      "get": {}
+    },
+    "/v1/users/1/follow": {
+      "delete": {},
+      "post": {}
+    },
+    "/v1/settings": {
+      "put": {}
+    },
+    "/v1/categories": {
+      "get": {}
+    },
+    "/v1/live/1/subscribe": {
+      "delete": {},
+      "post": {}
+    },
+    "/v1/oauth/token": {
+      "post": {}
+    },
+    "/v1/notifications": {
+      "delete": {},
+      "get": {}
+    },
+    "/v1/live?search[live_video]=true": {
+      "get": {}
+    },
+    "/v1/collections/1/subscribe": {
+      "post": {},
+      "delete": {}
+    },
+    "/v1/users/8/votes": {
+      "get": {}
+    },
+    "/v1/comments?per_page=5&newer=3": {
+      "get": {}
+    },
+    "/v1/comments/1": {
+      "put": {}
+    },
+    "/v1/posts/1/votes": {
+      "get": {}
+    },
+    "/v1/posts/1/related_links/1": {
+      "put": {},
+      "delete": {}
+    },
+    "/v1/users/1/followers": {
+      "get": {}
+    },
+    "/v1/posts/all?search[category]=games": {
+      "get": {}
+    },
+    "/v1/posts/all": {
+      "get": {}
+    },
+    "/v1/live": {
+      "get": {}
+    },
+    "/v1/categories/games/posts": {
+      "get": {}
+    },
+    "/v1/oauth/authorize?client_id=be8376b37e1bf14a378ec74afe90bc3bb5a7a00304f80259467684ff81ee8c90&redirect_uri=http%3A%2F%2Fexample.org%2F&response_type=code&scope=public+private": {
+      "get": {}
+    },
+    "/v1/me/interactions?include[]=collected_post_ids&include[]=voted_comment_ids&include[]=voted_post_ids": {
+      "get": {}
+    },
+    "/v1/users/1/following": {
+      "get": {}
+    },
+    "/v1/users?newer=2": {
+      "get": {}
+    },
+    "/v1/live?search[date]=2015-12": {
+      "get": {}
+    },
+    "/v1/users/1/collections": {
+      "get": {}
+    },
+    "/v1/related_links": {
+      "get": {}
+    },
+    "/v1/posts/1/comments": {
+      "get": {}
+    },
+    "/v1/posts/1/collections": {
+      "get": {}
+    },
+    "/v1/live?search[category]=tech": {
+      "get": {}
+    },
+    "/v1/comments/1/vote": {
+      "post": {},
+      "delete": {}
+    },
+    "/v1/comments?search[ama_event_id]=1": {
+      "get": {}
+    },
+    "/v1/categories/games/posts?days_ago=1": {
+      "get": {}
+    },
+    "/v1/users/4/posts": {
+      "get": {}
+    },
+    "/v1/live/1": {
+      "get": {}
+    },
+    "/v1/live?newer=2015-12-4": {
+      "get": {}
+    },
+    "/v1/posts/all?newer=1": {
+      "get": {}
+    },
+    "/v1/live?offset=2&limit=1": {
+      "get": {}
+    },
+    "/v1/collections?search[featured]=true": {
+      "get": {}
+    },
+    "/v1/comments?search[post_id]=1&search[user_id]=3": {
+      "get": {}
+    },
+    "/v1/live/1/comments": {
+      "get": {}
+    },
+    "/v1/posts?days_ago=1": {
+      "get": {}
+    },
+    "/v1/notifications?search[type]=all": {
+      "get": {}
+    },
+    "/v1/posts/1/votes?newer=3": {
+      "get": {}
+    },
+    "/v1/users/l33thaxor": {
+      "get": {}
+    },
+    "/v1/related_links?search[url]=https%3A%2F%2Fwww.techcrunch.com%2F2014%2F08%2F19%2Fthis-is-the-best-app-in-the-world%3Fweird%3Dget%26params%3Dare%23weird": {
+      "get": {}
+    },
+    "/v1/comments/1/votes": {
+      "get": {}
+    }
+  },
+  "info": {},
+  "host": "api.producthunt.com",
+  "basePath": "/v1"
+}

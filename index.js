@@ -6,22 +6,19 @@ var cheerio = require('cheerio');
 var argv = require('yargs').argv;
 var config = require(argv.config);
 
-var swagger = {swagger: '2.0'};
+var swagger = {swagger: '2.0', paths: {}, info: {}, host: config.host, basePath: config.basePath};
 
 var parsed = urlParser.parse(config.url);
 var host = parsed.protocol + '//' + parsed.host;
 
 function scrapePage(url, depth, callback) {
-  console.log('resolve', host, url);
   url = urlParser.resolve(host, url);
   console.log('scrape', url);
+  if (url.indexOf('mailto:') === 0) return callback();
   request.get(url, function(err, resp, body) {
     if (err) return callback(err);
     var $ = cheerio.load(body);
-    for (var field in config.fields) {
-      var selector = config.fields[field].selector;
-      swagger[field] = $(selector).text();
-    }
+    addPageToSwagger($);
     if (!depth) return callback();
     var links = $('a[href]');
     async.parallel($('a[href]').map(function(i, el) {
@@ -32,6 +29,27 @@ function scrapePage(url, depth, callback) {
       callback(err);
     })
   })
+}
+
+function addPageToSwagger($) {
+  $(config.operation.selector).each(function() {
+    var op = $(this);
+    var path = extractText(op, config.path);
+    var method = extractText(op, config.method);
+    if (!method || !path) return;
+    swagger.paths[path] = swagger.paths[path] || {};
+    swagger.paths[path][method.toLowerCase()] = {};
+  })
+}
+
+function extractText(el, extractor) {
+  var text = el.find(extractor.selector).text();
+  if (extractor.regex) {
+    var matches = text.match(extractor.regex);
+    if (!matches) return;
+    text = matches[extractor.regexMatch || 0];
+  }
+  return text;
 }
 
 scrapePage(config.url, config.depth || 1, function(err) {
