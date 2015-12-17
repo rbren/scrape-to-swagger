@@ -3,6 +3,7 @@ var fs = require('fs');
 var async = require('async');
 var request = require('request');
 var cheerio = require('cheerio');
+var sortObj = require('sorted-object');
 var argv = require('yargs').argv;
 var config = require(argv.config);
 
@@ -90,5 +91,7 @@ function extractText(el, extractor) {
 
 scrapePage(config.url, config.depth || 1, function(err) {
   if (err) throw err;
+  swagger = sortObj(swagger);
+  swagger.paths = sortObj(swagger.paths);
   fs.writeFileSync(argv.output || 'swagger.json', JSON.stringify(swagger, null, 2));
 });
