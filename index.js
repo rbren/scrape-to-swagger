@@ -34,9 +34,14 @@ function scrapeInfo(url, callback) {
   })
 }
 
+var scrapedPages = [];
+
 function scrapePage(url, depth, callback) {
   url = urlParser.resolve(host, url);
   if (url.indexOf('mailto:') === 0) return callback();
+  if (scrapedPages.indexOf(url) !== -1) return callback();
+  if (config.urlRegex && !url.match(config.urlRegex)) return callback();
+  scrapedPages.push(url);
   log('scrape', url);
   request.get(url, function(err, resp, body) {
     if (err) return callback(err);
