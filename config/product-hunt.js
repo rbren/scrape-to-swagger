@@ -6,10 +6,21 @@ var config = module.exports = {
   description: {selector: ''},
   operation: {selector: '.api--content'},
   path: {selector: '.api--request pre:first-of-type', regex: /\w+ (.*)/},
-  pathParameters: [
-    {name: 'id', regex: /^\d+$/},
-    {name: 'id', regex: /l33thaxor/},
-  ],  
+  extractPathParameters: function(path) {
+    var pieces = path.split('/');
+    var params = [];
+    pieces.forEach(function(piece) {
+      var match = piece.match(/^(\d+)$/) || piece.match(/l33thaxor/);
+      if (match)  {
+        path = path.replace('/' + match[0], '/{id}');
+        return;
+      }
+      if (piece === 'games' || piece === 'tech' || piece === 'books' || piece === 'podcasts') {
+        path = path.replace(piece, '{category}');
+      }
+    })
+    return path;
+  },
   method: {selector: '.api--request pre:first-of-type', regex: /(\w+) .*/},
   parameters: {selector: 'table'},
   parameter: {selector: 'tr'},

@@ -13,6 +13,10 @@ var swagger = {swagger: '2.0', paths: {}, info: {}, host: config.host, basePath:
 var parsed = urlParser.parse(config.url);
 var host = parsed.protocol + '//' + parsed.host;
 
+var log = function() {
+  if (argv.verbose) console.log.apply(console, arguments);
+}
+
 function scrapeInfo(url, callback) {
   request.get(url, function(err, resp, body) {
     if (err) return callback(err);
@@ -31,6 +35,7 @@ function scrapeInfo(url, callback) {
 function scrapePage(url, depth, callback) {
   url = urlParser.resolve(host, url);
   if (url.indexOf('mailto:') === 0) return callback();
+  log('scrape', url);
   request.get(url, function(err, resp, body) {
     if (err) return callback(err);
     var $ = cheerio.load(body);
@@ -48,19 +53,14 @@ function scrapePage(url, depth, callback) {
 }
 
 function addPageToSwagger($) {
-  $(config.operation.selector).each(function() {
+  var operations = config.operations ? $(config.operations.selector) : $('body');
+  operations.each(function() {
     var op = $(this);
     var method = extractText(op, config.method);
     var path = extractText(op, config.path);
     if (!method || !path) return;
     path = urlParser.parse(path).pathname;
-    pathPieces = path.split('/');
-    (config.pathParameters || []).forEach(function(pathParam) {
-      pathPieces = pathPieces.map(function(piece) {
-        return piece.replace(pathParam.regex, '{' + pathParam.name + '}');
-      });
-    })
-    path = pathPieces.join('/');
+    if (config.extractPathParameters) path = config.extractPathParameters(path);
     method = method.toLowerCase();
     var sPath = swagger.paths[path] = swagger.paths[path] || {};
     var sOp = sPath[method] = sPath[method] || {parameters: [], responses: {}};
