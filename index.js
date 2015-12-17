@@ -138,6 +138,13 @@ function fixErrors() {
           if (p2.schema && !p1.schema) return 1;
           if (p1.type && !p2.type) return -1;
           if (p2.type && !p1.type) return 1;
+          if (p1.schema && p2.schema) {
+            var p1len = JSON.stringify(p1.schema).lenth;
+            var p2len = JSON.stringify(p2.schema).lenth;
+            if (p1len > p2len) return -1;
+            if (p1len < p2len) return 1;
+          }
+          return 0;
         })[0];
         return p === bestParamWithName;
       })
