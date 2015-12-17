@@ -36,6 +36,7 @@ function addPageToSwagger($) {
     var method = extractText(op, config.method);
     var path = extractText(op, config.path);
     if (!method || !path) return;
+    path = urlParser.parse(path).pathname;
     pathPieces = path.split('/');
     (config.pathParameters || []).forEach(function(pathParam) {
       pathPieces = pathPieces.map(function(piece) {
