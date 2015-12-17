@@ -4417,6 +4417,7 @@
                       "subscriber_count",
                       "tagline",
                       "live_video",
+                      "twitter_username",
                       "url"
                     ],
                     "properties": {
@@ -4449,12 +4450,215 @@
                       },
                       "guests": {
                         "type": "array",
+                        "uniqueItems": true,
+                        "minItems": 1,
                         "items": {
-                          "required": [],
-                          "properties": {}
+                          "required": [
+                            "id",
+                            "name",
+                            "headline",
+                            "created_at",
+                            "username",
+                            "twitter_username",
+                            "website_url",
+                            "profile_url"
+                          ],
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "name": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "headline": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "created_at": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "username": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "twitter_username": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "website_url": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "image_url": {
+                              "type": "object",
+                              "properties": {
+                                "30px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "32px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "40px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "44px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "48px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "50px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "60px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "64px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "73px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "80px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "88px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "96px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "100px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "110px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "120px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "132px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "146px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "160px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "176px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "220px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "264px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "32px@2X": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "40px@2X": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "44px@2X": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "88px@2X": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "32px@3X": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "40px@3X": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "44px@3X": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "88px@3X": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "original": {
+                                  "type": "string",
+                                  "minLength": 1
+                                }
+                              },
+                              "required": [
+                                "30px",
+                                "32px",
+                                "40px",
+                                "44px",
+                                "48px",
+                                "50px",
+                                "60px",
+                                "64px",
+                                "73px",
+                                "80px",
+                                "88px",
+                                "96px",
+                                "100px",
+                                "110px",
+                                "120px",
+                                "132px",
+                                "146px",
+                                "160px",
+                                "176px",
+                                "220px",
+                                "264px",
+                                "32px@2X",
+                                "40px@2X",
+                                "44px@2X",
+                                "88px@2X",
+                                "32px@3X",
+                                "40px@3X",
+                                "44px@3X",
+                                "88px@3X",
+                                "original"
+                              ]
+                            },
+                            "profile_url": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
                         }
                       },
-                      "twitter_username": {},
+                      "twitter_username": {
+                        "type": "string",
+                        "minLength": 1
+                      },
                       "url": {
                         "type": "string",
                         "minLength": 1
@@ -8324,227 +8528,7 @@
                         "type": "string",
                         "minLength": 1
                       },
-                      "exclusive": {
-                        "type": "object",
-                        "properties": {
-                          "exclusive": {
-                            "type": "boolean"
-                          },
-                          "text": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "user": {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "number"
-                              },
-                              "name": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "headline": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "created_at": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "username": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "twitter_username": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "website_url": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "image_url": {
-                                "type": "object",
-                                "properties": {
-                                  "30px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "32px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "40px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "44px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "48px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "50px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "60px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "64px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "73px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "80px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "88px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "96px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "100px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "110px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "120px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "132px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "146px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "160px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "176px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "220px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "264px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "32px@2X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "40px@2X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "44px@2X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "88px@2X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "32px@3X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "40px@3X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "44px@3X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "88px@3X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "original": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  }
-                                },
-                                "required": [
-                                  "30px",
-                                  "32px",
-                                  "40px",
-                                  "44px",
-                                  "48px",
-                                  "50px",
-                                  "60px",
-                                  "64px",
-                                  "73px",
-                                  "80px",
-                                  "88px",
-                                  "96px",
-                                  "100px",
-                                  "110px",
-                                  "120px",
-                                  "132px",
-                                  "146px",
-                                  "160px",
-                                  "176px",
-                                  "220px",
-                                  "264px",
-                                  "32px@2X",
-                                  "40px@2X",
-                                  "44px@2X",
-                                  "88px@2X",
-                                  "32px@3X",
-                                  "40px@3X",
-                                  "44px@3X",
-                                  "88px@3X",
-                                  "original"
-                                ]
-                              },
-                              "profile_url": {
-                                "type": "string",
-                                "minLength": 1
-                              }
-                            },
-                            "required": [
-                              "id",
-                              "name",
-                              "headline",
-                              "created_at",
-                              "username",
-                              "twitter_username",
-                              "website_url",
-                              "image_url",
-                              "profile_url"
-                            ]
-                          }
-                        },
-                        "required": [
-                          "exclusive",
-                          "text",
-                          "user"
-                        ]
-                      },
+                      "exclusive": {},
                       "featured": {
                         "type": "boolean"
                       },
@@ -8946,8 +8930,15 @@
                         },
                         "metadata": {
                           "type": "object",
-                          "properties": {},
-                          "required": []
+                          "properties": {
+                            "url": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "required": [
+                            "url"
+                          ]
                         }
                       },
                       "required": [
@@ -10131,8 +10122,15 @@
                           },
                           "metadata": {
                             "type": "object",
-                            "properties": {},
-                            "required": []
+                            "properties": {
+                              "url": {
+                                "type": "string",
+                                "minLength": 1
+                              }
+                            },
+                            "required": [
+                              "url"
+                            ]
                           },
                           "image_url": {
                             "type": "string",
@@ -13647,8 +13645,18 @@
                           },
                           "current_user": {
                             "type": "object",
-                            "properties": {},
-                            "required": []
+                            "properties": {
+                              "voted_for_post": {
+                                "type": "boolean"
+                              },
+                              "commented_on_post": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "voted_for_post",
+                              "commented_on_post"
+                            ]
                           },
                           "discussion_url": {
                             "type": "string",

@@ -55,8 +55,9 @@ function scrapePage(url, depth, callback) {
 }
 
 function addPageToSwagger($) {
-  var operations = config.operations ? $(config.operations.selector) : $('body');
-  operations = config.operation ? operations.find(config.operation.selector) : operations;
+  var body = $('body');
+  operations = resolveSelector(body, config.operations);
+  operations = resolveSelector(operations, config.operation);
   operations.each(function() {
     var op = $(this);
     var method = extractText(op, config.method);
@@ -69,8 +70,9 @@ function addPageToSwagger($) {
     log('operation', method, path);
     var sPath = swagger.paths[path] = swagger.paths[path] || {};
     var sOp = sPath[method] = sPath[method] || {parameters: [], responses: {}};
-    var parameters = op.find(config.parameters.selector).find(config.parameter.selector);
-    parameters = $(parameters);
+
+    var parameters = resolveSelector(op, config.parameters);
+    parameters = resolveSelector(parameters, config.parameter);
     if (parameters) parameters.each(function() {
       var param = $(this);
       var name = extractText(param, config.parameterName);
@@ -86,6 +88,7 @@ function addPageToSwagger($) {
     if (body) {
       sOp.parameters.unshift({name: 'body', in: 'body', schema: body});
     }
+
     var responses = config.responses ? op.find(config.responses.selector) : op;
     var response = config.response ? responses.find(config.response.selector) : responses;
     var responseStatus = extractText(response, config.responseStatus);
@@ -101,10 +104,15 @@ function addPageToSwagger($) {
   })
 }
 
+function resolveSelector(el, extractor) {
+  if (!extractor) return el;
+  return extractor.sibling ? el.nextAll(extractor.selector) : el.find(extractor.selector);
+}
+
 function extractText(el, extractor) {
   if (!extractor) return '';
   if (typeof extractor === 'string') return extractor;
-  var text = extractor.sibling ? el.nextAll(extractor.selector).text() : el.find(extractor.selector).text();
+  var text = resolveSelector(el, extractor).text();
   if (extractor.regex) {
     var matches = text.match(extractor.regex);
     if (!matches) return;
