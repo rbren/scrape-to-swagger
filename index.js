@@ -45,11 +45,10 @@ function addPageToSwagger($) {
     })
     path = pathPieces.join('/');
     swagger.paths[path] = swagger.paths[path] || {};
-    var sOp = swagger.paths[path][method.toLowerCase()] = {parameters: []};
+    var sOp = swagger.paths[path][method.toLowerCase()] = {parameters: [], responses: {}};
     var parameters = op.find(config.parameters.selector).find(config.parameter.selector);
     parameters = $(parameters);
-    if (!parameters) return;
-    parameters.each(function() {
+    if (parameters) parameters.each(function() {
       var param = $(this);
       var name = extractText(param, config.parameterName);
       if (!name) return;
@@ -66,6 +65,14 @@ function addPageToSwagger($) {
       var origParam = sOp.parameters.filter(function(p) {return p.name === paramName})[0];
       if (origParam) origParam.in = 'path';
       else sOp.parameters.push({in: 'path', name: paramName, type: 'string'})
+    }
+    var responses = config.responses ? op.find(config.responses.selector) : op;
+    var response = config.response ? responses.find(config.response.selector) : responses;
+    var responseStatus = extractText(response, config.responseStatus);
+    var responseDescription = extractText(response, config.responseDescription);
+    if (responseStatus) {
+      responseStatus = parseInt(responseStatus);
+      sOp.responses[responseStatus] = {description: responseDescription || ''};
     }
   })
 }

@@ -15,4 +15,6 @@ var config = module.exports = {
   parameter: {selector: 'tr'},
   parameterName: {selector: 'td:first-of-type', regex: /(\w+)( required)?/},
   parameterDescription: {selector: 'td:nth-of-type(2)'},
+  responseStatus: {selector: 'h3:nth-of-type(2) + h4 + pre', regex: /(\d+) .*/},
+  responseDescription: {selector: 'h3:nth-of-type(2) + h4 + pre', regex: /\d+ (.*)/},
 }
