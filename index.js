@@ -101,7 +101,7 @@ function extractJSON(el, extractor) {
     json = undefined;
   }
   if (!json) return;
-  //if (extractor.isExample) json = generateSchema(json);
+  if (extractor.isExample) json = generateSchema(json);
   return json;
 }
 
