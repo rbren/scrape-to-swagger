@@ -1,3 +1,5 @@
+var METHODS = ['get', 'post', 'patch', 'put', 'delete', 'head', 'options'];
+
 var urlParser = require('url');
 var fs = require('fs');
 var async = require('async');
@@ -54,14 +56,17 @@ function scrapePage(url, depth, callback) {
 
 function addPageToSwagger($) {
   var operations = config.operations ? $(config.operations.selector) : $('body');
+  operations = config.operation ? operations.find(config.operation.selector) : operations;
   operations.each(function() {
     var op = $(this);
     var method = extractText(op, config.method);
     var path = extractText(op, config.path);
     if (!method || !path) return;
+    method = method.toLowerCase();
+    if (METHODS.indexOf(method) === -1) return;
     path = urlParser.parse(path).pathname;
     if (config.extractPathParameters) path = config.extractPathParameters(path);
-    method = method.toLowerCase();
+    log('operation', method, path);
     var sPath = swagger.paths[path] = swagger.paths[path] || {};
     var sOp = sPath[method] = sPath[method] || {parameters: [], responses: {}};
     var parameters = op.find(config.parameters.selector).find(config.parameter.selector);
@@ -99,7 +104,7 @@ function addPageToSwagger($) {
 function extractText(el, extractor) {
   if (!extractor) return '';
   if (typeof extractor === 'string') return extractor;
-  var text = el.find(extractor.selector).text();
+  var text = extractor.sibling ? el.nextAll(extractor.selector).text() : el.find(extractor.selector).text();
   if (extractor.regex) {
     var matches = text.match(extractor.regex);
     if (!matches) return;
@@ -148,7 +153,7 @@ function fixErrors() {
 
 scrapeInfo(config.url, function(err) {
   if (err) throw err;
-  scrapePage(config.url, config.depth || 1, function(err) {
+  scrapePage(config.url, config.depth === 0 ? 0 : (config.depth || 1), function(err) {
     if (err) throw err;
     fixErrors();
     fs.writeFileSync(argv.output || 'swagger.json', JSON.stringify(swagger, null, 2));
