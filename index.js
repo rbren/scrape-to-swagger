@@ -131,8 +131,15 @@ function fixErrors() {
     for (var method in swagger.paths[path]) {
       var op = swagger.paths[path][method];
       op.parameters = op.parameters.filter(function(p) {
-        var firstParamWithName = op.parameters.filter(function(p2) {return p2.name === p.name})[0];
-        return p === firstParamWithName;
+        var bestParamWithName = op.parameters.filter(function(p2) {
+          return p2.name === p.name
+        }).sort(function(p1, p2) {
+          if (p1.schema && !p2.schema) return -1;
+          if (p2.schema && !p1.schema) return 1;
+          if (p1.type && !p2.type) return -1;
+          if (p2.type && !p1.type) return 1;
+        })[0];
+        return p === bestParamWithName;
       })
       var processedPath = path;
       while (match = /{([^}]*?)}/.exec(processedPath)) {
