@@ -68,11 +68,11 @@ function addPageToSwagger($) {
     var method = extractText(op, config.method);
     var path = extractText(op, config.path);
     if (!method || !path) return;
+    console.log(method, path);
     method = method.toLowerCase();
     if (METHODS.indexOf(method) === -1) return;
     path = urlParser.parse(path).pathname;
     if (config.extractPathParameters) path = config.extractPathParameters(path);
-    log('operation', method, path);
     var sPath = swagger.paths[path] = swagger.paths[path] || {};
     var sOp = sPath[method] = sPath[method] || {parameters: [], responses: {}};
 
@@ -82,6 +82,7 @@ function addPageToSwagger($) {
       var param = $(this);
       var name = extractText(param, config.parameterName);
       if (!name) return;
+      log('    param', name);
       var sParameter = {name: name};
       sOp.parameters.push(sParameter);
       var description = extractText(param, config.parameterDescription);
@@ -91,15 +92,17 @@ function addPageToSwagger($) {
     });
     var body = extractJSON(op, config.requestBody);
     if (body) {
+      log('    param', 'body');
       sOp.parameters.unshift({name: 'body', in: 'body', schema: body});
     }
 
-    var responses = resolveSelector(op, config.responses);
+    var responses = resolveSelector(op, config.responses).first();
     responses = resolveSelector(responses, config.response);
     responses.each(function() {
       var response = $(this); 
       var responseStatus = extractText(response, config.responseStatus);
       if (responseStatus) {
+        log('    resp', responseStatus);
         var responseDescription = extractText(response, config.responseDescription);
         var responseSchema = extractJSON(response, config.responseSchema);
         responseStatus = parseInt(responseStatus);
@@ -120,7 +123,7 @@ function resolveSelector(el, extractor) {
 function extractText(el, extractor) {
   if (!extractor) return '';
   if (typeof extractor === 'string') return extractor;
-  var text = resolveSelector(el, extractor).text();
+  var text = resolveSelector(el, extractor).first().text();
   if (extractor.regex) {
     var matches = text.match(extractor.regex);
     if (!matches) return;
@@ -135,6 +138,7 @@ function extractJSON(el, extractor) {
   try {
     json = JSON.parse(json);
   } catch (e) {
+    console.log('failed to parse', json);
     json = undefined;
   }
   if (!json) return;
