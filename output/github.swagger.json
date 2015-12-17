@@ -15,7 +15,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/admin/ldap/teams/{team_id}/sync": {
@@ -27,7 +31,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/admin/ldap/users/{username}/sync": {
@@ -39,7 +47,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/admin/users/{username}": {
@@ -51,7 +63,62 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "schema": {
+              "type": "array",
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "key",
+                  "url",
+                  "title",
+                  "verified",
+                  "created_at",
+                  "read_only",
+                  "user_id"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "key": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "title": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "verified": {
+                    "type": "boolean"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "read_only": {
+                    "type": "boolean"
+                  },
+                  "user_id": {
+                    "type": "number"
+                  },
+                  "repository_id": {}
+                }
+              }
+            }
+          }
+        }
       },
       "patch": {
         "parameters": [
@@ -79,7 +146,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/admin/users/{username}/authorizations": {
@@ -97,7 +168,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       },
       "post": {
         "parameters": [
@@ -119,7 +194,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        }
       }
     },
     "/applications/{client_id}/tokens": {
@@ -131,7 +210,190 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "url": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "scopes": {
+                  "type": "array",
+                  "items": {
+                    "required": [],
+                    "properties": {}
+                  }
+                },
+                "token": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "token_last_eight": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "hashed_token": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "app": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "client_id": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "url",
+                    "name",
+                    "client_id"
+                  ]
+                },
+                "note": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "note_url": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "updated_at": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "created_at": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "fingerprint": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "login": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "id": {
+                      "type": "number"
+                    },
+                    "avatar_url": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "gravatar_id": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "html_url": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "followers_url": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "following_url": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "gists_url": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "starred_url": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "subscriptions_url": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "organizations_url": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "repos_url": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "events_url": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "received_events_url": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "type": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "site_admin": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "login",
+                    "id",
+                    "avatar_url",
+                    "gravatar_id",
+                    "url",
+                    "html_url",
+                    "followers_url",
+                    "following_url",
+                    "gists_url",
+                    "starred_url",
+                    "subscriptions_url",
+                    "organizations_url",
+                    "repos_url",
+                    "events_url",
+                    "received_events_url",
+                    "type",
+                    "site_admin"
+                  ]
+                }
+              },
+              "required": [
+                "id",
+                "url",
+                "scopes",
+                "token",
+                "token_last_eight",
+                "hashed_token",
+                "app",
+                "note",
+                "note_url",
+                "updated_at",
+                "created_at",
+                "fingerprint",
+                "user"
+              ]
+            }
+          }
+        }
       }
     },
     "/applications/{client_id}/tokens/{access_token}": {
@@ -148,7 +410,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -163,7 +429,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       },
       "post": {
         "parameters": [
@@ -178,7 +448,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/authorizations": {
@@ -233,7 +507,11 @@
             "type": "array"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/authorizations/clients/{client_id}": {
@@ -288,7 +566,11 @@
             "type": "array"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/authorizations/clients/{client_id}/{fingerprint}": {
@@ -342,7 +624,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/authorizations/{id}": {
@@ -390,7 +676,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -448,7 +738,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "patch": {
         "parameters": [
@@ -500,7 +794,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/gists": {
@@ -543,7 +841,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "post": {
         "parameters": [
@@ -578,7 +880,11 @@
             "type": "boolean"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/gists/public": {
@@ -621,7 +927,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/gists/starred": {
@@ -664,7 +974,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/gists/{gist_id}/comments": {
@@ -682,7 +996,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/gists/{gist_id}/comments/{id}": {
@@ -705,7 +1023,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -726,7 +1048,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "patch": {
         "parameters": [
@@ -747,7 +1073,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/gists/{id}": {
@@ -759,7 +1089,135 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "object",
+                "required": [
+                  "user",
+                  "url",
+                  "id",
+                  "created_at",
+                  "updated_at"
+                ],
+                "properties": {
+                  "user": {
+                    "type": "object",
+                    "properties": {
+                      "login": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "id": {
+                        "type": "number"
+                      },
+                      "avatar_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "gravatar_id": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "html_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "followers_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "following_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "gists_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "starred_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "subscriptions_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "organizations_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "repos_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "events_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "received_events_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "type": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "site_admin": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "login",
+                      "id",
+                      "avatar_url",
+                      "gravatar_id",
+                      "url",
+                      "html_url",
+                      "followers_url",
+                      "following_url",
+                      "gists_url",
+                      "starred_url",
+                      "subscriptions_url",
+                      "organizations_url",
+                      "repos_url",
+                      "events_url",
+                      "received_events_url",
+                      "type",
+                      "site_admin"
+                    ]
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -805,7 +1263,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "patch": {
         "parameters": [
@@ -845,7 +1307,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/gists/{id}/commits": {
@@ -881,7 +1347,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/gists/{id}/forks": {
@@ -893,7 +1363,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       },
       "post": {
         "parameters": [
@@ -903,7 +1377,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       }
     },
     "/gists/{id}/star": {
@@ -915,7 +1393,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -925,7 +1407,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       },
       "put": {
         "parameters": [
@@ -935,7 +1421,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/gists/{id}/{sha}": {
@@ -982,13 +1472,21 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/gitignore/templates/C": {
       "get": {
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/legacy/repos/search/{keyword}": {
@@ -1037,7 +1535,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/legacy/user/email/{email}": {
@@ -1074,7 +1576,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/legacy/user/search/{keyword}": {
@@ -1117,19 +1623,31 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/licenses/mit": {
       "get": {
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/markdown/raw": {
       "post": {
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/networks/{owner}/{repo}/events": {
@@ -1195,7 +1713,11 @@
             "type": "boolean"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/notifications/threads/{id}": {
@@ -1225,7 +1747,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "205": {
+            "description": "Reset Content"
+          }
+        }
       },
       "patch": {
         "parameters": [
@@ -1247,7 +1773,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/notifications/threads/{id}/subscription": {
@@ -1271,7 +1801,44 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "subscribed": {
+                  "type": "boolean"
+                },
+                "ignored": {
+                  "type": "boolean"
+                },
+                "reason": {},
+                "created_at": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "url": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "thread_url": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "subscribed",
+                "ignored",
+                "created_at",
+                "url",
+                "thread_url"
+              ]
+            }
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -1293,7 +1860,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "205": {
+            "description": "Reset Content"
+          }
+        }
       },
       "put": {
         "parameters": [
@@ -1315,7 +1886,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/organizations": {
@@ -1364,7 +1939,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/orgs/octokit/repos": {
@@ -1514,7 +2093,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "patch": {
         "parameters": [
@@ -1560,7 +2143,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/orgs/{org}/events": {
@@ -1647,7 +2234,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/orgs/{org}/hooks/{id}": {
@@ -1679,7 +2270,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -1757,7 +2352,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "patch": {
         "parameters": [
@@ -1835,7 +2434,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/orgs/{org}/hooks/{id}/pings": {
@@ -1909,7 +2512,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/orgs/{org}/issues": {
@@ -1993,7 +2600,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/orgs/{org}/members/{username}": {
@@ -2022,7 +2633,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -2055,7 +2670,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/orgs/{org}/memberships/{username}": {
@@ -2084,7 +2703,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -2111,7 +2734,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       },
       "put": {
         "parameters": [
@@ -2138,7 +2765,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/orgs/{org}/migrations": {
@@ -2168,7 +2799,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/orgs/{org}/migrations/{id}": {
@@ -2185,7 +2820,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/orgs/{org}/migrations/{id}/archive": {
@@ -2202,7 +2841,14 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "302": {
+            "description": "Found"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -2217,7 +2863,476 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "guid": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "state": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "lock_repositories": {
+                  "type": "boolean"
+                },
+                "exclude_attachments": {
+                  "type": "boolean"
+                },
+                "url": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "created_at": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "updated_at": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "repositories": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "minItems": 1,
+                  "items": {
+                    "required": [
+                      "id",
+                      "name",
+                      "full_name",
+                      "description",
+                      "private",
+                      "fork",
+                      "url",
+                      "html_url",
+                      "archive_url",
+                      "assignees_url",
+                      "blobs_url",
+                      "branches_url",
+                      "clone_url",
+                      "collaborators_url",
+                      "comments_url",
+                      "commits_url",
+                      "compare_url",
+                      "contents_url",
+                      "contributors_url",
+                      "downloads_url",
+                      "events_url",
+                      "forks_url",
+                      "git_commits_url",
+                      "git_refs_url",
+                      "git_tags_url",
+                      "git_url",
+                      "hooks_url",
+                      "issue_comment_url",
+                      "issue_events_url",
+                      "issues_url",
+                      "keys_url",
+                      "labels_url",
+                      "languages_url",
+                      "merges_url",
+                      "milestones_url",
+                      "mirror_url",
+                      "notifications_url",
+                      "pulls_url",
+                      "releases_url",
+                      "ssh_url",
+                      "stargazers_url",
+                      "statuses_url",
+                      "subscribers_url",
+                      "subscription_url",
+                      "svn_url",
+                      "tags_url",
+                      "teams_url",
+                      "trees_url",
+                      "homepage",
+                      "forks_count",
+                      "stargazers_count",
+                      "watchers_count",
+                      "size",
+                      "default_branch",
+                      "open_issues_count",
+                      "has_issues",
+                      "has_wiki",
+                      "has_pages",
+                      "has_downloads",
+                      "pushed_at",
+                      "created_at",
+                      "updated_at"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "owner": {
+                        "type": "object",
+                        "properties": {
+                          "login": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "id": {
+                            "type": "number"
+                          },
+                          "avatar_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "gravatar_id": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "html_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "followers_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "following_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "gists_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "starred_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "subscriptions_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "organizations_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "repos_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "events_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "received_events_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "type": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "site_admin": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "login",
+                          "id",
+                          "avatar_url",
+                          "gravatar_id",
+                          "url",
+                          "html_url",
+                          "followers_url",
+                          "following_url",
+                          "gists_url",
+                          "starred_url",
+                          "subscriptions_url",
+                          "organizations_url",
+                          "repos_url",
+                          "events_url",
+                          "received_events_url",
+                          "type",
+                          "site_admin"
+                        ]
+                      },
+                      "name": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "full_name": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "description": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "private": {
+                        "type": "boolean"
+                      },
+                      "fork": {
+                        "type": "boolean"
+                      },
+                      "url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "html_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "archive_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "assignees_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "blobs_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "branches_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "clone_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "collaborators_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "comments_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "commits_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "compare_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "contents_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "contributors_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "downloads_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "events_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "forks_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "git_commits_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "git_refs_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "git_tags_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "git_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "hooks_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "issue_comment_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "issue_events_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "issues_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "keys_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "labels_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "languages_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "merges_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "milestones_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "mirror_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "notifications_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "pulls_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "releases_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "ssh_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "stargazers_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "statuses_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "subscribers_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "subscription_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "svn_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "tags_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "teams_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "trees_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "homepage": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "language": {},
+                      "forks_count": {
+                        "type": "number"
+                      },
+                      "stargazers_count": {
+                        "type": "number"
+                      },
+                      "watchers_count": {
+                        "type": "number"
+                      },
+                      "size": {
+                        "type": "number"
+                      },
+                      "default_branch": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "open_issues_count": {
+                        "type": "number"
+                      },
+                      "has_issues": {
+                        "type": "boolean"
+                      },
+                      "has_wiki": {
+                        "type": "boolean"
+                      },
+                      "has_pages": {
+                        "type": "boolean"
+                      },
+                      "has_downloads": {
+                        "type": "boolean"
+                      },
+                      "pushed_at": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "updated_at": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "permissions": {
+                        "type": "object",
+                        "properties": {
+                          "admin": {
+                            "type": "boolean"
+                          },
+                          "push": {
+                            "type": "boolean"
+                          },
+                          "pull": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "admin",
+                          "push",
+                          "pull"
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "guid",
+                "state",
+                "lock_repositories",
+                "exclude_attachments",
+                "url",
+                "created_at",
+                "updated_at",
+                "repositories"
+              ]
+            }
+          }
+        }
       }
     },
     "/orgs/{org}/migrations/{id}/repos/{repo_name}/lock": {
@@ -2239,7 +3354,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       }
     },
     "/orgs/{org}/public_members": {
@@ -2263,7 +3382,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       }
     },
     "/orgs/{org}/public_members/{username}": {
@@ -2292,7 +3415,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -2319,7 +3446,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "put": {
         "parameters": [
@@ -2346,7 +3477,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       }
     },
     "/orgs/{org}/repos": {
@@ -2505,7 +3640,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "post": {
         "parameters": [
@@ -2638,7 +3777,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/orgs/{org}/teams": {
@@ -2686,19 +3829,31 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/octocat/Hello-World/git/refs/heads/feature-a": {
       "delete": {
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       }
     },
     "/repos/octocat/Hello-World/git/refs/tags/v1.0": {
       "delete": {
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       }
     },
     "/repos/octokit/octokit.rb": {
@@ -2856,7 +4011,53 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "protection": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "required_status_checks": {
+                      "type": "object",
+                      "properties": {
+                        "enforcement_level": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "contexts": {
+                          "type": "array",
+                          "items": {
+                            "required": [],
+                            "properties": {}
+                          }
+                        }
+                      },
+                      "required": [
+                        "enforcement_level",
+                        "contexts"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "enabled",
+                    "required_status_checks"
+                  ]
+                }
+              },
+              "required": [
+                "protection"
+              ]
+            }
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -2994,7 +4195,14 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          }
+        }
       },
       "patch": {
         "parameters": [
@@ -3108,7 +4316,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/assignees/{assignee}": {
@@ -3130,7 +4342,107 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "object",
+                "required": [
+                  "login",
+                  "id",
+                  "avatar_url",
+                  "gravatar_id",
+                  "url",
+                  "html_url",
+                  "followers_url",
+                  "following_url",
+                  "gists_url",
+                  "starred_url",
+                  "subscriptions_url",
+                  "organizations_url",
+                  "repos_url",
+                  "events_url",
+                  "received_events_url",
+                  "type",
+                  "site_admin"
+                ],
+                "properties": {
+                  "login": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "id": {
+                    "type": "number"
+                  },
+                  "avatar_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "gravatar_id": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "html_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "followers_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "following_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "gists_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "starred_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "subscriptions_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "organizations_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "repos_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "events_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "received_events_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "type": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "site_admin": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/branches": {
@@ -3192,7 +4504,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/branches/{branch}": {
@@ -3259,7 +4575,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "patch": {
         "parameters": [
@@ -3318,7 +4638,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/collaborators/{username}": {
@@ -3346,7 +4670,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -3372,7 +4700,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "put": {
         "parameters": [
@@ -3398,7 +4730,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/comments/{id}": {
@@ -3426,7 +4762,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -3470,7 +4810,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       },
       "patch": {
         "parameters": [
@@ -3496,7 +4840,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/commits/{ref}/comments": {
@@ -3542,7 +4890,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/commits/{ref}/status": {
@@ -3565,7 +4917,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/commits/{ref}/statuses": {
@@ -3612,7 +4968,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/commits/{sha}": {
@@ -3659,7 +5019,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/commits/{sha}/comments": {
@@ -3705,7 +5069,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/compare/hubot:branchname...octocat:branchname": {
@@ -3744,7 +5112,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/contents/{path}": {
@@ -3815,7 +5187,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -3884,7 +5260,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "put": {
         "parameters": [
@@ -3953,7 +5333,14 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/contributors": {
@@ -4069,7 +5456,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/deployments": {
@@ -4152,7 +5543,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/deployments/{id}/statuses": {
@@ -4229,7 +5624,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       },
       "post": {
         "parameters": [
@@ -4268,7 +5667,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/downloads/{id}": {
@@ -4290,7 +5693,57 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "html_url": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "id": {
+                  "type": "number"
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "size": {
+                  "type": "number"
+                },
+                "download_count": {
+                  "type": "number"
+                },
+                "content_type": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "url",
+                "html_url",
+                "id",
+                "name",
+                "description",
+                "size",
+                "download_count",
+                "content_type"
+              ]
+            }
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -4310,7 +5763,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/events": {
@@ -4356,7 +5813,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/git/blobs": {
@@ -4385,7 +5846,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/git/commits": {
@@ -4438,7 +5903,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/git/refs": {
@@ -4473,7 +5942,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "post": {
         "parameters": [
@@ -4506,7 +5979,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/git/refs/heads/skunkworkz/featureA": {
@@ -4541,7 +6018,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/git/refs/tags": {
@@ -4576,7 +6057,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/git/refs/{ref}": {
@@ -4610,7 +6095,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "patch": {
         "parameters": [
@@ -4643,7 +6132,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/git/tags": {
@@ -4708,7 +6201,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/git/trees": {
@@ -4767,7 +6264,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/git/trees/{sha}": {
@@ -4826,7 +6327,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/hooks": {
@@ -4918,7 +6423,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/hooks/{id}": {
@@ -4979,7 +6488,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -5074,7 +6587,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "patch": {
         "parameters": [
@@ -5169,7 +6686,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/hooks/{id}/pings": {
@@ -5230,7 +6751,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/hooks/{id}/tests": {
@@ -5321,7 +6846,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/issues": {
@@ -5410,7 +6939,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "post": {
         "parameters": [
@@ -5461,7 +6994,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/issues/comments": {
@@ -5502,7 +7039,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/issues/comments/{id}": {
@@ -5530,7 +7071,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -5574,7 +7119,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "patch": {
         "parameters": [
@@ -5600,7 +7149,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/issues/events": {
@@ -5617,7 +7170,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/issues/events/{id}": {
@@ -5639,7 +7196,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/issues/{number}": {
@@ -5727,7 +7288,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "patch": {
         "parameters": [
@@ -5783,7 +7348,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/issues/{number}/comments": {
@@ -5811,7 +7380,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/issues/{number}/labels": {
@@ -5833,7 +7406,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -5853,7 +7430,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       },
       "post": {
         "parameters": [
@@ -5873,7 +7454,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "put": {
         "parameters": [
@@ -5893,7 +7478,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/issues/{number}/labels/{name}": {
@@ -5920,7 +7509,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/keys": {
@@ -5955,7 +7548,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/keys/{id}": {
@@ -5995,7 +7592,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -6033,7 +7634,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/labels": {
@@ -6062,7 +7667,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/labels/{name}": {
@@ -6091,7 +7700,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -6118,7 +7731,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "patch": {
         "parameters": [
@@ -6145,7 +7762,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/languages": {
@@ -6213,7 +7834,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/license": {
@@ -6230,7 +7855,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/milestones": {
@@ -6271,7 +7900,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/milestones/{number}": {
@@ -6317,7 +7950,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -6373,7 +8010,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "patch": {
         "parameters": [
@@ -6417,7 +8058,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/milestones/{number}/labels": {
@@ -6439,7 +8084,40 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "schema": {
+              "type": "array",
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "object",
+                "required": [
+                  "url",
+                  "name",
+                  "color"
+                ],
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "color": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/notifications": {
@@ -6498,7 +8176,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "put": {
         "parameters": [
@@ -6531,7 +8213,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "205": {
+            "description": "Reset Content"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/pages/builds": {
@@ -6548,7 +8234,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/pages/builds/latest": {
@@ -6565,7 +8255,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/pulls": {
@@ -6630,7 +8324,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/pulls/comments": {
@@ -6695,7 +8393,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/pulls/comments/{id}": {
@@ -6723,7 +8425,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -6791,7 +8497,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "patch": {
         "parameters": [
@@ -6841,7 +8551,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/pulls/{number}": {
@@ -6923,7 +8637,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "patch": {
         "parameters": [
@@ -6991,7 +8709,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/pulls/{number}/comments": {
@@ -7043,7 +8765,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/pulls/{number}/commits": {
@@ -7095,7 +8821,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/pulls/{number}/files": {
@@ -7129,7 +8859,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/pulls/{number}/merge": {
@@ -7163,7 +8897,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "put": {
         "parameters": [
@@ -7195,7 +8933,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/releases": {
@@ -7260,7 +9002,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/releases/assets/{id}": {
@@ -7294,7 +9040,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -7332,7 +9082,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       },
       "patch": {
         "parameters": [
@@ -7364,7 +9118,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "post": {
         "parameters": [
@@ -7402,7 +9160,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/releases/latest": {
@@ -7467,7 +9229,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/releases/tags/{tag}": {
@@ -7537,7 +9303,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/releases/{id}": {
@@ -7607,7 +9377,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -7675,7 +9449,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "patch": {
         "parameters": [
@@ -7743,7 +9521,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/releases/{id}/assets": {
@@ -7783,7 +9565,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/stats/code_frequency": {
@@ -7800,7 +9586,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/stats/commit_activity": {
@@ -7817,7 +9607,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/stats/participation": {
@@ -7834,7 +9628,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/stats/punch_card": {
@@ -7851,7 +9649,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/subscription": {
@@ -7880,7 +9682,44 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "subscribed": {
+                  "type": "boolean"
+                },
+                "ignored": {
+                  "type": "boolean"
+                },
+                "reason": {},
+                "created_at": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "url": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "repository_url": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "subscribed",
+                "ignored",
+                "created_at",
+                "url",
+                "repository_url"
+              ]
+            }
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -7907,7 +9746,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "put": {
         "parameters": [
@@ -7934,7 +9777,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/tags": {
@@ -7996,7 +9843,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/teams": {
@@ -8058,7 +9909,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repos/{owner}/{repo}/{archive_format}/{ref}": {
@@ -8123,7 +9978,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/repositories": {
@@ -8265,7 +10124,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/search/code": {
@@ -8315,7 +10178,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/search/issues": {
@@ -8365,7 +10232,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/search/users": {
@@ -8415,7 +10286,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/setup/api/configcheck": {
@@ -8460,7 +10335,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/setup/api/configure": {
@@ -8485,7 +10364,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/setup/api/maintenance": {
@@ -8504,7 +10387,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "post": {
         "parameters": [
@@ -8521,7 +10408,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/setup/api/settings": {
@@ -8546,7 +10437,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "put": {
         "parameters": [
@@ -8569,7 +10464,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/setup/api/settings/authorized-keys": {
@@ -8582,7 +10481,35 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "object",
+                "required": [
+                  "key",
+                  "pretty-print"
+                ],
+                "properties": {
+                  "key": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "pretty-print": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -8593,7 +10520,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "post": {
         "parameters": [
@@ -8604,7 +10535,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/setup/api/start": {
@@ -8661,7 +10596,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/setup/api/upgrade": {
@@ -8712,7 +10651,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/teams/{id}": {
@@ -8754,7 +10697,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -8800,7 +10747,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "patch": {
         "parameters": [
@@ -8846,7 +10797,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       }
     },
     "/teams/{id}/members": {
@@ -8870,7 +10825,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       }
     },
     "/teams/{id}/members/{username}": {
@@ -8899,7 +10858,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -8926,7 +10889,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "put": {
         "parameters": [
@@ -8953,7 +10920,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       }
     },
     "/teams/{id}/memberships/{username}": {
@@ -8982,7 +10953,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -9009,7 +10984,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       },
       "put": {
         "parameters": [
@@ -9036,7 +11015,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/teams/{id}/repos": {
@@ -9054,7 +11037,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       }
     },
     "/teams/{id}/repos/{org}/{repo}": {
@@ -9082,7 +11069,14 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          }
+        }
       }
     },
     "/teams/{id}/repos/{owner}/{repo}": {
@@ -9110,7 +11104,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -9136,7 +11134,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/user": {
@@ -9191,7 +11193,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "patch": {
         "parameters": [
@@ -9244,29 +11250,145 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/user/emails": {
       "delete": {
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       },
       "post": {
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/user/followers": {
       "get": {
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/user/following": {
       "get": {
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "object",
+                "required": [
+                  "login",
+                  "id",
+                  "avatar_url",
+                  "gravatar_id",
+                  "url",
+                  "html_url",
+                  "followers_url",
+                  "following_url",
+                  "gists_url",
+                  "starred_url",
+                  "subscriptions_url",
+                  "organizations_url",
+                  "repos_url",
+                  "events_url",
+                  "received_events_url",
+                  "type",
+                  "site_admin"
+                ],
+                "properties": {
+                  "login": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "id": {
+                    "type": "number"
+                  },
+                  "avatar_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "gravatar_id": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "html_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "followers_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "following_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "gists_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "starred_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "subscriptions_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "organizations_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "repos_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "events_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "received_events_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "type": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "site_admin": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/user/following/{username}": {
@@ -9278,7 +11400,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -9288,7 +11414,107 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "object",
+                "required": [
+                  "login",
+                  "id",
+                  "avatar_url",
+                  "gravatar_id",
+                  "url",
+                  "html_url",
+                  "followers_url",
+                  "following_url",
+                  "gists_url",
+                  "starred_url",
+                  "subscriptions_url",
+                  "organizations_url",
+                  "repos_url",
+                  "events_url",
+                  "received_events_url",
+                  "type",
+                  "site_admin"
+                ],
+                "properties": {
+                  "login": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "id": {
+                    "type": "number"
+                  },
+                  "avatar_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "gravatar_id": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "html_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "followers_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "following_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "gists_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "starred_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "subscriptions_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "organizations_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "repos_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "events_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "received_events_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "type": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "site_admin": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
       },
       "put": {
         "parameters": [
@@ -9298,7 +11524,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       }
     },
     "/user/issues": {
@@ -9377,17 +11607,29 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/user/keys": {
       "get": {
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "post": {
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/user/keys/{id}": {
@@ -9399,7 +11641,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -9409,7 +11655,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/user/memberships/orgs": {
@@ -9422,7 +11672,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       }
     },
     "/user/memberships/orgs/{org}": {
@@ -9440,7 +11694,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       },
       "patch": {
         "parameters": [
@@ -9456,7 +11714,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/user/repos": {
@@ -9592,7 +11854,11 @@
             "type": "integer"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/user/starred": {
@@ -9611,7 +11877,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/user/starred/{owner}/{repo}": {
@@ -9628,7 +11898,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -9655,7 +11929,447 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "object",
+                "required": [
+                  "starred_at",
+                  "repo"
+                ],
+                "properties": {
+                  "starred_at": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "repo": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "owner": {
+                        "type": "object",
+                        "properties": {
+                          "login": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "id": {
+                            "type": "number"
+                          },
+                          "avatar_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "gravatar_id": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "html_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "followers_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "following_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "gists_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "starred_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "subscriptions_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "organizations_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "repos_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "events_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "received_events_url": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "type": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "site_admin": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "login",
+                          "id",
+                          "avatar_url",
+                          "gravatar_id",
+                          "url",
+                          "html_url",
+                          "followers_url",
+                          "following_url",
+                          "gists_url",
+                          "starred_url",
+                          "subscriptions_url",
+                          "organizations_url",
+                          "repos_url",
+                          "events_url",
+                          "received_events_url",
+                          "type",
+                          "site_admin"
+                        ]
+                      },
+                      "name": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "full_name": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "description": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "private": {
+                        "type": "boolean"
+                      },
+                      "fork": {
+                        "type": "boolean"
+                      },
+                      "url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "html_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "archive_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "assignees_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "blobs_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "branches_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "clone_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "collaborators_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "comments_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "commits_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "compare_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "contents_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "contributors_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "downloads_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "events_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "forks_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "git_commits_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "git_refs_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "git_tags_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "git_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "hooks_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "issue_comment_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "issue_events_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "issues_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "keys_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "labels_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "languages_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "merges_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "milestones_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "mirror_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "notifications_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "pulls_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "releases_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "ssh_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "stargazers_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "statuses_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "subscribers_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "subscription_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "svn_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "tags_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "teams_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "trees_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "homepage": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "language": {},
+                      "forks_count": {
+                        "type": "number"
+                      },
+                      "stargazers_count": {
+                        "type": "number"
+                      },
+                      "watchers_count": {
+                        "type": "number"
+                      },
+                      "size": {
+                        "type": "number"
+                      },
+                      "default_branch": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "open_issues_count": {
+                        "type": "number"
+                      },
+                      "has_issues": {
+                        "type": "boolean"
+                      },
+                      "has_wiki": {
+                        "type": "boolean"
+                      },
+                      "has_pages": {
+                        "type": "boolean"
+                      },
+                      "has_downloads": {
+                        "type": "boolean"
+                      },
+                      "pushed_at": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "updated_at": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "permissions": {
+                        "type": "object",
+                        "properties": {
+                          "admin": {
+                            "type": "boolean"
+                          },
+                          "push": {
+                            "type": "boolean"
+                          },
+                          "pull": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "admin",
+                          "push",
+                          "pull"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "owner",
+                      "name",
+                      "full_name",
+                      "description",
+                      "private",
+                      "fork",
+                      "url",
+                      "html_url",
+                      "archive_url",
+                      "assignees_url",
+                      "blobs_url",
+                      "branches_url",
+                      "clone_url",
+                      "collaborators_url",
+                      "comments_url",
+                      "commits_url",
+                      "compare_url",
+                      "contents_url",
+                      "contributors_url",
+                      "downloads_url",
+                      "events_url",
+                      "forks_url",
+                      "git_commits_url",
+                      "git_refs_url",
+                      "git_tags_url",
+                      "git_url",
+                      "hooks_url",
+                      "issue_comment_url",
+                      "issue_events_url",
+                      "issues_url",
+                      "keys_url",
+                      "labels_url",
+                      "languages_url",
+                      "merges_url",
+                      "milestones_url",
+                      "mirror_url",
+                      "notifications_url",
+                      "pulls_url",
+                      "releases_url",
+                      "ssh_url",
+                      "stargazers_url",
+                      "statuses_url",
+                      "subscribers_url",
+                      "subscription_url",
+                      "svn_url",
+                      "tags_url",
+                      "teams_url",
+                      "trees_url",
+                      "homepage",
+                      "forks_count",
+                      "stargazers_count",
+                      "watchers_count",
+                      "size",
+                      "default_branch",
+                      "open_issues_count",
+                      "has_issues",
+                      "has_wiki",
+                      "has_pages",
+                      "has_downloads",
+                      "pushed_at",
+                      "created_at",
+                      "updated_at",
+                      "permissions"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
       },
       "put": {
         "parameters": [
@@ -9670,7 +12384,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       }
     },
     "/user/subscriptions": {
@@ -9689,7 +12407,11 @@
             "type": "boolean"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/user/subscriptions/{owner}/{repo}": {
@@ -9706,7 +12428,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       },
       "get": {
         "parameters": [
@@ -9721,7 +12447,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       },
       "put": {
         "parameters": [
@@ -9736,13 +12466,119 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       }
     },
     "/user/teams": {
       "get": {
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "schema": {
+              "type": "array",
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "url",
+                  "name",
+                  "slug",
+                  "description",
+                  "privacy",
+                  "permission",
+                  "members_url",
+                  "repositories_url",
+                  "members_count",
+                  "repos_count",
+                  "organization"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "slug": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "privacy": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "permission": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "members_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "repositories_url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "members_count": {
+                    "type": "number"
+                  },
+                  "repos_count": {
+                    "type": "number"
+                  },
+                  "organization": {
+                    "type": "object",
+                    "properties": {
+                      "login": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "id": {
+                        "type": "number"
+                      },
+                      "url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "avatar_url": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "description": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "login",
+                      "id",
+                      "url",
+                      "avatar_url",
+                      "description"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/users": {
@@ -9797,7 +12633,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/users/{username}/events": {
@@ -9850,7 +12690,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/users/{username}/following/{target_user}": {
@@ -9867,7 +12711,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
       }
     },
     "/users/{username}/orgs": {
@@ -9921,7 +12769,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/users/{username}/received_events": {
@@ -10116,7 +12968,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/users/{username}/site_admin": {
@@ -10128,7 +12984,62 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "schema": {
+              "type": "array",
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "key",
+                  "url",
+                  "title",
+                  "verified",
+                  "created_at",
+                  "read_only",
+                  "user_id"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "key": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "title": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "verified": {
+                    "type": "boolean"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "read_only": {
+                    "type": "boolean"
+                  },
+                  "user_id": {
+                    "type": "number"
+                  },
+                  "repository_id": {}
+                }
+              }
+            }
+          }
+        }
       },
       "put": {
         "parameters": [
@@ -10138,7 +13049,62 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "schema": {
+              "type": "array",
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "key",
+                  "url",
+                  "title",
+                  "verified",
+                  "created_at",
+                  "read_only",
+                  "user_id"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "key": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "title": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "verified": {
+                    "type": "boolean"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "read_only": {
+                    "type": "boolean"
+                  },
+                  "user_id": {
+                    "type": "number"
+                  },
+                  "repository_id": {}
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/users/{username}/starred": {
@@ -10162,7 +13128,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/users/{username}/subscriptions": {
@@ -10186,7 +13156,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/users/{username}/suspended": {
@@ -10198,7 +13172,62 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "schema": {
+              "type": "array",
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "key",
+                  "url",
+                  "title",
+                  "verified",
+                  "created_at",
+                  "read_only",
+                  "user_id"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "key": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "title": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "verified": {
+                    "type": "boolean"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "read_only": {
+                    "type": "boolean"
+                  },
+                  "user_id": {
+                    "type": "number"
+                  },
+                  "repository_id": {}
+                }
+              }
+            }
+          }
+        }
       },
       "put": {
         "parameters": [
@@ -10208,7 +13237,62 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "schema": {
+              "type": "array",
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "key",
+                  "url",
+                  "title",
+                  "verified",
+                  "created_at",
+                  "read_only",
+                  "user_id"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "key": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "title": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "verified": {
+                    "type": "boolean"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "read_only": {
+                    "type": "boolean"
+                  },
+                  "user_id": {
+                    "type": "number"
+                  },
+                  "repository_id": {}
+                }
+              }
+            }
+          }
+        }
       }
     }
   },

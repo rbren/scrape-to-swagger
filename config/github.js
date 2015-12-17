@@ -16,9 +16,9 @@ var config = module.exports = {
   parameterType: {selector: 'td:nth-of-type(2)'},
   parameterDescription: {selector: 'td:nth-of-type(3)'},
   requestBody: {selector: 'h3:nth-of-type(1) + h4 + pre + h4 + pre + h4 + pre', isExample: true},
-  responseStatus: {selector: 'h3:nth-of-type(2) + h4 + pre', regex: /(\d+) .*/},
-  responseDescription: {selector: 'h3:nth-of-type(2) + h4 + pre', regex: /\d+ (.*)/},
-  responseSchema: {selector: 'h3:nth-of-type(2) + h4 + pre + h4 + pre + h4 + pre', isExample: true},
+  responseStatus: {selector: 'pre.highlight-headers', regex: /Status: (\d+) /, sibling: true},
+  responseDescription: {selector: 'pre.highlight-headers', regex: /Status: \d+ (.*)/, sibling: true},
+  responseSchema: {selector: 'pre.highlight-json', isExample: true, sibling: true},
 
   extractPathParameters: function(path) {
     pieces = path.split('/');
