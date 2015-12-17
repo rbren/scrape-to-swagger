@@ -64,12 +64,6 @@
             "type": "string"
           },
           {
-            "name": "search",
-            "description": "Only return collections from certain category. Default = unspecified (All categories)",
-            "in": "query",
-            "type": "string"
-          },
-          {
             "name": "sort_by",
             "description": "Filter parameter: valid values are created_at, updated_at or featured_at",
             "in": "query",
@@ -259,18 +253,6 @@
           {
             "name": "search",
             "description": "The id of a user you want to filter for. If you pass this id the user won't be nested.",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "search",
-            "description": "The id of a post you want to filter for. If you pass this id the post won't be nested.",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "search",
-            "description": "The id of a post you want to filter for. If you pass this id the ama_event won't be nested.",
             "in": "query",
             "type": "string"
           }
@@ -463,18 +445,6 @@
             "description": "Retrieve events for a specific category",
             "in": "query",
             "type": "string"
-          },
-          {
-            "name": "search",
-            "description": "Retrieve events for a specific month (format \"YYYY-MM\"), use \"false\" for events without a start_at date",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "search",
-            "description": "Retrieve LIVE on camera events. true or false. Default: false",
-            "in": "query",
-            "type": "string"
           }
         ],
         "responses": {
@@ -591,6 +561,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
@@ -694,14 +667,14 @@
             "type": "string"
           },
           {
-            "name": "redirect_uri",
-            "description": "Where shall we redirect the client afterwards to?",
+            "name": "grant_type",
+            "description": "use `client_credentials`",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "grant_type",
-            "description": "use `authorization_code`",
+            "name": "redirect_uri",
+            "description": "Where shall we redirect the client afterwards to?",
             "in": "query",
             "type": "string"
           },
@@ -721,18 +694,62 @@
     },
     "/v1/posts": {
       "get": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "days_ago",
+            "description": "Parameter for pagination",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "day",
+            "description": "Alternate parameter for requesting specific days (Format: day=YYYY-MM-DD)",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "304": {
+            "description": "Not Modified"
           }
         }
       },
       "post": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "url",
+            "description": "The url of the product",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "description": "The name of the product",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "tagline",
+            "description": "Your short description of the product",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {
+          "201": {
+            "description": "Created"
+          },
           "401": {
             "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
           }
         }
       }
@@ -743,12 +760,6 @@
           {
             "name": "search",
             "description": "Filter parameter: can filter posts by url",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "search",
-            "description": "Filter parameter: can filter posts by category. Default = unspecified (All categories)",
             "in": "query",
             "type": "string"
           },
@@ -1186,6 +1197,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK"
+          },
           "422": {
             "description": "Unprocessable Entity"
           }

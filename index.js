@@ -45,8 +45,9 @@ function addPageToSwagger($) {
       });
     })
     path = pathPieces.join('/');
-    swagger.paths[path] = swagger.paths[path] || {};
-    var sOp = swagger.paths[path][method.toLowerCase()] = {parameters: [], responses: {}};
+    method = method.toLowerCase();
+    var sPath = swagger.paths[path] = swagger.paths[path] || {};
+    var sOp = sPath[method] = sPath[method] || {parameters: [], responses: {}};
     var parameters = op.find(config.parameters.selector).find(config.parameter.selector);
     parameters = $(parameters);
     if (parameters) parameters.each(function() {
@@ -60,13 +61,6 @@ function addPageToSwagger($) {
       sParameter.in = extractText(param, config.parameterIn) || 'query';
       sParameter.type = extractText(param, config.parameterType) || 'string';
     });
-    while (match = /{([^}]*?)}/.exec(path)) {
-      var paramName = match[1];
-      path = path.replace(match[0], paramName);
-      var origParam = sOp.parameters.filter(function(p) {return p.name === paramName})[0];
-      if (origParam) origParam.in = 'path';
-      else sOp.parameters.push({in: 'path', name: paramName, type: 'string'})
-    }
     var responses = config.responses ? op.find(config.responses.selector) : op;
     var response = config.response ? responses.find(config.response.selector) : responses;
     var responseStatus = extractText(response, config.responseStatus);
@@ -89,12 +83,33 @@ function extractText(el, extractor) {
   return text;
 }
 
-scrapePage(config.url, config.depth || 1, function(err) {
-  if (err) throw err;
+function fixErrors() {
+  for (var path in swagger.paths) {
+    for (var method in swagger.paths[path]) {
+      var op = swagger.paths[path][method];
+      op.parameters = op.parameters.filter(function(p) {
+        var firstParamWithName = op.parameters.filter(function(p2) {return p2.name === p.name})[0];
+        return p === firstParamWithName;
+      })
+      var processedPath = path;
+      while (match = /{([^}]*?)}/.exec(processedPath)) {
+        var paramName = match[1];
+        processedPath = processedPath.replace(match[0], paramName);
+        var origParam = op.parameters.filter(function(p) {return p.name === paramName})[0];
+        if (origParam) origParam.in = 'path';
+        else op.parameters.push({in: 'path', name: paramName, type: 'string'})
+      }
+    }
+  }
   swagger = sortObj(swagger);
   swagger.paths = sortObj(swagger.paths);
   for (var path in swagger.paths) {
     swagger.paths[path] = sortObj(swagger.paths[path]);
   }
+}
+
+scrapePage(config.url, config.depth || 1, function(err) {
+  if (err) throw err;
+  fixErrors();
   fs.writeFileSync(argv.output || 'swagger.json', JSON.stringify(swagger, null, 2));
 });
