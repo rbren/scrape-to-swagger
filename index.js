@@ -13,6 +13,21 @@ var swagger = {swagger: '2.0', paths: {}, info: {}, host: config.host, basePath:
 var parsed = urlParser.parse(config.url);
 var host = parsed.protocol + '//' + parsed.host;
 
+function scrapeInfo(url, callback) {
+  request.get(url, function(err, resp, body) {
+    if (err) return callback(err);
+    var $ = cheerio.load(body);
+    var body = $('body');
+    
+    var base = ['basePath', 'host']
+    var info = ['title', 'description'];
+    base.forEach(function(i) {swagger[i] = extractText(body, config[i])})
+    info.forEach(function(i) {swagger.info[i] = extractText(body, config[i])})
+    swagger.schemes = config.schemes || ['https'];
+    callback();
+  })
+}
+
 function scrapePage(url, depth, callback) {
   url = urlParser.resolve(host, url);
   if (url.indexOf('mailto:') === 0) return callback();
@@ -83,6 +98,7 @@ function addPageToSwagger($) {
 
 function extractText(el, extractor) {
   if (!extractor) return '';
+  if (typeof extractor === 'string') return extractor;
   var text = el.find(extractor.selector).text();
   if (extractor.regex) {
     var matches = text.match(extractor.regex);
@@ -130,8 +146,11 @@ function fixErrors() {
   }
 }
 
-scrapePage(config.url, config.depth || 1, function(err) {
+scrapeInfo(config.url, function(err) {
   if (err) throw err;
-  fixErrors();
-  fs.writeFileSync(argv.output || 'swagger.json', JSON.stringify(swagger, null, 2));
+  scrapePage(config.url, config.depth || 1, function(err) {
+    if (err) throw err;
+    fixErrors();
+    fs.writeFileSync(argv.output || 'swagger.json', JSON.stringify(swagger, null, 2));
+  });
 });
