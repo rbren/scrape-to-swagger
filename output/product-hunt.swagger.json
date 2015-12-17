@@ -2,209 +2,2034 @@
   "swagger": "2.0",
   "paths": {
     "/v1/categories/games/posts?day=2015-12-03": {
-      "get": {}
-    },
-    "/v1/posts/1/related_links": {
-      "post": {}
-    },
-    "/v1/users/1/comments": {
-      "get": {}
-    },
-    "/v1/collections": {
-      "post": {},
-      "get": {}
-    },
-    "/v1/comments/1/votes?newer=3": {
-      "get": {}
-    },
-    "/v1/posts/all?search[url]=http%3A%2F%2Fwww.example.com": {
-      "get": {}
-    },
-    "/v1/collections/1": {
-      "delete": {},
-      "get": {},
-      "put": {}
-    },
-    "/v1/me": {
-      "get": {}
-    },
-    "/v1/posts/1/vote": {
-      "delete": {},
-      "post": {}
-    },
-    "/v1/live?older=2015-12-4": {
-      "get": {}
-    },
-    "/v1/users/6/products": {
-      "get": {}
-    },
-    "/v1/comments": {
-      "post": {},
-      "get": {}
-    },
-    "/v1/users": {
-      "get": {}
-    },
-    "/v1/posts/1/collect": {
-      "post": {},
-      "delete": {}
+      "get": {
+        "parameters": [
+          {
+            "name": "days_ago",
+            "description": "Parameter for pagination",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "day",
+            "description": "Alternate parameter for requesting specific days (Format: day=YYYY-MM-DD)",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
     "/v1/posts": {
-      "post": {},
-      "get": {}
+      "post": {
+        "parameters": [
+          {
+            "name": "url",
+            "description": "The url of the product",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "description": "The name of the product",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "tagline",
+            "description": "Your short description of the product",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      },
+      "get": {
+        "parameters": [
+          {
+            "name": "days_ago",
+            "description": "Parameter for pagination",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "day",
+            "description": "Alternate parameter for requesting specific days (Format: day=YYYY-MM-DD)",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/me/interactions?include=following_user_ids": {
-      "get": {}
+    "/v1/posts/all?search[url]=http%3A%2F%2Fwww.example.com": {
+      "get": {
+        "parameters": [
+          {
+            "name": "search",
+            "description": "Filter parameter: can filter posts by url",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Filter parameter: can filter posts by category. Default = unspecified (All categories)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/posts?day=2015-12-03": {
-      "get": {}
+    "/v1/comments": {
+      "post": {
+        "parameters": [
+          {
+            "name": "body",
+            "description": "The text of the comment you want to save. Allowed html tags are: `br strong b em i img a`",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "post_id",
+            "description": "The id the post the comment belongs to (passed via URL)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "live_event_id",
+            "description": "The id the LIVE event the comment belongs to (passed via URL)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "parent_comment_id",
+            "description": "The id of the parent comment if this is a nested reply",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      },
+      "get": {
+        "parameters": [
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "The id of a user you want to filter for. If you pass this id the user won't be nested.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "The id of a post you want to filter for. If you pass this id the post won't be nested.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "The id of a post you want to filter for. If you pass this id the ama_event won't be nested.",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/posts/1": {
-      "get": {}
+    "/v1/posts/{id}/collect": {
+      "post": {
+        "parameters": [
+          {
+            "name": "collection_id",
+            "description": "The numeric ID of the collection",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      },
+      "delete": {
+        "parameters": [
+          {
+            "name": "collection_id",
+            "description": "The numeric ID of the collection",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/collections?search[category]=category-1": {
-      "get": {}
-    },
-    "/v1/users/1/follow": {
-      "delete": {},
-      "post": {}
+    "/v1/collections/{id}/subscribe": {
+      "post": {
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The ID of the collection you want to subscribe",
+            "in": "path",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "description": "The email you want to subscribe to a collection (if not logged)",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      },
+      "delete": {
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The ID of the collection you want to unsubscribe",
+            "in": "path",
+            "type": "string"
+          }
+        ]
+      }
     },
     "/v1/settings": {
-      "put": {}
+      "put": {
+        "parameters": [
+          {
+            "name": "email",
+            "description": "Your user's email",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "description": "Let's make this one a riddle. What's Nane's bame?",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "headline",
+            "description": "A one line description of the user - eg CTO of Wayne Industries",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "send_mention_email",
+            "description": "Does the user want to receive emails when mentioned in comments? true or false",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "send_mention_push",
+            "description": "Does the user want to receive push notifications when mentioned in comments? true or false",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "send_friend_post_email",
+            "description": "Does the user want to receive emails when a friend posts a product? true or false",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "send_friend_post_push",
+            "description": "Does the user want to receive push notifications when a friend posts a product? true or false",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "send_new_follower_push",
+            "description": "Does the user want to receive push notifications when they get a new follower? true or false",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "send_new_follower_email",
+            "description": "Does the user want to receive emails when they get a new follower? true or false",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "send_announcement_push",
+            "description": "Does the user want to receive push notifications when there is a new Product Hunt announcement? true or false",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "send_announcement_email",
+            "description": "Does the user want to receive emails when there is a new Product Hunt announcement? true or false",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "send_product_recommendation_push",
+            "description": "Does the user want to recieve product recommendations via push (popular products, similar interests)? true or false",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "send_product_recommendation_email",
+            "description": "Does the user want to recieve product recommendations via email (popular products, similar interests)? true or false",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "subscribed_to_push",
+            "description": "Is the user subscribed to receiving push notifications? true or false",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/categories": {
-      "get": {}
+    "/v1/users/{id}/products": {
+      "get": {
+        "parameters": [
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/live/1/subscribe": {
-      "delete": {},
-      "post": {}
+    "/v1/me/interactions?include=following_user_ids": {
+      "get": {
+        "parameters": [
+          {
+            "name": "include",
+            "description": "Interactions to be included. Possible values: following_user_ids, voted_post_ids, voted_comment_ids, collected_post_ids, subscribed_collection_ids, subscribed_live_event_ids",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/oauth/token": {
-      "post": {}
+    "/v1/live?older=2015-12-4": {
+      "get": {
+        "parameters": [
+          {
+            "name": "offset",
+            "description": "Filter parameter: define the amount of records to be skipped",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (default 20, max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records with older \"start_at\" date than the provided date (format \"YYYY-MM-DD\")",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records with newer \"start_at\" date (includes events with unspeficifed date) than the provided date (format \"YYYY-MM-DD\")",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Retrieve events for a specific category",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Retrieve events for a specific month (format \"YYYY-MM\"), use \"false\" for events without a start_at date",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Retrieve LIVE on camera events. true or false. Default: false",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
     "/v1/notifications": {
-      "delete": {},
-      "get": {}
+      "delete": {
+        "parameters": []
+      },
+      "get": {
+        "parameters": [
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Type of reference object accepted, defaults to 'Post', use 'all' for every notification type",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/collections": {
+      "post": {
+        "parameters": [
+          {
+            "name": "name",
+            "description": "The name of the collection",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "title",
+            "description": "The title of the collection",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "color",
+            "description": "The color of the collection. Valid values are: brown,red,blue,light_green,green",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "background_image",
+            "description": "The background image of the collection. Recommended: width: 1250px, height: 250px.",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      },
+      "get": {
+        "parameters": [
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Only return collections that have been featured on Product Hunt. true or false. Default = false.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Only return collections from certain category. Default = unspecified (All categories)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "sort_by",
+            "description": "Filter parameter: valid values are created_at, updated_at or featured_at",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/collections/{id}": {
+      "delete": {
+        "parameters": []
+      },
+      "put": {
+        "parameters": [
+          {
+            "name": "name",
+            "description": "The name of the collection",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "title",
+            "description": "The title of the collection",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "color",
+            "description": "The color of the collection. Valid values are: brown,red,blue,light_green,green",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "background_image",
+            "description": "The background image of the collection. Recommended: width: 1250px, height: 250px.",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      },
+      "get": {
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The numeric ID of the Collection you want to fetch",
+            "in": "path",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/live/{id}/subscribe": {
+      "delete": {
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The ID of the LIVE event you want to unsubscribe",
+            "in": "path",
+            "type": "string"
+          }
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The ID of the LIVE event you want to subscribe",
+            "in": "path",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "description": "The email you want to subscribe to a LIVE event (if not logged)",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
     "/v1/live?search[live_video]=true": {
-      "get": {}
+      "get": {
+        "parameters": [
+          {
+            "name": "offset",
+            "description": "Filter parameter: define the amount of records to be skipped",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (default 20, max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records with older \"start_at\" date than the provided date (format \"YYYY-MM-DD\")",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records with newer \"start_at\" date (includes events with unspeficifed date) than the provided date (format \"YYYY-MM-DD\")",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Retrieve events for a specific category",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Retrieve events for a specific month (format \"YYYY-MM\"), use \"false\" for events without a start_at date",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Retrieve LIVE on camera events. true or false. Default: false",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/collections/1/subscribe": {
-      "post": {},
-      "delete": {}
+    "/v1/posts/{id}/vote": {
+      "delete": {
+        "parameters": [
+          {
+            "name": "post_id",
+            "description": "The ID of the post you want to un-vote",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "name": "post_id",
+            "description": "The ID of the post you want to vote for",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/users/8/votes": {
-      "get": {}
+    "/v1/me": {
+      "get": {
+        "parameters": []
+      }
     },
     "/v1/comments?per_page=5&newer=3": {
-      "get": {}
+      "get": {
+        "parameters": [
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "The id of a user you want to filter for. If you pass this id the user won't be nested.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "The id of a post you want to filter for. If you pass this id the post won't be nested.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "The id of a post you want to filter for. If you pass this id the ama_event won't be nested.",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/comments/1": {
-      "put": {}
+    "/v1/oauth/token": {
+      "post": {
+        "parameters": [
+          {
+            "name": "client_id",
+            "description": "The id of your application",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "client_secret",
+            "description": "The secret of your application",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "redirect_uri",
+            "description": "Where shall we redirect the client afterwards to?",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "grant_type",
+            "description": "use `authorization_code`",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "code",
+            "description": "The access grant code you received via the callback from the previous step",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/posts/1/votes": {
-      "get": {}
+    "/v1/posts/{id}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The numeric ID of the Post you want to fetch",
+            "in": "path",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/posts/1/related_links/1": {
-      "put": {},
-      "delete": {}
+    "/v1/comments/{id}/votes?newer=3": {
+      "get": {
+        "parameters": [
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "comment_id",
+            "description": "The ID of the comment you want to find votes for",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/users/1/followers": {
-      "get": {}
+    "/v1/collections?search[category]=category-1": {
+      "get": {
+        "parameters": [
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Only return collections that have been featured on Product Hunt. true or false. Default = false.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Only return collections from certain category. Default = unspecified (All categories)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "sort_by",
+            "description": "Filter parameter: valid values are created_at, updated_at or featured_at",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/posts/all?search[category]=games": {
-      "get": {}
+    "/v1/categories": {
+      "get": {
+        "parameters": []
+      }
     },
-    "/v1/posts/all": {
-      "get": {}
+    "/v1/posts?day=2015-12-03": {
+      "get": {
+        "parameters": [
+          {
+            "name": "days_ago",
+            "description": "Parameter for pagination",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "day",
+            "description": "Alternate parameter for requesting specific days (Format: day=YYYY-MM-DD)",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/live": {
-      "get": {}
+    "/v1/users/{id}/follow": {
+      "delete": {
+        "parameters": [
+          {
+            "name": "user_id",
+            "description": "The ID of the user you want to un-follow",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "name": "user_id",
+            "description": "The ID of the user you want to follow",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/posts/{id}/related_links": {
+      "post": {
+        "parameters": [
+          {
+            "name": "title",
+            "description": "A title - if left blank we will fetch it from the url you provide",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "url",
+            "description": "The url of the related link",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/users": {
+      "get": {
+        "parameters": [
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/users/{id}/comments": {
+      "get": {
+        "parameters": []
+      }
+    },
+    "/v1/users/{id}/votes": {
+      "get": {
+        "parameters": [
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "user_id",
+            "description": "The ID of the user you want to find votes for",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
     "/v1/categories/games/posts": {
-      "get": {}
-    },
-    "/v1/oauth/authorize?client_id=be8376b37e1bf14a378ec74afe90bc3bb5a7a00304f80259467684ff81ee8c90&redirect_uri=http%3A%2F%2Fexample.org%2F&response_type=code&scope=public+private": {
-      "get": {}
-    },
-    "/v1/me/interactions?include[]=collected_post_ids&include[]=voted_comment_ids&include[]=voted_post_ids": {
-      "get": {}
-    },
-    "/v1/users/1/following": {
-      "get": {}
-    },
-    "/v1/users?newer=2": {
-      "get": {}
+      "get": {
+        "parameters": [
+          {
+            "name": "days_ago",
+            "description": "Parameter for pagination",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "day",
+            "description": "Alternate parameter for requesting specific days (Format: day=YYYY-MM-DD)",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
     "/v1/live?search[date]=2015-12": {
-      "get": {}
+      "get": {
+        "parameters": [
+          {
+            "name": "offset",
+            "description": "Filter parameter: define the amount of records to be skipped",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (default 20, max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records with older \"start_at\" date than the provided date (format \"YYYY-MM-DD\")",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records with newer \"start_at\" date (includes events with unspeficifed date) than the provided date (format \"YYYY-MM-DD\")",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Retrieve events for a specific category",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Retrieve events for a specific month (format \"YYYY-MM\"), use \"false\" for events without a start_at date",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Retrieve LIVE on camera events. true or false. Default: false",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/users/1/collections": {
-      "get": {}
+    "/v1/posts/all": {
+      "get": {
+        "parameters": [
+          {
+            "name": "search",
+            "description": "Filter parameter: can filter posts by url",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Filter parameter: can filter posts by category. Default = unspecified (All categories)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/related_links": {
-      "get": {}
+    "/v1/oauth/authorize?client_id=be8376b37e1bf14a378ec74afe90bc3bb5a7a00304f80259467684ff81ee8c90&redirect_uri=http%3A%2F%2Fexample.org%2F&response_type=code&scope=public+private": {
+      "get": {
+        "parameters": [
+          {
+            "name": "client_id",
+            "description": "The id of your application",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "redirect_uri",
+            "description": "Where shall we redirect the client afterwards to?",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "response_type",
+            "description": "The parameter name of the request token that will be passed to your site, in case of doubt use `code`",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "scope",
+            "description": "If you only require public information you want to use `public`. If you need private information of the logged-in user go with `public private`. If you have write access and want to update user information you also need `public private`",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/posts/1/comments": {
-      "get": {}
+    "/v1/comments/{id}": {
+      "put": {
+        "parameters": [
+          {
+            "name": "body",
+            "description": "The new comment text you want to update with",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "parent_comment_id",
+            "description": "The id of the parent comment if this is a nested reply",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/posts/1/collections": {
-      "get": {}
+    "/v1/posts/{id}/related_links/{id}": {
+      "put": {
+        "parameters": [
+          {
+            "name": "title",
+            "description": "A title - if left blank we will fetch it from the url you provide",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "url",
+            "description": "The url of the related link",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      },
+      "delete": {
+        "parameters": []
+      }
     },
-    "/v1/live?search[category]=tech": {
-      "get": {}
+    "/v1/comments/{id}/vote": {
+      "delete": {
+        "parameters": [
+          {
+            "name": "comment_id",
+            "description": "The ID of the comment you want to un-vote",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "name": "comment_id",
+            "description": "The ID of the comment you want to vote for",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/comments/1/vote": {
-      "post": {},
-      "delete": {}
+    "/v1/users/{id}/collections": {
+      "get": {
+        "parameters": [
+          {
+            "name": "page",
+            "description": "Parameter for pagination",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Only return collections that have been featured on Product Hunt. true or false. Default = false.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "sort_by",
+            "description": "Filter parameter: valid values are created_at, updated_at or featured_at",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/comments?search[ama_event_id]=1": {
-      "get": {}
-    },
-    "/v1/categories/games/posts?days_ago=1": {
-      "get": {}
-    },
-    "/v1/users/4/posts": {
-      "get": {}
-    },
-    "/v1/live/1": {
-      "get": {}
-    },
-    "/v1/live?newer=2015-12-4": {
-      "get": {}
-    },
-    "/v1/posts/all?newer=1": {
-      "get": {}
-    },
-    "/v1/live?offset=2&limit=1": {
-      "get": {}
+    "/v1/users/{id}/following": {
+      "get": {
+        "parameters": [
+          {
+            "name": "user_id",
+            "description": "The ID of the user from whom you want to fetch all people who follows",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
     "/v1/collections?search[featured]=true": {
-      "get": {}
+      "get": {
+        "parameters": [
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Only return collections that have been featured on Product Hunt. true or false. Default = false.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Only return collections from certain category. Default = unspecified (All categories)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "sort_by",
+            "description": "Filter parameter: valid values are created_at, updated_at or featured_at",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/comments?search[post_id]=1&search[user_id]=3": {
-      "get": {}
+    "/v1/me/interactions?include[]=collected_post_ids&include[]=voted_comment_ids&include[]=voted_post_ids": {
+      "get": {
+        "parameters": [
+          {
+            "name": "include",
+            "description": "Interactions to be included. Possible values: following_user_ids, voted_post_ids, voted_comment_ids, collected_post_ids, subscribed_collection_ids, subscribed_live_event_ids",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/live/1/comments": {
-      "get": {}
+    "/v1/live?offset=2&limit=1": {
+      "get": {
+        "parameters": [
+          {
+            "name": "offset",
+            "description": "Filter parameter: define the amount of records to be skipped",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (default 20, max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records with older \"start_at\" date than the provided date (format \"YYYY-MM-DD\")",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records with newer \"start_at\" date (includes events with unspeficifed date) than the provided date (format \"YYYY-MM-DD\")",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Retrieve events for a specific category",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Retrieve events for a specific month (format \"YYYY-MM\"), use \"false\" for events without a start_at date",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Retrieve LIVE on camera events. true or false. Default: false",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/posts?days_ago=1": {
-      "get": {}
+    "/v1/posts/all?search[category]=games": {
+      "get": {
+        "parameters": [
+          {
+            "name": "search",
+            "description": "Filter parameter: can filter posts by url",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Filter parameter: can filter posts by category. Default = unspecified (All categories)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/live?newer=2015-12-4": {
+      "get": {
+        "parameters": [
+          {
+            "name": "offset",
+            "description": "Filter parameter: define the amount of records to be skipped",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (default 20, max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records with older \"start_at\" date than the provided date (format \"YYYY-MM-DD\")",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records with newer \"start_at\" date (includes events with unspeficifed date) than the provided date (format \"YYYY-MM-DD\")",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Retrieve events for a specific category",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Retrieve events for a specific month (format \"YYYY-MM\"), use \"false\" for events without a start_at date",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Retrieve LIVE on camera events. true or false. Default: false",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/posts/{id}/collections": {
+      "get": {
+        "parameters": [
+          {
+            "name": "page",
+            "description": "Parameter for pagination",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Only return collections that have been featured on Product Hunt. true or false. Default = false.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "sort_by",
+            "description": "Filter parameter: valid values are created_at, updated_at or featured_at",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/posts/{id}/votes": {
+      "get": {
+        "parameters": [
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "post_id",
+            "description": "The ID of the post you want to find votes for",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/users/{id}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The ID or username of the User you want to fetch",
+            "in": "path",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/users/{id}/posts": {
+      "get": {
+        "parameters": [
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
     "/v1/notifications?search[type]=all": {
-      "get": {}
+      "get": {
+        "parameters": [
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Type of reference object accepted, defaults to 'Post', use 'all' for every notification type",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/posts/1/votes?newer=3": {
-      "get": {}
+    "/v1/posts/all?newer=1": {
+      "get": {
+        "parameters": [
+          {
+            "name": "search",
+            "description": "Filter parameter: can filter posts by url",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Filter parameter: can filter posts by category. Default = unspecified (All categories)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
-    "/v1/users/l33thaxor": {
-      "get": {}
+    "/v1/comments?search[ama_event_id]=1": {
+      "get": {
+        "parameters": [
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "The id of a user you want to filter for. If you pass this id the user won't be nested.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "The id of a post you want to filter for. If you pass this id the post won't be nested.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "The id of a post you want to filter for. If you pass this id the ama_event won't be nested.",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/live?search[category]=tech": {
+      "get": {
+        "parameters": [
+          {
+            "name": "offset",
+            "description": "Filter parameter: define the amount of records to be skipped",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (default 20, max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records with older \"start_at\" date than the provided date (format \"YYYY-MM-DD\")",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records with newer \"start_at\" date (includes events with unspeficifed date) than the provided date (format \"YYYY-MM-DD\")",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Retrieve events for a specific category",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Retrieve events for a specific month (format \"YYYY-MM\"), use \"false\" for events without a start_at date",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Retrieve LIVE on camera events. true or false. Default: false",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/comments?search[post_id]=1&search[user_id]=3": {
+      "get": {
+        "parameters": [
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "The id of a user you want to filter for. If you pass this id the user won't be nested.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "The id of a post you want to filter for. If you pass this id the post won't be nested.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "The id of a post you want to filter for. If you pass this id the ama_event won't be nested.",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/users/{id}/followers": {
+      "get": {
+        "parameters": [
+          {
+            "name": "user_id",
+            "description": "The ID of the user you want to fetch all followers from",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/live/{id}/comments": {
+      "get": {
+        "parameters": [
+          {
+            "name": "live_event_id",
+            "description": "The id the live event the comment belongs to (passed via URL)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     },
     "/v1/related_links?search[url]=https%3A%2F%2Fwww.techcrunch.com%2F2014%2F08%2F19%2Fthis-is-the-best-app-in-the-world%3Fweird%3Dget%26params%3Dare%23weird": {
-      "get": {}
+      "get": {
+        "parameters": []
+      }
     },
-    "/v1/comments/1/votes": {
-      "get": {}
+    "/v1/live/{id}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The numeric ID of the live event you want to fetch",
+            "in": "path",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/related_links": {
+      "get": {
+        "parameters": []
+      }
+    },
+    "/v1/posts?days_ago=1": {
+      "get": {
+        "parameters": [
+          {
+            "name": "days_ago",
+            "description": "Parameter for pagination",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "day",
+            "description": "Alternate parameter for requesting specific days (Format: day=YYYY-MM-DD)",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/categories/games/posts?days_ago=1": {
+      "get": {
+        "parameters": [
+          {
+            "name": "days_ago",
+            "description": "Parameter for pagination",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "day",
+            "description": "Alternate parameter for requesting specific days (Format: day=YYYY-MM-DD)",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/posts/{id}/votes?newer=3": {
+      "get": {
+        "parameters": [
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "post_id",
+            "description": "The ID of the post you want to find votes for",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/comments/{id}/votes": {
+      "get": {
+        "parameters": [
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "comment_id",
+            "description": "The ID of the comment you want to find votes for",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/live": {
+      "get": {
+        "parameters": [
+          {
+            "name": "offset",
+            "description": "Filter parameter: define the amount of records to be skipped",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (default 20, max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records with older \"start_at\" date than the provided date (format \"YYYY-MM-DD\")",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records with newer \"start_at\" date (includes events with unspeficifed date) than the provided date (format \"YYYY-MM-DD\")",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Retrieve events for a specific category",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Retrieve events for a specific month (format \"YYYY-MM\"), use \"false\" for events without a start_at date",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "Retrieve LIVE on camera events. true or false. Default: false",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/posts/{id}/comments": {
+      "get": {
+        "parameters": [
+          {
+            "name": "post_id",
+            "description": "The id the post the comment belongs to (passed via URL)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/users?newer=2": {
+      "get": {
+        "parameters": [
+          {
+            "name": "older",
+            "description": "Filter parameter: get only records older than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newer",
+            "description": "Filter parameter: get only records newer than the provided id",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "in": "query",
+            "type": "string"
+          }
+        ]
+      }
     }
   },
   "info": {},

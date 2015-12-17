@@ -5,6 +5,14 @@ var config = module.exports = {
   title: 'Product Hunt API',
   description: {selector: ''},
   operation: {selector: '.api--content'},
-  path: {selector: '.api--request pre:first-of-type', regex: /\w+ (.*)/, regexMatch: 1},
-  method: {selector: '.api--request pre:first-of-type', regex: /(\w+) .*/, regexMatch: 1},
+  path: {selector: '.api--request pre:first-of-type', regex: /\w+ (.*)/},
+  pathParameters: [
+    {name: 'id', regex: /^\d+$/},
+    {name: 'id', regex: /l33thaxor/},
+  ],  
+  method: {selector: '.api--request pre:first-of-type', regex: /(\w+) .*/},
+  parameters: {selector: 'table'},
+  parameter: {selector: 'tr'},
+  parameterName: {selector: 'td:first-of-type', regex: /(\w+)( required)?/},
+  parameterDescription: {selector: 'td:nth-of-type(2)'},
 }

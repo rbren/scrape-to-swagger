@@ -13,7 +13,6 @@ var host = parsed.protocol + '//' + parsed.host;
 
 function scrapePage(url, depth, callback) {
   url = urlParser.resolve(host, url);
-  console.log('scrape', url);
   if (url.indexOf('mailto:') === 0) return callback();
   request.get(url, function(err, resp, body) {
     if (err) return callback(err);
@@ -34,20 +33,46 @@ function scrapePage(url, depth, callback) {
 function addPageToSwagger($) {
   $(config.operation.selector).each(function() {
     var op = $(this);
-    var path = extractText(op, config.path);
     var method = extractText(op, config.method);
+    var path = extractText(op, config.path);
     if (!method || !path) return;
+    pathPieces = path.split('/');
+    (config.pathParameters || []).forEach(function(pathParam) {
+      pathPieces = pathPieces.map(function(piece) {
+        return piece.replace(pathParam.regex, '{' + pathParam.name + '}');
+      });
+    })
+    path = pathPieces.join('/');
     swagger.paths[path] = swagger.paths[path] || {};
-    swagger.paths[path][method.toLowerCase()] = {};
+    var sOp = swagger.paths[path][method.toLowerCase()] = {parameters: []};
+    var parameters = op.find(config.parameters.selector).find(config.parameter.selector);
+    parameters = $(parameters);
+    if (!parameters) return;
+    parameters.each(function() {
+      var param = $(this);
+      var name = extractText(param, config.parameterName);
+      if (!name) return;
+      var sParameter = {name: name};
+      sOp.parameters.push(sParameter);
+      var description = extractText(param, config.parameterDescription);
+      if (description) sParameter.description = description.trim();
+      sParameter.in = extractText(param, config.parameterIn) || 'query';
+      sParameter.type = extractText(param, config.parameterType) || 'string';
+    });
+    (config.pathParameters || []).forEach(function(pathParam) {
+      var origParam = sOp.parameters.filter(function(p) {return p.name === pathParam.name})[0];
+      if (origParam) origParam.in = 'path';
+    })
   })
 }
 
 function extractText(el, extractor) {
+  if (!extractor) return '';
   var text = el.find(extractor.selector).text();
   if (extractor.regex) {
     var matches = text.match(extractor.regex);
     if (!matches) return;
-    text = matches[extractor.regexMatch || 0];
+    text = matches[extractor.regexMatch || 1];
   }
   return text;
 }
