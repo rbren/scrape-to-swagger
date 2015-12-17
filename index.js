@@ -4,6 +4,7 @@ var async = require('async');
 var request = require('request');
 var cheerio = require('cheerio');
 var sortObj = require('sorted-object');
+var generateSchema = require('json-schema-generator');
 var argv = require('yargs').argv;
 var config = require(argv.config);
 
@@ -65,9 +66,19 @@ function addPageToSwagger($) {
     var response = config.response ? responses.find(config.response.selector) : responses;
     var responseStatus = extractText(response, config.responseStatus);
     var responseDescription = extractText(response, config.responseDescription);
+    var responseSchema = extractText(response, config.responseSchema);
+    try {
+      responseSchema = JSON.parse(responseSchema);
+    } catch (e) {
+      responseSchema = undefined;
+    }
+    if (responseSchema && config.responseSchema.isExample) responseSchema = generateSchema(responseSchema);
     if (responseStatus) {
       responseStatus = parseInt(responseStatus);
-      sOp.responses[responseStatus] = {description: responseDescription || ''};
+      sResp = sOp.responses[responseStatus] = {
+          description: responseDescription || '',
+          schema: responseSchema || undefined,
+      };
     }
   })
 }
