@@ -485,6 +485,7 @@
                       "title",
                       "created_at",
                       "updated_at",
+                      "featured_at",
                       "color",
                       "subscriber_count",
                       "collection_url",
@@ -510,7 +511,10 @@
                         "type": "string",
                         "minLength": 1
                       },
-                      "featured_at": {},
+                      "featured_at": {
+                        "type": "string",
+                        "minLength": 1
+                      },
                       "color": {
                         "type": "string",
                         "minLength": 1
@@ -744,6 +748,42 @@
       },
       "post": {
         "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "collection": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "title": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "color": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "title",
+                    "color"
+                  ]
+                }
+              },
+              "required": [
+                "collection"
+              ]
+            }
+          },
           {
             "name": "name",
             "description": "The name of the collection",
@@ -1054,6 +1094,17 @@
     "/v1/collections/{id}": {
       "delete": {
         "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
           {
             "in": "path",
             "name": "id",
@@ -1954,6 +2005,32 @@
       "put": {
         "parameters": [
           {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "collection": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "title"
+                  ]
+                }
+              },
+              "required": [
+                "collection"
+              ]
+            }
+          },
+          {
             "name": "name",
             "description": "The name of the collection",
             "in": "query",
@@ -2269,6 +2346,24 @@
       "delete": {
         "parameters": [
           {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "email"
+              ]
+            }
+          },
+          {
             "name": "id",
             "description": "The ID of the collection you want to unsubscribe",
             "in": "path",
@@ -2283,6 +2378,17 @@
       },
       "post": {
         "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
           {
             "name": "id",
             "description": "The ID of the collection you want to subscribe",
@@ -2961,9 +3067,37 @@
         "parameters": [
           {
             "name": "body",
-            "description": "The text of the comment you want to save. Allowed html tags are: `br strong b em i img a`",
-            "in": "query",
-            "type": "string"
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "comment": {
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "post_id": {
+                      "type": "number"
+                    },
+                    "parent_comment_id": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "body",
+                    "post_id",
+                    "parent_comment_id"
+                  ]
+                }
+              },
+              "required": [
+                "comment"
+              ]
+            }
           },
           {
             "name": "post_id",
@@ -3618,9 +3752,29 @@
         "parameters": [
           {
             "name": "body",
-            "description": "The new comment text you want to update with",
-            "in": "query",
-            "type": "string"
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "comment": {
+                  "type": "object",
+                  "properties": {
+                    "body": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "body"
+                  ]
+                }
+              },
+              "required": [
+                "comment"
+              ]
+            }
           },
           {
             "name": "parent_comment_id",
@@ -4264,6 +4418,17 @@
       "delete": {
         "parameters": [
           {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
             "name": "comment_id",
             "description": "The ID of the comment you want to un-vote",
             "in": "query",
@@ -4522,6 +4687,17 @@
       },
       "post": {
         "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
           {
             "name": "comment_id",
             "description": "The ID of the comment you want to vote for",
@@ -5123,7 +5299,6 @@
                       "subscriber_count",
                       "tagline",
                       "live_video",
-                      "twitter_username",
                       "url"
                     ],
                     "properties": {
@@ -5156,215 +5331,12 @@
                       },
                       "guests": {
                         "type": "array",
-                        "uniqueItems": true,
-                        "minItems": 1,
                         "items": {
-                          "required": [
-                            "id",
-                            "name",
-                            "headline",
-                            "created_at",
-                            "username",
-                            "twitter_username",
-                            "website_url",
-                            "profile_url"
-                          ],
-                          "properties": {
-                            "id": {
-                              "type": "number"
-                            },
-                            "name": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "headline": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "created_at": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "username": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "twitter_username": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "website_url": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "image_url": {
-                              "type": "object",
-                              "properties": {
-                                "30px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "32px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "40px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "44px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "48px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "50px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "60px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "64px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "73px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "80px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "88px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "96px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "100px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "110px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "120px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "132px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "146px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "160px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "176px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "220px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "264px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "32px@2X": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "40px@2X": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "44px@2X": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "88px@2X": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "32px@3X": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "40px@3X": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "44px@3X": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "88px@3X": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "original": {
-                                  "type": "string",
-                                  "minLength": 1
-                                }
-                              },
-                              "required": [
-                                "30px",
-                                "32px",
-                                "40px",
-                                "44px",
-                                "48px",
-                                "50px",
-                                "60px",
-                                "64px",
-                                "73px",
-                                "80px",
-                                "88px",
-                                "96px",
-                                "100px",
-                                "110px",
-                                "120px",
-                                "132px",
-                                "146px",
-                                "160px",
-                                "176px",
-                                "220px",
-                                "264px",
-                                "32px@2X",
-                                "40px@2X",
-                                "44px@2X",
-                                "88px@2X",
-                                "32px@3X",
-                                "40px@3X",
-                                "44px@3X",
-                                "88px@3X",
-                                "original"
-                              ]
-                            },
-                            "profile_url": {
-                              "type": "string",
-                              "minLength": 1
-                            }
-                          }
+                          "required": [],
+                          "properties": {}
                         }
                       },
-                      "twitter_username": {
-                        "type": "string",
-                        "minLength": 1
-                      },
+                      "twitter_username": {},
                       "url": {
                         "type": "string",
                         "minLength": 1
@@ -6293,6 +6265,24 @@
       "delete": {
         "parameters": [
           {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "email"
+              ]
+            }
+          },
+          {
             "name": "id",
             "description": "The ID of the LIVE event you want to unsubscribe",
             "in": "path",
@@ -6307,6 +6297,24 @@
       },
       "post": {
         "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "email"
+              ]
+            }
+          },
           {
             "name": "id",
             "description": "The ID of the LIVE event you want to subscribe",
@@ -7151,7 +7159,19 @@
     },
     "/v1/notifications": {
       "delete": {
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -7831,6 +7851,44 @@
       "post": {
         "parameters": [
           {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "client_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "client_secret": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "redirect_uri": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "code": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "grant_type": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "client_id",
+                "client_secret",
+                "redirect_uri",
+                "code",
+                "grant_type"
+              ]
+            }
+          },
+          {
             "name": "client_id",
             "description": "The id of your application",
             "in": "query",
@@ -7967,8 +8025,18 @@
                       },
                       "current_user": {
                         "type": "object",
-                        "properties": {},
-                        "required": []
+                        "properties": {
+                          "voted_for_post": {
+                            "type": "boolean"
+                          },
+                          "commented_on_post": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "voted_for_post",
+                          "commented_on_post"
+                        ]
                       },
                       "discussion_url": {
                         "type": "string",
@@ -7983,16 +8051,225 @@
                       },
                       "makers": {
                         "type": "array",
+                        "uniqueItems": true,
+                        "minItems": 1,
                         "items": {
-                          "required": [],
-                          "properties": {}
+                          "required": [
+                            "id",
+                            "name",
+                            "headline",
+                            "created_at",
+                            "username",
+                            "twitter_username",
+                            "website_url",
+                            "profile_url"
+                          ],
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "name": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "headline": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "created_at": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "username": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "twitter_username": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "website_url": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "image_url": {
+                              "type": "object",
+                              "properties": {
+                                "30px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "32px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "40px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "44px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "48px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "50px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "60px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "64px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "73px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "80px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "88px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "96px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "100px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "110px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "120px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "132px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "146px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "160px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "176px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "220px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "264px": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "32px@2X": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "40px@2X": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "44px@2X": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "88px@2X": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "32px@3X": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "40px@3X": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "44px@3X": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "88px@3X": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "original": {
+                                  "type": "string",
+                                  "minLength": 1
+                                }
+                              },
+                              "required": [
+                                "30px",
+                                "32px",
+                                "40px",
+                                "44px",
+                                "48px",
+                                "50px",
+                                "60px",
+                                "64px",
+                                "73px",
+                                "80px",
+                                "88px",
+                                "96px",
+                                "100px",
+                                "110px",
+                                "120px",
+                                "132px",
+                                "146px",
+                                "160px",
+                                "176px",
+                                "220px",
+                                "264px",
+                                "32px@2X",
+                                "40px@2X",
+                                "44px@2X",
+                                "88px@2X",
+                                "32px@3X",
+                                "40px@3X",
+                                "44px@3X",
+                                "88px@3X",
+                                "original"
+                              ]
+                            },
+                            "profile_url": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
                         }
                       },
                       "platforms": {
                         "type": "array",
+                        "uniqueItems": true,
+                        "minItems": 1,
                         "items": {
-                          "required": [],
-                          "properties": {}
+                          "required": [
+                            "name"
+                          ],
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
                         }
                       },
                       "redirect_url": {
@@ -8263,6 +8540,42 @@
       },
       "post": {
         "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "post": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "tagline": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "url",
+                    "name",
+                    "tagline"
+                  ]
+                }
+              },
+              "required": [
+                "post"
+              ]
+            }
+          },
           {
             "name": "url",
             "description": "The url of the product",
@@ -9521,8 +9834,15 @@
                         },
                         "metadata": {
                           "type": "object",
-                          "properties": {},
-                          "required": []
+                          "properties": {
+                            "url": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "required": [
+                            "url"
+                          ]
                         }
                       },
                       "required": [
@@ -10706,8 +11026,15 @@
                           },
                           "metadata": {
                             "type": "object",
-                            "properties": {},
-                            "required": []
+                            "properties": {
+                              "url": {
+                                "type": "string",
+                                "minLength": 1
+                              }
+                            },
+                            "required": [
+                              "url"
+                            ]
                           },
                           "image_url": {
                             "type": "string",
@@ -10761,6 +11088,23 @@
     "/v1/posts/{id}/collect": {
       "delete": {
         "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "collection_id": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "collection_id"
+              ]
+            }
+          },
           {
             "name": "collection_id",
             "description": "The numeric ID of the collection",
@@ -11414,6 +11758,23 @@
       },
       "post": {
         "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "collection_id": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "collection_id"
+              ]
+            }
+          },
           {
             "name": "collection_id",
             "description": "The numeric ID of the collection",
@@ -13017,6 +13378,24 @@
       "post": {
         "parameters": [
           {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "url"
+              ]
+            }
+          },
+          {
             "name": "title",
             "description": "A title - if left blank we will fetch it from the url you provide",
             "in": "query",
@@ -13090,6 +13469,17 @@
       "delete": {
         "parameters": [
           {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
             "in": "path",
             "name": "id",
             "type": "string"
@@ -13152,6 +13542,24 @@
       },
       "put": {
         "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "title"
+              ]
+            }
+          },
           {
             "name": "title",
             "description": "A title - if left blank we will fetch it from the url you provide",
@@ -13229,6 +13637,17 @@
     "/v1/posts/{id}/vote": {
       "delete": {
         "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
           {
             "name": "post_id",
             "description": "The ID of the post you want to un-vote",
@@ -13488,6 +13907,17 @@
       },
       "post": {
         "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
           {
             "name": "post_id",
             "description": "The ID of the post you want to vote for",
@@ -14119,8 +14549,18 @@
                           },
                           "current_user": {
                             "type": "object",
-                            "properties": {},
-                            "required": []
+                            "properties": {
+                              "voted_for_post": {
+                                "type": "boolean"
+                              },
+                              "commented_on_post": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "voted_for_post",
+                              "commented_on_post"
+                            ]
                           },
                           "discussion_url": {
                             "type": "string",
@@ -14437,6 +14877,35 @@
     "/v1/settings": {
       "put": {
         "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "twitter_uid": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "twitter_uid"
+                  ]
+                }
+              },
+              "required": [
+                "user"
+              ]
+            }
+          },
           {
             "name": "email",
             "description": "Your user's email",
@@ -17164,6 +17633,17 @@
       "delete": {
         "parameters": [
           {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
             "name": "user_id",
             "description": "The ID of the user you want to un-follow",
             "in": "query",
@@ -17409,6 +17889,17 @@
       },
       "post": {
         "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
           {
             "name": "user_id",
             "description": "The ID of the user you want to follow",

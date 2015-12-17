@@ -62,20 +62,18 @@ function addPageToSwagger($) {
       sParameter.in = extractText(param, config.parameterIn) || 'query';
       sParameter.type = extractText(param, config.parameterType) || 'string';
     });
+    var body = extractJSON(op, config.requestBody);
+    if (body) {
+      sOp.parameters.unshift({name: 'body', in: 'body', schema: body});
+    }
     var responses = config.responses ? op.find(config.responses.selector) : op;
     var response = config.response ? responses.find(config.response.selector) : responses;
     var responseStatus = extractText(response, config.responseStatus);
-    var responseDescription = extractText(response, config.responseDescription);
-    var responseSchema = extractText(response, config.responseSchema);
-    try {
-      responseSchema = JSON.parse(responseSchema);
-    } catch (e) {
-      responseSchema = undefined;
-    }
-    if (responseSchema && config.responseSchema.isExample) responseSchema = generateSchema(responseSchema);
     if (responseStatus) {
+      var responseDescription = extractText(response, config.responseDescription);
+      var responseSchema = extractJSON(response, config.responseSchema);
       responseStatus = parseInt(responseStatus);
-      sResp = sOp.responses[responseStatus] = {
+      sOp.responses[responseStatus] = {
           description: responseDescription || '',
           schema: responseSchema || undefined,
       };
@@ -92,6 +90,19 @@ function extractText(el, extractor) {
     text = matches[extractor.regexMatch || 1];
   }
   return text;
+}
+
+function extractJSON(el, extractor) {
+  var json = extractText(el, extractor);
+  if (!json) return;
+  try {
+    json = JSON.parse(json);
+  } catch (e) {
+    json = undefined;
+  }
+  if (!json) return;
+  if (extractor.isExample) json = generateSchema(json);
+  return json;
 }
 
 function fixErrors() {
