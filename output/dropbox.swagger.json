@@ -1,0 +1,188 @@
+{
+  "basePath": "/1",
+  "host": "api.dropboxapi.com",
+  "info": {
+    "title": "DropBox API",
+    "description": "The DropBox API"
+  },
+  "paths": {
+    "/chunked_uploadPythonJavaRubyPHP": {
+      "put": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/commit_chunked_upload": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/copy_refPythonJavaRubyPHP": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/delta/latest_cursor": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/deltaPythonJavaRubyPHP": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/disable_access_tokenPythonJavaRubyPHP": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/fileops/create_folder": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/fileops/delete": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/fileops/move": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/fileops/permanently_delete": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/files_put": {
+      "put": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/longpoll_delta": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/mediaPythonJavaRubyPHP": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/metadata": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/metadata/link": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/oauth/access_token": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/oauth/authorize": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/oauth2/authorizePythonJavaRubyPHP": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/oauth2/tokenPythonJavaRubyPHP": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/oauth2/token_from_oauth1PythonJavaRubyPHP": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/previews": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/restorePythonJavaRubyPHP": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/revisionsPythonJavaRubyPHP": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/save_url": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/save_url_job": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/searchPythonJavaRubyPHP": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/shared_folders": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/sharesPythonJavaRubyPHP": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/thumbnailsPythonJavaRubyPHP": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    }
+  },
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0"
+}
