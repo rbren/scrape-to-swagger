@@ -1376,7 +1376,7 @@
             "type": "Permanent redirection. The URI you used to make the request has been superseded by the one specified in the Location header field. This and all future requests to this resource should be directed to the new URI."
           },
           {
-            "name": "302",
+            "name": "302,",
             "in": "query",
             "type": "Temporary redirection. The request should be repeated verbatim to the URI specified in the Location header field but clients should continue to use the original URI for future requests."
           },
@@ -1411,9 +1411,19 @@
             "type": "Used for replacing resources or collections. For PUT requests with no body attribute, be sure to set the Content-Length header to zero."
           },
           {
-            "name": "X",
+            "name": "X-RateLimit-Limit",
             "in": "query",
             "type": "The maximum number of requests that the consumer is permitted to make per hour."
+          },
+          {
+            "name": "X-RateLimit-Remaining",
+            "in": "query",
+            "type": "The number of requests remaining in the current rate limit window."
+          },
+          {
+            "name": "X-RateLimit-Reset",
+            "in": "query",
+            "type": "The time at which the current rate limit window resets in UTC epoch seconds."
           },
           {
             "name": "already_exists",
@@ -1569,9 +1579,19 @@
       "post": {
         "parameters": [
           {
-            "name": "X",
+            "name": "X-GitHub-Delivery",
+            "in": "query",
+            "type": "A guid to identify the payload and event being sent."
+          },
+          {
+            "name": "X-GitHub-Event",
             "in": "query",
             "type": "The event type that was triggered."
+          },
+          {
+            "name": "X-Hub-Signature",
+            "in": "query",
+            "type": "The value of this header is computed as the HMAC hex digest of the body, using the secret config option as the key."
           },
           {
             "name": "active",
@@ -1634,9 +1654,19 @@
       "delete": {
         "parameters": [
           {
-            "name": "X",
+            "name": "X-GitHub-Delivery",
+            "in": "query",
+            "type": "A guid to identify the payload and event being sent."
+          },
+          {
+            "name": "X-GitHub-Event",
             "in": "query",
             "type": "The event type that was triggered."
+          },
+          {
+            "name": "X-Hub-Signature",
+            "in": "query",
+            "type": "The value of this header is computed as the HMAC hex digest of the body, using the secret config option as the key."
           },
           {
             "in": "path",
@@ -1654,9 +1684,19 @@
       "get": {
         "parameters": [
           {
-            "name": "X",
+            "name": "X-GitHub-Delivery",
+            "in": "query",
+            "type": "A guid to identify the payload and event being sent."
+          },
+          {
+            "name": "X-GitHub-Event",
             "in": "query",
             "type": "The event type that was triggered."
+          },
+          {
+            "name": "X-Hub-Signature",
+            "in": "query",
+            "type": "The value of this header is computed as the HMAC hex digest of the body, using the secret config option as the key."
           },
           {
             "name": "active",
@@ -1722,9 +1762,19 @@
       "patch": {
         "parameters": [
           {
-            "name": "X",
+            "name": "X-GitHub-Delivery",
+            "in": "query",
+            "type": "A guid to identify the payload and event being sent."
+          },
+          {
+            "name": "X-GitHub-Event",
             "in": "query",
             "type": "The event type that was triggered."
+          },
+          {
+            "name": "X-Hub-Signature",
+            "in": "query",
+            "type": "The value of this header is computed as the HMAC hex digest of the body, using the secret config option as the key."
           },
           {
             "name": "active",
@@ -1792,9 +1842,19 @@
       "post": {
         "parameters": [
           {
-            "name": "X",
+            "name": "X-GitHub-Delivery",
+            "in": "query",
+            "type": "A guid to identify the payload and event being sent."
+          },
+          {
+            "name": "X-GitHub-Event",
             "in": "query",
             "type": "The event type that was triggered."
+          },
+          {
+            "name": "X-Hub-Signature",
+            "in": "query",
+            "type": "The value of this header is computed as the HMAC hex digest of the body, using the secret config option as the key."
           },
           {
             "name": "active",
@@ -2650,7 +2710,7 @@
             "type": "Permanent redirection. The URI you used to make the request has been superseded by the one specified in the Location header field. This and all future requests to this resource should be directed to the new URI."
           },
           {
-            "name": "302",
+            "name": "302,",
             "in": "query",
             "type": "Temporary redirection. The request should be repeated verbatim to the URI specified in the Location header field but clients should continue to use the original URI for future requests."
           },
@@ -2685,9 +2745,19 @@
             "type": "Used for replacing resources or collections. For PUT requests with no body attribute, be sure to set the Content-Length header to zero."
           },
           {
-            "name": "X",
+            "name": "X-RateLimit-Limit",
             "in": "query",
             "type": "The maximum number of requests that the consumer is permitted to make per hour."
+          },
+          {
+            "name": "X-RateLimit-Remaining",
+            "in": "query",
+            "type": "The number of requests remaining in the current rate limit window."
+          },
+          {
+            "name": "X-RateLimit-Reset",
+            "in": "query",
+            "type": "The time at which the current rate limit window resets in UTC epoch seconds."
           },
           {
             "name": "already_exists",
@@ -4763,9 +4833,19 @@
       "post": {
         "parameters": [
           {
-            "name": "X",
+            "name": "X-GitHub-Delivery",
+            "in": "query",
+            "type": "A guid to identify the payload and event being sent."
+          },
+          {
+            "name": "X-GitHub-Event",
             "in": "query",
             "type": "The event type that was triggered."
+          },
+          {
+            "name": "X-Hub-Signature",
+            "in": "query",
+            "type": "The value of this header is computed as the HMAC hex digest of the body, using the secret config option as the key."
           },
           {
             "name": "active",
@@ -4792,8 +4872,26 @@
             "type": "array"
           },
           {
-            "name": "hub",
+            "name": "hub.callback",
+            "description": "The URI to receive the updates to the topic.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hub.mode",
             "description": "Required. Either subscribe or unsubscribe.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hub.secret",
+            "description": "A shared secret key that generates a SHA1 HMAC of the outgoing body content.  You can verify a push came from GitHub by comparing the raw request body with the contents of the X-Hub-Signature header.  You can see our Ruby implementation, or the PubSubHubbub documentation for more details.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hub.topic",
+            "description": "Required.  The URI of the GitHub repository to subscribe to.  The path must be in the format of /:owner/:repo/events/:event.",
             "in": "query",
             "type": "string"
           },
@@ -4827,13 +4925,41 @@
       "delete": {
         "parameters": [
           {
-            "name": "X",
+            "name": "X-GitHub-Delivery",
+            "in": "query",
+            "type": "A guid to identify the payload and event being sent."
+          },
+          {
+            "name": "X-GitHub-Event",
             "in": "query",
             "type": "The event type that was triggered."
           },
           {
-            "name": "hub",
+            "name": "X-Hub-Signature",
+            "in": "query",
+            "type": "The value of this header is computed as the HMAC hex digest of the body, using the secret config option as the key."
+          },
+          {
+            "name": "hub.callback",
+            "description": "The URI to receive the updates to the topic.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hub.mode",
             "description": "Required. Either subscribe or unsubscribe.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hub.secret",
+            "description": "A shared secret key that generates a SHA1 HMAC of the outgoing body content.  You can verify a push came from GitHub by comparing the raw request body with the contents of the X-Hub-Signature header.  You can see our Ruby implementation, or the PubSubHubbub documentation for more details.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hub.topic",
+            "description": "Required.  The URI of the GitHub repository to subscribe to.  The path must be in the format of /:owner/:repo/events/:event.",
             "in": "query",
             "type": "string"
           },
@@ -4858,9 +4984,19 @@
       "get": {
         "parameters": [
           {
-            "name": "X",
+            "name": "X-GitHub-Delivery",
+            "in": "query",
+            "type": "A guid to identify the payload and event being sent."
+          },
+          {
+            "name": "X-GitHub-Event",
             "in": "query",
             "type": "The event type that was triggered."
+          },
+          {
+            "name": "X-Hub-Signature",
+            "in": "query",
+            "type": "The value of this header is computed as the HMAC hex digest of the body, using the secret config option as the key."
           },
           {
             "name": "active",
@@ -4887,8 +5023,26 @@
             "type": "array"
           },
           {
-            "name": "hub",
+            "name": "hub.callback",
+            "description": "The URI to receive the updates to the topic.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hub.mode",
             "description": "Required. Either subscribe or unsubscribe.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hub.secret",
+            "description": "A shared secret key that generates a SHA1 HMAC of the outgoing body content.  You can verify a push came from GitHub by comparing the raw request body with the contents of the X-Hub-Signature header.  You can see our Ruby implementation, or the PubSubHubbub documentation for more details.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hub.topic",
+            "description": "Required.  The URI of the GitHub repository to subscribe to.  The path must be in the format of /:owner/:repo/events/:event.",
             "in": "query",
             "type": "string"
           },
@@ -4925,9 +5079,19 @@
       "patch": {
         "parameters": [
           {
-            "name": "X",
+            "name": "X-GitHub-Delivery",
+            "in": "query",
+            "type": "A guid to identify the payload and event being sent."
+          },
+          {
+            "name": "X-GitHub-Event",
             "in": "query",
             "type": "The event type that was triggered."
+          },
+          {
+            "name": "X-Hub-Signature",
+            "in": "query",
+            "type": "The value of this header is computed as the HMAC hex digest of the body, using the secret config option as the key."
           },
           {
             "name": "active",
@@ -4954,8 +5118,26 @@
             "type": "array"
           },
           {
-            "name": "hub",
+            "name": "hub.callback",
+            "description": "The URI to receive the updates to the topic.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hub.mode",
             "description": "Required. Either subscribe or unsubscribe.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hub.secret",
+            "description": "A shared secret key that generates a SHA1 HMAC of the outgoing body content.  You can verify a push came from GitHub by comparing the raw request body with the contents of the X-Hub-Signature header.  You can see our Ruby implementation, or the PubSubHubbub documentation for more details.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hub.topic",
+            "description": "Required.  The URI of the GitHub repository to subscribe to.  The path must be in the format of /:owner/:repo/events/:event.",
             "in": "query",
             "type": "string"
           },
@@ -4994,13 +5176,41 @@
       "post": {
         "parameters": [
           {
-            "name": "X",
+            "name": "X-GitHub-Delivery",
+            "in": "query",
+            "type": "A guid to identify the payload and event being sent."
+          },
+          {
+            "name": "X-GitHub-Event",
             "in": "query",
             "type": "The event type that was triggered."
           },
           {
-            "name": "hub",
+            "name": "X-Hub-Signature",
+            "in": "query",
+            "type": "The value of this header is computed as the HMAC hex digest of the body, using the secret config option as the key."
+          },
+          {
+            "name": "hub.callback",
+            "description": "The URI to receive the updates to the topic.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hub.mode",
             "description": "Required. Either subscribe or unsubscribe.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hub.secret",
+            "description": "A shared secret key that generates a SHA1 HMAC of the outgoing body content.  You can verify a push came from GitHub by comparing the raw request body with the contents of the X-Hub-Signature header.  You can see our Ruby implementation, or the PubSubHubbub documentation for more details.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hub.topic",
+            "description": "Required.  The URI of the GitHub repository to subscribe to.  The path must be in the format of /:owner/:repo/events/:event.",
             "in": "query",
             "type": "string"
           },
@@ -5027,9 +5237,19 @@
       "post": {
         "parameters": [
           {
-            "name": "X",
+            "name": "X-GitHub-Delivery",
+            "in": "query",
+            "type": "A guid to identify the payload and event being sent."
+          },
+          {
+            "name": "X-GitHub-Event",
             "in": "query",
             "type": "The event type that was triggered."
+          },
+          {
+            "name": "X-Hub-Signature",
+            "in": "query",
+            "type": "The value of this header is computed as the HMAC hex digest of the body, using the secret config option as the key."
           },
           {
             "name": "active",
@@ -5056,8 +5276,26 @@
             "type": "array"
           },
           {
-            "name": "hub",
+            "name": "hub.callback",
+            "description": "The URI to receive the updates to the topic.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hub.mode",
             "description": "Required. Either subscribe or unsubscribe.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hub.secret",
+            "description": "A shared secret key that generates a SHA1 HMAC of the outgoing body content.  You can verify a push came from GitHub by comparing the raw request body with the contents of the X-Hub-Signature header.  You can see our Ruby implementation, or the PubSubHubbub documentation for more details.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hub.topic",
+            "description": "Required.  The URI of the GitHub repository to subscribe to.  The path must be in the format of /:owner/:repo/events/:event.",
             "in": "query",
             "type": "string"
           },
@@ -6964,7 +7202,7 @@
       "post": {
         "parameters": [
           {
-            "name": "Content",
+            "name": "Content-Type",
             "description": "Required. The content type of the asset. This should be set in the Header. Example: \"application/zip\". For a list of acceptable types, refer this list of common media types.",
             "in": "query",
             "type": "string"
@@ -7061,7 +7299,7 @@
       "get": {
         "parameters": [
           {
-            "name": "Content",
+            "name": "Content-Type",
             "description": "Required. The content type of the asset. This should be set in the Header. Example: \"application/zip\". For a list of acceptable types, refer this list of common media types.",
             "in": "query",
             "type": "string"
@@ -7131,7 +7369,7 @@
       "post": {
         "parameters": [
           {
-            "name": "Content",
+            "name": "Content-Type",
             "description": "Required. The content type of the asset. This should be set in the Header. Example: \"application/zip\". For a list of acceptable types, refer this list of common media types.",
             "in": "query",
             "type": "string"
@@ -7171,7 +7409,7 @@
       "get": {
         "parameters": [
           {
-            "name": "Content",
+            "name": "Content-Type",
             "description": "Required. The content type of the asset. This should be set in the Header. Example: \"application/zip\". For a list of acceptable types, refer this list of common media types.",
             "in": "query",
             "type": "string"
@@ -7236,7 +7474,7 @@
       "get": {
         "parameters": [
           {
-            "name": "Content",
+            "name": "Content-Type",
             "description": "Required. The content type of the asset. This should be set in the Header. Example: \"application/zip\". For a list of acceptable types, refer this list of common media types.",
             "in": "query",
             "type": "string"
@@ -7306,7 +7544,7 @@
       "delete": {
         "parameters": [
           {
-            "name": "Content",
+            "name": "Content-Type",
             "description": "Required. The content type of the asset. This should be set in the Header. Example: \"application/zip\". For a list of acceptable types, refer this list of common media types.",
             "in": "query",
             "type": "string"
@@ -7374,7 +7612,7 @@
       "get": {
         "parameters": [
           {
-            "name": "Content",
+            "name": "Content-Type",
             "description": "Required. The content type of the asset. This should be set in the Header. Example: \"application/zip\". For a list of acceptable types, refer this list of common media types.",
             "in": "query",
             "type": "string"
@@ -7442,7 +7680,7 @@
       "patch": {
         "parameters": [
           {
-            "name": "Content",
+            "name": "Content-Type",
             "description": "Required. The content type of the asset. This should be set in the Header. Example: \"application/zip\". For a list of acceptable types, refer this list of common media types.",
             "in": "query",
             "type": "string"
@@ -7512,7 +7750,7 @@
       "get": {
         "parameters": [
           {
-            "name": "Content",
+            "name": "Content-Type",
             "description": "Required. The content type of the asset. This should be set in the Header. Example: \"application/zip\". For a list of acceptable types, refer this list of common media types.",
             "in": "query",
             "type": "string"

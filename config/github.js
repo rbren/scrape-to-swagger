@@ -12,7 +12,7 @@ var config = module.exports = {
   method: {selector: 'h2 ~ pre:not(.highlight)', regex: /(\w+) .*/, sibling: true},
   parameters: {selector: 'table', sibling: true},
   parameter: {selector: 'tr'},
-  parameterName: {selector: 'td:first-of-type', regex: /(\w+)/},
+  parameterName: {selector: 'td:first-of-type', regex: /(\S+)/},
   parameterType: {selector: 'td:nth-of-type(2)'},
   parameterDescription: {selector: 'td:nth-of-type(3)'},
   requestBody: {selector: 'h3:nth-of-type(1) + h4 + pre + h4 + pre + h4 + pre', isExample: true},
