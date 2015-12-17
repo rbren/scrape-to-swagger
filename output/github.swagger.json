@@ -5076,7 +5076,7 @@
         }
       }
     },
-    "/repos/{owner}/{repo}/compare/hubot:branchname...octocat:branchname": {
+    "/repos/{owner}/{repo}/compare/hubot{branchname}...octocat{branchname}": {
       "get": {
         "parameters": [
           {
@@ -5087,13 +5087,18 @@
           {
             "in": "path",
             "name": "repo",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "branchname",
             "type": "string"
           }
         ],
         "responses": {}
       }
     },
-    "/repos/{owner}/{repo}/compare/{base...:head}": {
+    "/repos/{owner}/{repo}/compare/{base}...{head}": {
       "get": {
         "parameters": [
           {
@@ -5108,7 +5113,12 @@
           },
           {
             "in": "path",
-            "name": "base...:head",
+            "name": "base",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "head",
             "type": "string"
           }
         ],

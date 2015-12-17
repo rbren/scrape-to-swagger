@@ -23,8 +23,7 @@ var config = module.exports = {
   extractPathParameters: function(path) {
     pieces = path.split('/');
     pieces = pieces.map(function(p) {
-      if (p.indexOf(':') === 0) return '{' + p.substring(1) + '}';
-      else return p;
+      return p.replace(/:(\w+)/g, '{$1}')
     })
     return pieces.join('/');
   }
