@@ -93,5 +93,8 @@ scrapePage(config.url, config.depth || 1, function(err) {
   if (err) throw err;
   swagger = sortObj(swagger);
   swagger.paths = sortObj(swagger.paths);
+  for (var path in swagger.paths) {
+    swagger.paths[path] = sortObj(swagger.paths[path]);
+  }
   fs.writeFileSync(argv.output || 'swagger.json', JSON.stringify(swagger, null, 2));
 });

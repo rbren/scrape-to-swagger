@@ -137,6 +137,21 @@
           }
         }
       },
+      "get": {
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The numeric ID of the Collection you want to fetch",
+            "in": "path",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
       "put": {
         "parameters": [
           {
@@ -174,24 +189,24 @@
             "description": "OK"
           }
         }
-      },
-      "get": {
+      }
+    },
+    "/v1/collections/{id}/subscribe": {
+      "delete": {
         "parameters": [
           {
             "name": "id",
-            "description": "The numeric ID of the Collection you want to fetch",
+            "description": "The ID of the collection you want to unsubscribe",
             "in": "path",
             "type": "string"
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "204": {
+            "description": "No Content"
           }
         }
-      }
-    },
-    "/v1/collections/{id}/subscribe": {
+      },
       "post": {
         "parameters": [
           {
@@ -210,21 +225,6 @@
         "responses": {
           "201": {
             "description": "Created"
-          }
-        }
-      },
-      "delete": {
-        "parameters": [
-          {
-            "name": "id",
-            "description": "The ID of the collection you want to unsubscribe",
-            "in": "path",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
           }
         }
       }
@@ -721,20 +721,7 @@
     },
     "/v1/posts": {
       "get": {
-        "parameters": [
-          {
-            "name": "days_ago",
-            "description": "Parameter for pagination",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "day",
-            "description": "Alternate parameter for requesting specific days (Format: day=YYYY-MM-DD)",
-            "in": "query",
-            "type": "string"
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
@@ -744,8 +731,8 @@
       "post": {
         "parameters": [],
         "responses": {
-          "403": {
-            "description": "Forbidden"
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
@@ -809,26 +796,6 @@
       }
     },
     "/v1/posts/{id}/collect": {
-      "post": {
-        "parameters": [
-          {
-            "name": "collection_id",
-            "description": "The numeric ID of the collection",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "in": "path",
-            "name": "id",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          }
-        }
-      },
       "delete": {
         "parameters": [
           {
@@ -846,6 +813,26 @@
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "parameters": [
+          {
+            "name": "collection_id",
+            "description": "The numeric ID of the collection",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
           }
         }
       }
