@@ -1,0 +1,2454 @@
+{
+  "basePath": "/",
+  "host": "api.github.com",
+  "info": {
+    "title": "GitHub API",
+    "description": "The GitHub API"
+  },
+  "paths": {
+    "%22https://api.github.com/repos/github/hubot/branches/master%22%20/": {
+      "curl": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "-I%20%22https://api.github.com/search/code": {
+      "curl": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "-L%20%27http://hostname:admin_port/setup/api": {
+      "curl": {
+        "parameters": [
+          {
+            "name": "license",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "settings",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "PENDING",
+            "description": "The job has not started yet",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CONFIGURING",
+            "description": "The job is running",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "DONE",
+            "description": "The job has finished correctly",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "FAILED",
+            "description": "The job has finished unexpectedly",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "maintenance",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "authorized_key",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "-i%20https://api.github.com/users/octocat/orgs": {
+      "curl": {
+        "parameters": [
+          {
+            "name": "missing",
+            "description": "This means a resource does not exist.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "missing_field",
+            "description": "This means a required field on a resource has not been set.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "invalid",
+            "description": "This means the formatting of a field is invalid.  The documentation for that resource should be able to give you more specific information.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "already_exists",
+            "description": "This means another resource has the same value as this field.  This can happen in resources that must have some unique key (such as Label names).",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "301",
+            "description": "Permanent redirection. The URI you used to make the request has been superseded by the one specified in the Location header field. This and all future requests to this resource should be directed to the new URI.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "302",
+            "description": "Temporary redirection. The request should be repeated verbatim to the URI specified in the Location header field but clients should continue to use the original URI for future requests.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "HEAD",
+            "description": "Can be issued against any resource to get just the HTTP header info.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "GET",
+            "description": "Used for retrieving resources.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "POST",
+            "description": "Used for creating resources.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "PATCH",
+            "description": "Used for updating resources with partial JSON data.  For instance, an Issue resource has title and body attributes.  A PATCH request may accept one or more of the attributes to update the resource.  PATCH is a relatively new and uncommon HTTP verb, so resource endpoints also accept POST requests.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "PUT",
+            "description": "Used for replacing resources or collections. For PUT requests with no body attribute, be sure to set the Content-Length header to zero.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "DELETE",
+            "description": "Used for deleting resources.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "next",
+            "description": "The link relation for the immediate next page of results.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "last",
+            "description": "The link relation for the last page of results.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "first",
+            "description": "The link relation for the first page of results.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "prev",
+            "description": "The link relation for the immediate previous page of results.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "X",
+            "description": "The maximum number of requests that the consumer is permitted to make per hour.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "-u%20username%20https://api.github.com/user": {
+      "curl": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/admin/ldap/users/:username/mapping": {
+      "patch": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/admin/organizations": {
+      "post": {
+        "parameters": [
+          {
+            "name": "login",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "admin",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "profile_name",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/admin/users": {
+      "post": {
+        "parameters": [
+          {
+            "name": "login",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "scopes",
+            "description": "array",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/authorizations": {
+      "get": {
+        "parameters": [
+          {
+            "name": "scopes",
+            "description": "array",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "note",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "note_url",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "client_id",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "client_secret",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "fingerprint",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "add_scopes",
+            "description": "array",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "remove_scopes",
+            "description": "array",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/enterprise/settings/license": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/enterprise/stats/:type": {
+      "get": {
+        "parameters": [
+          {
+            "name": "issues",
+            "description": "The number of open and closed issues.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hooks",
+            "description": "The number of active and inactive hooks.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "milestones",
+            "description": "The number of open and closed milestones.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "orgs",
+            "description": "The number of organizations, teams, team members, and disabled organizations.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "comments",
+            "description": "The number of comments on issues, pull requests, commits, and gists.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "pages",
+            "description": "The number of GitHub Pages sites.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "users",
+            "description": "The number of suspended and admin users.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "gists",
+            "description": "The number of private and public gists.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "pulls",
+            "description": "The number of merged, mergeable, and unmergeable pull requests.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "repos",
+            "description": "The number of organization-owned repositories, root repositories, forks, pushed commits, and wikis.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "all",
+            "description": "All of the statistics listed above.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/events": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/feeds": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/gists/:gist_id/comments": {
+      "get": {
+        "parameters": [
+          {
+            "name": "body",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/gitignore/templates": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/issues": {
+      "get": {
+        "parameters": [
+          {
+            "name": "filter",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "state",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "labels",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "sort",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "direction",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "since",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "milestone",
+            "description": "integer or string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "assignee",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "creator",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "mentioned",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "title",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/legacy/issues/search/:owner/:repository/:state/:keyword": {
+      "get": {
+        "parameters": [
+          {
+            "name": "state",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "keyword",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "language",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "start_page",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "sort",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/licenses": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/login/oauth/authorize": {
+      "get": {
+        "parameters": [
+          {
+            "name": "client_id",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "redirect_uri",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "scope",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "state",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "client_secret",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "code",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "no",
+            "description": "Grants read-only access to public information (includes public user profile info, public repository info, and gists)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "user",
+            "description": "Grants read/write access to profile info only.  Note that this scope includes user:email and user:follow.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "public_repo",
+            "description": "Grants read/write access to code, commit statuses, collaborators, and deployment statuses for public repositories and organizations. Also required for starring public repositories.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "repo",
+            "description": "Grants read/write access to code, commit statuses, collaborators, and deployment statuses for public and private repositories and organizations.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "repo_deployment",
+            "description": "Grants access to deployment statuses for public and private repositories. This scope is only necessary to grant other users or services access to deployment statuses, without granting access to the code.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "delete_repo",
+            "description": "Grants access to delete adminable repositories.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "notifications",
+            "description": "Grants read access to a user's notifications. repo also provides this access.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "gist",
+            "description": "Grants write access to gists.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "read",
+            "description": "Grants read and ping access to hooks in public or private repositories.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "write",
+            "description": "Grants read, write, and ping access to hooks in public or private repositories.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "admin",
+            "description": "Grants read, write, ping, and delete access to hooks in public or private repositories.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/markdown": {
+      "post": {
+        "parameters": [
+          {
+            "name": "text",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "mode",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "context",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/notifications": {
+      "get": {
+        "parameters": [
+          {
+            "name": "subscribed",
+            "description": "The notification arrived because you're watching the repository",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "manual",
+            "description": "The notification arrived because you've specifically decided to subscribe to the thread (via an Issue or Pull Request)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "author",
+            "description": "The notification arrived because you've created the thread",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "comment",
+            "description": "The notification arrived because you've commented on the thread",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "mention",
+            "description": "The notification arrived because you were specifically @mentioned in the content",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "team_mention",
+            "description": "The notification arrived because you were on a team that was mentioned (like @org/team)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "state_change",
+            "description": "The notification arrived because you changed the thread state (like closing an Issue or merging a Pull Request)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "assign",
+            "description": "The notification arrived because you were assigned to the Issue",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "all",
+            "description": "boolean",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "participating",
+            "description": "boolean",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "since",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "before",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "last_read_at",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ignored",
+            "description": "boolean",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/orgs/:org/hooks": {
+      "get": {
+        "parameters": [
+          {
+            "name": "name",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "config",
+            "description": "object",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "events",
+            "description": "array",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "active",
+            "description": "boolean",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "url",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "content_type",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "secret",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "insecure_ssl",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "X",
+            "description": "The event type that was triggered.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/orgs/:org/members": {
+      "get": {
+        "parameters": [
+          {
+            "name": "filter",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "role",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "state",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/orgs/:org/migrations": {
+      "post": {
+        "parameters": [
+          {
+            "name": "repositories",
+            "description": "array of strings",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "lock_repositories",
+            "description": "boolean",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "exclude_attachments",
+            "description": "boolean",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/orgs/:org/teams": {
+      "get": {
+        "parameters": [
+          {
+            "name": "name",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "repo_names",
+            "description": "array of strings",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "privacy",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "permission",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "role",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/payload%20HTTP/1.1": {
+      "post": {
+        "parameters": [
+          {
+            "name": "commit_comment",
+            "description": "Any time a Commit is commented on.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "create",
+            "description": "Any time a Branch or Tag is created.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "delete",
+            "description": "Any time a Branch or Tag is deleted.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "deployment",
+            "description": "Any time a Repository has a new deployment created from the API.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "deployment_status",
+            "description": "Any time a deployment for a Repository has a status update from the API.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "fork",
+            "description": "Any time a Repository is forked.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "gollum",
+            "description": "Any time a Wiki page is updated.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "issue_comment",
+            "description": "Any time an Issue or Pull Request is commented on.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "issues",
+            "description": "Any time an Issue is assigned, unassigned, labeled, unlabeled, opened, closed, or reopened.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "member",
+            "description": "Any time a User is added as a collaborator to a non-Organization Repository.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "membership",
+            "description": "Any time a User is added or removed from a team. Organization hooks only.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page_build",
+            "description": "Any time a Pages site is built or results in a failed build.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "public",
+            "description": "Any time a Repository changes from private to public.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "pull_request_review_comment",
+            "description": "Any time a comment is created on a portion of the unified diff of a pull request (the Files Changed tab).",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "pull_request",
+            "description": "Any time a Pull Request is assigned, unassigned, labeled, unlabeled, opened, closed, reopened, or synchronized (updated due to a new push in the branch that the pull request is tracking).",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "push",
+            "description": "Any Git push to a Repository, including editing tags or branches. Commits via API actions that update references are also counted. This is the default event.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "repository",
+            "description": "Any time a Repository is created. Organization hooks only.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "release",
+            "description": "Any time a Release is published in a Repository.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "description": "Any time a Repository has a status update from the API",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "team_add",
+            "description": "Any time a team is added or modified on a Repository.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "watch",
+            "description": "Any time a User stars a Repository.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "X",
+            "description": "Name of the event that triggered this delivery.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "zen",
+            "description": "Random string of GitHub zen",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hook_id",
+            "description": "The ID of the webhook that triggered the ping",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hook",
+            "description": "The webhook configuration",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/rate_limit": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/assignees": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/collaborators": {
+      "get": {
+        "parameters": [
+          {
+            "name": "permission",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/comments": {
+      "get": {
+        "parameters": [
+          {
+            "name": "body",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "path",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "position",
+            "description": "integer",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "line",
+            "description": "integer",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/commits": {
+      "get": {
+        "parameters": [
+          {
+            "name": "sha",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "path",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "author",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "since",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "until",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/deployments": {
+      "get": {
+        "parameters": [
+          {
+            "name": "sha",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ref",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "task",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "environment",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "auto_merge",
+            "description": "boolean",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "required_contexts",
+            "description": "Array",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "payload",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "description": "integer",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "state",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "target_url",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/downloads": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/forks": {
+      "get": {
+        "parameters": [
+          {
+            "name": "sort",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "organization",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/git/blobs/:sha": {
+      "get": {
+        "parameters": [
+          {
+            "name": "content",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "encoding",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/git/commits/:sha": {
+      "get": {
+        "parameters": [
+          {
+            "name": "message",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "tree",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "parents",
+            "description": "array of strings",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "date",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/git/refs/:ref": {
+      "get": {
+        "parameters": [
+          {
+            "name": "ref",
+            "description": "type",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "sha",
+            "description": "type",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "force",
+            "description": "boolean",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/git/tags/:sha": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tag",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "message",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "object",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "tagger",
+            "description": "object",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "date",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/git/trees/:sha": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tree",
+            "description": "array of objects",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "base_tree",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "path",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "mode",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "sha",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "content",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/hooks": {
+      "get": {
+        "parameters": [
+          {
+            "name": "name",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "config",
+            "description": "object",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "events",
+            "description": "array",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "active",
+            "description": "boolean",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "add_events",
+            "description": "array",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "remove_events",
+            "description": "array",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "X",
+            "description": "The event type that was triggered.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hub",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/issues/:issue_number/events": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/issues/:number/comments": {
+      "get": {
+        "parameters": [
+          {
+            "name": "since",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "sort",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "direction",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/keys": {
+      "get": {
+        "parameters": [
+          {
+            "name": "title",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "key",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "read_only",
+            "description": "boolean",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/labels": {
+      "get": {
+        "parameters": [
+          {
+            "name": "name",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "color",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/merges": {
+      "post": {
+        "parameters": [
+          {
+            "name": "base",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "head",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "commit_message",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/milestones": {
+      "get": {
+        "parameters": [
+          {
+            "name": "state",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "sort",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "direction",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "title",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "due_on",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/pages": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/pulls": {
+      "get": {
+        "parameters": [
+          {
+            "name": "self",
+            "description": "The API location of this Pull Request.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "html",
+            "description": "The HTML location of this Pull Request.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "issue",
+            "description": "The API location of this Pull Request's Issue.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "comments",
+            "description": "The API location of this Pull Request's Issue comments.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "review_comments",
+            "description": "The API location of this Pull Request's Review comments.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "review_comment",
+            "description": "The URL template to construct the API location for a Review comment in this Pull Request's repository.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "commits",
+            "description": "The API location of this Pull Request's commits.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "statuses",
+            "description": "The API location of this Pull Request's commit statuses, which are the statuses of its head branch.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "state",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "head",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "base",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "sort",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "direction",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "title",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "commit_message",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "sha",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/pulls/:number/comments": {
+      "get": {
+        "parameters": [
+          {
+            "name": "sort",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "direction",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "since",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "commit_id",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "path",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "position",
+            "description": "integer",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "in_reply_to",
+            "description": "integer",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/readme": {
+      "get": {
+        "parameters": [
+          {
+            "name": "ref",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "path",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "message",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "content",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "branch",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "sha",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "archive_format",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/releases": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tag_name",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "target_commitish",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "draft",
+            "description": "boolean",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "prerelease",
+            "description": "boolean",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Content",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "label",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/stargazers": {
+      "get": {
+        "parameters": [
+          {
+            "name": "sort",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "direction",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/stats/contributors": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/statuses/:sha": {
+      "post": {
+        "parameters": [
+          {
+            "name": "state",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "target_url",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "context",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ref",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/repos/:owner/:repo/subscribers": {
+      "get": {
+        "parameters": [
+          {
+            "name": "subscribed",
+            "description": "boolean",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ignored",
+            "description": "boolean",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/search/repositories": {
+      "get": {
+        "parameters": [
+          {
+            "name": "q",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "sort",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "object_url",
+            "description": "The URL for the resource that contains a string property matching one of the search terms.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "object_type",
+            "description": "The name for the type of resource that exists at the given object_url.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "property",
+            "description": "The name of a property of the resource that exists at object_url. That property is a string that matches one of the search terms. (In the JSON returned from object_url, the full content for the fragment will be found in the property with this name.)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "fragment",
+            "description": "A subset of the value of property. This is the text fragment that matches one or more of the search terms.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "matches",
+            "description": "An array of one or more search terms that are present in fragment. The indices (i.e., \"offsets\") are relative to the fragment. (They are not relative to the full content of property.)",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/staff/indexing_jobs": {
+      "post": {
+        "parameters": [
+          {
+            "name": "target",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "A user or organization account.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/user/emails": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/user/orgs": {
+      "get": {
+        "parameters": [
+          {
+            "name": "since",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "billing_email",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "company",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "location",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/user/repos": {
+      "get": {
+        "parameters": [
+          {
+            "name": "visibility",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "affiliation",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "sort",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "direction",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "since",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "homepage",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "private",
+            "description": "boolean",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "has_issues",
+            "description": "boolean",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "has_wiki",
+            "description": "boolean",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "has_downloads",
+            "description": "boolean",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "team_id",
+            "description": "integer",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "auto_init",
+            "description": "boolean",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "gitignore_template",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "license_template",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "default_branch",
+            "description": "String",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "anon",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "protected",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "enabled",
+            "description": "boolean",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "required_status_checks",
+            "description": "object",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "enforcement_level",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "contexts",
+            "description": "array",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "off",
+            "description": "Turn off required status checks for this branch.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "non_admins",
+            "description": "Required status checks will be enforced for non-admins.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "everyone",
+            "description": "Required status checks will be enforced for everyone (including admins).",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/users/:username": {
+      "get": {
+        "parameters": [
+          {
+            "name": "name",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "blog",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "company",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "location",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hireable",
+            "description": "boolean",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "bio",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "since",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/users/:username/followers": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/users/:username/gists": {
+      "get": {
+        "parameters": [
+          {
+            "name": "since",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "files",
+            "description": "object",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "public",
+            "description": "boolean",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "content",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "filename",
+            "description": "string",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/users/:username/keys": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    }
+  },
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0"
+}
