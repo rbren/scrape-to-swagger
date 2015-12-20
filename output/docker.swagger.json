@@ -1,0 +1,566 @@
+{
+  "basePath": "/",
+  "host": "localhost",
+  "info": {
+    "title": "Docker Remote API",
+    "description": ""
+  },
+  "paths": {
+    "/_ping": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/auth": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/build": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/commit": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/containers/create": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/containers/json": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/containers/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/containers/{id}/archive": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      },
+      "head": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      },
+      "put": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/containers/{id}/attach": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/containers/{id}/attach/ws": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/containers/{id}/changes": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/containers/{id}/copy": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/containers/{id}/exec": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/containers/{id}/export": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/containers/{id}/json": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/containers/{id}/kill": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/containers/{id}/logs": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/containers/{id}/pause": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/containers/{id}/rename": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/containers/{id}/resize": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/containers/{id}/restart": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/containers/{id}/start": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/containers/{id}/stats": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/containers/{id}/stop": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/containers/{id}/top": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/containers/{id}/unpause": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/containers/{id}/wait": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/events": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/exec/{id}/json": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/exec/{id}/resize": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/exec/{id}/start": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/images/create": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/images/get": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/images/json": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/images/load": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/images/search": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/images/{name}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/images/{name}/get": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/images/{name}/history": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/images/{name}/json": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/images/{name}/push": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/images/{name}/tag": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/info": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/networks": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/networks/<network-id>": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/networks/create": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/networks/{id}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/networks/{id}/connect": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/networks/{id}/disconnect": {
+      "post": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/version": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/volumes": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/volumes/create": {
+      "post": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/volumes/{name}": {
+      "delete": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      },
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    }
+  },
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0"
+}

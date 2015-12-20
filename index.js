@@ -8,6 +8,10 @@ var cheerio = require('cheerio');
 var sortObj = require('sorted-object');
 var generateSchema = require('json-schema-generator');
 var argv = require('yargs').argv;
+if (argv.name) {
+  argv.config = __dirname + '/config/' + argv.name + '.js';
+  argv.output = __dirname + '/output/' + argv.name + '.swagger.json';
+}
 var config = require(argv.config);
 
 var swagger = {swagger: '2.0', paths: {}, info: {}, host: config.host, basePath: config.basePath};
@@ -62,22 +66,23 @@ function scrapePage(url, depth, callback) {
 function addPageToSwagger($) {
   var body = $('body');
   operations = resolveSelector(body, config.operations);
-  operations = resolveSelector(operations, config.operation);
+  operations = resolveSelector(operations, config.operation, $);
   operations.each(function() {
     var op = $(this);
     var method = extractText(op, config.method);
     var path = extractText(op, config.path);
     if (!method || !path) return;
-    console.log(method, path);
     method = method.toLowerCase();
     if (METHODS.indexOf(method) === -1) return;
     path = urlParser.parse(path).pathname;
     if (config.extractPathParameters) path = config.extractPathParameters(path);
     var sPath = swagger.paths[path] = swagger.paths[path] || {};
     var sOp = sPath[method] = sPath[method] || {parameters: [], responses: {}};
+    sOp.summary = extractText(op, config.operationSummary) || undefined;
+    sOp.description = extractText(op, config.operationDescription) || undefined;
 
     var parameters = resolveSelector(op, config.parameters);
-    parameters = resolveSelector(parameters, config.parameter);
+    parameters = resolveSelector(parameters, config.parameter, $);
     if (parameters) parameters.each(function() {
       var param = $(this);
       var name = extractText(param, config.parameterName);
@@ -115,9 +120,13 @@ function addPageToSwagger($) {
   })
 }
 
-function resolveSelector(el, extractor) {
+function resolveSelector(el, extractor, $) {
   if (!extractor) return el;
-  return extractor.sibling ? el.nextAll(extractor.selector) : el.find(extractor.selector);
+  if (extractor.sibling) return el.nextAll(extractor.selector);
+  if (extractor.split) return el.find(extractor.selector).map(function() {
+    return $(this).nextUntil(extractor.selector)
+  })
+  return el.find(extractor.selector);
 }
 
 function extractText(el, extractor) {
