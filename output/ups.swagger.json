@@ -1,0 +1,1586 @@
+{
+  "basePath": "/api",
+  "host": "webservices.i-parcel.com",
+  "info": {
+    "title": "UPS i-parcel API",
+    "description": ""
+  },
+  "paths": {
+    "api/AddReference": {
+      "post": {
+        "parameters": [
+          {
+            "name": "Key",
+            "description": "* Your i-parcel API key (visible in your Dashboard via the Integrate link.)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Reference",
+            "description": "*  Reference number associated with the parcel",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "TrackingNumber",
+            "description": "*  Parcel's Tracking Number",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Allows adding a reference number to a parcel"
+      }
+    },
+    "api/AuthorizeReturn": {
+      "post": {
+        "parameters": [
+          {
+            "name": "Currency",
+            "description": "* The currency in which to issue the refund (should be in your shopper's currency).",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Key",
+            "description": "* The API key provided to you by i-parcel.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Notes",
+            "description": "* Notes on this refund.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "OriginalTrackingNumber",
+            "description": "* The original tracking number of the parcel.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Reference",
+            "description": "* An internal reference that you can apply to the refund.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "RefundedBy",
+            "description": "* The person authorizing the refund.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ReturnTrackingNumber",
+            "description": "The tracking number of the return.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Value",
+            "description": "* The amount to refund.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Global e-commerce merchants can issue returns with this API."
+      }
+    },
+    "api/BannedCatalog": {
+      "post": {
+        "parameters": [
+          {
+            "name": "Country",
+            "description": "The country in which to ban the item. This can be left blank or null to ban the item in all countries.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Delete",
+            "description": "Designates that these are items are to be deleted instead of added.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Key",
+            "description": "* Your API key from i-parcel.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Sku",
+            "description": "* The item to ban.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Skus",
+            "description": "* A list of the skus to ban and their countries.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Ban certain skus for all or specified countries."
+      }
+    },
+    "api/Cancel": {
+      "post": {
+        "parameters": [
+          {
+            "name": "Key",
+            "description": "* Your i-parcel API key (visible in your Dashboard via the Integrate link.)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "TrackingNumber",
+            "description": "*  Parcel's Tracking Number",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "UserNotes",
+            "description": "Cancellation Notes",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Allows cancelling a parcel using its tracking number"
+      }
+    },
+    "api/CheckItems": {
+      "post": {
+        "parameters": [
+          {
+            "name": "AddressInfo",
+            "description": "* The addresses of the sender and recipient. A recipient country and postcode is the minimum required for CheckItems. All fields are required for an actual order.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Billing",
+            "description": "The billing address for the parcel",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "City",
+            "description": "* The consignee's city.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CompanyCurrency",
+            "description": "The unit representing your company's currency, if different from your account settings.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ControlNumber",
+            "description": "Russia, Israel, Taiwan, Korea, South Africa, and Brazil require a control number from the consignee. This is also known as a Tax ID.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CountryCode",
+            "description": "* The two-digit country code for the consignee.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CountryOfOrigin",
+            "description": "The country where the item originated. This is typically where the item was last assembled or manufactured.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CurrencyCode",
+            "description": "The currency in which to return prices.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CustHeightInches",
+            "description": "* The height of the item in inches. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CustLengthInches",
+            "description": "* The length of the item in inches. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CustWeightLbs",
+            "description": "* The weight of the item in pounds. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CustWidthInches",
+            "description": "* The width of the item in inches. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "DDP",
+            "description": "Whether to include duty and tax in the quote (and bill it to your shopper).",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Email",
+            "description": "* The consignee's email address.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "FirstName",
+            "description": "* The consignee's first name.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "HTSCode",
+            "description": "* The international harmonization code of the item. This is not required if the item is already in our catalog and you've allowed a week for us to classify it.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Insurance",
+            "description": "Whether to insure the order.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ItemDetailsList",
+            "description": "* The items to apply to this request.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Key",
+            "description": "* Your API key",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "LastName",
+            "description": "* The consignee's last name.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "OrderReference",
+            "description": "An order reference for your own internal tracking.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "OriginalPrice",
+            "description": "* The price of the item in your currency.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "OtherDiscount",
+            "description": "Any discounts you want to apply to the order.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "OtherDiscountCurrency",
+            "description": "The currency in which you'd like to apply the discount.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ParcelID",
+            "description": "An optional parcel id.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Phone",
+            "description": "* The consignee's phone number.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "PostCode",
+            "description": "* The consignee's postal code.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ProductDescription",
+            "description": "* A description of the item. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "PromoCode",
+            "description": "A promotional or coupon code that can have special pricing rules as configured in the Dashboard.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Quantity",
+            "description": "* The quantity of this item being shipped.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Region",
+            "description": "The consignee's province/region/state.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "SKU",
+            "description": "* The sku identifier for the item.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ServiceLevel",
+            "description": "The shipping type (115 = i-parcel UPS Select, 112 = i-parcel UPS Express)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Shipping",
+            "description": "The shipping address for the parcel",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ShopperCurrency",
+            "description": "The shopper's currency. The quote response will be converted to this currency.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Street1",
+            "description": "* Line 1 of the consignee's street address.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Street2",
+            "description": "* Line 2 of the consignee's street address.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ValueCompanyCurrency",
+            "description": "* The value of the item in your currency. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ValueShopperCurrency",
+            "description": "The value of the item in the shopper's currency. Not required if the item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Returns item validity and pricing from our version of your product catalog."
+      }
+    },
+    "api/Checkout": {
+      "post": {
+        "parameters": [
+          {
+            "name": "AddressInfo",
+            "description": "* The addresses of the sender and recipient. A recipient country and postcode is the minimum required for CheckItems. All fields are required for an actual order.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Billing",
+            "description": "The billing address for the parcel",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "City",
+            "description": "* The consignee's city.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CompanyCurrency",
+            "description": "The unit representing your company's currency, if different from your account settings.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ControlNumber",
+            "description": "Russia, Israel, Taiwan, Korea, South Africa, and Brazil require a control number from the consignee. This is also known as a Tax ID.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CountryCode",
+            "description": "* The two-digit country code for the consignee.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CountryOfOrigin",
+            "description": "The country where the item originated. This is typically where the item was last assembled or manufactured.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CreditCardCCV",
+            "description": "The card CCV number (global e-commerce).",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CreditCardExpMonth",
+            "description": "The month that the credit card expires (global e-commerce only).",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CreditCardExpYear",
+            "description": "The year that the credit card expires (global e-commerce).",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CreditCardName",
+            "description": "The name on the credit card (global e-commerce only).",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CreditCardNumber",
+            "description": "The credit card number (global e-commerce only).",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CurrencyCode",
+            "description": "The currency in which to return prices.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CustHeightInches",
+            "description": "* The height of the item in inches. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CustLengthInches",
+            "description": "* The length of the item in inches. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CustWeightLbs",
+            "description": "* The weight of the item in pounds. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CustWidthInches",
+            "description": "* The width of the item in inches. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "DDP",
+            "description": "Whether to include duty and tax in the quote (and bill it to your shopper).",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Email",
+            "description": "* The consignee's email address.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "FirstName",
+            "description": "* The consignee's first name.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "HTSCode",
+            "description": "* The international harmonization code of the item. This is not required if the item is already in our catalog and you've allowed a week for us to classify it.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Insurance",
+            "description": "Whether to insure the order.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ItemDetailsList",
+            "description": "* The items to apply to this request.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Key",
+            "description": "* Your API key",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Language",
+            "description": "Pass through a language value from your shopper (subscribe to your newsletter, etc. global e-commerce only).",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "LastName",
+            "description": "* The consignee's last name.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "OptIn",
+            "description": "Pass through an opt-in value from your shopper (subscribe to your newsletter, etc. global e-commerce only).",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "OrderReference",
+            "description": "An order reference for your own internal tracking.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "OriginalPrice",
+            "description": "* The price of the item in your currency.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "OtherDiscount",
+            "description": "Any discounts you want to apply to the order.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "OtherDiscountCurrency",
+            "description": "The currency in which you'd like to apply the discount.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ParcelID",
+            "description": "An optional parcel id.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "PaymentMethod",
+            "description": "The payment method (global e-commerce merchants only).",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Phone",
+            "description": "* The consignee's phone number.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "PostCode",
+            "description": "* The consignee's postal code.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ProductDescription",
+            "description": "* A description of the item. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "PromoCode",
+            "description": "A promotional or coupon code.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Quantity",
+            "description": "* The quantity of this item being shipped.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Region",
+            "description": "The consignee's province/region/state.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "SKU",
+            "description": "* The sku identifier for the item.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ServiceLevel",
+            "description": "The shipping type (115 = i-parcel UPS Select, 112 = i-parcel UPS Express)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "SessionID",
+            "description": "An optional session id.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Shipping",
+            "description": "The shipping address for the parcel",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ShopperCurrency",
+            "description": "The shopper's currency. The quote response will be converted to this currency.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Street1",
+            "description": "* Line 1 of the consignee's street address.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Street2",
+            "description": "* Line 2 of the consignee's street address.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ValueCompanyCurrency",
+            "description": "* The value of the item in your currency. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ValueShopperCurrency",
+            "description": "The value of the item in the shopper's currency. Not required if the item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Returns a payment link for your shoppers to finish checkout (Global-Ecommerce stores)."
+      }
+    },
+    "api/Currencies": {
+      "post": {
+        "parameters": [
+          {
+            "name": "Key",
+            "description": "* Your API key",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Get exchange rates converted from your company's base currency. Exchange rates are updated every day at midnight GMT."
+      }
+    },
+    "api/ExecuteReturn": {
+      "post": {
+        "parameters": [
+          {
+            "name": "Amount",
+            "description": "The amount to return in your shopper's currency. This won't be authorized until AuthorizeReturn is called.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Key",
+            "description": "* The API key provided to you by i-parcel.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ParcelId",
+            "description": "* The parcel id of the returned quote.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Qty",
+            "description": "* The quantity to return.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Rma",
+            "description": "A number internal to your store that we'll add as a reference to the return.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Sku",
+            "description": "* The sku of the item to return.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "TrackingNumber",
+            "description": "* The original tracking number to the order.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Allows a merchant to create a return."
+      }
+    },
+    "api/GetLabel": {
+      "get": {
+        "parameters": [],
+        "responses": {},
+        "summary": "Returns a label for the given key and tracking number."
+      },
+      "post": {
+        "parameters": [
+          {
+            "name": "Key",
+            "description": "* Your API key provided by i-parcel.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "TrackingNumber",
+            "description": "* The i-parcel tracking number of the original order.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Returns a label for the given key and tracking number."
+      }
+    },
+    "api/Quote": {
+      "post": {
+        "parameters": [
+          {
+            "name": "AddressInfo",
+            "description": "* The addresses of the sender and recipient. A recipient country and postcode is the minimum required for CheckItems. All fields are required for an actual order.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Billing",
+            "description": "The billing address for the parcel",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "City",
+            "description": "* The consignee's city.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CompanyCurrency",
+            "description": "The unit representing your company's currency, if different from your account settings.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ControlNumber",
+            "description": "Russia, Israel, Taiwan, Korea, South Africa, and Brazil require a control number from the consignee. This is also known as a Tax ID.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CountryCode",
+            "description": "* The two-digit country code for the consignee.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CountryOfOrigin",
+            "description": "The country where the item originated. This is typically where the item was last assembled or manufactured.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CurrencyCode",
+            "description": "The currency in which to return prices.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CustHeightInches",
+            "description": "* The height of the item in inches. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CustLengthInches",
+            "description": "* The length of the item in inches. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CustWeightLbs",
+            "description": "* The weight of the item in pounds. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CustWidthInches",
+            "description": "* The width of the item in inches. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "DDP",
+            "description": "Whether to include duty and tax in the quote (and bill it to your shopper).",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Email",
+            "description": "* The consignee's email address.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "FirstName",
+            "description": "* The consignee's first name.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "HTSCode",
+            "description": "* The international harmonization code of the item. This is not required if the item is already in our catalog and you've allowed a week for us to classify it.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Insurance",
+            "description": "Whether to insure the order.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ItemDetailsList",
+            "description": "* The items to apply to this request.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Key",
+            "description": "* Your API key",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "LastName",
+            "description": "* The consignee's last name.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "OrderReference",
+            "description": "An order reference for your own internal tracking.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "OriginalPrice",
+            "description": "* The price of the item in your currency.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "OtherDiscount",
+            "description": "Any discounts you want to apply to the order.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "OtherDiscountCurrency",
+            "description": "The currency in which you'd like to apply the discount.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ParcelID",
+            "description": "An optional parcel id.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Phone",
+            "description": "* The consignee's phone number.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "PostCode",
+            "description": "* The consignee's postal code.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ProductDescription",
+            "description": "* A description of the item. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "PromoCode",
+            "description": "A promotional or coupon code that can have special pricing rules as configured in the Dashboard.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Quantity",
+            "description": "* The quantity of this item being shipped.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Region",
+            "description": "The consignee's province/region/state.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "SKU",
+            "description": "* The sku identifier for the item.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ServiceLevel",
+            "description": "The shipping type (115 = i-parcel UPS Select, 112 = i-parcel UPS Express)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Shipping",
+            "description": "The shipping address for the parcel",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ShopperCurrency",
+            "description": "The shopper's currency. The quote response will be converted to this currency.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Street1",
+            "description": "* Line 1 of the consignee's street address.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Street2",
+            "description": "* Line 2 of the consignee's street address.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ValueCompanyCurrency",
+            "description": "* The value of the item in your currency. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ValueShopperCurrency",
+            "description": "The value of the item in the shopper's currency. Not required if the item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Quotes shipping, tax, and duty on a list of items for the given shipping address."
+      }
+    },
+    "api/Split": {
+      "post": {
+        "parameters": [
+          {
+            "name": "Discount",
+            "description": "If the original order has a discount, you can specify how much of the discount to carry over to the second parcel. If this is more than the original discount, it will be capped at the original discount (and the first split will have a discount of 0).",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Key",
+            "description": "* Your i-parcel API key (visible in your Dashboard via the Integrate link.)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Quantity",
+            "description": "The quantity of the item.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Sku",
+            "description": "* The sku of the item.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "SkuList",
+            "description": "* The items and quantities to copy into the first split. The difference will become the second split.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "TrackingNumber",
+            "description": "* The tracking number of the parcel you'd like to split.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Splits the contents of a parcel into two new parcels with their own tracking numbers.\r\n            To split a parcel more than two ways, simply call this service again on the newly split parcels."
+      }
+    },
+    "api/SplitMultiple": {
+      "post": {
+        "parameters": [
+          {
+            "name": "Key",
+            "description": "* Your i-parcel API key (visible in your Dashboard via the Integrate link.)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "NewTrackingNumber",
+            "description": "* The New tracking number.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "OriginalTrackingNumber",
+            "description": "* The Original tracking number of the parcel.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Quantity",
+            "description": "The quantity of the item.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Sku",
+            "description": "* The sku of the item.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "SkuList",
+            "description": "* The items and quantities.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "SplitParcelList",
+            "description": "* List of parcels to split original into.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Allows a parcel a parcel into a list of parcels."
+      }
+    },
+    "api/SubmitCatalog": {
+      "post": {
+        "parameters": [
+          {
+            "name": "Attribute1",
+            "description": "An optional attribute.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Attribute2",
+            "description": "An optional attribute.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Attribute3",
+            "description": "An optional attribute.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Attribute4",
+            "description": "An optional attribute.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Attribute5",
+            "description": "An optional attribute.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Attribute6",
+            "description": "An optional attribute.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CountryOfOrigin",
+            "description": "The item's country of manufacture.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CurrentPrice",
+            "description": "* The price of the item in your local currency. This field is required if submitting a new item.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Delete",
+            "description": "Flag this as true to delete this item from the catalog. Defaults to false.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "DimensionUnit",
+            "description": "The unit representing the item's Length, Width, and Height. The default is the standard weight unit for your country.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "HSCodeUS",
+            "description": "The US harmonization code for the item. If missing, our classifications department will add it within approximately a week.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Height",
+            "description": "The height of the item in inches. Required for new items unless you specify weight. You can provide a unit other than inches in the DimensionUnit field.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Key",
+            "description": "* Your API key",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Length",
+            "description": "The length of the item in inches. Required for new unless you specify weight. You can provide a unit other than inches in the DimensionUnit field.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ProductName",
+            "description": "* A brief description of the product to aid customs in identifying your parcel's contents.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ProductURL",
+            "description": "The url to the item in your e-commerce store. This is not required, but is recommended to help us classify it faster.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "SKN",
+            "description": "The SKN of the item.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "SKU",
+            "description": "* The item sku as it is presented on your e-commerce store.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "SKUs",
+            "description": "* A list of the items to submit.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ShipAlone",
+            "description": "Will the item ship separately from other items in the order? Setting this to true will allow your shopper to exceed the weight limit when adding to their cart. You must split the parcel if the order exceeds the weight limit.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Weight",
+            "description": "The item weight. Required for new items unless you specify dimensions. Defaults to your country's weight unit unless you specify WeightInKilos or WeightUnit.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "WeightInKilos",
+            "description": "Set this to true if the Weight parameter above is in kilos, or set WeightUnit to \"k\".",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "WeightUnit",
+            "description": "The unit representing the item's Weight.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Width",
+            "description": "The width of the item in inches. Required for new items unless you specify weight. You can provide a unit other than inches in the DimensionUnit field.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Add to or update your catalog."
+      }
+    },
+    "api/SubmitKit": {
+      "post": {
+        "parameters": [
+          {
+            "name": "Key",
+            "description": "* Your i-parcel API key (visible in your Dashboard via the Integrate link.)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "KitItemList",
+            "description": "* The list of items contained in the kit.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "KitList",
+            "description": "* A list of kits to submit.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ParentSku",
+            "description": "* The sku of the kit that contains items.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Quantity",
+            "description": "* The quantity of this item in the kit.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Sku",
+            "description": "* The kit item's sku.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "A kit request specifying items that are part of a kit."
+      }
+    },
+    "api/SubmitParcel": {
+      "post": {
+        "parameters": [
+          {
+            "name": "AddressInfo",
+            "description": "* The addresses of the sender and recipient. A recipient country and postcode is the minimum required for CheckItems. All fields are required for an actual order.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Billing",
+            "description": "The billing address for the parcel",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "City",
+            "description": "* The consignee's city.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CompanyCurrency",
+            "description": "The unit representing your company's currency, if different from your account settings.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ControlNumber",
+            "description": "Russia, Israel, Taiwan, Korea, South Africa, and Brazil require a control number from the consignee. This is also known as a Tax ID.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CountryCode",
+            "description": "* The two-digit country code for the consignee.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CountryOfOrigin",
+            "description": "The country where the item originated. This is typically where the item was last assembled or manufactured.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CurrencyCode",
+            "description": "The currency in which to return prices.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CustHeightInches",
+            "description": "* The height of the item in inches. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CustLengthInches",
+            "description": "* The length of the item in inches. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CustWeightLbs",
+            "description": "* The weight of the item in pounds. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "CustWidthInches",
+            "description": "* The width of the item in inches. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "DDP",
+            "description": "Whether to include duty and tax in the quote (and bill it to your shopper).",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Email",
+            "description": "* The consignee's email address.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "FirstName",
+            "description": "* The consignee's first name.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "HTSCode",
+            "description": "* The international harmonization code of the item. This is not required if the item is already in our catalog and you've allowed a week for us to classify it.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Insurance",
+            "description": "Whether to insure the order.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ItemDetailsList",
+            "description": "* The items to apply to this request.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Key",
+            "description": "* Your API key",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "LastName",
+            "description": "* The consignee's last name.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "OrderReference",
+            "description": "An order reference for your own internal tracking.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "OriginalPrice",
+            "description": "* The price of the item in your currency.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "OtherDiscount",
+            "description": "Any discounts you want to apply to the order.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "OtherDiscountCurrency",
+            "description": "The currency in which you'd like to apply the discount.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ParcelID",
+            "description": "An optional parcel id.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Phone",
+            "description": "* The consignee's phone number.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "PostCode",
+            "description": "* The consignee's postal code.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ProductDescription",
+            "description": "* A description of the item. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "PromoCode",
+            "description": "A promotional or coupon code that can have special pricing rules as configured in the Dashboard.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Quantity",
+            "description": "* The quantity of this item being shipped.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Region",
+            "description": "The consignee's province/region/state.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "SKU",
+            "description": "* The sku identifier for the item.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ServiceLevel",
+            "description": "The shipping type (115 = i-parcel UPS Select, 112 = i-parcel UPS Express)",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Shipping",
+            "description": "The shipping address for the parcel",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ShopperCurrency",
+            "description": "The shopper's currency. The quote response will be converted to this currency.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Street1",
+            "description": "* Line 1 of the consignee's street address.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Street2",
+            "description": "* Line 2 of the consignee's street address.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ValueCompanyCurrency",
+            "description": "* The value of the item in your currency. Not required if your item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ValueShopperCurrency",
+            "description": "The value of the item in the shopper's currency. Not required if the item is already in our catalog.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Acknowledges a quote as an actual parcel to be shipped to i-parcel."
+      }
+    },
+    "api/Track": {
+      "get": {
+        "parameters": [],
+        "responses": {},
+        "summary": "Retrieves the tracking information for one or more tracking numbers."
+      },
+      "post": {
+        "parameters": [
+          {
+            "name": "Key",
+            "description": "* Your API key provided by i-parcel.",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "TrackingNumbers",
+            "description": "* A list of tracking numbers to see events for.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Retrieves the tracking information for one or more tracking numbers."
+      }
+    }
+  },
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0"
+}
