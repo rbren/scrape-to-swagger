@@ -495,6 +495,7 @@
                       "updated_at",
                       "color",
                       "subscriber_count",
+                      "category_id",
                       "collection_url",
                       "posts_count"
                     ],
@@ -526,7 +527,9 @@
                       "subscriber_count": {
                         "type": "number"
                       },
-                      "category_id": {},
+                      "category_id": {
+                        "type": "number"
+                      },
                       "collection_url": {
                         "type": "string",
                         "minLength": 1
@@ -2356,8 +2359,15 @@
               "$schema": "http://json-schema.org/draft-04/schema#",
               "description": "",
               "type": "object",
-              "properties": {},
-              "required": []
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "email"
+              ]
             }
           },
           {
@@ -2382,8 +2392,15 @@
               "$schema": "http://json-schema.org/draft-04/schema#",
               "description": "",
               "type": "object",
-              "properties": {},
-              "required": []
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "email"
+              ]
             }
           },
           {
@@ -2463,7 +2480,6 @@
                       "subject_id",
                       "child_comments_count",
                       "url",
-                      "post_id",
                       "subject_type",
                       "sticky"
                     ],
@@ -2498,9 +2514,7 @@
                         "type": "string",
                         "minLength": 1
                       },
-                      "post_id": {
-                        "type": "number"
-                      },
+                      "post_id": {},
                       "subject_type": {
                         "type": "string",
                         "minLength": 1
@@ -2510,340 +2524,8 @@
                       },
                       "post": {
                         "type": "object",
-                        "properties": {
-                          "category_id": {
-                            "type": "number"
-                          },
-                          "day": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "id": {
-                            "type": "number"
-                          },
-                          "name": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "product_state": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "tagline": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "comments_count": {
-                            "type": "number"
-                          },
-                          "created_at": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "current_user": {
-                            "type": "object",
-                            "properties": {},
-                            "required": []
-                          },
-                          "discussion_url": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "exclusive": {},
-                          "featured": {
-                            "type": "boolean"
-                          },
-                          "maker_inside": {
-                            "type": "boolean"
-                          },
-                          "makers": {
-                            "type": "array",
-                            "items": {
-                              "required": [],
-                              "properties": {}
-                            }
-                          },
-                          "platforms": {
-                            "type": "array",
-                            "items": {
-                              "required": [],
-                              "properties": {}
-                            }
-                          },
-                          "redirect_url": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "screenshot_url": {
-                            "type": "object",
-                            "properties": {
-                              "300px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "850px": {
-                                "type": "string",
-                                "minLength": 1
-                              }
-                            },
-                            "required": [
-                              "300px",
-                              "850px"
-                            ]
-                          },
-                          "thumbnail": {
-                            "type": "object",
-                            "properties": {
-                              "id": {},
-                              "media_type": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "image_url": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "metadata": {
-                                "type": "object",
-                                "properties": {},
-                                "required": []
-                              }
-                            },
-                            "required": [
-                              "media_type",
-                              "image_url",
-                              "metadata"
-                            ]
-                          },
-                          "user": {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "number"
-                              },
-                              "name": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "headline": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "created_at": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "username": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "twitter_username": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "website_url": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "image_url": {
-                                "type": "object",
-                                "properties": {
-                                  "30px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "32px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "40px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "44px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "48px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "50px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "60px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "64px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "73px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "80px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "88px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "96px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "100px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "110px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "120px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "132px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "146px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "160px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "176px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "220px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "264px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "32px@2X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "40px@2X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "44px@2X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "88px@2X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "32px@3X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "40px@3X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "44px@3X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "88px@3X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "original": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  }
-                                },
-                                "required": [
-                                  "30px",
-                                  "32px",
-                                  "40px",
-                                  "44px",
-                                  "48px",
-                                  "50px",
-                                  "60px",
-                                  "64px",
-                                  "73px",
-                                  "80px",
-                                  "88px",
-                                  "96px",
-                                  "100px",
-                                  "110px",
-                                  "120px",
-                                  "132px",
-                                  "146px",
-                                  "160px",
-                                  "176px",
-                                  "220px",
-                                  "264px",
-                                  "32px@2X",
-                                  "40px@2X",
-                                  "44px@2X",
-                                  "88px@2X",
-                                  "32px@3X",
-                                  "40px@3X",
-                                  "44px@3X",
-                                  "88px@3X",
-                                  "original"
-                                ]
-                              },
-                              "profile_url": {
-                                "type": "string",
-                                "minLength": 1
-                              }
-                            },
-                            "required": [
-                              "id",
-                              "name",
-                              "headline",
-                              "created_at",
-                              "username",
-                              "twitter_username",
-                              "website_url",
-                              "image_url",
-                              "profile_url"
-                            ]
-                          },
-                          "votes_count": {
-                            "type": "number"
-                          }
-                        },
-                        "required": [
-                          "category_id",
-                          "day",
-                          "id",
-                          "name",
-                          "product_state",
-                          "tagline",
-                          "comments_count",
-                          "created_at",
-                          "current_user",
-                          "discussion_url",
-                          "featured",
-                          "maker_inside",
-                          "makers",
-                          "platforms",
-                          "redirect_url",
-                          "screenshot_url",
-                          "thumbnail",
-                          "user",
-                          "votes_count"
-                        ]
+                        "properties": {},
+                        "required": []
                       },
                       "user": {
                         "type": "object",
@@ -3077,7 +2759,7 @@
                       "type": "string",
                       "minLength": 1
                     },
-                    "post_id": {
+                    "live_event_id": {
                       "type": "number"
                     },
                     "parent_comment_id": {
@@ -3086,7 +2768,7 @@
                   },
                   "required": [
                     "body",
-                    "post_id",
+                    "live_event_id",
                     "parent_comment_id"
                   ]
                 }
@@ -3156,9 +2838,7 @@
                       "type": "string",
                       "minLength": 1
                     },
-                    "post_id": {
-                      "type": "number"
-                    },
+                    "post_id": {},
                     "subject_type": {
                       "type": "string",
                       "minLength": 1
@@ -3168,350 +2848,8 @@
                     },
                     "post": {
                       "type": "object",
-                      "properties": {
-                        "category_id": {
-                          "type": "number"
-                        },
-                        "day": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "id": {
-                          "type": "number"
-                        },
-                        "name": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "product_state": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "tagline": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "comments_count": {
-                          "type": "number"
-                        },
-                        "created_at": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "current_user": {
-                          "type": "object",
-                          "properties": {
-                            "voted_for_post": {
-                              "type": "boolean"
-                            },
-                            "commented_on_post": {
-                              "type": "boolean"
-                            }
-                          },
-                          "required": [
-                            "voted_for_post",
-                            "commented_on_post"
-                          ]
-                        },
-                        "discussion_url": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "exclusive": {},
-                        "featured": {
-                          "type": "boolean"
-                        },
-                        "maker_inside": {
-                          "type": "boolean"
-                        },
-                        "makers": {
-                          "type": "array",
-                          "items": {
-                            "required": [],
-                            "properties": {}
-                          }
-                        },
-                        "platforms": {
-                          "type": "array",
-                          "items": {
-                            "required": [],
-                            "properties": {}
-                          }
-                        },
-                        "redirect_url": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "screenshot_url": {
-                          "type": "object",
-                          "properties": {
-                            "300px": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "850px": {
-                              "type": "string",
-                              "minLength": 1
-                            }
-                          },
-                          "required": [
-                            "300px",
-                            "850px"
-                          ]
-                        },
-                        "thumbnail": {
-                          "type": "object",
-                          "properties": {
-                            "id": {},
-                            "media_type": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "image_url": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "metadata": {
-                              "type": "object",
-                              "properties": {},
-                              "required": []
-                            }
-                          },
-                          "required": [
-                            "media_type",
-                            "image_url",
-                            "metadata"
-                          ]
-                        },
-                        "user": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "number"
-                            },
-                            "name": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "headline": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "created_at": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "username": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "twitter_username": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "website_url": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "image_url": {
-                              "type": "object",
-                              "properties": {
-                                "30px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "32px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "40px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "44px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "48px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "50px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "60px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "64px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "73px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "80px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "88px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "96px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "100px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "110px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "120px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "132px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "146px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "160px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "176px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "220px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "264px": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "32px@2X": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "40px@2X": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "44px@2X": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "88px@2X": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "32px@3X": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "40px@3X": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "44px@3X": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "88px@3X": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "original": {
-                                  "type": "string",
-                                  "minLength": 1
-                                }
-                              },
-                              "required": [
-                                "30px",
-                                "32px",
-                                "40px",
-                                "44px",
-                                "48px",
-                                "50px",
-                                "60px",
-                                "64px",
-                                "73px",
-                                "80px",
-                                "88px",
-                                "96px",
-                                "100px",
-                                "110px",
-                                "120px",
-                                "132px",
-                                "146px",
-                                "160px",
-                                "176px",
-                                "220px",
-                                "264px",
-                                "32px@2X",
-                                "40px@2X",
-                                "44px@2X",
-                                "88px@2X",
-                                "32px@3X",
-                                "40px@3X",
-                                "44px@3X",
-                                "88px@3X",
-                                "original"
-                              ]
-                            },
-                            "profile_url": {
-                              "type": "string",
-                              "minLength": 1
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "name",
-                            "headline",
-                            "created_at",
-                            "username",
-                            "twitter_username",
-                            "website_url",
-                            "image_url",
-                            "profile_url"
-                          ]
-                        },
-                        "votes_count": {
-                          "type": "number"
-                        }
-                      },
-                      "required": [
-                        "category_id",
-                        "day",
-                        "id",
-                        "name",
-                        "product_state",
-                        "tagline",
-                        "comments_count",
-                        "created_at",
-                        "current_user",
-                        "discussion_url",
-                        "featured",
-                        "maker_inside",
-                        "makers",
-                        "platforms",
-                        "redirect_url",
-                        "screenshot_url",
-                        "thumbnail",
-                        "user",
-                        "votes_count"
-                      ]
+                      "properties": {},
+                      "required": []
                     },
                     "user": {
                       "type": "object",
@@ -3728,7 +3066,6 @@
                     "subject_id",
                     "child_comments_count",
                     "url",
-                    "post_id",
                     "subject_type",
                     "sticky",
                     "post",
@@ -6301,8 +5638,15 @@
               "$schema": "http://json-schema.org/draft-04/schema#",
               "description": "",
               "type": "object",
-              "properties": {},
-              "required": []
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "email"
+              ]
             }
           },
           {
@@ -7856,14 +7200,6 @@
                   "type": "string",
                   "minLength": 1
                 },
-                "redirect_uri": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "code": {
-                  "type": "string",
-                  "minLength": 1
-                },
                 "grant_type": {
                   "type": "string",
                   "minLength": 1
@@ -7872,8 +7208,6 @@
               "required": [
                 "client_id",
                 "client_secret",
-                "redirect_uri",
-                "code",
                 "grant_type"
               ]
             }
@@ -7898,7 +7232,7 @@
           },
           {
             "name": "grant_type",
-            "description": "use `client_credentials`",
+            "description": "use `authorization_code`",
             "in": "query",
             "type": "string"
           },
@@ -7927,12 +7261,17 @@
                 },
                 "expires_in": {
                   "type": "number"
+                },
+                "scope": {
+                  "type": "string",
+                  "minLength": 1
                 }
               },
               "required": [
                 "access_token",
                 "token_type",
-                "expires_in"
+                "expires_in",
+                "scope"
               ]
             }
           }
@@ -7965,337 +7304,9 @@
               "properties": {
                 "posts": {
                   "type": "array",
-                  "uniqueItems": true,
-                  "minItems": 1,
                   "items": {
-                    "required": [
-                      "category_id",
-                      "day",
-                      "id",
-                      "name",
-                      "product_state",
-                      "tagline",
-                      "comments_count",
-                      "created_at",
-                      "discussion_url",
-                      "featured",
-                      "maker_inside",
-                      "redirect_url",
-                      "votes_count"
-                    ],
-                    "properties": {
-                      "category_id": {
-                        "type": "number"
-                      },
-                      "day": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "id": {
-                        "type": "number"
-                      },
-                      "name": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "product_state": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "tagline": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "comments_count": {
-                        "type": "number"
-                      },
-                      "created_at": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "current_user": {
-                        "type": "object",
-                        "properties": {},
-                        "required": []
-                      },
-                      "discussion_url": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "exclusive": {},
-                      "featured": {
-                        "type": "boolean"
-                      },
-                      "maker_inside": {
-                        "type": "boolean"
-                      },
-                      "makers": {
-                        "type": "array",
-                        "items": {
-                          "required": [],
-                          "properties": {}
-                        }
-                      },
-                      "platforms": {
-                        "type": "array",
-                        "items": {
-                          "required": [],
-                          "properties": {}
-                        }
-                      },
-                      "redirect_url": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "screenshot_url": {
-                        "type": "object",
-                        "properties": {
-                          "300px": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "850px": {
-                            "type": "string",
-                            "minLength": 1
-                          }
-                        },
-                        "required": [
-                          "300px",
-                          "850px"
-                        ]
-                      },
-                      "thumbnail": {
-                        "type": "object",
-                        "properties": {
-                          "id": {},
-                          "media_type": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "image_url": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "metadata": {
-                            "type": "object",
-                            "properties": {},
-                            "required": []
-                          }
-                        },
-                        "required": [
-                          "media_type",
-                          "image_url",
-                          "metadata"
-                        ]
-                      },
-                      "user": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "number"
-                          },
-                          "name": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "headline": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "created_at": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "username": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "twitter_username": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "website_url": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "image_url": {
-                            "type": "object",
-                            "properties": {
-                              "30px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "32px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "40px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "44px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "48px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "50px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "60px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "64px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "73px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "80px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "88px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "96px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "100px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "110px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "120px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "132px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "146px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "160px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "176px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "220px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "264px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "32px@2X": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "40px@2X": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "44px@2X": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "88px@2X": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "32px@3X": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "40px@3X": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "44px@3X": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "88px@3X": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "original": {
-                                "type": "string",
-                                "minLength": 1
-                              }
-                            },
-                            "required": [
-                              "30px",
-                              "32px",
-                              "40px",
-                              "44px",
-                              "48px",
-                              "50px",
-                              "60px",
-                              "64px",
-                              "73px",
-                              "80px",
-                              "88px",
-                              "96px",
-                              "100px",
-                              "110px",
-                              "120px",
-                              "132px",
-                              "146px",
-                              "160px",
-                              "176px",
-                              "220px",
-                              "264px",
-                              "32px@2X",
-                              "40px@2X",
-                              "44px@2X",
-                              "88px@2X",
-                              "32px@3X",
-                              "40px@3X",
-                              "44px@3X",
-                              "88px@3X",
-                              "original"
-                            ]
-                          },
-                          "profile_url": {
-                            "type": "string",
-                            "minLength": 1
-                          }
-                        },
-                        "required": [
-                          "id",
-                          "name",
-                          "headline",
-                          "created_at",
-                          "username",
-                          "twitter_username",
-                          "website_url",
-                          "image_url",
-                          "profile_url"
-                        ]
-                      },
-                      "votes_count": {
-                        "type": "number"
-                      }
-                    }
+                    "required": [],
+                    "properties": {}
                   }
                 }
               },
@@ -9074,25 +8085,34 @@
                         "required": [],
                         "properties": {}
                       }
-                    },
-                    "primary_link.url": {
-                      "type": "array",
-                      "items": {
-                        "required": [],
-                        "properties": {}
-                      }
                     }
                   },
                   "required": [
-                    "url",
-                    "primary_link.url"
+                    "url"
+                  ]
+                },
+                "duplicate": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "id": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "id"
                   ]
                 }
               },
               "required": [
                 "error",
                 "error_description",
-                "details"
+                "details",
+                "duplicate"
               ]
             }
           }
@@ -9531,8 +8551,18 @@
                     },
                     "current_user": {
                       "type": "object",
-                      "properties": {},
-                      "required": []
+                      "properties": {
+                        "voted_for_post": {
+                          "type": "boolean"
+                        },
+                        "commented_on_post": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "voted_for_post",
+                        "commented_on_post"
+                      ]
                     },
                     "discussion_url": {
                       "type": "string",
@@ -9583,9 +8613,7 @@
                     "thumbnail": {
                       "type": "object",
                       "properties": {
-                        "id": {
-                          "type": "number"
-                        },
+                        "id": {},
                         "media_type": {
                           "type": "string",
                           "minLength": 1
@@ -9601,7 +8629,6 @@
                         }
                       },
                       "required": [
-                        "id",
                         "media_type",
                         "image_url",
                         "metadata"
@@ -9816,290 +8843,9 @@
                     },
                     "comments": {
                       "type": "array",
-                      "uniqueItems": true,
-                      "minItems": 1,
                       "items": {
-                        "required": [
-                          "id",
-                          "body",
-                          "created_at",
-                          "user_id",
-                          "votes",
-                          "subject_id",
-                          "child_comments_count",
-                          "url",
-                          "post_id",
-                          "subject_type",
-                          "sticky",
-                          "maker",
-                          "hunter",
-                          "live_guest"
-                        ],
-                        "properties": {
-                          "id": {
-                            "type": "number"
-                          },
-                          "body": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "created_at": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "parent_comment_id": {},
-                          "user_id": {
-                            "type": "number"
-                          },
-                          "votes": {
-                            "type": "number"
-                          },
-                          "subject_id": {
-                            "type": "number"
-                          },
-                          "child_comments_count": {
-                            "type": "number"
-                          },
-                          "url": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "post_id": {
-                            "type": "number"
-                          },
-                          "subject_type": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "sticky": {
-                            "type": "boolean"
-                          },
-                          "post": {
-                            "type": "object",
-                            "properties": {},
-                            "required": []
-                          },
-                          "user": {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "number"
-                              },
-                              "name": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "headline": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "created_at": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "username": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "twitter_username": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "website_url": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "image_url": {
-                                "type": "object",
-                                "properties": {
-                                  "30px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "32px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "40px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "44px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "48px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "50px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "60px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "64px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "73px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "80px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "88px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "96px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "100px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "110px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "120px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "132px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "146px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "160px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "176px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "220px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "264px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "32px@2X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "40px@2X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "44px@2X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "88px@2X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "32px@3X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "40px@3X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "44px@3X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "88px@3X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "original": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  }
-                                },
-                                "required": [
-                                  "30px",
-                                  "32px",
-                                  "40px",
-                                  "44px",
-                                  "48px",
-                                  "50px",
-                                  "60px",
-                                  "64px",
-                                  "73px",
-                                  "80px",
-                                  "88px",
-                                  "96px",
-                                  "100px",
-                                  "110px",
-                                  "120px",
-                                  "132px",
-                                  "146px",
-                                  "160px",
-                                  "176px",
-                                  "220px",
-                                  "264px",
-                                  "32px@2X",
-                                  "40px@2X",
-                                  "44px@2X",
-                                  "88px@2X",
-                                  "32px@3X",
-                                  "40px@3X",
-                                  "44px@3X",
-                                  "88px@3X",
-                                  "original"
-                                ]
-                              },
-                              "profile_url": {
-                                "type": "string",
-                                "minLength": 1
-                              }
-                            },
-                            "required": [
-                              "id",
-                              "name",
-                              "headline",
-                              "created_at",
-                              "username",
-                              "twitter_username",
-                              "website_url",
-                              "image_url",
-                              "profile_url"
-                            ]
-                          },
-                          "child_comments": {
-                            "type": "array",
-                            "items": {
-                              "required": [],
-                              "properties": {}
-                            }
-                          },
-                          "maker": {
-                            "type": "boolean"
-                          },
-                          "hunter": {
-                            "type": "boolean"
-                          },
-                          "live_guest": {
-                            "type": "boolean"
-                          }
-                        }
+                        "required": [],
+                        "properties": {}
                       }
                     },
                     "votes": {
@@ -10379,337 +9125,9 @@
                     },
                     "related_posts": {
                       "type": "array",
-                      "uniqueItems": true,
-                      "minItems": 1,
                       "items": {
-                        "required": [
-                          "category_id",
-                          "day",
-                          "id",
-                          "name",
-                          "product_state",
-                          "tagline",
-                          "comments_count",
-                          "created_at",
-                          "discussion_url",
-                          "featured",
-                          "maker_inside",
-                          "redirect_url",
-                          "votes_count"
-                        ],
-                        "properties": {
-                          "category_id": {
-                            "type": "number"
-                          },
-                          "day": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "id": {
-                            "type": "number"
-                          },
-                          "name": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "product_state": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "tagline": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "comments_count": {
-                            "type": "number"
-                          },
-                          "created_at": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "current_user": {
-                            "type": "object",
-                            "properties": {},
-                            "required": []
-                          },
-                          "discussion_url": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "exclusive": {},
-                          "featured": {
-                            "type": "boolean"
-                          },
-                          "maker_inside": {
-                            "type": "boolean"
-                          },
-                          "makers": {
-                            "type": "array",
-                            "items": {
-                              "required": [],
-                              "properties": {}
-                            }
-                          },
-                          "platforms": {
-                            "type": "array",
-                            "items": {
-                              "required": [],
-                              "properties": {}
-                            }
-                          },
-                          "redirect_url": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "screenshot_url": {
-                            "type": "object",
-                            "properties": {
-                              "300px": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "850px": {
-                                "type": "string",
-                                "minLength": 1
-                              }
-                            },
-                            "required": [
-                              "300px",
-                              "850px"
-                            ]
-                          },
-                          "thumbnail": {
-                            "type": "object",
-                            "properties": {
-                              "id": {},
-                              "media_type": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "image_url": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "metadata": {
-                                "type": "object",
-                                "properties": {},
-                                "required": []
-                              }
-                            },
-                            "required": [
-                              "media_type",
-                              "image_url",
-                              "metadata"
-                            ]
-                          },
-                          "user": {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "number"
-                              },
-                              "name": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "headline": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "created_at": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "username": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "twitter_username": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "website_url": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "image_url": {
-                                "type": "object",
-                                "properties": {
-                                  "30px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "32px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "40px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "44px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "48px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "50px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "60px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "64px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "73px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "80px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "88px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "96px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "100px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "110px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "120px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "132px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "146px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "160px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "176px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "220px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "264px": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "32px@2X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "40px@2X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "44px@2X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "88px@2X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "32px@3X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "40px@3X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "44px@3X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "88px@3X": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "original": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  }
-                                },
-                                "required": [
-                                  "30px",
-                                  "32px",
-                                  "40px",
-                                  "44px",
-                                  "48px",
-                                  "50px",
-                                  "60px",
-                                  "64px",
-                                  "73px",
-                                  "80px",
-                                  "88px",
-                                  "96px",
-                                  "100px",
-                                  "110px",
-                                  "120px",
-                                  "132px",
-                                  "146px",
-                                  "160px",
-                                  "176px",
-                                  "220px",
-                                  "264px",
-                                  "32px@2X",
-                                  "40px@2X",
-                                  "44px@2X",
-                                  "88px@2X",
-                                  "32px@3X",
-                                  "40px@3X",
-                                  "44px@3X",
-                                  "88px@3X",
-                                  "original"
-                                ]
-                              },
-                              "profile_url": {
-                                "type": "string",
-                                "minLength": 1
-                              }
-                            },
-                            "required": [
-                              "id",
-                              "name",
-                              "headline",
-                              "created_at",
-                              "username",
-                              "twitter_username",
-                              "website_url",
-                              "image_url",
-                              "profile_url"
-                            ]
-                          },
-                          "votes_count": {
-                            "type": "number"
-                          }
-                        }
+                        "required": [],
+                        "properties": {}
                       }
                     },
                     "install_links": {
@@ -10748,52 +9166,12 @@
                     },
                     "media": {
                       "type": "array",
-                      "uniqueItems": true,
-                      "minItems": 1,
                       "items": {
-                        "required": [
-                          "id",
-                          "media_type",
-                          "priority",
-                          "original_width",
-                          "original_height",
-                          "image_url"
-                        ],
-                        "properties": {
-                          "id": {
-                            "type": "number"
-                          },
-                          "kindle_asin": {},
-                          "media_type": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "priority": {
-                            "type": "number"
-                          },
-                          "platform": {},
-                          "video_id": {},
-                          "original_width": {
-                            "type": "number"
-                          },
-                          "original_height": {
-                            "type": "number"
-                          },
-                          "metadata": {
-                            "type": "object",
-                            "properties": {},
-                            "required": []
-                          },
-                          "image_url": {
-                            "type": "string",
-                            "minLength": 1
-                          }
-                        }
+                        "required": [],
+                        "properties": {}
                       }
                     },
-                    "header_media_id": {
-                      "type": "number"
-                    }
+                    "header_media_id": {}
                   },
                   "required": [
                     "category_id",
@@ -10820,8 +9198,7 @@
                     "related_links",
                     "related_posts",
                     "install_links",
-                    "media",
-                    "header_media_id"
+                    "media"
                   ]
                 }
               },
