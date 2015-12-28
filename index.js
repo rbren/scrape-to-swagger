@@ -71,6 +71,7 @@ function addPageToSwagger($) {
     var op = $(this);
     var method = extractText(op, config.method);
     var path = extractText(op, config.path);
+    log('  op', method, path);
     if (!method || !path) return;
     method = method.toLowerCase();
     if (METHODS.indexOf(method) === -1) return;
@@ -94,8 +95,8 @@ function addOperationToSwagger($, op, method, path) {
   if (parameters) parameters.each(function() {
     var param = $(this);
     var name = extractText(param, config.parameterName);
-    if (!name) return;
     log('    param', name);
+    if (!name) return;
     var sParameter = {name: name};
     sOp.parameters.push(sParameter);
     var description = extractText(param, config.parameterDescription);
@@ -139,13 +140,14 @@ function resolveSelector(el, extractor, $) {
 function extractText(el, extractor) {
   if (!extractor) return '';
   if (typeof extractor === 'string') return extractor;
-  var text = resolveSelector(el, extractor).first().text();
+  var el = resolveSelector(el, extractor).first();
+  var text = extractor.parse ? extractor.parse(el) : el.text();
   if (extractor.regex) {
     var matches = text.match(extractor.regex);
     if (!matches) return;
     text = matches[extractor.regexMatch || 1];
   }
-  return text;
+  return (text || '').trim();
 }
 
 function extractJSON(el, extractor) {

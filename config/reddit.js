@@ -9,8 +9,16 @@ var config = module.exports = {
 
   operations: {selector: '.section.methods'},
   operation: {selector: '.endpoint'},
-  path: {selector: 'h3', regex: /\w+ (\/\S*)/},
-  method: {selector: 'h3', regex: /(\w+) .*/},
+  path: {
+    selector: 'h3',
+    parse: function(el) {
+      el = el.clone()
+      el.find('.oauth-scope').remove();
+      el.find('.method').remove();
+      return el.text();
+    },
+  },
+  method: {selector: 'h3 .method'},
   
   operationDescription: {selector: '.info .md'},
 
@@ -22,7 +30,6 @@ var config = module.exports = {
 
   fixPathParameters: function(path, el) {
     el.find('.placeholder').each(function() {
-      var placeholder = $(this);
     })
     return path;
   }
