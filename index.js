@@ -211,6 +211,15 @@ function fixErrors() {
         if (origParam) origParam.in = 'path';
         else op.parameters.push({in: 'path', name: paramName, type: 'string'})
       }
+
+      var bodyParam = op.parameters.filter(function(p) {return p.in === 'body'})[0];
+      if (bodyParam && bodyParam.schema) {
+        var props = bodyParam.schema.properties || {};
+        op.parameters = op.parameters.filter(function(p) {
+          if (props[p.name]) return false;
+          return true;
+        })
+      }
     }
   }
   swagger = sortObj(swagger);
