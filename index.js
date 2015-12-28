@@ -14,7 +14,14 @@ if (argv.name) {
 }
 var config = require(argv.config);
 
-var swagger = {swagger: '2.0', paths: {}, info: {}, host: config.host, basePath: config.basePath};
+var swagger = {
+  swagger: '2.0',
+  paths: {},
+  info: {},
+  host: config.host,
+  basePath: config.basePath,
+  securityDefinitions: config.securityDefinitions,
+};
 
 var parsed = urlParser.parse(config.url);
 var host = parsed.protocol + '//' + parsed.host;
