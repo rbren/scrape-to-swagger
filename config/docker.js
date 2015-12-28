@@ -20,7 +20,7 @@ var config = module.exports = {
   responseDescription: {selector: RESPONSE_SELECTOR, regex: /HTTP\/1.1 \d+ (.*)/},
   responseSchema: {selector: RESPONSE_SELECTOR, regex: /\{.*\}/},
   
-  extractPathParameters: function(path) {
+  fixPathParameters: function(path) {
     var pieces = path.split('/');
     var params = [];
     pieces = pieces.map(function(piece) {

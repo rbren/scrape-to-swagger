@@ -21,7 +21,7 @@ var config = module.exports = {
   responseDescription: {selector: 'pre.highlight-headers', regex: /Status: \d+ (.*)/, sibling: true},
   responseSchema: {selector: 'pre.highlight-json', isExample: true, sibling: true},
 
-  extractPathParameters: function(path) {
+  fixPathParameters: function(path) {
     pieces = path.split('/');
     pieces = pieces.map(function(p) {
       return p.replace(/:(\w+)/g, '{$1}')

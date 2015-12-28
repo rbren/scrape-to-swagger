@@ -17,7 +17,7 @@ var config = module.exports = {
   responseDescription: {selector: 'h3:nth-of-type(2) + h4 + pre', regex: /\d+ (.*)/},
   responseSchema: {selector: 'h3:nth-of-type(2) + h4 + pre + h4 + pre + h4 + pre', isExample: true},
   
-  extractPathParameters: function(path) {
+  fixPathParameters: function(path) {
     var pieces = path.split('/');
     var params = [];
     pieces.forEach(function(piece) {
