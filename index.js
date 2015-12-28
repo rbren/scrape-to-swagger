@@ -53,7 +53,7 @@ function scrapePage(url, depth, callback) {
     addPageToSwagger($);
     if (!depth) return callback();
     var links = $('a[href]');
-    async.parallel($('a[href]').map(function(i, el) {
+    async.series($('a[href]').map(function(i, el) {
       return function(acb) {
         scrapePage($(el).attr('href'), depth - 1, acb);
       }
