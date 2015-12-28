@@ -6,7 +6,7 @@ var config = module.exports = {
   description: {selector: ''},
   operation: {selector: '.api--content'},
   path: {selector: '.api--request pre:first-of-type', regex: /\w+ (.*)/},
-  extractPathParameters: function(path) {
+  fixPathParameters: function(path) {
     var pieces = path.split('/');
     var params = [];
     pieces.forEach(function(piece) {

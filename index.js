@@ -75,48 +75,55 @@ function addPageToSwagger($) {
     method = method.toLowerCase();
     if (METHODS.indexOf(method) === -1) return;
     path = urlParser.parse(path).pathname;
-    if (config.extractPathParameters) path = config.extractPathParameters(path);
-    var sPath = swagger.paths[path] = swagger.paths[path] || {};
-    var sOp = sPath[method] = sPath[method] || {parameters: [], responses: {}};
-    sOp.summary = extractText(op, config.operationSummary) || undefined;
-    sOp.description = extractText(op, config.operationDescription) || undefined;
-
-    var parameters = resolveSelector(op, config.parameters);
-    parameters = resolveSelector(parameters, config.parameter, $);
-    if (parameters) parameters.each(function() {
-      var param = $(this);
-      var name = extractText(param, config.parameterName);
-      if (!name) return;
-      log('    param', name);
-      var sParameter = {name: name};
-      sOp.parameters.push(sParameter);
-      var description = extractText(param, config.parameterDescription);
-      if (description) sParameter.description = description.trim();
-      sParameter.in = extractText(param, config.parameterIn) || 'query';
-      sParameter.type = extractText(param, config.parameterType) || 'string';
+    if (config.fixPathParameters) path = config.fixPathParameters(path, resolveSelector(op, config.path));
+    var paths = Array.isArray(path) ? path : [path];
+    paths.forEach(function(path) {
+      addOperationToSwagger($, op, method, path);
     });
-    var body = extractJSON(op, config.requestBody);
-    if (body) {
-      log('    param', 'body');
-      sOp.parameters.unshift({name: 'body', in: 'body', schema: body});
-    }
+  });
+}
 
-    var responses = resolveSelector(op, config.responses).first();
-    responses = resolveSelector(responses, config.response);
-    responses.each(function() {
-      var response = $(this); 
-      var responseStatus = extractText(response, config.responseStatus);
-      if (responseStatus) {
-        log('    resp', responseStatus);
-        var responseDescription = extractText(response, config.responseDescription);
-        var responseSchema = extractJSON(response, config.responseSchema);
-        responseStatus = parseInt(responseStatus);
-        sOp.responses[responseStatus] = {
-            description: responseDescription || '',
-            schema: responseSchema || undefined,
-        };
-      }
-    })
+function addOperationToSwagger($, op, method, path) {
+  var sPath = swagger.paths[path] = swagger.paths[path] || {};
+  var sOp = sPath[method] = sPath[method] || {parameters: [], responses: {}};
+  sOp.summary = extractText(op, config.operationSummary) || undefined;
+  sOp.description = extractText(op, config.operationDescription) || undefined;
+
+  var parameters = resolveSelector(op, config.parameters);
+  parameters = resolveSelector(parameters, config.parameter, $);
+  if (parameters) parameters.each(function() {
+    var param = $(this);
+    var name = extractText(param, config.parameterName);
+    if (!name) return;
+    log('    param', name);
+    var sParameter = {name: name};
+    sOp.parameters.push(sParameter);
+    var description = extractText(param, config.parameterDescription);
+    if (description) sParameter.description = description.trim();
+    sParameter.in = extractText(param, config.parameterIn) || 'query';
+    sParameter.type = extractText(param, config.parameterType) || 'string';
+  });
+  var body = extractJSON(op, config.requestBody);
+  if (body) {
+    log('    param', 'body');
+    sOp.parameters.unshift({name: 'body', in: 'body', schema: body});
+  }
+
+  var responses = resolveSelector(op, config.responses).first();
+  responses = resolveSelector(responses, config.response);
+  responses.each(function() {
+    var response = $(this); 
+    var responseStatus = extractText(response, config.responseStatus);
+    if (responseStatus) {
+      log('    resp', responseStatus);
+      var responseDescription = extractText(response, config.responseDescription);
+      var responseSchema = extractJSON(response, config.responseSchema);
+      responseStatus = parseInt(responseStatus);
+      sOp.responses[responseStatus] = {
+          description: responseDescription || '',
+          schema: responseSchema || undefined,
+      };
+    }
   })
 }
 
