@@ -76,7 +76,7 @@ function addPageToSwagger($) {
     method = method.toLowerCase();
     if (METHODS.indexOf(method) === -1) return;
     path = urlParser.parse(path).pathname;
-    if (config.fixPathParameters) path = config.fixPathParameters(path, resolveSelector(op, config.path));
+    if (config.fixPathParameters) path = config.fixPathParameters(path, $, resolveSelector(op, config.path));
     var paths = Array.isArray(path) ? path : [path];
     paths.forEach(function(path) {
       addOperationToSwagger($, op, method, path);

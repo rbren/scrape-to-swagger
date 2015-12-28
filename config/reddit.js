@@ -13,7 +13,7 @@ var config = module.exports = {
     selector: 'h3',
     parse: function(el) {
       el = el.clone()
-      el.find('.oauth-scope').remove();
+      el.find('.api-badge').remove();
       el.find('.method').remove();
       return el.text();
     },
@@ -28,9 +28,23 @@ var config = module.exports = {
   parameterDescription: {selector: 'td'},
   requestBody: {selector: 'tr.json-model pre code', isExample: true, sibling: true},
 
-  fixPathParameters: function(path, el) {
+  fixPathParameters: function(path, $, el) {
+    var paths = [];
+    var optional = path.match(/\[(.*)\]/);
+    if (optional) {
+      optional = optional[1];
+      console.log('optional', optional);
+      paths.push(path.replace('[' + optional + ']', ''));
+      paths.push(path.replace('[', '').replace(']', ''));
+    } else {
+      paths.push(path);
+    }
     el.find('.placeholder').each(function() {
+      var placeholder = $(this).text();
+      paths = paths.map(function(path) {
+        return path.replace(placeholder, '{' + placeholder + '}')
+      })
     })
-    return path;
+    return paths;
   }
 }
