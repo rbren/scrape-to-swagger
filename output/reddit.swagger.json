@@ -178,13 +178,13 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -198,13 +198,13 @@
           {
             "name": "id",
             "description": "fullname of a thing",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -218,13 +218,13 @@
           {
             "name": "id",
             "description": "fullname of a thing",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -238,19 +238,19 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "flair_type",
             "description": "one of (USER_FLAIR, LINK_FLAIR)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -263,13 +263,13 @@
           {
             "name": "id",
             "description": "A comma-separated list of thing fullnames",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -283,25 +283,25 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "text",
             "description": "raw markdown text",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "thing_id",
             "description": "fullname of parent thing",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -315,49 +315,49 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "captcha",
             "description": "the user's response to the CAPTCHA challenge",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "from_sr",
             "description": "subreddit name",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "iden",
             "description": "the identifier of the CAPTCHA challenge",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "subject",
             "description": "a string no longer than 100 characters",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "text",
             "description": "raw markdown text",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "to",
             "description": "the name of an existing user",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -371,13 +371,13 @@
           {
             "name": "id",
             "description": "fullname of a thing created by the user",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -391,13 +391,13 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -411,13 +411,13 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -431,13 +431,13 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -451,19 +451,19 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "img_name",
             "description": "a valid subreddit image name",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -477,19 +477,19 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "name",
             "description": "a user by name",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -502,18 +502,18 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "flair_template_id",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -526,25 +526,25 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "how",
             "description": "one of (yes, no, admin, special)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "id",
             "description": "fullname of a thing",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -558,25 +558,25 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "text",
             "description": "raw markdown text",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "thing_id",
             "description": "fullname of a thing created by the user",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -590,37 +590,37 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "css_class",
             "description": "a valid subreddit image name",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "link",
             "description": "a fullname of a link",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "name",
             "description": "a user by name",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "text",
             "description": "a string no longer than 64 characters",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -633,43 +633,43 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "flair_enabled",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "flair_position",
             "description": "one of (left, right)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "flair_self_assign_enabled",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "link_flair_position",
             "description": "one of (`,left,right`)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "link_flair_self_assign_enabled",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -682,13 +682,13 @@
           {
             "name": "flair_csv",
             "description": "comma-seperated flair information",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -752,13 +752,13 @@
           {
             "name": "link",
             "description": "a fullname of a link",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "name",
             "description": "a user by name",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -772,42 +772,42 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "css_class",
             "description": "a valid subreddit image name",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "flair_template_id",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "flair_type",
             "description": "one of (USER_FLAIR, LINK_FLAIR)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "text",
             "description": "a string no longer than 64 characters",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "text_editable",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -820,59 +820,59 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "ban_message",
             "description": "raw markdown text",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "ban_reason",
             "description": "a string no longer than 100 characters",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "container",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "duration",
             "description": "an integer between 1 and 999",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "name",
             "description": "the name of an existing user",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "note",
             "description": "a string no longer than 300 characters",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "permissions",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "type",
             "description": "one of (friend, moderator, moderator_invite, contributor, banned, muted, wikibanned, wikicontributor)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -886,13 +886,13 @@
           {
             "name": "id",
             "description": "A comma-separated list of link fullnames",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -906,13 +906,13 @@
           {
             "name": "id",
             "description": "fullname of a thing",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -946,13 +946,13 @@
           {
             "name": "id",
             "description": "fullname of a thing",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -966,13 +966,13 @@
           {
             "name": "id",
             "description": "fullname of a thing",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -986,37 +986,37 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "description",
             "description": "raw markdown text",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "nsfw",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "resources",
             "description": "raw markdown text",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "title",
             "description": "a string no longer than 120 characters",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -1030,13 +1030,13 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -1055,13 +1055,13 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -1080,19 +1080,19 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "id",
             "description": "the ID of a single update. e.g. LiveUpdate_ff87068e-a126-11e3-9f93-12313b0b3603",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -1111,37 +1111,37 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "description",
             "description": "raw markdown text",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "nsfw",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "resources",
             "description": "raw markdown text",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "title",
             "description": "a string no longer than 120 characters",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -1160,31 +1160,31 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "name",
             "description": "the name of an existing user",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "permissions",
             "description": "permission description e.g. +update,+edit,-manage",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "type",
             "description": "one of (liveupdate_contributor_invite, liveupdate_contributor)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -1203,13 +1203,13 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -1228,19 +1228,19 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "type",
             "description": "one of (spam, vote-manipulation, personal-information, sexualizing-minors, site-breaking)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -1259,19 +1259,19 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "id",
             "description": "fullname of a account",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -1290,19 +1290,19 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "id",
             "description": "fullname of a account",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -1321,31 +1321,31 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "name",
             "description": "the name of an existing user",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "permissions",
             "description": "permission description e.g. +update,+edit,-manage",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "type",
             "description": "one of (liveupdate_contributor_invite, liveupdate_contributor)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -1364,19 +1364,19 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "id",
             "description": "the ID of a single update. e.g. LiveUpdate_ff87068e-a126-11e3-9f93-12313b0b3603",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -1395,19 +1395,19 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "body",
             "description": "raw markdown text",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -1426,13 +1426,13 @@
           {
             "name": "id",
             "description": "fullname of a link",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -1446,13 +1446,13 @@
           {
             "name": "id",
             "description": "fullname of a thing",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -1504,25 +1504,25 @@
           {
             "name": "display_name",
             "description": "a string no longer than 50 characters",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "from",
             "description": "multireddit url path",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "to",
             "description": "destination multireddit url path",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -1550,25 +1550,25 @@
           {
             "name": "display_name",
             "description": "a string no longer than 50 characters",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "from",
             "description": "multireddit url path",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "to",
             "description": "destination multireddit url path",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -1644,13 +1644,13 @@
           {
             "name": "expand_srs",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "model",
             "description": "json data:\n\n{\n  \"description_md\": raw markdown text,\n  \"display_name\": a string no longer than 50 characters,\n  \"icon_name\": one of (`art and design`, `ask`, `books`, `business`, `cars`, `comics`, `cute animals`, `diy`, `entertainment`, `food and drink`, `funny`, `games`, `grooming`, `health`, `life advice`, `military`, `models pinup`, `music`, `news`, `philosophy`, `pictures and gifs`, `science`, `shopping`, `sports`, `style`, `tech`, `travel`, `unusual stories`, `video`, ``, `None`),\n  \"key_color\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n  \"subreddits\": [\n    {\n      \"name\": subreddit name,\n    },\n    ...\n  ],\n  \"visibility\": one of (`private`, `public`, `hidden`),\n  \"weighting_scheme\": one of (`classic`, `fresh`),\n}",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -1662,7 +1662,7 @@
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -1674,13 +1674,13 @@
           {
             "name": "expand_srs",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "model",
             "description": "json data:\n\n{\n  \"description_md\": raw markdown text,\n  \"display_name\": a string no longer than 50 characters,\n  \"icon_name\": one of (`art and design`, `ask`, `books`, `business`, `cars`, `comics`, `cute animals`, `diy`, `entertainment`, `food and drink`, `funny`, `games`, `grooming`, `health`, `life advice`, `military`, `models pinup`, `music`, `news`, `philosophy`, `pictures and gifs`, `science`, `shopping`, `sports`, `style`, `tech`, `travel`, `unusual stories`, `video`, ``, `None`),\n  \"key_color\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n  \"subreddits\": [\n    {\n      \"name\": subreddit name,\n    },\n    ...\n  ],\n  \"visibility\": one of (`private`, `public`, `hidden`),\n  \"weighting_scheme\": one of (`classic`, `fresh`),\n}",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -1692,7 +1692,7 @@
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -1718,7 +1718,7 @@
           {
             "name": "model",
             "description": "json data:\n\n{\n  \"body_md\": raw markdown text,\n}",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -1730,7 +1730,7 @@
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -1786,7 +1786,7 @@
           {
             "name": "model",
             "description": "json data:\n\n{\n  \"name\": subreddit name,\n}",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -1804,7 +1804,7 @@
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -1818,13 +1818,13 @@
           {
             "name": "id",
             "description": "fullname of a thing",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -1845,7 +1845,7 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -1859,7 +1859,7 @@
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -1873,13 +1873,13 @@
           {
             "name": "id",
             "description": "A comma-separated list of thing fullnames",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -1912,19 +1912,19 @@
           {
             "name": "id",
             "description": "fullname of a thing",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "spam",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -1938,37 +1938,37 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "other_reason",
             "description": "a string no longer than 100 characters",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "reason",
             "description": "a string no longer than 100 characters",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "site_reason",
             "description": "a string no longer than 100 characters",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "thing_id",
             "description": "fullname of a thing",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -1982,19 +1982,19 @@
           {
             "name": "category",
             "description": "a category name",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "id",
             "description": "fullname of a thing",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2015,19 +2015,19 @@
           {
             "name": "exact",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "include_over_18",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "query",
             "description": "a string up to 50 characters long, consisting of printable characters.",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2041,36 +2041,36 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "flair_template_id",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "link",
             "description": "a fullname of a link",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "name",
             "description": "a user by name",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "text",
             "description": "a string no longer than 64 characters",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2083,19 +2083,19 @@
           {
             "name": "id",
             "description": "fullname of a thing created by the user",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "state",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2109,24 +2109,24 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "id",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "state",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2140,30 +2140,30 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "id",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "num",
             "description": "an integer between 1 and 2",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "state",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2177,24 +2177,24 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "id",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "sort",
             "description": "one of (confidence, top, new, hot, controversial, old, random, qa, blank)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2208,19 +2208,19 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "flair_enabled",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2233,29 +2233,29 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "name",
             "description": "the name of an existing user",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "permissions",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "type",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2268,198 +2268,198 @@
           {
             "name": "allow_top",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "captcha",
             "description": "the user's response to the CAPTCHA challenge",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "collapse_deleted_comments",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "comment_score_hide_mins",
             "description": "an integer between 0 and 1440 (default: 0)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "description",
             "description": "raw markdown text",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "exclude_banned_modqueue",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "header-title",
             "description": "a string no longer than 500 characters",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "hide_ads",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "iden",
             "description": "the identifier of the CAPTCHA challenge",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "lang",
             "description": "a valid IETF language tag (underscore separated)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "link_type",
             "description": "one of (any, link, self)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "modmail_email_address",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "modmail_email_enabled",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "name",
             "description": "subreddit name",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "over_18",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "public_description",
             "description": "raw markdown text",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "public_traffic",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "show_media",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "spam_comments",
             "description": "one of (low, high, all)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "spam_links",
             "description": "one of (low, high, all)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "spam_selfposts",
             "description": "one of (low, high, all)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "sr",
             "description": "fullname of a thing",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "submit_link_label",
             "description": "a string no longer than 60 characters",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "submit_text",
             "description": "raw markdown text",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "submit_text_label",
             "description": "a string no longer than 60 characters",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "suggested_comment_sort",
             "description": "one of (confidence, top, new, hot, controversial, old, random, qa)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "title",
             "description": "a string no longer than 100 characters",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "type",
             "description": "one of (gold_restricted, archived, restricted, gold_only, employees_only, private, public)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "wiki_edit_age",
             "description": "an integer greater than 0 (default: 0)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "wiki_edit_karma",
             "description": "an integer greater than 0 (default: 0)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "wikimode",
             "description": "one of (disabled, modonly, anyone)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2473,13 +2473,13 @@
           {
             "name": "links",
             "description": "A comma-separated list of link fullnames",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2493,73 +2493,73 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "captcha",
             "description": "the user's response to the CAPTCHA challenge",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "extension",
             "description": "extension used for redirects",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "iden",
             "description": "the identifier of the CAPTCHA challenge",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "kind",
             "description": "one of (link, self)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "resubmit",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "sendreplies",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "sr",
             "description": "name of a subreddit",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "text",
             "description": "raw markdown text",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "title",
             "description": "title of the submission. up to 300 characters long",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "url",
             "description": "a valid URL",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2594,19 +2594,19 @@
           {
             "name": "action",
             "description": "one of (sub, unsub)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "sr",
             "description": "the name of a subreddit",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2620,13 +2620,13 @@
           {
             "name": "id",
             "description": "fullname of a thing",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2639,13 +2639,13 @@
           {
             "name": "id",
             "description": "A comma-separated list of thing fullnames",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2658,31 +2658,31 @@
         "parameters": [
           {
             "name": "container",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "id",
             "description": "fullname of a thing",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "name",
             "description": "the name of an existing user",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "type",
             "description": "one of (friend, enemy, moderator, moderator_invite, contributor, banned, muted, wikibanned, wikicontributor)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2696,13 +2696,13 @@
           {
             "name": "id",
             "description": "A comma-separated list of link fullnames",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2716,13 +2716,13 @@
           {
             "name": "id",
             "description": "fullname of a thing",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2736,13 +2736,13 @@
           {
             "name": "id",
             "description": "fullname of a link",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2756,13 +2756,13 @@
           {
             "name": "id",
             "description": "fullname of a thing",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2776,13 +2776,13 @@
           {
             "name": "id",
             "description": "fullname of a thing",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2796,13 +2796,13 @@
           {
             "name": "id",
             "description": "A comma-separated list of thing fullnames",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2815,13 +2815,13 @@
           {
             "name": "id",
             "description": "fullname of a thing",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2835,43 +2835,43 @@
           {
             "name": "file",
             "description": "file upload with maximum size of 500 KiB",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "formid",
             "description": "(optional) can be ignored",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "header",
             "description": "an integer between 0 and 1",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "img_type",
             "description": "one of png or jpg (default: png)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "name",
             "description": "a valid subreddit image name",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "upload_type",
             "description": "one of (img, header, icon, banner)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -2912,7 +2912,7 @@
           {
             "name": "months",
             "description": "an integer between 1 and 36",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -2972,7 +2972,7 @@
           {
             "name": "This",
             "description": "{\n  \"name\": A valid, existing reddit username,\n  \"note\": a string no longer than 300 characters,\n}",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -3028,7 +3028,7 @@
           {
             "name": "This",
             "description": "{\n  \"read\": boolean value,\n}",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -3058,7 +3058,7 @@
           {
             "name": "This",
             "description": "{\n  \"beta\": boolean value,\n  \"clickgadget\": boolean value,\n  \"collapse_read_messages\": boolean value,\n  \"compress\": boolean value,\n  \"creddit_autorenew\": boolean value,\n  \"default_comment_sort\": one of (`confidence`, `old`, `top`, `qa`, `controversial`, `new`),\n  \"domain_details\": boolean value,\n  \"email_messages\": boolean value,\n  \"enable_default_themes\": boolean value,\n  \"hide_ads\": boolean value,\n  \"hide_downs\": boolean value,\n  \"hide_from_robots\": boolean value,\n  \"hide_locationbar\": boolean value,\n  \"hide_ups\": boolean value,\n  \"highlight_controversial\": boolean value,\n  \"highlight_new_comments\": boolean value,\n  \"ignore_suggested_sort\": boolean value,\n  \"label_nsfw\": boolean value,\n  \"lang\": a valid IETF language tag (underscore separated),\n  \"legacy_search\": boolean value,\n  \"mark_messages_read\": boolean value,\n  \"media\": one of (`on`, `off`, `subreddit`),\n  \"min_comment_score\": an integer between -100 and 100,\n  \"min_link_score\": an integer between -100 and 100,\n  \"monitor_mentions\": boolean value,\n  \"newwindow\": boolean value,\n  \"no_profanity\": boolean value,\n  \"num_comments\": an integer between 1 and 500,\n  \"numsites\": an integer between 1 and 100,\n  \"organic\": boolean value,\n  \"other_theme\": subreddit name,\n  \"over_18\": boolean value,\n  \"private_feeds\": boolean value,\n  \"public_votes\": boolean value,\n  \"research\": boolean value,\n  \"show_flair\": boolean value,\n  \"show_gold_expiration\": boolean value,\n  \"show_link_flair\": boolean value,\n  \"show_promote\": boolean value,\n  \"show_stylesheets\": boolean value,\n  \"show_trending\": boolean value,\n  \"store_visits\": boolean value,\n  \"theme_selector\": subreddit name,\n  \"threaded_messages\": boolean value,\n  \"threaded_modmail\": boolean value,\n  \"use_global_defaults\": boolean value,\n}",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -3111,19 +3111,19 @@
           {
             "name": "dir",
             "description": "vote direction. one of (1, 0, -1)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "id",
             "description": "fullname of a thing",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -3143,19 +3143,19 @@
           {
             "name": "page",
             "description": "the name of an existing wiki page",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "username",
             "description": "the name of an existing user",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -3168,31 +3168,31 @@
         "parameters": [
           {
             "name": "content",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "page",
             "description": "the name of an existing page or a new page to create",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "previous",
             "description": "the starting point revision for this edit",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "reason",
             "description": "a string up to 256 characters long, consisting of printable characters.",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -3206,19 +3206,19 @@
           {
             "name": "page",
             "description": "the name of an existing wiki page",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "revision",
             "description": "a wiki revision ID",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -3232,19 +3232,19 @@
           {
             "name": "page",
             "description": "the name of an existing wiki page",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "revision",
             "description": "a wiki revision ID",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],
@@ -3258,31 +3258,31 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "op",
             "description": "one of (save, preview)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "reason",
             "description": "a string up to 256 characters long, consisting of printable characters.",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "stylesheet_contents",
             "description": "the new stylesheet content",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -3979,13 +3979,13 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -4004,19 +4004,19 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "flair_type",
             "description": "one of (USER_FLAIR, LINK_FLAIR)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -4034,13 +4034,13 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -4059,13 +4059,13 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -4084,13 +4084,13 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -4109,19 +4109,19 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "img_name",
             "description": "a valid subreddit image name",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -4140,19 +4140,19 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "name",
             "description": "a user by name",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -4170,18 +4170,18 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "flair_template_id",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -4199,37 +4199,37 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "css_class",
             "description": "a valid subreddit image name",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "link",
             "description": "a fullname of a link",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "name",
             "description": "a user by name",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "text",
             "description": "a string no longer than 64 characters",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -4247,43 +4247,43 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "flair_enabled",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "flair_position",
             "description": "one of (left, right)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "flair_self_assign_enabled",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "link_flair_position",
             "description": "one of (`,left,right`)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "link_flair_self_assign_enabled",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -4301,13 +4301,13 @@
           {
             "name": "flair_csv",
             "description": "comma-seperated flair information",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -4381,13 +4381,13 @@
           {
             "name": "link",
             "description": "a fullname of a link",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "name",
             "description": "a user by name",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -4406,42 +4406,42 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "css_class",
             "description": "a valid subreddit image name",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "flair_template_id",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "flair_type",
             "description": "one of (USER_FLAIR, LINK_FLAIR)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "text",
             "description": "a string no longer than 64 characters",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "text_editable",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -4459,59 +4459,59 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "ban_message",
             "description": "raw markdown text",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "ban_reason",
             "description": "a string no longer than 100 characters",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "container",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "duration",
             "description": "an integer between 1 and 999",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "name",
             "description": "the name of an existing user",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "note",
             "description": "a string no longer than 300 characters",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "permissions",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "type",
             "description": "one of (friend, moderator, moderator_invite, contributor, banned, muted, wikibanned, wikicontributor)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -4555,36 +4555,36 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "flair_template_id",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "link",
             "description": "a fullname of a link",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "name",
             "description": "a user by name",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "text",
             "description": "a string no longer than 64 characters",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -4602,19 +4602,19 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "flair_enabled",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -4632,29 +4632,29 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "name",
             "description": "the name of an existing user",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "permissions",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "type",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -4685,31 +4685,31 @@
           {
             "name": "api_type",
             "description": "the string json",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "op",
             "description": "one of (save, preview)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "reason",
             "description": "a string up to 256 characters long, consisting of printable characters.",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "stylesheet_contents",
             "description": "the new stylesheet content",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -4727,31 +4727,31 @@
         "parameters": [
           {
             "name": "container",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "id",
             "description": "fullname of a thing",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "name",
             "description": "the name of an existing user",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "type",
             "description": "one of (friend, enemy, moderator, moderator_invite, contributor, banned, muted, wikibanned, wikicontributor)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -4770,43 +4770,43 @@
           {
             "name": "file",
             "description": "file upload with maximum size of 500 KiB",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "formid",
             "description": "(optional) can be ignored",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "header",
             "description": "an integer between 0 and 1",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "img_type",
             "description": "one of png or jpg (default: png)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "name",
             "description": "a valid subreddit image name",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "upload_type",
             "description": "one of (img, header, icon, banner)",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -4831,19 +4831,19 @@
           {
             "name": "page",
             "description": "the name of an existing wiki page",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "username",
             "description": "the name of an existing user",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -4861,31 +4861,31 @@
         "parameters": [
           {
             "name": "content",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "page",
             "description": "the name of an existing page or a new page to create",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "previous",
             "description": "the starting point revision for this edit",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "reason",
             "description": "a string up to 256 characters long, consisting of printable characters.",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -4904,19 +4904,19 @@
           {
             "name": "page",
             "description": "the name of an existing wiki page",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "revision",
             "description": "a wiki revision ID",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -4935,19 +4935,19 @@
           {
             "name": "page",
             "description": "the name of an existing wiki page",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "revision",
             "description": "a wiki revision ID",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -5482,7 +5482,7 @@
           {
             "name": "listed",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -5494,13 +5494,13 @@
           {
             "name": "permlevel",
             "description": "an integer",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -6186,7 +6186,7 @@
           {
             "name": "listed",
             "description": "boolean value",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
@@ -6198,13 +6198,13 @@
           {
             "name": "permlevel",
             "description": "an integer",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           },
           {
             "name": "uh",
             "description": "a modhash",
-            "in": "query",
+            "in": "formData",
             "type": "string"
           }
         ],

@@ -1,4 +1,8 @@
 var METHODS = ['get', 'post', 'patch', 'put', 'delete', 'head', 'options'];
+var getDefaultParameterLocation = function(method) {
+  if (method === 'post' || method === 'patch' || method === 'put') return 'formData';
+  return 'query';
+}
 
 var urlParser = require('url');
 var fs = require('fs');
@@ -108,7 +112,7 @@ function addOperationToSwagger($, op, method, path) {
     sOp.parameters.push(sParameter);
     var description = extractText(param, config.parameterDescription);
     if (description) sParameter.description = description.trim();
-    sParameter.in = extractText(param, config.parameterIn) || 'query';
+    sParameter.in = extractText(param, config.parameterIn) || getDefaultParameterLocation(method);
     sParameter.type = extractText(param, config.parameterType) || 'string';
   });
   var body = extractJSON(op, config.requestBody);
