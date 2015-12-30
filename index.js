@@ -127,17 +127,14 @@ function addOperationToSwagger($, op, method, path) {
   responses = resolveSelector(responses, config.response);
   responses.each(function() {
     var response = $(this); 
-    var responseStatus = extractText(response, config.responseStatus);
-    if (responseStatus) {
-      log('    resp', responseStatus);
-      var responseDescription = extractText(response, config.responseDescription);
-      var responseSchema = extractJSON(response, config.responseSchema);
-      responseStatus = parseInt(responseStatus);
-      sOp.responses[responseStatus] = {
-          description: responseDescription || '',
-          schema: responseSchema || undefined,
-      };
-    }
+    var responseStatus = extractInteger(response, config.responseStatus) || 200;
+    log('    resp', responseStatus);
+    var responseDescription = extractText(response, config.responseDescription);
+    var responseSchema = extractJSON(response, config.responseSchema);
+    sOp.responses[responseStatus] = {
+        description: responseDescription || '',
+        schema: responseSchema || undefined,
+    };
   })
 }
 
@@ -187,6 +184,12 @@ function extractBoolean(el, extractor) {
   text = text.toLowerCase();
   if (text === 'false' || text === 'no') return false;
   return true;
+}
+
+function extractInteger(el, extractor) {
+  var text = extractText(el, extractor);
+  if (!text) return;
+  return parseInt(text);
 }
 
 function fixErrors() {
