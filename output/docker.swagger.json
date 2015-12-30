@@ -9,61 +9,243 @@
     "/_ping": {
       "get": {
         "parameters": [],
-        "responses": {}
+        "responses": {},
+        "summary": "Ping the docker server"
       }
     },
     "/auth": {
       "post": {
         "parameters": [],
-        "responses": {}
+        "responses": {},
+        "summary": "Get the default username and email"
       }
     },
     "/build": {
       "post": {
-        "parameters": [],
-        "responses": {}
+        "parameters": [
+          {
+            "name": "Content-type",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "X-Registry-Config",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "buildargs",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "cpuperiod",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "cpuquota",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "cpusetcpus",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "cpushares",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "dockerfile",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "forcerm",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "memory",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "memswap",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "nocache",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "pull",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "remote",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "rm",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "t",
+            "in": "formData",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Build an image from a Dockerfile"
       }
     },
     "/commit": {
       "post": {
-        "parameters": [],
-        "responses": {}
+        "parameters": [
+          {
+            "name": "author",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "changes",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "comment",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "container",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "pause",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "repo",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "tag",
+            "in": "formData",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Create a new image from a container’s changes"
       }
     },
     "/containers/create": {
       "post": {
-        "parameters": [],
-        "responses": {}
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Create a container"
       }
     },
     "/containers/json": {
       "get": {
-        "parameters": [],
-        "responses": {}
+        "parameters": [
+          {
+            "name": "all",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "filters",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "since",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "List containers"
       }
     },
     "/containers/{id}": {
       "delete": {
         "parameters": [
           {
-            "in": "path",
-            "name": "id",
+            "name": "force",
+            "in": "query",
             "type": "string"
-          }
-        ],
-        "responses": {}
-      }
-    },
-    "/containers/{id}/archive": {
-      "get": {
-        "parameters": [
+          },
+          {
+            "name": "v",
+            "in": "query",
+            "type": "string"
+          },
           {
             "in": "path",
             "name": "id",
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Remove the container id from the filesystem"
+      }
+    },
+    "/containers/{id}/archive": {
+      "get": {
+        "parameters": [
+          {
+            "name": "path",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Get an tar archive of a resource in the filesystem of container id."
       },
       "head": {
         "parameters": [
@@ -73,41 +255,105 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "See the description of the X-Docker-Container-Path-Stat header in the\nfollowing section."
       },
       "put": {
         "parameters": [
+          {
+            "name": "noOverwriteDirNonDir",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "path",
+            "in": "formData",
+            "type": "string"
+          },
           {
             "in": "path",
             "name": "id",
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Upload a tar archive to be extracted to a path in the filesystem of container\nid."
       }
     },
     "/containers/{id}/attach": {
       "post": {
         "parameters": [
           {
-            "in": "path",
-            "name": "id",
+            "name": "logs",
+            "in": "formData",
             "type": "string"
-          }
-        ],
-        "responses": {}
-      }
-    },
-    "/containers/{id}/attach/ws": {
-      "get": {
-        "parameters": [
+          },
+          {
+            "name": "stderr",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "stdin",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "stdout",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "stream",
+            "in": "formData",
+            "type": "string"
+          },
           {
             "in": "path",
             "name": "id",
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Attach to the container id"
+      }
+    },
+    "/containers/{id}/attach/ws": {
+      "get": {
+        "parameters": [
+          {
+            "name": "logs",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "stderr",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "stdin",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "stdout",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "stream",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Attach to the container id via websocket"
       }
     },
     "/containers/{id}/changes": {
@@ -119,7 +365,8 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Inspect changes on container id’s filesystem"
       }
     },
     "/containers/{id}/copy": {
@@ -131,7 +378,8 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Copy files or folders of container id"
       }
     },
     "/containers/{id}/exec": {
@@ -143,7 +391,8 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Sets up an exec instance in a running container id"
       }
     },
     "/containers/{id}/export": {
@@ -155,19 +404,26 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Export the contents of container id"
       }
     },
     "/containers/{id}/json": {
       "get": {
         "parameters": [
           {
+            "name": "size",
+            "in": "query",
+            "type": "string"
+          },
+          {
             "in": "path",
             "name": "id",
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Return low-level information on the container id"
       }
     },
     "/containers/{id}/kill": {
@@ -179,19 +435,51 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Kill the container id"
       }
     },
     "/containers/{id}/logs": {
       "get": {
         "parameters": [
           {
+            "name": "follow",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "since",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "stderr",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "stdout",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "tail",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "timestamps",
+            "in": "query",
+            "type": "string"
+          },
+          {
             "in": "path",
             "name": "id",
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Get stdout and stderr logs from the container id"
       }
     },
     "/containers/{id}/pause": {
@@ -203,43 +491,67 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Pause the container id"
       }
     },
     "/containers/{id}/rename": {
       "post": {
         "parameters": [
           {
+            "name": "name",
+            "in": "formData",
+            "type": "string"
+          },
+          {
             "in": "path",
             "name": "id",
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Rename the container id to a new_name"
       }
     },
     "/containers/{id}/resize": {
       "post": {
         "parameters": [
           {
-            "in": "path",
-            "name": "id",
+            "name": "h",
+            "in": "formData",
             "type": "string"
-          }
-        ],
-        "responses": {}
-      }
-    },
-    "/containers/{id}/restart": {
-      "post": {
-        "parameters": [
+          },
+          {
+            "name": "w",
+            "in": "formData",
+            "type": "string"
+          },
           {
             "in": "path",
             "name": "id",
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Resize the TTY for container with  id. The unit is number of characters. You must restart the container for the resize to take effect."
+      }
+    },
+    "/containers/{id}/restart": {
+      "post": {
+        "parameters": [
+          {
+            "name": "t",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Restart the container id"
       }
     },
     "/containers/{id}/start": {
@@ -251,43 +563,62 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Start the container id"
       }
     },
     "/containers/{id}/stats": {
       "get": {
         "parameters": [
           {
+            "name": "stream",
+            "in": "query",
+            "type": "string"
+          },
+          {
             "in": "path",
             "name": "id",
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "This endpoint returns a live stream of a container’s resource usage statistics."
       }
     },
     "/containers/{id}/stop": {
       "post": {
         "parameters": [
           {
-            "in": "path",
-            "name": "id",
+            "name": "t",
+            "in": "formData",
             "type": "string"
-          }
-        ],
-        "responses": {}
-      }
-    },
-    "/containers/{id}/top": {
-      "get": {
-        "parameters": [
+          },
           {
             "in": "path",
             "name": "id",
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Stop the container id"
+      }
+    },
+    "/containers/{id}/top": {
+      "get": {
+        "parameters": [
+          {
+            "name": "ps_args",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "List processes running inside the container id"
       }
     },
     "/containers/{id}/unpause": {
@@ -299,7 +630,8 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Unpause the container id"
       }
     },
     "/containers/{id}/wait": {
@@ -311,13 +643,31 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Block until container id stops, then returns the exit code"
       }
     },
     "/events": {
       "get": {
-        "parameters": [],
-        "responses": {}
+        "parameters": [
+          {
+            "name": "filters",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "since",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "until",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Get container events from docker, either in real time via streaming, or via\npolling (using since)."
       }
     },
     "/exec/{id}/json": {
@@ -329,19 +679,31 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Return low-level information about the exec command id."
       }
     },
     "/exec/{id}/resize": {
       "post": {
         "parameters": [
           {
+            "name": "h",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "w",
+            "in": "formData",
+            "type": "string"
+          },
+          {
             "in": "path",
             "name": "id",
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Resizes the tty session used by the exec command id.  The unit is number of characters.\nThis API is valid only if tty was specified as part of creating and starting the exec command."
       }
     },
     "/exec/{id}/start": {
@@ -353,49 +715,114 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Starts a previously set up exec instance id. If detach is true, this API\nreturns after starting the exec command. Otherwise, this API sets up an\ninteractive session with the exec command."
       }
     },
     "/images/create": {
       "post": {
-        "parameters": [],
-        "responses": {}
+        "parameters": [
+          {
+            "name": "X-Registry-Auth",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "fromImage",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "fromSrc",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "repo",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "tag",
+            "in": "formData",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Create an image either by pulling it from the registry or by importing it"
       }
     },
     "/images/get": {
       "get": {
         "parameters": [],
-        "responses": {}
+        "responses": {},
+        "summary": "Get a tarball containing all images and metadata for one or more repositories."
       }
     },
     "/images/json": {
       "get": {
-        "parameters": [],
-        "responses": {}
+        "parameters": [
+          {
+            "name": "all",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "filters",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Example request:"
       }
     },
     "/images/load": {
       "post": {
         "parameters": [],
-        "responses": {}
+        "responses": {},
+        "summary": "Load a set of images and tags into a Docker repository.\nSee the image tarball format for more details."
       }
     },
     "/images/search": {
       "get": {
-        "parameters": [],
-        "responses": {}
+        "parameters": [
+          {
+            "name": "term",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Search for an image on Docker Hub."
       }
     },
     "/images/{name}": {
       "delete": {
         "parameters": [
           {
+            "name": "force",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "noprune",
+            "in": "query",
+            "type": "string"
+          },
+          {
             "in": "path",
             "name": "name",
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Remove the image name from the filesystem"
       }
     },
     "/images/{name}/get": {
@@ -407,7 +834,8 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Get a tarball containing all images and metadata for the repository specified\nby name."
       }
     },
     "/images/{name}/history": {
@@ -419,7 +847,8 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Return the history of the image name"
       }
     },
     "/images/{name}/json": {
@@ -431,55 +860,88 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Return low-level information on the image name"
       }
     },
     "/images/{name}/push": {
       "post": {
         "parameters": [
           {
-            "in": "path",
-            "name": "name",
+            "name": "tag",
+            "in": "formData",
             "type": "string"
-          }
-        ],
-        "responses": {}
-      }
-    },
-    "/images/{name}/tag": {
-      "post": {
-        "parameters": [
+          },
           {
             "in": "path",
             "name": "name",
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Push the image name on the registry"
+      }
+    },
+    "/images/{name}/tag": {
+      "post": {
+        "parameters": [
+          {
+            "name": "force",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "repo",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "name": "tag",
+            "in": "formData",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Tag the image name into a repository"
       }
     },
     "/info": {
       "get": {
         "parameters": [],
-        "responses": {}
+        "responses": {},
+        "summary": "Display system-wide information"
       }
     },
     "/networks": {
       "get": {
-        "parameters": [],
-        "responses": {}
+        "parameters": [
+          {
+            "name": "filters",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Example request:"
       }
     },
     "/networks/<network-id>": {
       "get": {
         "parameters": [],
-        "responses": {}
+        "responses": {},
+        "summary": "Example request:"
       }
     },
     "/networks/create": {
       "post": {
         "parameters": [],
-        "responses": {}
+        "responses": {},
+        "summary": "Create a network"
       }
     },
     "/networks/{id}": {
@@ -491,7 +953,8 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Instruct the driver to remove the network (id)."
       }
     },
     "/networks/{id}/connect": {
@@ -503,7 +966,8 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Connects a container to a network"
       }
     },
     "/networks/{id}/disconnect": {
@@ -515,25 +979,35 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Disconnects a container from a network"
       }
     },
     "/version": {
       "get": {
         "parameters": [],
-        "responses": {}
+        "responses": {},
+        "summary": "Show the docker version information"
       }
     },
     "/volumes": {
       "get": {
-        "parameters": [],
-        "responses": {}
+        "parameters": [
+          {
+            "name": "filters",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {},
+        "summary": "Example request:"
       }
     },
     "/volumes/create": {
       "post": {
         "parameters": [],
-        "responses": {}
+        "responses": {},
+        "summary": "Create a volume"
       }
     },
     "/volumes/{name}": {
@@ -545,7 +1019,8 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Instruct the driver to remove the volume (name)."
       },
       "get": {
         "parameters": [
@@ -555,7 +1030,8 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "summary": "Return low-level information on the volume name"
       }
     }
   },

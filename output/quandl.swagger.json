@@ -5,7 +5,107 @@
     "title": "Quandl API",
     "description": "The Quandl API"
   },
-  "paths": {},
+  "paths": {
+    "/databases": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/databases/{database_code}": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "database_code",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/databases/{database_code}/codes": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "database_code",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/databases/{database_code}/data": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "database_code",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/datasets": {
+      "get": {
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/datasets/{database_code}/{dataset_code}": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "database_code",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "dataset_code",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/datasets/{database_code}/{dataset_code}/data": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "database_code",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "dataset_code",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/datasets/{database_code}/{dataset_code}/metadata": {
+      "get": {
+        "parameters": [
+          {
+            "in": "path",
+            "name": "database_code",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "dataset_code",
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    }
+  },
   "schemes": [
     "https"
   ],
