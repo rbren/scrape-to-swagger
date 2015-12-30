@@ -9,14 +9,22 @@
     "/_ping": {
       "get": {
         "parameters": [],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Ping the docker server"
       }
     },
     "/auth": {
       "post": {
         "parameters": [],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Get the default username and email"
       }
     },
@@ -109,7 +117,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Build an image from a Dockerfile"
       }
     },
@@ -152,7 +164,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Create a new image from a container’s changes"
       }
     },
@@ -165,7 +181,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Create a container"
       }
     },
@@ -203,7 +223,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "List containers"
       }
     },
@@ -226,7 +250,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Remove the container id from the filesystem"
       }
     },
@@ -244,7 +272,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Get an tar archive of a resource in the filesystem of container id."
       },
       "head": {
@@ -255,7 +287,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "See the description of the X-Docker-Container-Path-Stat header in the\nfollowing section."
       },
       "put": {
@@ -276,7 +312,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Upload a tar archive to be extracted to a path in the filesystem of container\nid."
       }
     },
@@ -314,7 +354,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Attach to the container id"
       }
     },
@@ -352,7 +396,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Attach to the container id via websocket"
       }
     },
@@ -365,7 +413,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Inspect changes on container id’s filesystem"
       }
     },
@@ -378,7 +430,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Copy files or folders of container id"
       }
     },
@@ -391,7 +447,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Sets up an exec instance in a running container id"
       }
     },
@@ -404,7 +464,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Export the contents of container id"
       }
     },
@@ -422,7 +486,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Return low-level information on the container id"
       }
     },
@@ -435,7 +503,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Kill the container id"
       }
     },
@@ -478,7 +550,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Get stdout and stderr logs from the container id"
       }
     },
@@ -491,7 +567,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Pause the container id"
       }
     },
@@ -509,7 +589,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Rename the container id to a new_name"
       }
     },
@@ -532,7 +616,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Resize the TTY for container with  id. The unit is number of characters. You must restart the container for the resize to take effect."
       }
     },
@@ -550,7 +638,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Restart the container id"
       }
     },
@@ -563,7 +655,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Start the container id"
       }
     },
@@ -581,7 +677,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "This endpoint returns a live stream of a container’s resource usage statistics."
       }
     },
@@ -599,7 +699,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Stop the container id"
       }
     },
@@ -617,7 +721,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "List processes running inside the container id"
       }
     },
@@ -630,7 +738,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Unpause the container id"
       }
     },
@@ -643,7 +755,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Block until container id stops, then returns the exit code"
       }
     },
@@ -666,7 +782,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Get container events from docker, either in real time via streaming, or via\npolling (using since)."
       }
     },
@@ -679,7 +799,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Return low-level information about the exec command id."
       }
     },
@@ -702,7 +826,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Resizes the tty session used by the exec command id.  The unit is number of characters.\nThis API is valid only if tty was specified as part of creating and starting the exec command."
       }
     },
@@ -715,7 +843,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Starts a previously set up exec instance id. If detach is true, this API\nreturns after starting the exec command. Otherwise, this API sets up an\ninteractive session with the exec command."
       }
     },
@@ -748,14 +880,22 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Create an image either by pulling it from the registry or by importing it"
       }
     },
     "/images/get": {
       "get": {
         "parameters": [],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Get a tarball containing all images and metadata for one or more repositories."
       }
     },
@@ -778,14 +918,22 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Example request:"
       }
     },
     "/images/load": {
       "post": {
         "parameters": [],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Load a set of images and tags into a Docker repository.\nSee the image tarball format for more details."
       }
     },
@@ -798,7 +946,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Search for an image on Docker Hub."
       }
     },
@@ -821,7 +973,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Remove the image name from the filesystem"
       }
     },
@@ -834,7 +990,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Get a tarball containing all images and metadata for the repository specified\nby name."
       }
     },
@@ -847,7 +1007,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Return the history of the image name"
       }
     },
@@ -860,7 +1024,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Return low-level information on the image name"
       }
     },
@@ -878,7 +1046,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Push the image name on the registry"
       }
     },
@@ -906,14 +1078,22 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Tag the image name into a repository"
       }
     },
     "/info": {
       "get": {
         "parameters": [],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Display system-wide information"
       }
     },
@@ -926,21 +1106,33 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Example request:"
       }
     },
     "/networks/<network-id>": {
       "get": {
         "parameters": [],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Example request:"
       }
     },
     "/networks/create": {
       "post": {
         "parameters": [],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Create a network"
       }
     },
@@ -953,7 +1145,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Instruct the driver to remove the network (id)."
       }
     },
@@ -966,7 +1162,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Connects a container to a network"
       }
     },
@@ -979,14 +1179,22 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Disconnects a container from a network"
       }
     },
     "/version": {
       "get": {
         "parameters": [],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Show the docker version information"
       }
     },
@@ -999,14 +1207,22 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Example request:"
       }
     },
     "/volumes/create": {
       "post": {
         "parameters": [],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Create a volume"
       }
     },
@@ -1019,7 +1235,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Instruct the driver to remove the volume (name)."
       },
       "get": {
@@ -1030,7 +1250,11 @@
             "type": "string"
           }
         ],
-        "responses": {},
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
         "summary": "Return low-level information on the volume name"
       }
     }

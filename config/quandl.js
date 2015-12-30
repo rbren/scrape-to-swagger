@@ -7,7 +7,7 @@ var config = module.exports = {
   title: 'Quandl API',
   description: 'The Quandl API',
 
-  operation: {selector: 'h2', split: true},
+  operations: {selector: 'h2', split: true},
   path: {selector: 'pre:contains(Definition) + div + blockquote', regex: /\w+ https:\/\/www.quandl.com\/api\/v3(\/\S*)/},
   method: {selector: 'pre:contains(Definition) + div + blockquote', regex: /(\w+) https:\/\/www.quandl.com\/api\/v3\/\S*/},
 

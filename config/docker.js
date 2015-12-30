@@ -6,7 +6,7 @@ var config = module.exports = {
   host: 'localhost',
   basePath: '/',
   title: 'Docker Remote API',
-  operation: {selector: 'h3', split: true},
+  operations: {selector: 'h3', split: true},
   operationSummary: {selector: 'h3 + p + p'},
   operationDescription: {selector: '' },
   path: {selector: 'h3 + p > code', regex: /\w+ (.*)/},

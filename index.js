@@ -76,7 +76,7 @@ function scrapePage(url, depth, callback) {
 
 function addPageToSwagger($) {
   var body = $('body');
-  operations = resolveSelector(body, config.operations);
+  operations = resolveSelector(body, config.operations, $);
   operations = resolveSelector(operations, config.operation, $);
   operations.each(function() {
     var op = $(this);
@@ -101,7 +101,7 @@ function addOperationToSwagger($, op, method, path) {
   sOp.summary = extractText(op, config.operationSummary) || undefined;
   sOp.description = extractText(op, config.operationDescription) || undefined;
 
-  var parameters = resolveSelector(op, config.parameters);
+  var parameters = resolveSelector(op, config.parameters, $);
   parameters = resolveSelector(parameters, config.parameter, $);
   if (parameters) parameters.each(function() {
     var param = $(this);
@@ -123,8 +123,8 @@ function addOperationToSwagger($, op, method, path) {
     sOp.parameters.unshift({name: 'body', in: 'body', schema: body});
   }
 
-  var responses = resolveSelector(op, config.responses).first();
-  responses = resolveSelector(responses, config.response);
+  var responses = resolveSelector(op, config.responses, $).first();
+  responses = resolveSelector(responses, config.response, $);
   responses.each(function() {
     var response = $(this); 
     var responseStatus = extractInteger(response, config.responseStatus) || 200;
