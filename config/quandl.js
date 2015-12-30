@@ -29,3 +29,11 @@ var config = module.exports = {
     return pieces.join('/');
   }
 }
+
+config.securityDefinitions = {
+  'apiKey': {
+    type: 'apiKey',
+    name: 'api_key',
+    in: 'query',
+  }
+}
