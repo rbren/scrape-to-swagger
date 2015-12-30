@@ -112,6 +112,8 @@ function addOperationToSwagger($, op, method, path) {
     sOp.parameters.push(sParameter);
     var description = extractText(param, config.parameterDescription);
     if (description) sParameter.description = description.trim();
+    var required = extractBoolean(param, config.parameterRequired);
+    if (required === true || required === false) sParameter.required = required;
     sParameter.in = extractText(param, config.parameterIn) || getDefaultParameterLocation(method);
     sParameter.type = extractText(param, config.parameterType) || 'string';
   });
@@ -177,6 +179,14 @@ function extractJSON(el, extractor) {
   if (!json) return;
   if (extractor.isExample) json = generateSchema(json);
   return json;
+}
+
+function extractBoolean(el, extractor) {
+  var text = extractText(el, extractor);
+  if (!text) return;
+  text = text.toLowerCase();
+  if (text === 'false' || text === 'no') return false;
+  return true;
 }
 
 function fixErrors() {
