@@ -8,101 +8,1001 @@
   "paths": {
     "/databases": {
       "get": {
-        "parameters": [],
-        "responses": {}
+        "parameters": [
+          {
+            "name": "page",
+            "description": "The current page of total available pages you wish to view.",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "The number of results per page that will be returned.",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "query",
+            "description": "You can retrieve all databases related to a search term using the query parameter. Multiple search terms should be separated by a + character.",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "databases": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "minItems": 1,
+                  "items": {
+                    "required": [
+                      "id",
+                      "name",
+                      "database_code",
+                      "description",
+                      "datasets_count",
+                      "downloads",
+                      "premium",
+                      "image"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "name": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "database_code": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "description": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "datasets_count": {
+                        "type": "number"
+                      },
+                      "downloads": {
+                        "type": "number"
+                      },
+                      "premium": {
+                        "type": "boolean"
+                      },
+                      "image": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  }
+                },
+                "meta": {
+                  "type": "object",
+                  "properties": {
+                    "query": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "per_page": {
+                      "type": "number"
+                    },
+                    "current_page": {
+                      "type": "number"
+                    },
+                    "prev_page": {},
+                    "total_pages": {
+                      "type": "number"
+                    },
+                    "total_count": {
+                      "type": "number"
+                    },
+                    "next_page": {
+                      "type": "number"
+                    },
+                    "current_first_item": {
+                      "type": "number"
+                    },
+                    "current_last_item": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "query",
+                    "per_page",
+                    "current_page",
+                    "total_pages",
+                    "total_count",
+                    "next_page",
+                    "current_first_item",
+                    "current_last_item"
+                  ]
+                }
+              },
+              "required": [
+                "databases",
+                "meta"
+              ]
+            }
+          }
+        }
       }
     },
     "/databases/{database_code}": {
       "get": {
         "parameters": [
           {
-            "in": "path",
             "name": "database_code",
+            "description": "The unique database code on Quandl (ex. WIKI)",
+            "required": true,
+            "in": "path",
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "database": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "database_code": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "datasets_count": {
+                      "type": "number"
+                    },
+                    "downloads": {
+                      "type": "number"
+                    },
+                    "premium": {
+                      "type": "boolean"
+                    },
+                    "image": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "database_code",
+                    "description",
+                    "datasets_count",
+                    "downloads",
+                    "premium",
+                    "image"
+                  ]
+                }
+              },
+              "required": [
+                "database"
+              ]
+            }
+          }
+        }
       }
     },
     "/databases/{database_code}/codes": {
       "get": {
         "parameters": [
           {
-            "in": "path",
             "name": "database_code",
+            "description": "The unique database code on Quandl (ex. YC)",
+            "required": true,
+            "in": "path",
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
       }
     },
     "/databases/{database_code}/data": {
       "get": {
         "parameters": [
           {
-            "in": "path",
             "name": "database_code",
+            "description": "The unique database code on Quandl (ex. YC)",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          },
+          {
+            "name": "download_type",
+            "description": "Data returned can be either partial or complete. Partial returns results from the last day, while complete returns the entire database. Default is complete.",
+            "required": false,
+            "in": "query",
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
       }
     },
     "/datasets": {
       "get": {
-        "parameters": [],
-        "responses": {}
+        "parameters": [
+          {
+            "name": "database_code",
+            "description": "You can restrict your search to a specific database by including a Quandl database code. For example, the database code for “IMF Cross Country Macroeconomic Statistics” is ODA.",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "The current page of total available pages you wish to view.",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "per_page",
+            "description": "The number of results per page that will be returned.",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "query",
+            "description": "You can retrieve all datasets related to a search term using the query parameter. Multiple search terms should be separated by a + character.",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "datasets": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "minItems": 1,
+                  "items": {
+                    "required": [
+                      "id",
+                      "dataset_code",
+                      "database_code",
+                      "name",
+                      "description",
+                      "refreshed_at",
+                      "newest_available_date",
+                      "oldest_available_date",
+                      "frequency",
+                      "type",
+                      "premium",
+                      "database_id"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "dataset_code": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "database_code": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "name": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "description": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "refreshed_at": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "newest_available_date": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "oldest_available_date": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "column_names": {
+                        "type": "array",
+                        "items": {
+                          "required": [],
+                          "properties": {}
+                        }
+                      },
+                      "frequency": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "type": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "premium": {
+                        "type": "boolean"
+                      },
+                      "database_id": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                },
+                "meta": {
+                  "type": "object",
+                  "properties": {
+                    "query": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "per_page": {
+                      "type": "number"
+                    },
+                    "current_page": {
+                      "type": "number"
+                    },
+                    "prev_page": {},
+                    "total_pages": {
+                      "type": "number"
+                    },
+                    "total_count": {
+                      "type": "number"
+                    },
+                    "next_page": {},
+                    "current_first_item": {
+                      "type": "number"
+                    },
+                    "current_last_item": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "query",
+                    "per_page",
+                    "current_page",
+                    "total_pages",
+                    "total_count",
+                    "current_first_item",
+                    "current_last_item"
+                  ]
+                }
+              },
+              "required": [
+                "datasets",
+                "meta"
+              ]
+            }
+          }
+        }
       }
     },
     "/datasets/{database_code}/{dataset_code}": {
       "get": {
         "parameters": [
           {
-            "in": "path",
-            "name": "database_code",
+            "name": "collapse",
+            "description": "Parameters to indicate the desired frequency. When you change the frequency of a dataset, Quandl returns the last observation for the given period. By collapsing a daily dataset to monthly, you will get a sample of the original dataset where the observation for each month is the last data point available for that month. Set collapse with: collapse=none|daily|weekly|monthly|quarterly|annual",
+            "required": false,
+            "in": "query",
             "type": "string"
           },
           {
+            "name": "column_index",
+            "description": "Request a specific column by passing the column_index=n parameter. Column 0 is the date column and is always returned. Data begins at column 1.",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "database_code",
+            "description": "Each database on Quandl has a unique database code. For example, the database code for “Wiki EOD Stock Prices” will have the Qunadl code WIKI.",
+            "required": true,
             "in": "path",
+            "type": "string"
+          },
+          {
             "name": "dataset_code",
+            "description": "Each dataset on Quandl has a unique dataset code. For example, to access the dataset named Apple Inc. (AAPL) use the dataset code AAPL. The dataset code must be used in combination with the database code, for example, to retrieve the dataset named Apple, use WIKI/AAPL.",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          },
+          {
+            "name": "end_date",
+            "description": "Retrieve data within a specific date range, by setting end dates for your query. Set the end date with: end_date=yyyy-mm-dd",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "exclude_column_names",
+            "description": "Request data without column names by passing the exclude_column_names=true parameter. This can only be applied to CSV.",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "description": "You can use limit=n to get only the first n rows of your dataset. Use limit=1 to get the latest observation for any dataset.",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "You can select the sort order by passing the parameter order=asc|desc. (Notice that the | in the parameter specification separates various mutually-exclusive options). The default sort order is descending.",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "rows",
+            "description": "You can use rows=n to get only the first n rows of your dataset. Use rows=1 to get the latest observation for any dataset.",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "start_date",
+            "description": "Retrieve data within a specific date range, by setting start for your query. Set the start date with: start_date=yyyy-mm-dd",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "transform",
+            "description": "Perform  calculations on your data prior to downloading. The transformations currently availabe are row-on-row change, percentage change, cumulative sum, and normalize (set starting value at 100). Set the transform parameter with: transform=none|diff|rdiff|cumul|normalize",
+            "required": false,
+            "in": "query",
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "dataset": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "dataset_code": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "database_code": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "refreshed_at": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "newest_available_date": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "oldest_available_date": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "column_names": {
+                      "type": "array",
+                      "items": {
+                        "required": [],
+                        "properties": {}
+                      }
+                    },
+                    "frequency": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "type": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "premium": {
+                      "type": "boolean"
+                    },
+                    "limit": {},
+                    "transform": {},
+                    "column_index": {},
+                    "start_date": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "end_date": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "required": [],
+                        "properties": {
+                          "0": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                              "required": [],
+                              "properties": {}
+                            }
+                          },
+                          "1": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                              "required": [],
+                              "properties": {}
+                            }
+                          },
+                          "2": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                              "required": [],
+                              "properties": {}
+                            }
+                          },
+                          "3": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                              "required": [],
+                              "properties": {}
+                            }
+                          },
+                          "4": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                              "required": [],
+                              "properties": {}
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "collapse": {},
+                    "order": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "database_id": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "dataset_code",
+                    "database_code",
+                    "name",
+                    "description",
+                    "refreshed_at",
+                    "newest_available_date",
+                    "oldest_available_date",
+                    "column_names",
+                    "frequency",
+                    "type",
+                    "premium",
+                    "start_date",
+                    "end_date",
+                    "data",
+                    "order",
+                    "database_id"
+                  ]
+                }
+              },
+              "required": [
+                "dataset"
+              ]
+            }
+          }
+        }
       }
     },
     "/datasets/{database_code}/{dataset_code}/data": {
       "get": {
         "parameters": [
           {
-            "in": "path",
-            "name": "database_code",
+            "name": "Cumulative",
+            "description": "y’[t] = y[t] +y[t-1] + … + y[0]",
+            "required": true,
+            "in": "query",
             "type": "string"
           },
           {
+            "name": "Row-on-row",
+            "description": "y’[t] = y[t] - y[t-1]",
+            "required": true,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Start",
+            "description": "y’[t] = (y[t]/y[0]) * 100",
+            "required": true,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "collapse",
+            "description": "Parameters to indicate the desired frequency. When you change the frequency of a dataset, Quandl returns the last observation for the given period. By collapsing a daily dataset to monthly, you will get a sample of the original dataset where the observation for each month is the last data point available for that month. Set collapse with: collapse=none|daily|weekly|monthly|quarterly|annual",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "column_index",
+            "description": "Request a specific column by passing the column_index=n parameter. Column 0 is the date column and is always returned. Data begins at column 1.",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "database_code",
+            "description": "Each database on Quandl has a unique database code. For example, the database code for “Wiki EOD Stock Prices” has the Quandl code WIKI.",
+            "required": true,
             "in": "path",
+            "type": "string"
+          },
+          {
             "name": "dataset_code",
+            "description": "Each dataset on Quandl has a unique dataset code. For example, to access the dataset named Apple Inc. (AAPL) use the dataset code AAPL. The dataset code must be used in combination with the database code, for example, to retrieve the dataset named Apple, use WIKI/AAPL.",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          },
+          {
+            "name": "end_date",
+            "description": "Retrieve data within a specific date range, by setting end dates for your query. Set the end date with: end_date=yyyy-mm-dd",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "description": "You can use limit=n to get only the first n rows of your dataset. Use limit=1 to get the latest observation for any dataset.",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "description": "Select the sort order by passing the parameter order=asc|desc. (Notice that the | in the parameter specification separates various mutually-exclusive options). The default sort order is descending.",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "rows",
+            "description": "You can use rows=n to get only the first n rows of your dataset. Use rows=1 to get the latest observation for any dataset.",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "start_date",
+            "description": "Retrieve data within a specific date range, by setting start dates for your query. Set the start date with: start_date=yyyy-mm-dd",
+            "required": false,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "transform",
+            "description": "Perform  calculations on your data prior to downloading. The transformations currently availabe are row-on-row change, percentage change, cumulative sum, and normalize (set starting value at 100). Set the transform parameter with: transform=none|diff|rdiff|cumul|normalize",
+            "required": false,
+            "in": "query",
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "dataset_data": {
+                  "type": "object",
+                  "properties": {
+                    "limit": {},
+                    "transform": {},
+                    "column_index": {},
+                    "column_names": {
+                      "type": "array",
+                      "items": {
+                        "required": [],
+                        "properties": {}
+                      }
+                    },
+                    "start_date": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "end_date": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "frequency": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "required": [],
+                        "properties": {
+                          "0": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                              "required": [],
+                              "properties": {}
+                            }
+                          },
+                          "1": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                              "required": [],
+                              "properties": {}
+                            }
+                          },
+                          "2": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                              "required": [],
+                              "properties": {}
+                            }
+                          },
+                          "3": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                              "required": [],
+                              "properties": {}
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "collapse": {},
+                    "order": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "column_names",
+                    "start_date",
+                    "end_date",
+                    "frequency",
+                    "data",
+                    "order"
+                  ]
+                }
+              },
+              "required": [
+                "dataset_data"
+              ]
+            }
+          }
+        }
       }
     },
     "/datasets/{database_code}/{dataset_code}/metadata": {
       "get": {
         "parameters": [
           {
-            "in": "path",
-            "name": "database_code",
+            "name": "column_names",
+            "required": true,
+            "in": "query",
             "type": "string"
           },
           {
+            "name": "database_code",
+            "description": "The unique database code on Quandl (ex. WIKI)",
+            "required": true,
             "in": "path",
+            "type": "string"
+          },
+          {
             "name": "dataset_code",
+            "description": "The unique dataset code on Quandl (ex. APPL)",
+            "required": true,
+            "in": "path",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "required": true,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "frequency",
+            "required": true,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "required": true,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "newest_available_date",
+            "required": true,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "oldest_available_date",
+            "required": true,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "premium",
+            "required": true,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "refreshed_at",
+            "required": true,
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "required": true,
+            "in": "query",
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "description": "",
+              "type": "object",
+              "properties": {
+                "dataset": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "dataset_code": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "database_code": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "refreshed_at": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "newest_available_date": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "oldest_available_date": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "column_names": {
+                      "type": "array",
+                      "items": {
+                        "required": [],
+                        "properties": {}
+                      }
+                    },
+                    "frequency": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "type": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "premium": {
+                      "type": "boolean"
+                    },
+                    "database_id": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "dataset_code",
+                    "database_code",
+                    "name",
+                    "description",
+                    "refreshed_at",
+                    "newest_available_date",
+                    "oldest_available_date",
+                    "column_names",
+                    "frequency",
+                    "type",
+                    "premium",
+                    "database_id"
+                  ]
+                }
+              },
+              "required": [
+                "dataset"
+              ]
+            }
+          }
+        }
       }
     }
   },

@@ -11,16 +11,15 @@ var config = module.exports = {
   path: {selector: 'pre:contains(Definition) + div + blockquote', regex: /\w+ https:\/\/www.quandl.com\/api\/v3(\/\S*)/},
   method: {selector: 'pre:contains(Definition) + div + blockquote', regex: /(\w+) https:\/\/www.quandl.com\/api\/v3\/\S*/},
 
-  parameters: {selector: 'table', sibling: true},
+  parameters: {selector: 'table'},
   parameter: {selector: 'tr'},
+  parameterIn: 'query',
+  parameterType: 'string',
   parameterName: {selector: 'td:first-of-type', regex: /(\S+)/},
-  parameterType: {selector: 'td:nth-of-type(2)'},
+  parameterRequired: {selector: 'td:nth-of-type(2)'},
   parameterDescription: {selector: 'td:nth-of-type(3)'},
-  requestBody: {selector: 'h4:contains(Example) ~ pre.highlight-json, h3:contains(Example) ~ pre.highlight-json', isExample: true, sibling: true},
-  responses: {selector: 'h3:contains(Response), h4:contains(Response)', sibling: true},
-  responseStatus: {selector: 'pre.highlight-headers', regex: /Status: (\d+) /, sibling: true},
-  responseDescription: {selector: 'pre.highlight-headers', regex: /Status: \d+ (.*)/, sibling: true},
-  responseSchema: {selector: 'pre.highlight-json', isExample: true, sibling: true},
+
+  responseSchema: {selector: 'pre:contains(Example Response) + div + blockquote', isExample: true},
 
   fixPathParameters: function(path) {
     pieces = path.split('/');
