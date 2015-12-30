@@ -154,8 +154,11 @@ function resolveSelector(el, extractor, $) {
 function extractText(el, extractor) {
   if (!extractor) return '';
   if (typeof extractor === 'string') return extractor;
-  var el = resolveSelector(el, extractor).first();
-  var text = extractor.parse ? extractor.parse(el) : el.text();
+  var el = resolveSelector(el, extractor);
+  var text =
+        extractor.parse ? extractor.parse(el.first())
+      : extractor.join ? el.map(function() {return cheerio(this).text()}).toArray().join(' ')
+      : el.first().text();
   if (extractor.regex) {
     var matches = text.match(extractor.regex);
     if (!matches) return;
