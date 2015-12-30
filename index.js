@@ -142,9 +142,13 @@ function addOperationToSwagger($, op, method, path) {
 function resolveSelector(el, extractor, $) {
   if (!extractor) return el;
   if (extractor.sibling) return el.nextAll(extractor.selector);
-  if (extractor.split) return el.find(extractor.selector).map(function() {
-    return $(this).nextUntil(extractor.selector)
-  })
+  if (extractor.split) {
+    return el.find(extractor.selector).map(function() {
+      var elementSet = $(this).nextUntil(extractor.selector).addBack().map(function() {return $.html($(this))}).toArray();
+      var elementSetHTML = elementSet.join(' ');
+      return $('.scrape-wrapper', '<div class="scrape-wrapper">' + elementSetHTML + '</div>');
+    })
+  }
   return el.find(extractor.selector);
 }
 
