@@ -1,0 +1,13 @@
+{
+  "basePath": "/api/v3",
+  "host": "www.quandl.com",
+  "info": {
+    "title": "Quandl API",
+    "description": "The Quandl API"
+  },
+  "paths": {},
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0"
+}
