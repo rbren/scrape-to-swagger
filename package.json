@@ -1,6 +1,6 @@
 {
   "name": "scrape-to-swagger",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Scrape HTML pages to swagger",
   "main": "index.js",
   "scripts": {
