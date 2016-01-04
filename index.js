@@ -86,20 +86,28 @@ function addPageToSwagger($) {
     if (!method || !path) return;
     method = method.toLowerCase();
     if (METHODS.indexOf(method) === -1) return;
-    path = urlParser.parse(path).pathname;
+    var parsed = urlParser.parse(path, true);
+    path = parsed.pathname;
     if (config.fixPathParameters) path = config.fixPathParameters(path, $, resolveSelector(op, config.path));
     var paths = Array.isArray(path) ? path : [path];
     paths.forEach(function(path) {
-      addOperationToSwagger($, op, method, path);
+      addOperationToSwagger($, op, method, path, parsed.query);
     });
   });
 }
 
-function addOperationToSwagger($, op, method, path) {
+function addOperationToSwagger($, op, method, path, qs) {
   var sPath = swagger.paths[path] = swagger.paths[path] || {};
   var sOp = sPath[method] = sPath[method] || {parameters: [], responses: {}};
   sOp.summary = extractText(op, config.operationSummary) || undefined;
   sOp.description = extractText(op, config.operationDescription) || undefined;
+  for (var key in qs) {
+    sOp.parameters.push({
+      name: key,
+      type: 'string',
+      in: 'query',
+    })
+  }
 
   var parameters = resolveSelector(op, config.parameters, $);
   parameters = resolveSelector(parameters, config.parameter, $);

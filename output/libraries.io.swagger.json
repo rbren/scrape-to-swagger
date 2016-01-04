@@ -10,6 +10,11 @@
       "get": {
         "parameters": [
           {
+            "name": "api_key",
+            "type": "string",
+            "in": "query"
+          },
+          {
             "in": "path",
             "name": "owner",
             "type": "string"
@@ -31,6 +36,11 @@
     "/github/{owner}/{name}/dependencies": {
       "get": {
         "parameters": [
+          {
+            "name": "api_key",
+            "type": "string",
+            "in": "query"
+          },
           {
             "in": "path",
             "name": "owner",
@@ -54,6 +64,11 @@
       "get": {
         "parameters": [
           {
+            "name": "api_key",
+            "type": "string",
+            "in": "query"
+          },
+          {
             "in": "path",
             "name": "owner",
             "type": "string"
@@ -76,10 +91,20 @@
       "get": {
         "parameters": [
           {
+            "name": "api_key",
+            "type": "string",
+            "in": "query"
+          },
+          {
             "name": "page",
             "description": "The page of results to return",
             "in": "query",
             "type": "string"
+          },
+          {
+            "name": "q",
+            "type": "string",
+            "in": "query"
           }
         ],
         "responses": {
@@ -93,6 +118,11 @@
     "/{platform}/{name}": {
       "get": {
         "parameters": [
+          {
+            "name": "api_key",
+            "type": "string",
+            "in": "query"
+          },
           {
             "in": "path",
             "name": "platform",
@@ -115,6 +145,11 @@
     "/{platform}/{name}/dependent_repositories": {
       "get": {
         "parameters": [
+          {
+            "name": "api_key",
+            "type": "string",
+            "in": "query"
+          },
           {
             "name": "page",
             "description": "The page of results to return",
@@ -144,6 +179,11 @@
       "get": {
         "parameters": [
           {
+            "name": "api_key",
+            "type": "string",
+            "in": "query"
+          },
+          {
             "name": "page",
             "description": "The page of results to return",
             "in": "query",
@@ -171,6 +211,11 @@
     "/{platform}/{name}/{version}/dependencies": {
       "get": {
         "parameters": [
+          {
+            "name": "api_key",
+            "type": "string",
+            "in": "query"
+          },
           {
             "in": "path",
             "name": "platform",
