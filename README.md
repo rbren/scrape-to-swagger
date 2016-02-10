@@ -1,7 +1,7 @@
 # scrape-to-swagger
 
 ## Usage
-See the [config/ directory](config) for example configurations
+See the [config directory](config) for example configurations
 
 ```bash
 npm install -g scrape-to-swagger
