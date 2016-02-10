@@ -41,7 +41,7 @@ Selector fields correspond to parts of the Swagger document. These can be specif
 Selectors are passed to [cheerio](https://github.com/cheeriojs/cheerio), which is based on jQuery.
 
 The selector object takes four parameters:
-* selector - a CSS selector. This will be applied as parent.find(selector), where the parent is the element in the hierarchy above (or <body> if none)
+* selector - a CSS selector. This will be applied as parent.find(selector), where the parent is the element in the hierarchy above (or &lt;body&gt; if none)
 * regex - A regular expression for extracting the field from the text inside the selector
 * regexIndex - The index of the matched items to use (default=1, i.e. it will capture the first thing you put in parens)
 * join - If true, join *all* the elements matched by the selector
