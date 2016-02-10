@@ -4,7 +4,8 @@
 See the [config/ directory](config/product-hunt.js) for example configurations
 
 ```bash
-node index.js --config ./config/product-hunt.js --output ./output/product-hunt.swagger.json
+npm install -g scrape-to-swagger
+scrape-to-swagger --config ./config/product-hunt.js --output ./output/product-hunt.swagger.json --verbose
 ```
 
 ## Config
