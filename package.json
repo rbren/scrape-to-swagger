@@ -15,5 +15,8 @@
     "request": "^2.67.0",
     "sorted-object": "^1.0.0",
     "yargs": "^3.31.0"
+  },
+  "bin": {
+    "scrape-to-swagger": "./bin/scrape-to-swagger"
   }
 }
