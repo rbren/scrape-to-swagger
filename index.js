@@ -88,6 +88,7 @@ function addPageToSwagger($) {
     if (METHODS.indexOf(method) === -1) return;
     var parsed = urlParser.parse(path, true);
     path = parsed.pathname;
+    if (!path.startsWith('/')) path = '/' + path;
     if (config.fixPathParameters) path = config.fixPathParameters(path, $, resolveSelector(op, config.path));
     var paths = Array.isArray(path) ? path : [path];
     paths.forEach(function(path) {
