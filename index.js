@@ -240,8 +240,11 @@ function fixErrors() {
         var paramName = match[1];
         processedPath = processedPath.replace(match[0], paramName);
         var origParam = op.parameters.filter(function(p) {return p.name === paramName})[0];
-        if (origParam) origParam.in = 'path';
-        else op.parameters.push({in: 'path', name: paramName, type: 'string'})
+        if (origParam) {
+          origParam.in = 'path';
+          origParam.required = true;
+        }
+        else op.parameters.push({in: 'path', name: paramName, type: 'string', required: true})
       }
 
       var bodyParam = op.parameters.filter(function(p) {return p.in === 'body'})[0];
