@@ -123,7 +123,7 @@ function addOperationToSwagger($, op, method, path, qs) {
     var required = extractBoolean(param, config.parameterRequired);
     if (required === true || required === false) sParameter.required = required;
     sParameter.in = extractText(param, config.parameterIn) || getDefaultParameterLocation(method);
-    sParameter.type = extractText(param, config.parameterType) || 'string';
+    sParameter.type = extractText(param, config.parameterType).toLowerCase() || 'string';
   });
   var body = extractJSON(op, config.requestBody);
   if (body) {
