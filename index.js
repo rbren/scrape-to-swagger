@@ -39,7 +39,7 @@ function scrapeInfo(url, callback) {
     if (err) return callback(err);
     var $ = cheerio.load(body);
     var body = $('body');
-    
+
     var base = ['basePath', 'host']
     var info = ['title', 'description'];
     base.forEach(function(i) {swagger[i] = extractText(body, config[i])})
@@ -134,7 +134,7 @@ function addOperationToSwagger($, op, method, path, qs) {
   var responses = resolveSelector(op, config.responses, $).first();
   responses = resolveSelector(responses, config.response, $);
   responses.each(function() {
-    var response = $(this); 
+    var response = $(this);
     var responseStatus = extractInteger(response, config.responseStatus) || 200;
     log('    resp', responseStatus);
     var responseDescription = extractText(response, config.responseDescription);
@@ -218,8 +218,8 @@ function fixErrors() {
           if (p1.type && !p2.type) return -1;
           if (p2.type && !p1.type) return 1;
           if (p1.schema && p2.schema) {
-            var p1len = JSON.stringify(p1.schema).lenth;
-            var p2len = JSON.stringify(p2.schema).lenth;
+            var p1len = JSON.stringify(p1.schema).length;
+            var p2len = JSON.stringify(p2.schema).length;
             if (p1len > p2len) return -1;
             if (p1len < p2len) return 1;
           }
