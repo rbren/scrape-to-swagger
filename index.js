@@ -186,6 +186,7 @@ function extractJSON(el, extractor) {
   }
   if (!json) return;
   if (extractor.isExample) json = generateSchema(json);
+  delete json['$schema'];
   return json;
 }
 
