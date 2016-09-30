@@ -5,6 +5,7 @@ var config = module.exports = {
   host: 'api.github.com',
   basePath: '/',
   title: 'GitHub API',
+  version: 'v3',
   description: 'The GitHub API',
   operations: {selector: '.content'},
   operation: {selector: 'h2 ~ pre:not(.highlight)'},

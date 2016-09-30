@@ -41,7 +41,7 @@ function scrapeInfo(url, callback) {
     var body = $('body');
 
     var base = ['basePath', 'host']
-    var info = ['title', 'description'];
+    var info = ['title', 'description', 'version'];
     base.forEach(function(i) {swagger[i] = extractText(body, config[i])})
     info.forEach(function(i) {swagger.info[i] = extractText(body, config[i])})
     swagger.schemes = config.schemes || ['https'];
