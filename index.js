@@ -143,7 +143,10 @@ function addOperationToSwagger($, op, method, path, qs) {
         description: responseDescription || '',
         schema: responseSchema || undefined,
     };
-  })
+  });
+  if (Object.keys(sOp.responses).length === 0) {
+    sOp.responses.default = {'description': 'Unknown'};
+  }
 }
 
 function resolveSelector(el, extractor, $) {
