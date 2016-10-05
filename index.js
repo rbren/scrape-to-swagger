@@ -39,9 +39,9 @@ function scrapeInfo(url, callback) {
     if (err) return callback(err);
     var $ = cheerio.load(body);
     var body = $('body');
-    
+
     var base = ['basePath', 'host']
-    var info = ['title', 'description'];
+    var info = ['title', 'description', 'version'];
     base.forEach(function(i) {swagger[i] = extractText(body, config[i])})
     info.forEach(function(i) {swagger.info[i] = extractText(body, config[i])})
     swagger.schemes = config.schemes || ['https'];
@@ -88,6 +88,7 @@ function addPageToSwagger($) {
     if (METHODS.indexOf(method) === -1) return;
     var parsed = urlParser.parse(path, true);
     path = parsed.pathname;
+    if (!path.startsWith('/')) path = '/' + path;
     if (config.fixPathParameters) path = config.fixPathParameters(path, $, resolveSelector(op, config.path));
     var paths = Array.isArray(path) ? path : [path];
     paths.forEach(function(path) {
@@ -123,7 +124,7 @@ function addOperationToSwagger($, op, method, path, qs) {
     var required = extractBoolean(param, config.parameterRequired);
     if (required === true || required === false) sParameter.required = required;
     sParameter.in = extractText(param, config.parameterIn) || getDefaultParameterLocation(method);
-    sParameter.type = extractText(param, config.parameterType) || 'string';
+    sParameter.type = extractText(param, config.parameterType).toLowerCase() || 'string';
   });
   var body = extractJSON(op, config.requestBody);
   if (body) {
@@ -134,7 +135,7 @@ function addOperationToSwagger($, op, method, path, qs) {
   var responses = resolveSelector(op, config.responses, $).first();
   responses = resolveSelector(responses, config.response, $);
   responses.each(function() {
-    var response = $(this); 
+    var response = $(this);
     var responseStatus = extractInteger(response, config.responseStatus) || 200;
     log('    resp', responseStatus);
     var responseDescription = extractText(response, config.responseDescription);
@@ -143,7 +144,10 @@ function addOperationToSwagger($, op, method, path, qs) {
         description: responseDescription || '',
         schema: responseSchema || undefined,
     };
-  })
+  });
+  if (Object.keys(sOp.responses).length === 0) {
+    sOp.responses.default = {'description': 'Unknown'};
+  }
 }
 
 function resolveSelector(el, extractor, $) {
@@ -186,6 +190,7 @@ function extractJSON(el, extractor) {
   }
   if (!json) return;
   if (extractor.isExample) json = generateSchema(json);
+  delete json['$schema'];
   return json;
 }
 
@@ -218,8 +223,8 @@ function fixErrors() {
           if (p1.type && !p2.type) return -1;
           if (p2.type && !p1.type) return 1;
           if (p1.schema && p2.schema) {
-            var p1len = JSON.stringify(p1.schema).lenth;
-            var p2len = JSON.stringify(p2.schema).lenth;
+            var p1len = JSON.stringify(p1.schema).length;
+            var p2len = JSON.stringify(p2.schema).length;
             if (p1len > p2len) return -1;
             if (p1len < p2len) return 1;
           }
@@ -236,8 +241,11 @@ function fixErrors() {
         var paramName = match[1];
         processedPath = processedPath.replace(match[0], paramName);
         var origParam = op.parameters.filter(function(p) {return p.name === paramName})[0];
-        if (origParam) origParam.in = 'path';
-        else op.parameters.push({in: 'path', name: paramName, type: 'string'})
+        if (origParam) {
+          origParam.in = 'path';
+          origParam.required = true;
+        }
+        else op.parameters.push({in: 'path', name: paramName, type: 'string', required: true})
       }
 
       var bodyParam = op.parameters.filter(function(p) {return p.in === 'body'})[0];
