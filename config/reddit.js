@@ -19,7 +19,7 @@ var config = module.exports = {
     },
   },
   method: {selector: 'h3 .method'},
-  
+
   operationDescription: {selector: '.info .md'},
 
   parameters: {selector: 'table.parameters'},
@@ -30,12 +30,13 @@ var config = module.exports = {
 
   fixPathParameters: function(path, $, el) {
     var paths = [];
-    var optional = path.match(/\[(.*)\]/);
+    var optional = path.match(/\/\[(.*)\]/);
     if (optional) {
       optional = optional[1];
-      console.log('optional', optional);
-      paths.push(path.replace('[' + optional + ']', ''));
-      paths.push(path.replace('[', '').replace(']', ''));
+      var withoutOption = path.replace('/[' + optional + ']', '');
+      var withOption = path.replace('/[', '').replace(']', '');
+      paths.push(withoutOption);
+      paths.push(withOption);
     } else {
       paths.push(path);
     }

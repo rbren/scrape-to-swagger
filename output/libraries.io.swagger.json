@@ -2,201 +2,30 @@
   "basePath": "/api",
   "host": "libraries.io",
   "info": {
+    "description": "Libraries.io monitors 1,135,092 open source libraries across 29 different package managers. You can discover new libraries to use in your software projects as well as be notified of new releases to keep your applications secure and up to date.",
     "title": "Libraries.io",
-    "description": "Libraries.io monitors 1,135,092 open source libraries across 29 different package managers. You can discover new libraries to use in your software projects as well as be notified of new releases to keep your applications secure and up to date."
+    "version": ""
   },
   "paths": {
-    "/github/{owner}/{name}": {
-      "get": {
-        "parameters": [
-          {
-            "name": "api_key",
-            "type": "string",
-            "in": "query"
-          },
-          {
-            "in": "path",
-            "name": "owner",
-            "type": "string"
-          },
-          {
-            "in": "path",
-            "name": "name",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "description": "Get a info for a GitHub repository. Currently only works for open source repositories."
-      }
-    },
-    "/github/{owner}/{name}/dependencies": {
-      "get": {
-        "parameters": [
-          {
-            "name": "api_key",
-            "type": "string",
-            "in": "query"
-          },
-          {
-            "in": "path",
-            "name": "owner",
-            "type": "string"
-          },
-          {
-            "in": "path",
-            "name": "name",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "description": "Get a list of dependencies for a GitHub repositories. Currently only works for open source repositories."
-      }
-    },
-    "/github/{owner}/{name}/projects": {
-      "get": {
-        "parameters": [
-          {
-            "name": "api_key",
-            "type": "string",
-            "in": "query"
-          },
-          {
-            "in": "path",
-            "name": "owner",
-            "type": "string"
-          },
-          {
-            "in": "path",
-            "name": "name",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "description": "Get a list of projects referencing the given GitHub repository."
-      }
-    },
-    "/search": {
-      "get": {
-        "parameters": [
-          {
-            "name": "api_key",
-            "type": "string",
-            "in": "query"
-          },
-          {
-            "name": "page",
-            "description": "The page of results to return",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "q",
-            "type": "string",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "description": "Search for projects"
-      }
-    },
     "/{platform}/{name}": {
       "get": {
+        "description": "Get information about a project and it's versions.",
         "parameters": [
           {
-            "name": "api_key",
-            "type": "string",
-            "in": "query"
-          },
-          {
-            "in": "path",
-            "name": "platform",
-            "type": "string"
-          },
-          {
-            "in": "path",
-            "name": "name",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "description": "Get information about a project and it's versions."
-      }
-    },
-    "/{platform}/{name}/dependent_repositories": {
-      "get": {
-        "parameters": [
-          {
-            "name": "api_key",
-            "type": "string",
-            "in": "query"
-          },
-          {
-            "name": "page",
-            "description": "The page of results to return",
             "in": "query",
-            "type": "string"
-          },
-          {
-            "in": "path",
-            "name": "platform",
-            "type": "string"
-          },
-          {
-            "in": "path",
-            "name": "name",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "description": "Get github repositories that depend on a given project."
-      }
-    },
-    "/{platform}/{name}/dependents": {
-      "get": {
-        "parameters": [
-          {
             "name": "api_key",
-            "type": "string",
-            "in": "query"
-          },
-          {
-            "name": "page",
-            "description": "The page of results to return",
-            "in": "query",
             "type": "string"
           },
           {
             "in": "path",
             "name": "platform",
+            "required": true,
             "type": "string"
           },
           {
             "in": "path",
             "name": "name",
+            "required": true,
             "type": "string"
           }
         ],
@@ -204,31 +33,34 @@
           "200": {
             "description": ""
           }
-        },
-        "description": "Get projects that have at least one version that depends on a given project."
+        }
       }
     },
     "/{platform}/{name}/{version}/dependencies": {
       "get": {
+        "description": "Get a list of dependencies for a version of a project, pass latest to get dependency info for the latest available version",
         "parameters": [
           {
+            "in": "query",
             "name": "api_key",
-            "type": "string",
-            "in": "query"
+            "type": "string"
           },
           {
             "in": "path",
             "name": "platform",
+            "required": true,
             "type": "string"
           },
           {
             "in": "path",
             "name": "name",
+            "required": true,
             "type": "string"
           },
           {
             "in": "path",
             "name": "version",
+            "required": true,
             "type": "string"
           }
         ],
@@ -236,8 +68,289 @@
           "200": {
             "description": ""
           }
-        },
-        "description": "Get a list of dependencies for a version of a project, pass latest to get dependency info for the latest available version"
+        }
+      }
+    },
+    "/{platform}/{name}/dependent_repositories": {
+      "get": {
+        "description": "Get github repositories that depend on a given project.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "api_key",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "platform",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/{platform}/{name}/dependents": {
+      "get": {
+        "description": "Get projects that have at least one version that depends on a given project.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "api_key",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "platform",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/github/{login}": {
+      "get": {
+        "description": "Get information for a given GitHub User or Organization",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "api_key",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "login",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/github/{login}/projects": {
+      "get": {
+        "description": "Get a list of projects referencing the given GitHub users repositories.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "api_key",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "login",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/github/{login}/repositories": {
+      "get": {
+        "description": "Get github repositories owned by a Github User",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "api_key",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "login",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/github/{owner}/{name}": {
+      "get": {
+        "description": "Get a info for a GitHub repository. Currently only works for open source repositories.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "api_key",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/github/{owner}/{name}/dependencies": {
+      "get": {
+        "description": "Get a list of dependencies for a GitHub repositories. Currently only works for open source repositories.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "api_key",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/github/{owner}/{name}/projects": {
+      "get": {
+        "description": "Get a list of projects referencing the given GitHub repository.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "api_key",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "owner",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/search": {
+      "get": {
+        "description": "Search for projects",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "api_key",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "q",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/subscriptions": {
+      "get": {
+        "description": "List projects that a user is subscribed to recieved notifications about new releases",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "api_key",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/subscriptions/{platform}/{name}": {
+      "get": {
+        "description": "Check if a users is subscribed to recieved notifications about new releases of a project",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "api_key",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "platform",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
       }
     }
   },
@@ -246,9 +359,9 @@
   ],
   "securityDefinitions": {
     "apiKey": {
-      "type": "apiKey",
       "in": "query",
-      "name": "api_key"
+      "name": "api_key",
+      "type": "apiKey"
     }
   },
   "swagger": "2.0"
