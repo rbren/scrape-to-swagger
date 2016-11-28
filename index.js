@@ -10,7 +10,6 @@ var fs = require('fs');
 var async = require('async');
 var request = require('request');
 var cheerio = require('cheerio');
-var sortObj = require('sorted-object');
 var generateSchema = require('json-schema-generator');
 var argv = require('yargs').argv;
 if (argv.name) {
@@ -258,11 +257,6 @@ function fixErrors() {
         })
       }
     }
-  }
-  swagger = sortObj(swagger);
-  swagger.paths = sortObj(swagger.paths);
-  for (var path in swagger.paths) {
-    swagger.paths[path] = sortObj(swagger.paths[path]);
   }
 }
 
