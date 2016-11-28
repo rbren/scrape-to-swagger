@@ -4,6 +4,7 @@ var getDefaultParameterLocation = function(method) {
   return 'query';
 }
 
+var deepSort = require('deep-sort-object');
 var urlParser = require('url');
 var fs = require('fs');
 var async = require('async');
@@ -270,6 +271,6 @@ scrapeInfo(config.url, function(err) {
   scrapePage(config.url, config.depth === 0 ? 0 : (config.depth || 1), function(err) {
     if (err) throw err;
     fixErrors();
-    fs.writeFileSync(argv.output || 'swagger.json', JSON.stringify(swagger, null, 2));
+    fs.writeFileSync(argv.output || 'swagger.json', JSON.stringify(deepSort(swagger), null, 2));
   });
 });
