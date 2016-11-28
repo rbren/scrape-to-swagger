@@ -152,7 +152,7 @@ function addOperationToSwagger($, op, method, path, qs) {
 
 function resolveSelector(el, extractor, $) {
   if (!extractor) return el;
-  if (extractor.sibling) return el.nextAll(extractor.selector);
+  if (extractor.sibling) return el.nextAll(extractor.selector).eq(0);
   if (extractor.split) {
     return el.find(extractor.selector).map(function() {
       var elementSet = $(this).nextUntil(extractor.selector).addBack().map(function() {return $.html($(this))}).toArray();
