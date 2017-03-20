@@ -73,7 +73,7 @@
     },
     "/{platform}/{name}/dependent_repositories": {
       "get": {
-        "description": "Get github repositories that depend on a given project.",
+        "description": "Get repositories that depend on a given project.",
         "parameters": [
           {
             "in": "query",
@@ -131,7 +131,7 @@
     },
     "/github/{login}": {
       "get": {
-        "description": "Get information for a given GitHub User or Organization",
+        "description": "Get information for a given User or Organization",
         "parameters": [
           {
             "in": "query",
@@ -154,7 +154,7 @@
     },
     "/github/{login}/projects": {
       "get": {
-        "description": "Get a list of projects referencing the given GitHub users repositories.",
+        "description": "Get a list of projects referencing the given users repositories.",
         "parameters": [
           {
             "in": "query",
@@ -177,7 +177,7 @@
     },
     "/github/{login}/repositories": {
       "get": {
-        "description": "Get github repositories owned by a Github User",
+        "description": "Get repositories owned by a User",
         "parameters": [
           {
             "in": "query",
@@ -200,7 +200,7 @@
     },
     "/github/{owner}/{name}": {
       "get": {
-        "description": "Get a info for a GitHub repository. Currently only works for open source repositories.",
+        "description": "Get a info for a repository. Currently only works for open source repositories.",
         "parameters": [
           {
             "in": "query",
@@ -229,7 +229,7 @@
     },
     "/github/{owner}/{name}/dependencies": {
       "get": {
-        "description": "Get a list of dependencies for a GitHub repositories. Currently only works for open source repositories.",
+        "description": "Get a list of dependencies for a repositories. Currently only works for open source repositories.",
         "parameters": [
           {
             "in": "query",
@@ -258,7 +258,7 @@
     },
     "/github/{owner}/{name}/projects": {
       "get": {
-        "description": "Get a list of projects referencing the given GitHub repository.",
+        "description": "Get a list of projects referencing the given repository.",
         "parameters": [
           {
             "in": "query",

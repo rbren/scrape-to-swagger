@@ -329,6 +329,12 @@
             "type": "string"
           },
           {
+            "description": "The weight and dimensions of the parcel",
+            "in": "formData",
+            "name": "ParcelSize",
+            "type": "string"
+          },
+          {
             "description": "* The consignee's phone number.",
             "in": "formData",
             "name": "Phone",
@@ -350,6 +356,12 @@
             "description": "A promotional or coupon code that can have special pricing rules as configured in the Dashboard.",
             "in": "formData",
             "name": "PromoCode",
+            "type": "string"
+          },
+          {
+            "description": "The shipping being charged to the consignee",
+            "in": "formData",
+            "name": "ProvidedShipping",
             "type": "string"
           },
           {
@@ -772,7 +784,7 @@
             "description": ""
           }
         },
-        "summary": "Get exchange rates converted from your company's base currency. Exchange rates are updated every day at 4AM GMT."
+        "summary": "Get exchange rates converted from your company's base currency. Exchange rates are updated every day at 6 AM ET / 11 AM GMT."
       }
     },
     "/api/ExecuteReturn": {
@@ -854,7 +866,7 @@
             "description": ""
           }
         },
-        "summary": "Returns a label for the given key and tracking number."
+        "summary": "Returns a label for the given key and tracking number"
       },
       "post": {
         "parameters": [
@@ -876,7 +888,7 @@
             "description": ""
           }
         },
-        "summary": "Returns a label for the given key and tracking number."
+        "summary": "Returns a label for the given key and tracking number"
       }
     },
     "/api/Quote": {
@@ -1039,6 +1051,12 @@
             "type": "string"
           },
           {
+            "description": "The weight and dimensions of the parcel",
+            "in": "formData",
+            "name": "ParcelSize",
+            "type": "string"
+          },
+          {
             "description": "* The consignee's phone number.",
             "in": "formData",
             "name": "Phone",
@@ -1060,6 +1078,12 @@
             "description": "A promotional or coupon code that can have special pricing rules as configured in the Dashboard.",
             "in": "formData",
             "name": "PromoCode",
+            "type": "string"
+          },
+          {
+            "description": "The shipping being charged to the consignee",
+            "in": "formData",
+            "name": "ProvidedShipping",
             "type": "string"
           },
           {
@@ -1609,6 +1633,12 @@
             "type": "string"
           },
           {
+            "description": "The weight and dimensions of the parcel",
+            "in": "formData",
+            "name": "ParcelSize",
+            "type": "string"
+          },
+          {
             "description": "* The consignee's phone number.",
             "in": "formData",
             "name": "Phone",
@@ -1630,6 +1660,12 @@
             "description": "A promotional or coupon code that can have special pricing rules as configured in the Dashboard.",
             "in": "formData",
             "name": "PromoCode",
+            "type": "string"
+          },
+          {
+            "description": "The shipping being charged to the consignee",
+            "in": "formData",
+            "name": "ProvidedShipping",
             "type": "string"
           },
           {
@@ -1754,7 +1790,7 @@
             "description": ""
           }
         },
-        "summary": "Retrieves the tracking information for one or more tracking numbers."
+        "summary": "Retrieves the tracking information for one or more tracking numbers"
       }
     }
   },

@@ -1,4 +1,5 @@
 var METHODS = ['get', 'post', 'patch', 'put', 'delete', 'head', 'options'];
+var CREATE_METHODS = ['post', 'patch', 'put'];
 var getDefaultParameterLocation = function(method) {
   if (method === 'post' || method === 'patch' || method === 'put') return 'formData';
   return 'query';
@@ -17,6 +18,8 @@ if (argv.name) {
   argv.output = __dirname + '/output/' + argv.name + '.swagger.json';
 }
 var config = require(argv.config);
+let locs = config.defaultParameterLocations = config.defaultParameterLocations || {};
+METHODS.forEach(m => locs[m] = locs[m] || getDefaultParameterLocation(m));
 
 var swagger = {
   swagger: '2.0',
@@ -112,24 +115,38 @@ function addOperationToSwagger($, op, method, path, qs) {
 
   var parameters = resolveSelector(op, config.parameters, $);
   parameters = resolveSelector(parameters, config.parameter, $);
+  let bodyParam = null;
+  var body = extractJSON(op, config.requestBody);
+  if (body) {
+    log('    param', 'body');
+    bodyParam = {name: 'body', in: 'body', schema: body};
+  }
   if (parameters) parameters.each(function() {
     var param = $(this);
     var name = extractText(param, config.parameterName);
     log('    param', name);
     if (!name) return;
     var sParameter = {name: name};
-    sOp.parameters.push(sParameter);
     var description = extractText(param, config.parameterDescription);
     if (description) sParameter.description = description.trim();
     var required = extractBoolean(param, config.parameterRequired);
     if (required === true || required === false) sParameter.required = required;
-    sParameter.in = extractText(param, config.parameterIn) || getDefaultParameterLocation(method);
     sParameter.type = extractText(param, config.parameterType).toLowerCase() || 'string';
+    if (sParameter.type === 'array') sParameter.items = {type: 'string'}; // FIXME: add items schema extractor
+    if (path.match(new RegExp('\\{' + sParameter.name + '\\}'))) {
+      sParameter.in = 'path';
+    } else {
+      sParameter.in = extractText(param, config.parameterIn) || config.defaultParameterLocations[method];
+    }
+    if (sParameter.in === 'field') {
+      bodyParam = bodyParam || {name: 'body', in: 'body', schema: {properties: {}}};
+      bodyParam.schema.properties[sParameter.name] = bodyParam.schema.properties[sParameter.name] || {type: sParameter.type};
+      sParameter = null;
+    }
+    if (sParameter) sOp.parameters.push(sParameter);
   });
-  var body = extractJSON(op, config.requestBody);
-  if (body) {
-    log('    param', 'body');
-    sOp.parameters.unshift({name: 'body', in: 'body', schema: body});
+  if (bodyParam) {
+    sOp.parameters.push(bodyParam);
   }
 
   var responses = resolveSelector(op, config.responses, $).first();
@@ -173,10 +190,23 @@ function extractText(el, extractor) {
       : el.first().text();
   if (extractor.regex) {
     var matches = text.match(extractor.regex);
-    if (!matches) return;
+    if (!matches) return '';
     text = matches[extractor.regexMatch || 1];
   }
   return (text || '').trim();
+}
+
+function fixSchema(schema) {
+  if (!schema) return schema;
+  delete schema['$schema'];
+  if (schema.required && !schema.required.length) delete schema.required;
+  if (schema.properties) {
+    for (let key in schema.properties) fixSchema(schema.properties[key]);
+  }
+  if (schema.items) {
+    fixSchema(schema.items);
+  }
+  return schema;
 }
 
 function extractJSON(el, extractor) {
@@ -189,8 +219,10 @@ function extractJSON(el, extractor) {
     json = undefined;
   }
   if (!json) return;
-  if (extractor.isExample) json = generateSchema(json);
-  delete json['$schema'];
+  if (extractor.isExample) {
+    json = generateSchema(json);
+    fixSchema(json);
+  }
   return json;
 }
 
@@ -258,6 +290,7 @@ function fixErrors() {
       }
     }
   }
+  if (config.fixup) config.fixup(swagger);
 }
 
 scrapeInfo(config.url, function(err) {

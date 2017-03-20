@@ -234,7 +234,7 @@
             "type": "string"
           },
           {
-            "description": "one of (banuser, unbanuser, removelink, approvelink, removecomment, approvecomment, addmoderator, invitemoderator, uninvitemoderator, acceptmoderatorinvite, removemoderator, addcontributor, removecontributor, editsettings, editflair, distinguish, marknsfw, wikibanned, wikicontributor, wikiunbanned, wikipagelisted, removewikicontributor, wikirevise, wikipermlevel, ignorereports, unignorereports, setpermissions, setsuggestedsort, sticky, unsticky, setcontestmode, unsetcontestmode, lock, unlock, muteuser, unmuteuser, createrule, editrule, deleterule, spoiler, unspoiler)",
+            "description": "one of (banuser, unbanuser, spamlink, removelink, approvelink, spamcomment, removecomment, approvecomment, addmoderator, invitemoderator, uninvitemoderator, acceptmoderatorinvite, removemoderator, addcontributor, removecontributor, editsettings, editflair, distinguish, marknsfw, wikibanned, wikicontributor, wikiunbanned, wikipagelisted, removewikicontributor, wikirevise, wikipermlevel, ignorereports, unignorereports, setpermissions, setsuggestedsort, sticky, unsticky, setcontestmode, unsetcontestmode, lock, unlock, muteuser, unmuteuser, createrule, editrule, deleterule, spoiler, unspoiler, modmail_enrollment)",
             "in": "query",
             "name": "type",
             "type": "string"
@@ -1232,6 +1232,17 @@
         }
       }
     },
+    "/api/link_flair": {
+      "get": {
+        "description": "Return list of available link flair for the current subreddit.\n\nWill not return flair if the user cannot set their own link flair and\nthey are not a moderator that can set flair.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/api/live/{thread}/accept_contributor_invite": {
       "post": {
         "description": "Accept a pending invitation to contribute to the thread.\n\nSee also: /api/live/thread/leave_contributor.",
@@ -1688,6 +1699,25 @@
         }
       }
     },
+    "/api/live/by_id/{names}": {
+      "get": {
+        "description": "Get a listing of live events by id.",
+        "parameters": [
+          {
+            "description": "A comma-separated list of ids",
+            "in": "path",
+            "name": "names",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/api/live/create": {
       "post": {
         "description": "Create a new live thread.\n\nOnce created, the initial settings can be modified with\n/api/live/thread/edit and new updates\ncan be posted with\n/api/live/thread/update.",
@@ -1738,7 +1768,7 @@
     },
     "/api/live/happening_now": {
       "get": {
-        "description": "Get some basic information about the currently featured live thread.\n\nSee also: /api/live/thread/about.",
+        "description": "Get some basic information about the currently featured live thread.\n\nReturns an empty 204 response for api requests if no thread is currently featured.\n\nSee also: /api/live/thread/about.",
         "parameters": [],
         "responses": {
           "200": {
@@ -1795,9 +1825,355 @@
         }
       }
     },
+    "/api/mod/bulk_read": {
+      "post": {
+        "description": "Marks all conversations read for a particular conversation state\nwithin the passed list of subreddits.",
+        "parameters": [
+          {
+            "description": "comma-delimited list of subreddit names",
+            "in": "formData",
+            "name": "entity",
+            "type": "string"
+          },
+          {
+            "description": "one of (new, inprogress, mod, notifications, archived, highlighted, all)",
+            "in": "formData",
+            "name": "state",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/mod/conversations": {
+      "get": {
+        "description": "Get conversations for a logged in user or subreddits",
+        "parameters": [
+          {
+            "description": "base36 modmail conversation id",
+            "in": "query",
+            "name": "after",
+            "type": "string"
+          },
+          {
+            "description": "comma-delimited list of subreddit names",
+            "in": "query",
+            "name": "entity",
+            "type": "string"
+          },
+          {
+            "description": "an integer (default: 25)",
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "description": "one of (recent, mod, user, unread)",
+            "in": "query",
+            "name": "sort",
+            "type": "string"
+          },
+          {
+            "description": "one of (new, inprogress, mod, notifications, archived, highlighted, all)",
+            "in": "query",
+            "name": "state",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "description": "Creates a new conversation for a particular SR  \n\nThis endpoint will create a ModmailConversation object as\nwell as the first ModmailMessage within the ModmailConversation\nobject.",
+        "parameters": [
+          {
+            "description": "raw markdown text",
+            "in": "formData",
+            "name": "body",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "formData",
+            "name": "isAuthorHidden",
+            "type": "string"
+          },
+          {
+            "description": "subreddit name",
+            "in": "formData",
+            "name": "srName",
+            "type": "string"
+          },
+          {
+            "description": "a string no longer than 100 characters",
+            "in": "formData",
+            "name": "subject",
+            "type": "string"
+          },
+          {
+            "description": "Modmail conversation recipient fullname",
+            "in": "formData",
+            "name": "to",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/mod/conversations/:conversation_id": {
+      "get": {
+        "description": "Returns all messages, mod actions and conversation metadata\nfor a given conversation id",
+        "parameters": [
+          {
+            "description": "base36 modmail conversation id",
+            "in": "query",
+            "name": "conversation_id",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "query",
+            "name": "markRead",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "description": "Creates a new message for a particular conversation",
+        "parameters": [
+          {
+            "description": "raw markdown text",
+            "in": "formData",
+            "name": "body",
+            "type": "string"
+          },
+          {
+            "description": "base36 modmail conversation id",
+            "in": "formData",
+            "name": "conversation_id",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "formData",
+            "name": "isAuthorHidden",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "formData",
+            "name": "isInternal",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/mod/conversations/:conversation_id/archive": {
+      "post": {
+        "description": "Marks a conversation as archived.",
+        "parameters": [
+          {
+            "description": "base36 modmail conversation id",
+            "in": "formData",
+            "name": "conversation_id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/mod/conversations/:conversation_id/highlight": {
+      "delete": {
+        "description": "Removes a highlight from a conversation.",
+        "parameters": [
+          {
+            "description": "base36 modmail conversation id",
+            "in": "query",
+            "name": "conversation_id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "description": "Marks a conversation as highlighted.",
+        "parameters": [
+          {
+            "description": "base36 modmail conversation id",
+            "in": "formData",
+            "name": "conversation_id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/mod/conversations/:conversation_id/mute": {
+      "post": {
+        "description": "Mutes the non mod user associated with a particular conversation.",
+        "parameters": [
+          {
+            "description": "base36 modmail conversation id",
+            "in": "formData",
+            "name": "conversation_id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/mod/conversations/:conversation_id/unarchive": {
+      "post": {
+        "description": "Marks conversation as unarchived.",
+        "parameters": [
+          {
+            "description": "base36 modmail conversation id",
+            "in": "formData",
+            "name": "conversation_id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/mod/conversations/:conversation_id/unmute": {
+      "post": {
+        "description": "Unmutes the non mod user associated with\na particular conversation.",
+        "parameters": [
+          {
+            "description": "base36 modmail conversation id",
+            "in": "formData",
+            "name": "conversation_id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/mod/conversations/:conversation_id/user": {
+      "get": {
+        "description": "Returns recent posts, comments and modmail conversations for a\ngiven user.",
+        "parameters": [
+          {
+            "description": "base36 modmail conversation id",
+            "in": "query",
+            "name": "conversation_id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/mod/conversations/read": {
+      "post": {
+        "description": "Marks a conversations as read for the user.",
+        "parameters": [
+          {
+            "description": "A comma-separated list of items",
+            "in": "formData",
+            "name": "conversationIds",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/mod/conversations/subreddits": {
+      "get": {
+        "description": "Returns a list of srs that the user moderates that are also\nenrolled in the new modmail",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/mod/conversations/unread": {
+      "post": {
+        "description": "Marks conversations as unread for the user.",
+        "parameters": [
+          {
+            "description": "A comma-separated list of items",
+            "in": "formData",
+            "name": "conversationIds",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/mod/conversations/unread/count": {
+      "get": {
+        "description": "Endpoint to retrieve the unread conversation count by\nconversation state.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/api/morechildren": {
       "get": {
-        "description": "Retrieve additional comments omitted from a base comment tree.\n\nWhen a comment tree is rendered, the most relevant comments are\nselected for display first. Remaining comments are stubbed out with\n\"MoreComments\" links. This API call is used to retrieve the additional\ncomments represented by those stubs, up to 20 at a time.\n\nThe two core parameters required are link and children.  link is\nthe fullname of the link whose comments are being fetched. children\nis a comma-delimited list of comment ID36s that need to be fetched.\n\nIf id is passed, it should be the ID of the MoreComments object this\ncall is replacing. This is needed only for the HTML UI's purposes and\nis optional otherwise.\n\nNOTE: you may only make one request at a time to this API endpoint.\nHigher concurrency will result in an error being returned.",
+        "description": "Retrieve additional comments omitted from a base comment tree.\n\nWhen a comment tree is rendered, the most relevant comments are\nselected for display first. Remaining comments are stubbed out with\n\"MoreComments\" links. This API call is used to retrieve the additional\ncomments represented by those stubs, up to 100 at a time.\n\nThe two core parameters required are link and children.  link is\nthe fullname of the link whose comments are being fetched. children\nis a comma-delimited list of comment ID36s that need to be fetched.\n\nIf id is passed, it should be the ID of the MoreComments object this\ncall is replacing. This is needed only for the HTML UI's purposes and\nis optional otherwise.\n\nNOTE: you may only make one request at a time to this API endpoint.\nHigher concurrency will result in an error being returned.",
         "parameters": [
           {
             "description": "the string json",
@@ -2378,6 +2754,12 @@
           {
             "description": "a string no longer than 100 characters",
             "in": "formData",
+            "name": "rule_reason",
+            "type": "string"
+          },
+          {
+            "description": "a string no longer than 100 characters",
+            "in": "formData",
             "name": "site_reason",
             "type": "string"
           },
@@ -2445,6 +2827,42 @@
     "/api/search_reddit_names": {
       "post": {
         "description": "List subreddit names that begin with a query string.\n\nSubreddits whose names begin with query will be returned. If\ninclude_over_18 is false, subreddits with over-18 content\nrestrictions will be filtered from the results.\n\nIf include_unadvertisable is False, subreddits that have hide_ads\nset to True or are on the anti_ads_subreddits list will be filtered.\n\nIf exact is true, only an exact match will be returned. Exact matches\nare inclusive of over_18 subreddits, but not hide_ad subreddits\nwhen include_unadvertisable is False.",
+        "parameters": [
+          {
+            "description": "boolean value",
+            "in": "formData",
+            "name": "exact",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "formData",
+            "name": "include_over_18",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "formData",
+            "name": "include_unadvertisable",
+            "type": "string"
+          },
+          {
+            "description": "a string up to 50 characters long, consisting of printable characters.",
+            "in": "formData",
+            "name": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/search_subreddits": {
+      "post": {
+        "description": "List subreddits that begin with a query string.\n\nSubreddits whose names begin with query will be returned. If\ninclude_over_18 is false, subreddits with over-18 content\nrestrictions will be filtered from the results.\n\nIf include_unadvertisable is False, subreddits that have hide_ads\nset to True or are on the anti_ads_subreddits list will be filtered.\n\nIf exact is true, only an exact match will be returned. Exact matches\nare inclusive of over_18 subreddits, but not hide_ad subreddits\nwhen include_unadvertisable is False.",
         "parameters": [
           {
             "description": "boolean value",
@@ -2917,7 +3335,7 @@
             "type": "string"
           },
           {
-            "description": "one of (gold_restricted, archived, restricted, gold_only, employees_only, private, public)",
+            "description": "one of (gold_restricted, archived, restricted, employees_only, gold_only, private, user, public)",
             "in": "formData",
             "name": "type",
             "type": "string"
@@ -3012,9 +3430,26 @@
             "type": "string"
           },
           {
+            "in": "formData",
+            "name": "app",
+            "type": "string"
+          },
+          {
             "description": "extension used for redirects",
             "in": "formData",
             "name": "extension",
+            "type": "string"
+          },
+          {
+            "description": "a string no longer than 36 characters",
+            "in": "formData",
+            "name": "flair_id",
+            "type": "string"
+          },
+          {
+            "description": "a string no longer than 64 characters",
+            "in": "formData",
+            "name": "flair_text",
             "type": "string"
           },
           {
@@ -3026,6 +3461,22 @@
             "description": "one of (link, self, image)",
             "in": "formData",
             "name": "kind",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "location_lat",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "location_long",
+            "type": "string"
+          },
+          {
+            "description": "a string no longer than 1024 characters",
+            "in": "formData",
+            "name": "location_name",
             "type": "string"
           },
           {
@@ -3041,7 +3492,7 @@
             "type": "string"
           },
           {
-            "description": "name of a subreddit",
+            "description": "subreddit name",
             "in": "formData",
             "name": "sr",
             "type": "string"
@@ -3136,6 +3587,17 @@
             "type": "string"
           }
         ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/trending_subreddits": {
+      "get": {
+        "description": "Return a list of trending subreddits, link to the comment in\nr/trendingsubreddits, and the comment count of that link.",
+        "parameters": [],
         "responses": {
           "200": {
             "description": ""
@@ -3630,7 +4092,7 @@
         "description": "Return the preference settings of the logged in user",
         "parameters": [
           {
-            "description": "A comma-separated list of items from this set:\n\nthreaded_messages\nhide_downs\nemail_messages\nshow_link_flair\ncreddit_autorenew\nshow_trending\nprivate_feeds\nmonitor_mentions\nresearch\nignore_suggested_sort\nmedia\nclickgadget\nuse_global_defaults\nlabel_nsfw\naffiliate_links\ndomain_details\nshow_stylesheets\nlive_orangereds\nhighlight_controversial\nno_profanity\ndefault_theme_sr\nlang\nhide_ups\nallow_clicktracking\nhide_from_robots\ncompress\nstore_visits\nthreaded_modmail\nbeta\nother_theme\nmedia_preview\nover_18\nenable_default_themes\nshow_promote\nmin_comment_score\npublic_votes\norganic\ncollapse_read_messages\nshow_flair\nmark_messages_read\nhide_ads\nmin_link_score\nnewwindow\nnumsites\nlegacy_search\nnum_comments\nshow_gold_expiration\nhighlight_new_comments\ndefault_comment_sort\nhide_locationbar",
+            "description": "A comma-separated list of items from this set:\n\nthreaded_messages\nhide_downs\nemail_messages\nshow_link_flair\ncreddit_autorenew\nshow_trending\nprivate_feeds\nmonitor_mentions\nresearch\nignore_suggested_sort\nemail_digests\nmedia\nclickgadget\nuse_global_defaults\nlabel_nsfw\ndomain_details\nshow_stylesheets\nlive_orangereds\nhighlight_controversial\nno_profanity\ndefault_theme_sr\nlang\nhide_ups\nallow_clicktracking\nhide_from_robots\ncompress\nstore_visits\nthreaded_modmail\nbeta\nother_theme\nmedia_preview\nover_18\nenable_default_themes\nshow_promote\nmin_comment_score\npublic_votes\norganic\ncollapse_read_messages\nshow_flair\nmark_messages_read\nhide_ads\nmin_link_score\nnewwindow\nnumsites\nlegacy_search\nnum_comments\nshow_gold_expiration\nhighlight_new_comments\ndefault_comment_sort\nhide_locationbar",
             "in": "query",
             "name": "fields",
             "type": "string"
@@ -3645,7 +4107,7 @@
       "patch": {
         "parameters": [
           {
-            "description": "{\n  \"affiliate_links\": boolean value,\n  \"allow_clicktracking\": boolean value,\n  \"beta\": boolean value,\n  \"clickgadget\": boolean value,\n  \"collapse_read_messages\": boolean value,\n  \"compress\": boolean value,\n  \"creddit_autorenew\": boolean value,\n  \"default_comment_sort\": one of (`confidence`, `old`, `top`, `qa`, `controversial`, `new`),\n  \"domain_details\": boolean value,\n  \"email_messages\": boolean value,\n  \"enable_default_themes\": boolean value,\n  \"hide_ads\": boolean value,\n  \"hide_downs\": boolean value,\n  \"hide_from_robots\": boolean value,\n  \"hide_locationbar\": boolean value,\n  \"hide_ups\": boolean value,\n  \"highlight_controversial\": boolean value,\n  \"highlight_new_comments\": boolean value,\n  \"ignore_suggested_sort\": boolean value,\n  \"label_nsfw\": boolean value,\n  \"lang\": a valid IETF language tag (underscore separated),\n  \"legacy_search\": boolean value,\n  \"live_orangereds\": boolean value,\n  \"mark_messages_read\": boolean value,\n  \"media\": one of (`on`, `off`, `subreddit`),\n  \"media_preview\": one of (`on`, `off`, `subreddit`),\n  \"min_comment_score\": an integer between -100 and 100,\n  \"min_link_score\": an integer between -100 and 100,\n  \"monitor_mentions\": boolean value,\n  \"newwindow\": boolean value,\n  \"no_profanity\": boolean value,\n  \"num_comments\": an integer between 1 and 500,\n  \"numsites\": an integer between 1 and 100,\n  \"organic\": boolean value,\n  \"other_theme\": subreddit name,\n  \"over_18\": boolean value,\n  \"private_feeds\": boolean value,\n  \"public_votes\": boolean value,\n  \"research\": boolean value,\n  \"show_flair\": boolean value,\n  \"show_gold_expiration\": boolean value,\n  \"show_link_flair\": boolean value,\n  \"show_promote\": boolean value,\n  \"show_stylesheets\": boolean value,\n  \"show_trending\": boolean value,\n  \"store_visits\": boolean value,\n  \"theme_selector\": subreddit name,\n  \"threaded_messages\": boolean value,\n  \"threaded_modmail\": boolean value,\n  \"use_global_defaults\": boolean value,\n}",
+            "description": "{\n  \"allow_clicktracking\": boolean value,\n  \"beta\": boolean value,\n  \"clickgadget\": boolean value,\n  \"collapse_read_messages\": boolean value,\n  \"compress\": boolean value,\n  \"creddit_autorenew\": boolean value,\n  \"default_comment_sort\": one of (`confidence`, `old`, `top`, `qa`, `controversial`, `new`),\n  \"domain_details\": boolean value,\n  \"email_digests\": boolean value,\n  \"email_messages\": boolean value,\n  \"enable_default_themes\": boolean value,\n  \"hide_ads\": boolean value,\n  \"hide_downs\": boolean value,\n  \"hide_from_robots\": boolean value,\n  \"hide_locationbar\": boolean value,\n  \"hide_ups\": boolean value,\n  \"highlight_controversial\": boolean value,\n  \"highlight_new_comments\": boolean value,\n  \"ignore_suggested_sort\": boolean value,\n  \"label_nsfw\": boolean value,\n  \"lang\": a valid IETF language tag (underscore separated),\n  \"legacy_search\": boolean value,\n  \"live_orangereds\": boolean value,\n  \"mark_messages_read\": boolean value,\n  \"media\": one of (`on`, `off`, `subreddit`),\n  \"media_preview\": one of (`on`, `off`, `subreddit`),\n  \"min_comment_score\": an integer between -100 and 100,\n  \"min_link_score\": an integer between -100 and 100,\n  \"monitor_mentions\": boolean value,\n  \"newwindow\": boolean value,\n  \"no_profanity\": boolean value,\n  \"num_comments\": an integer between 1 and 500,\n  \"numsites\": an integer between 1 and 100,\n  \"organic\": boolean value,\n  \"other_theme\": subreddit name,\n  \"over_18\": boolean value,\n  \"private_feeds\": boolean value,\n  \"public_votes\": boolean value,\n  \"research\": boolean value,\n  \"show_flair\": boolean value,\n  \"show_gold_expiration\": boolean value,\n  \"show_link_flair\": boolean value,\n  \"show_promote\": boolean value,\n  \"show_stylesheets\": boolean value,\n  \"show_trending\": boolean value,\n  \"store_visits\": boolean value,\n  \"theme_selector\": subreddit name,\n  \"threaded_messages\": boolean value,\n  \"threaded_modmail\": boolean value,\n  \"use_global_defaults\": boolean value,\n}",
             "in": "formData",
             "name": "This",
             "type": "string"
@@ -3961,6 +4423,18 @@
             "description": "(optional) expand subreddits",
             "in": "query",
             "name": "sr_detail",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "query",
+            "name": "threaded",
+            "type": "string"
+          },
+          {
+            "description": "an integer between 0 and 50",
+            "in": "query",
+            "name": "truncate",
             "type": "string"
           }
         ],
@@ -4677,11 +5151,29 @@
             "type": "string"
           },
           {
-            "description": "one of (banuser, unbanuser, removelink, approvelink, removecomment, approvecomment, addmoderator, invitemoderator, uninvitemoderator, acceptmoderatorinvite, removemoderator, addcontributor, removecontributor, editsettings, editflair, distinguish, marknsfw, wikibanned, wikicontributor, wikiunbanned, wikipagelisted, removewikicontributor, wikirevise, wikipermlevel, ignorereports, unignorereports, setpermissions, setsuggestedsort, sticky, unsticky, setcontestmode, unsetcontestmode, lock, unlock, muteuser, unmuteuser, createrule, editrule, deleterule, spoiler, unspoiler)",
+            "description": "one of (banuser, unbanuser, spamlink, removelink, approvelink, spamcomment, removecomment, approvecomment, addmoderator, invitemoderator, uninvitemoderator, acceptmoderatorinvite, removemoderator, addcontributor, removecontributor, editsettings, editflair, distinguish, marknsfw, wikibanned, wikicontributor, wikiunbanned, wikipagelisted, removewikicontributor, wikirevise, wikipermlevel, ignorereports, unignorereports, setpermissions, setsuggestedsort, sticky, unsticky, setcontestmode, unsetcontestmode, lock, unlock, muteuser, unmuteuser, createrule, editrule, deleterule, spoiler, unspoiler, modmail_enrollment)",
             "in": "query",
             "name": "type",
             "type": "string"
           },
+          {
+            "in": "path",
+            "name": "subreddit",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/r/{subreddit}/about/rules": {
+      "get": {
+        "description": "Get the rules for the current subreddit",
+        "parameters": [
           {
             "in": "path",
             "name": "subreddit",
@@ -5352,6 +5844,24 @@
         }
       }
     },
+    "/r/{subreddit}/api/link_flair": {
+      "get": {
+        "description": "Return list of available link flair for the current subreddit.\n\nWill not return flair if the user cannot set their own link flair and\nthey are not a moderator that can set flair.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "subreddit",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/r/{subreddit}/api/selectflair": {
       "post": {
         "parameters": [
@@ -5879,6 +6389,18 @@
             "type": "string"
           },
           {
+            "description": "boolean value",
+            "in": "query",
+            "name": "threaded",
+            "type": "string"
+          },
+          {
+            "description": "an integer between 0 and 50",
+            "in": "query",
+            "name": "truncate",
+            "type": "string"
+          },
+          {
             "in": "path",
             "name": "subreddit",
             "required": true,
@@ -6018,10 +6540,46 @@
         }
       }
     },
-    "/r/{subreddit}/rules": {
+    "/r/{subreddit}/rising": {
       "get": {
-        "description": "Get the rules for the current subreddit",
+        "description": "This endpoint is a listing.",
         "parameters": [
+          {
+            "description": "fullname of a thing",
+            "in": "query",
+            "name": "after",
+            "type": "string"
+          },
+          {
+            "description": "fullname of a thing",
+            "in": "query",
+            "name": "before",
+            "type": "string"
+          },
+          {
+            "description": "a positive integer (default: 0)",
+            "in": "query",
+            "name": "count",
+            "type": "string"
+          },
+          {
+            "description": "the maximum number of items desired (default: 25, maximum: 100)",
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "description": "(optional) the string all",
+            "in": "query",
+            "name": "show",
+            "type": "string"
+          },
+          {
+            "description": "(optional) expand subreddits",
+            "in": "query",
+            "name": "sr_detail",
+            "type": "string"
+          },
           {
             "in": "path",
             "name": "subreddit",
@@ -6113,7 +6671,7 @@
             "type": "string"
           },
           {
-            "description": "(optional) comma-delimited list of result types (sr, link)",
+            "description": "(optional) comma-delimited list of result types (sr, link, user)",
             "in": "query",
             "name": "type",
             "type": "string"
@@ -6500,10 +7058,47 @@
         }
       }
     },
-    "/rules": {
+    "/rising": {
       "get": {
-        "description": "Get the rules for the current subreddit",
-        "parameters": [],
+        "description": "This endpoint is a listing.",
+        "parameters": [
+          {
+            "description": "fullname of a thing",
+            "in": "query",
+            "name": "after",
+            "type": "string"
+          },
+          {
+            "description": "fullname of a thing",
+            "in": "query",
+            "name": "before",
+            "type": "string"
+          },
+          {
+            "description": "a positive integer (default: 0)",
+            "in": "query",
+            "name": "count",
+            "type": "string"
+          },
+          {
+            "description": "the maximum number of items desired (default: 25, maximum: 100)",
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "description": "(optional) the string all",
+            "in": "query",
+            "name": "show",
+            "type": "string"
+          },
+          {
+            "description": "(optional) expand subreddits",
+            "in": "query",
+            "name": "sr_detail",
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": ""
@@ -6588,7 +7183,7 @@
             "type": "string"
           },
           {
-            "description": "(optional) comma-delimited list of result types (sr, link)",
+            "description": "(optional) comma-delimited list of result types (sr, link, user)",
             "in": "query",
             "name": "type",
             "type": "string"
@@ -6859,6 +7454,12 @@
             "description": "one of (hour, day, week, month, year, all)",
             "in": "query",
             "name": "t",
+            "type": "string"
+          },
+          {
+            "description": "one of (links, comments)",
+            "in": "query",
+            "name": "type",
             "type": "string"
           },
           {
@@ -7161,6 +7762,7 @@
   ],
   "securityDefinitions": {
     "OAuth": {
+      "authorizationUrl": "https://www.reddit.com/api/v1/authorize",
       "flow": "application",
       "scopes": {
         "account": "Update preferences and related account information. Will not have access to your email or password.",
@@ -7190,6 +7792,7 @@
         "wikiedit": "Edit wiki pages on my behalf",
         "wikiread": "Read wiki pages through my account"
       },
+      "tokenUrl": "https://www.reddit.com/api/v1/access_token",
       "type": "oauth2"
     }
   },

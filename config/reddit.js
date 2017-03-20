@@ -54,6 +54,8 @@ config.securityDefinitions = {
   "OAuth": {
     "type": "oauth2",
     "flow": "application",
+    "authorizationUrl": "https://www.reddit.com/api/v1/authorize",
+    "tokenUrl": "https://www.reddit.com/api/v1/access_token",
     "scopes": {
       "creddits": "Spend my reddit gold creddits on giving gold to other users.",
       "modcontributors": "Add/remove users to approved submitter lists and ban/unban or mute/unmute users from subreddits I moderate.",

@@ -104,7 +104,6 @@
                       },
                       "current_user": {
                         "properties": {},
-                        "required": [],
                         "type": "object"
                       },
                       "day": {
@@ -127,8 +126,7 @@
                       },
                       "makers": {
                         "items": {
-                          "properties": {},
-                          "required": []
+                          "properties": {}
                         },
                         "type": "array"
                       },
@@ -138,8 +136,7 @@
                       },
                       "platforms": {
                         "items": {
-                          "properties": {},
-                          "required": []
+                          "properties": {}
                         },
                         "type": "array"
                       },
@@ -187,7 +184,6 @@
                           },
                           "metadata": {
                             "properties": {},
-                            "required": [],
                             "type": "object"
                           }
                         },
@@ -201,8 +197,7 @@
                       },
                       "topics": {
                         "items": {
-                          "properties": {},
-                          "required": []
+                          "properties": {}
                         },
                         "type": "array"
                       },
@@ -448,25 +443,31 @@
       "get": {
         "parameters": [
           {
-            "description": "Filter parameter: get only records newer than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records newer than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "newer",
             "type": "string"
           },
           {
-            "description": "Filter parameter: get only records older than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records older than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "older",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "description": "Sort api response: valid parameters are desc and asc",
             "in": "query",
             "name": "order",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "description": "Offset-based pagination: Get content of given page, starts at 1",
+            "in": "query",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "description": "Any kind of pagination: define the amount of records sent per call (max 50)",
             "in": "query",
             "name": "per_page",
             "type": "string"
@@ -503,7 +504,7 @@
             "type": "string"
           },
           {
-            "description": "Filter parameter: valid values are created_at, updated_at or featured_at",
+            "description": "Sort api response: Valid options: id, created_at, updated_at",
             "in": "query",
             "name": "sort_by",
             "type": "string"
@@ -765,10 +766,10 @@
                       "title",
                       "created_at",
                       "updated_at",
-                      "color",
                       "subscriber_count",
                       "collection_url",
-                      "posts_count"
+                      "posts_count",
+                      "color"
                     ]
                   },
                   "minItems": 1,
@@ -787,23 +788,16 @@
       "post": {
         "parameters": [
           {
-            "description": "The background image of the collection. Recommended: width: 1250px, height: 250px.",
-            "in": "formData",
-            "name": "background_image",
-            "type": "string"
-          },
-          {
             "in": "body",
             "name": "body",
             "schema": {
               "description": "",
               "properties": {
+                "background_image": {
+                  "type": "string"
+                },
                 "collection": {
                   "properties": {
-                    "color": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
                     "name": {
                       "minLength": 1,
                       "type": "string"
@@ -815,10 +809,15 @@
                   },
                   "required": [
                     "name",
-                    "title",
-                    "color"
+                    "title"
                   ],
                   "type": "object"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
                 }
               },
               "required": [
@@ -826,24 +825,6 @@
               ],
               "type": "object"
             }
-          },
-          {
-            "description": "The color of the collection. Valid values are: brown,red,blue,light_green,green",
-            "in": "formData",
-            "name": "color",
-            "type": "string"
-          },
-          {
-            "description": "The name of the collection",
-            "in": "formData",
-            "name": "name",
-            "type": "string"
-          },
-          {
-            "description": "The title of the collection",
-            "in": "formData",
-            "name": "title",
-            "type": "string"
           }
         ],
         "responses": {
@@ -878,8 +859,7 @@
                     },
                     "posts": {
                       "items": {
-                        "properties": {},
-                        "required": []
+                        "properties": {}
                       },
                       "type": "array"
                     },
@@ -1108,11 +1088,11 @@
                     "title",
                     "created_at",
                     "updated_at",
-                    "color",
                     "subscriber_count",
                     "collection_url",
                     "posts_count",
                     "user",
+                    "color",
                     "posts"
                   ],
                   "type": "object"
@@ -1136,7 +1116,6 @@
             "schema": {
               "description": "",
               "properties": {},
-              "required": [],
               "type": "object"
             }
           },
@@ -1402,11 +1381,11 @@
                     "title",
                     "created_at",
                     "updated_at",
-                    "color",
                     "subscriber_count",
                     "collection_url",
                     "posts_count",
-                    "user"
+                    "user",
+                    "color"
                   ],
                   "type": "object"
                 }
@@ -1474,7 +1453,6 @@
                           },
                           "current_user": {
                             "properties": {},
-                            "required": [],
                             "type": "object"
                           },
                           "day": {
@@ -1497,8 +1475,7 @@
                           },
                           "makers": {
                             "items": {
-                              "properties": {},
-                              "required": []
+                              "properties": {}
                             },
                             "type": "array"
                           },
@@ -1508,8 +1485,7 @@
                           },
                           "platforms": {
                             "items": {
-                              "properties": {},
-                              "required": []
+                              "properties": {}
                             },
                             "type": "array"
                           },
@@ -1557,7 +1533,6 @@
                               },
                               "metadata": {
                                 "properties": {},
-                                "required": [],
                                 "type": "object"
                               }
                             },
@@ -1571,8 +1546,7 @@
                           },
                           "topics": {
                             "items": {
-                              "properties": {},
-                              "required": []
+                              "properties": {}
                             },
                             "type": "array"
                           },
@@ -2029,11 +2003,11 @@
                     "title",
                     "created_at",
                     "updated_at",
-                    "color",
                     "subscriber_count",
                     "collection_url",
                     "posts_count",
                     "user",
+                    "color",
                     "posts"
                   ],
                   "type": "object"
@@ -2050,17 +2024,14 @@
       "put": {
         "parameters": [
           {
-            "description": "The background image of the collection. Recommended: width: 1250px, height: 250px.",
-            "in": "formData",
-            "name": "background_image",
-            "type": "string"
-          },
-          {
             "in": "body",
             "name": "body",
             "schema": {
               "description": "",
               "properties": {
+                "background_image": {
+                  "type": "string"
+                },
                 "collection": {
                   "properties": {
                     "title": {
@@ -2072,6 +2043,12 @@
                     "title"
                   ],
                   "type": "object"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
                 }
               },
               "required": [
@@ -2079,24 +2056,6 @@
               ],
               "type": "object"
             }
-          },
-          {
-            "description": "The color of the collection. Valid values are: brown,red,blue,light_green,green",
-            "in": "formData",
-            "name": "color",
-            "type": "string"
-          },
-          {
-            "description": "The name of the collection",
-            "in": "formData",
-            "name": "name",
-            "type": "string"
-          },
-          {
-            "description": "The title of the collection",
-            "in": "formData",
-            "name": "title",
-            "type": "string"
           },
           {
             "in": "path",
@@ -2137,8 +2096,7 @@
                     },
                     "posts": {
                       "items": {
-                        "properties": {},
-                        "required": []
+                        "properties": {}
                       },
                       "type": "array"
                     },
@@ -2367,11 +2325,11 @@
                     "title",
                     "created_at",
                     "updated_at",
-                    "color",
                     "subscriber_count",
                     "collection_url",
                     "posts_count",
                     "user",
+                    "color",
                     "posts"
                   ],
                   "type": "object"
@@ -2458,25 +2416,31 @@
       "get": {
         "parameters": [
           {
-            "description": "Filter parameter: get only records newer than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records newer than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "newer",
             "type": "string"
           },
           {
-            "description": "Filter parameter: get only records older than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records older than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "older",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "description": "Sort api response: valid parameters are desc and asc",
             "in": "query",
             "name": "order",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "description": "Offset-based pagination: Get content of given page, starts at 1",
+            "in": "query",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "description": "Any kind of pagination: define the amount of records sent per call (max 50)",
             "in": "query",
             "name": "per_page",
             "type": "string"
@@ -2500,6 +2464,12 @@
           {
             "in": "query",
             "name": "search[user_id]",
+            "type": "string"
+          },
+          {
+            "description": "Sort api response: Valid options: id, created_at, updated_at",
+            "in": "query",
+            "name": "sort_by",
             "type": "string"
           }
         ],
@@ -2531,7 +2501,6 @@
                       },
                       "post": {
                         "properties": {},
-                        "required": [],
                         "type": "object"
                       },
                       "post_id": {},
@@ -2788,59 +2757,7 @@
         }
       },
       "post": {
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "description": "",
-              "properties": {
-                "comment": {
-                  "properties": {
-                    "body": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "live_event_id": {
-                      "type": "number"
-                    },
-                    "parent_comment_id": {
-                      "type": "number"
-                    }
-                  },
-                  "required": [
-                    "body",
-                    "live_event_id",
-                    "parent_comment_id"
-                  ],
-                  "type": "object"
-                }
-              },
-              "required": [
-                "comment"
-              ],
-              "type": "object"
-            }
-          },
-          {
-            "description": "The id the LIVE event the comment belongs to (passed via URL)",
-            "in": "formData",
-            "name": "live_event_id",
-            "type": "string"
-          },
-          {
-            "description": "The id of the parent comment if this is a nested reply",
-            "in": "formData",
-            "name": "parent_comment_id",
-            "type": "string"
-          },
-          {
-            "description": "The id the post the comment belongs to (passed via URL)",
-            "in": "formData",
-            "name": "post_id",
-            "type": "string"
-          }
-        ],
+        "parameters": [],
         "responses": {
           "201": {
             "description": "Created",
@@ -2868,7 +2785,6 @@
                     },
                     "post": {
                       "properties": {},
-                      "required": [],
                       "type": "object"
                     },
                     "post_id": {},
@@ -3128,37 +3044,6 @@
       "put": {
         "parameters": [
           {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "description": "",
-              "properties": {
-                "comment": {
-                  "properties": {
-                    "body": {
-                      "minLength": 1,
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "body"
-                  ],
-                  "type": "object"
-                }
-              },
-              "required": [
-                "comment"
-              ],
-              "type": "object"
-            }
-          },
-          {
-            "description": "The id of the parent comment if this is a nested reply",
-            "in": "formData",
-            "name": "parent_comment_id",
-            "type": "string"
-          },
-          {
             "in": "path",
             "name": "id",
             "required": true,
@@ -3235,8 +3120,7 @@
                         },
                         "makers": {
                           "items": {
-                            "properties": {},
-                            "required": []
+                            "properties": {}
                           },
                           "type": "array"
                         },
@@ -3246,8 +3130,7 @@
                         },
                         "platforms": {
                           "items": {
-                            "properties": {},
-                            "required": []
+                            "properties": {}
                           },
                           "type": "array"
                         },
@@ -3295,7 +3178,6 @@
                             },
                             "metadata": {
                               "properties": {},
-                              "required": [],
                               "type": "object"
                             }
                           },
@@ -3309,8 +3191,7 @@
                         },
                         "topics": {
                           "items": {
-                            "properties": {},
-                            "required": []
+                            "properties": {}
                           },
                           "type": "array"
                         },
@@ -3810,7 +3691,6 @@
             "schema": {
               "description": "",
               "properties": {},
-              "required": [],
               "type": "object"
             }
           },
@@ -4078,16 +3958,13 @@
             "name": "body",
             "schema": {
               "description": "",
-              "properties": {},
-              "required": [],
+              "properties": {
+                "comment_id": {
+                  "type": "string"
+                }
+              },
               "type": "object"
             }
-          },
-          {
-            "description": "The ID of the comment you want to vote for",
-            "in": "formData",
-            "name": "comment_id",
-            "type": "string"
           },
           {
             "in": "path",
@@ -4351,27 +4228,39 @@
             "type": "string"
           },
           {
-            "description": "Filter parameter: get only records newer than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records newer than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "newer",
             "type": "string"
           },
           {
-            "description": "Filter parameter: get only records older than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records older than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "older",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "description": "Sort api response: valid parameters are desc and asc",
             "in": "query",
             "name": "order",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "description": "Offset-based pagination: Get content of given page, starts at 1",
+            "in": "query",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "description": "Any kind of pagination: define the amount of records sent per call (max 50)",
             "in": "query",
             "name": "per_page",
+            "type": "string"
+          },
+          {
+            "description": "Sort api response: Valid options: id, created_at, updated_at",
+            "in": "query",
+            "name": "sort_by",
             "type": "string"
           },
           {
@@ -4707,8 +4596,7 @@
                       },
                       "guests": {
                         "items": {
-                          "properties": {},
-                          "required": []
+                          "properties": {}
                         },
                         "type": "array"
                       },
@@ -5066,27 +4954,39 @@
             "type": "string"
           },
           {
-            "description": "Filter parameter: get only records newer than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records newer than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "newer",
             "type": "string"
           },
           {
-            "description": "Filter parameter: get only records older than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records older than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "older",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "description": "Sort api response: valid parameters are desc and asc",
             "in": "query",
             "name": "order",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "description": "Offset-based pagination: Get content of given page, starts at 1",
+            "in": "query",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "description": "Any kind of pagination: define the amount of records sent per call (max 50)",
             "in": "query",
             "name": "per_page",
+            "type": "string"
+          },
+          {
+            "description": "Sort api response: Valid options: id, created_at, updated_at",
+            "in": "query",
+            "name": "sort_by",
             "type": "string"
           },
           {
@@ -5118,8 +5018,7 @@
                             },
                             "child_comments": {
                               "items": {
-                                "properties": {},
-                                "required": []
+                                "properties": {}
                               },
                               "type": "array"
                             },
@@ -5147,7 +5046,6 @@
                             },
                             "post": {
                               "properties": {},
-                              "required": [],
                               "type": "object"
                             },
                             "post_id": {},
@@ -5419,7 +5317,6 @@
                       "parent_comment_id": {},
                       "post": {
                         "properties": {},
-                        "required": [],
                         "type": "object"
                       },
                       "post_id": {},
@@ -6142,22 +6039,19 @@
               "properties": {
                 "collected_post_ids": {
                   "items": {
-                    "properties": {},
-                    "required": []
+                    "properties": {}
                   },
                   "type": "array"
                 },
                 "voted_comment_ids": {
                   "items": {
-                    "properties": {},
-                    "required": []
+                    "properties": {}
                   },
                   "type": "array"
                 },
                 "voted_post_ids": {
                   "items": {
-                    "properties": {},
-                    "required": []
+                    "properties": {}
                   },
                   "type": "array"
                 }
@@ -6182,6 +6076,15 @@
             "schema": {
               "description": "",
               "properties": {
+                "browser_push_token": {
+                  "type": "string"
+                },
+                "desktop_push_token": {
+                  "type": "string"
+                },
+                "mobile_push_token": {
+                  "type": "string"
+                },
                 "notification_subscriber": {
                   "properties": {
                     "desktop_push_token": {
@@ -6200,24 +6103,6 @@
               ],
               "type": "object"
             }
-          },
-          {
-            "description": "PushService Vendor Token for Browser Push Notification (define one of those 3 tokens)",
-            "in": "formData",
-            "name": "browser_push_token",
-            "type": "string"
-          },
-          {
-            "description": "PushService Vendor Token for Desktop App Push Notifications (define one of those 3 tokens)",
-            "in": "formData",
-            "name": "desktop_push_token",
-            "type": "string"
-          },
-          {
-            "description": "PushService Vendor Token for Mobile App Push Notifications (define one of those 3 tokens)",
-            "in": "formData",
-            "name": "mobile_push_token",
-            "type": "string"
           }
         ],
         "responses": {
@@ -6233,8 +6118,7 @@
                   "properties": {
                     "base": {
                       "items": {
-                        "properties": {},
-                        "required": []
+                        "properties": {}
                       },
                       "type": "array"
                     }
@@ -6273,7 +6157,6 @@
             "schema": {
               "description": "",
               "properties": {},
-              "required": [],
               "type": "object"
             }
           }
@@ -6286,8 +6169,7 @@
               "properties": {
                 "notifications": {
                   "items": {
-                    "properties": {},
-                    "required": []
+                    "properties": {}
                   },
                   "type": "array"
                 }
@@ -6303,7 +6185,7 @@
       "get": {
         "parameters": [
           {
-            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "description": "Filter parameter: define the amount of records sent per call",
             "in": "query",
             "name": "per_page",
             "type": "string"
@@ -6558,7 +6440,6 @@
                           },
                           "current_user": {
                             "properties": {},
-                            "required": [],
                             "type": "object"
                           },
                           "day": {
@@ -6581,8 +6462,7 @@
                           },
                           "makers": {
                             "items": {
-                              "properties": {},
-                              "required": []
+                              "properties": {}
                             },
                             "type": "array"
                           },
@@ -6592,8 +6472,7 @@
                           },
                           "platforms": {
                             "items": {
-                              "properties": {},
-                              "required": []
+                              "properties": {}
                             },
                             "type": "array"
                           },
@@ -6641,7 +6520,6 @@
                               },
                               "metadata": {
                                 "properties": {},
-                                "required": [],
                                 "type": "object"
                               }
                             },
@@ -6655,8 +6533,7 @@
                           },
                           "topics": {
                             "items": {
-                              "properties": {},
-                              "required": []
+                              "properties": {}
                             },
                             "type": "array"
                           },
@@ -6901,7 +6778,6 @@
                       },
                       "to_user": {
                         "properties": {},
-                        "required": [],
                         "type": "object"
                       },
                       "type": {
@@ -6928,6 +6804,37 @@
               ],
               "type": "object"
             }
+          }
+        }
+      }
+    },
+    "/v1/oauth/authorize": {
+      "get": {
+        "parameters": [
+          {
+            "in": "query",
+            "name": "client_id",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "redirect_uri",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "response_type",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "scope",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -7027,8 +6934,7 @@
               "properties": {
                 "posts": {
                   "items": {
-                    "properties": {},
-                    "required": []
+                    "properties": {}
                   },
                   "type": "array"
                 }
@@ -7076,8 +6982,7 @@
                           },
                           "child_comments": {
                             "items": {
-                              "properties": {},
-                              "required": []
+                              "properties": {}
                             },
                             "type": "array"
                           },
@@ -7103,7 +7008,6 @@
                           "parent_comment_id": {},
                           "post": {
                             "properties": {},
-                            "required": [],
                             "type": "object"
                           },
                           "post_id": {
@@ -7364,7 +7268,6 @@
                     },
                     "current_user": {
                       "properties": {},
-                      "required": [],
                       "type": "object"
                     },
                     "day": {
@@ -7422,8 +7325,7 @@
                     },
                     "makers": {
                       "items": {
-                        "properties": {},
-                        "required": []
+                        "properties": {}
                       },
                       "type": "array"
                     },
@@ -7485,8 +7387,7 @@
                     },
                     "platforms": {
                       "items": {
-                        "properties": {},
-                        "required": []
+                        "properties": {}
                       },
                       "type": "array"
                     },
@@ -7500,8 +7401,7 @@
                     },
                     "related_links": {
                       "items": {
-                        "properties": {},
-                        "required": []
+                        "properties": {}
                       },
                       "type": "array"
                     },
@@ -7520,7 +7420,6 @@
                           },
                           "current_user": {
                             "properties": {},
-                            "required": [],
                             "type": "object"
                           },
                           "day": {
@@ -7543,8 +7442,7 @@
                           },
                           "makers": {
                             "items": {
-                              "properties": {},
-                              "required": []
+                              "properties": {}
                             },
                             "type": "array"
                           },
@@ -7554,8 +7452,7 @@
                           },
                           "platforms": {
                             "items": {
-                              "properties": {},
-                              "required": []
+                              "properties": {}
                             },
                             "type": "array"
                           },
@@ -7603,7 +7500,6 @@
                               },
                               "metadata": {
                                 "properties": {},
-                                "required": [],
                                 "type": "object"
                               }
                             },
@@ -7617,8 +7513,7 @@
                           },
                           "topics": {
                             "items": {
-                              "properties": {},
-                              "required": []
+                              "properties": {}
                             },
                             "type": "array"
                           },
@@ -7886,7 +7781,6 @@
                         },
                         "metadata": {
                           "properties": {},
-                          "required": [],
                           "type": "object"
                         }
                       },
@@ -7900,8 +7794,7 @@
                     },
                     "topics": {
                       "items": {
-                        "properties": {},
-                        "required": []
+                        "properties": {}
                       },
                       "type": "array"
                     },
@@ -8491,8 +8384,7 @@
                               },
                               "makers": {
                                 "items": {
-                                  "properties": {},
-                                  "required": []
+                                  "properties": {}
                                 },
                                 "type": "array"
                               },
@@ -8502,8 +8394,7 @@
                               },
                               "platforms": {
                                 "items": {
-                                  "properties": {},
-                                  "required": []
+                                  "properties": {}
                                 },
                                 "type": "array"
                               },
@@ -8551,7 +8442,6 @@
                                   },
                                   "metadata": {
                                     "properties": {},
-                                    "required": [],
                                     "type": "object"
                                   }
                                 },
@@ -8565,8 +8455,7 @@
                               },
                               "topics": {
                                 "items": {
-                                  "properties": {},
-                                  "required": []
+                                  "properties": {}
                                 },
                                 "type": "array"
                               },
@@ -9023,11 +8912,11 @@
                         "title",
                         "created_at",
                         "updated_at",
-                        "color",
                         "subscriber_count",
                         "collection_url",
                         "posts_count",
                         "user",
+                        "color",
                         "posts"
                       ],
                       "type": "object"
@@ -9166,8 +9055,7 @@
                               },
                               "makers": {
                                 "items": {
-                                  "properties": {},
-                                  "required": []
+                                  "properties": {}
                                 },
                                 "type": "array"
                               },
@@ -9177,8 +9065,7 @@
                               },
                               "platforms": {
                                 "items": {
-                                  "properties": {},
-                                  "required": []
+                                  "properties": {}
                                 },
                                 "type": "array"
                               },
@@ -9226,7 +9113,6 @@
                                   },
                                   "metadata": {
                                     "properties": {},
-                                    "required": [],
                                     "type": "object"
                                   }
                                 },
@@ -9240,8 +9126,7 @@
                               },
                               "topics": {
                                 "items": {
-                                  "properties": {},
-                                  "required": []
+                                  "properties": {}
                                 },
                                 "type": "array"
                               },
@@ -9698,12 +9583,12 @@
                         "title",
                         "created_at",
                         "updated_at",
-                        "color",
                         "subscriber_count",
                         "category_id",
                         "collection_url",
                         "posts_count",
                         "user",
+                        "color",
                         "posts"
                       ],
                       "type": "object"
@@ -9740,19 +9625,31 @@
       "get": {
         "parameters": [
           {
-            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "description": "Cursor-based pagination: Only works with ID. Get records newer than the provided id. Note: Sort_by is ignored and applied afterwards.",
+            "in": "query",
+            "name": "newer",
+            "type": "string"
+          },
+          {
+            "description": "Cursor-based pagination: Only works with ID. Get records older than the provided id. Note: Sort_by is ignored and applied afterwards.",
+            "in": "query",
+            "name": "older",
+            "type": "string"
+          },
+          {
+            "description": "Sort api response: valid parameters are desc and asc",
             "in": "query",
             "name": "order",
             "type": "string"
           },
           {
-            "description": "Parameter for pagination",
+            "description": "Offset-based pagination: Get content of given page, starts at 1",
             "in": "query",
             "name": "page",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "description": "Any kind of pagination: define the amount of records sent per call (max 50)",
             "in": "query",
             "name": "per_page",
             "type": "string"
@@ -9764,7 +9661,7 @@
             "type": "string"
           },
           {
-            "description": "Filter parameter: valid values are created_at, updated_at or featured_at",
+            "description": "Sort api response: Valid options: id, created_at, updated_at",
             "in": "query",
             "name": "sort_by",
             "type": "string"
@@ -10032,10 +9929,10 @@
                       "title",
                       "created_at",
                       "updated_at",
-                      "color",
                       "subscriber_count",
                       "collection_url",
-                      "posts_count"
+                      "posts_count",
+                      "color"
                     ]
                   },
                   "minItems": 1,
@@ -10056,25 +9953,31 @@
       "get": {
         "parameters": [
           {
-            "description": "Filter parameter: get only records newer than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records newer than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "newer",
             "type": "string"
           },
           {
-            "description": "Filter parameter: get only records older than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records older than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "older",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "description": "Sort api response: valid parameters are desc and asc",
             "in": "query",
             "name": "order",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "description": "Offset-based pagination: Get content of given page, starts at 1",
+            "in": "query",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "description": "Any kind of pagination: define the amount of records sent per call (max 50)",
             "in": "query",
             "name": "per_page",
             "type": "string"
@@ -10083,6 +9986,12 @@
             "description": "The id the post the comment belongs to (passed via URL)",
             "in": "query",
             "name": "post_id",
+            "type": "string"
+          },
+          {
+            "description": "Sort api response: Valid options: id, created_at, updated_at",
+            "in": "query",
+            "name": "sort_by",
             "type": "string"
           },
           {
@@ -10114,8 +10023,7 @@
                             },
                             "child_comments": {
                               "items": {
-                                "properties": {},
-                                "required": []
+                                "properties": {}
                               },
                               "type": "array"
                             },
@@ -10143,7 +10051,6 @@
                             },
                             "post": {
                               "properties": {},
-                              "required": [],
                               "type": "object"
                             },
                             "post_id": {
@@ -10418,7 +10325,6 @@
                       "parent_comment_id": {},
                       "post": {
                         "properties": {},
-                        "required": [],
                         "type": "object"
                       },
                       "post_id": {
@@ -10689,7 +10595,6 @@
             "schema": {
               "description": "",
               "properties": {},
-              "required": [],
               "type": "object"
             }
           },
@@ -10957,16 +10862,13 @@
             "name": "body",
             "schema": {
               "description": "",
-              "properties": {},
-              "required": [],
+              "properties": {
+                "post_id": {
+                  "type": "string"
+                }
+              },
               "type": "object"
             }
-          },
-          {
-            "description": "The ID of the post you want to vote for",
-            "in": "formData",
-            "name": "post_id",
-            "type": "string"
           },
           {
             "in": "path",
@@ -11224,25 +11126,31 @@
       "get": {
         "parameters": [
           {
-            "description": "Filter parameter: get only records newer than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records newer than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "newer",
             "type": "string"
           },
           {
-            "description": "Filter parameter: get only records older than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records older than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "older",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "description": "Sort api response: valid parameters are desc and asc",
             "in": "query",
             "name": "order",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "description": "Offset-based pagination: Get content of given page, starts at 1",
+            "in": "query",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "description": "Any kind of pagination: define the amount of records sent per call (max 50)",
             "in": "query",
             "name": "per_page",
             "type": "string"
@@ -11251,6 +11159,12 @@
             "description": "The ID of the post you want to find votes for",
             "in": "query",
             "name": "post_id",
+            "type": "string"
+          },
+          {
+            "description": "Sort api response: Valid options: id, created_at, updated_at",
+            "in": "query",
+            "name": "sort_by",
             "type": "string"
           },
           {
@@ -11512,19 +11426,31 @@
       "get": {
         "parameters": [
           {
-            "description": "Filter parameter: get only records newer than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records newer than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "newer",
             "type": "string"
           },
           {
-            "description": "Filter parameter: get only records older than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records older than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "older",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "description": "Sort api response: valid parameters are desc and asc",
+            "in": "query",
+            "name": "order",
+            "type": "string"
+          },
+          {
+            "description": "Offset-based pagination: Get content of given page, starts at 1",
+            "in": "query",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "description": "Any kind of pagination: define the amount of records sent per call (max 50)",
             "in": "query",
             "name": "per_page",
             "type": "string"
@@ -11549,6 +11475,12 @@
             "in": "query",
             "name": "search[url]",
             "type": "string"
+          },
+          {
+            "description": "Sort api response: Valid options: id, created_at, updated_at",
+            "in": "query",
+            "name": "sort_by",
+            "type": "string"
           }
         ],
         "responses": {
@@ -11572,7 +11504,6 @@
                       },
                       "current_user": {
                         "properties": {},
-                        "required": [],
                         "type": "object"
                       },
                       "day": {
@@ -11595,8 +11526,7 @@
                       },
                       "makers": {
                         "items": {
-                          "properties": {},
-                          "required": []
+                          "properties": {}
                         },
                         "type": "array"
                       },
@@ -11606,8 +11536,7 @@
                       },
                       "platforms": {
                         "items": {
-                          "properties": {},
-                          "required": []
+                          "properties": {}
                         },
                         "type": "array"
                       },
@@ -11655,7 +11584,6 @@
                           },
                           "metadata": {
                             "properties": {},
-                            "required": [],
                             "type": "object"
                           }
                         },
@@ -11669,28 +11597,9 @@
                       },
                       "topics": {
                         "items": {
-                          "properties": {
-                            "id": {
-                              "type": "number"
-                            },
-                            "name": {
-                              "minLength": 1,
-                              "type": "string"
-                            },
-                            "slug": {
-                              "minLength": 1,
-                              "type": "string"
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "name",
-                            "slug"
-                          ]
+                          "properties": {}
                         },
-                        "minItems": 1,
-                        "type": "array",
-                        "uniqueItems": true
+                        "type": "array"
                       },
                       "user": {
                         "properties": {
@@ -11939,6 +11848,48 @@
             "schema": {
               "description": "",
               "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "headline": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "send_announcement_email": {
+                  "type": "string"
+                },
+                "send_announcement_push": {
+                  "type": "string"
+                },
+                "send_friend_post_email": {
+                  "type": "string"
+                },
+                "send_friend_post_push": {
+                  "type": "string"
+                },
+                "send_mention_email": {
+                  "type": "string"
+                },
+                "send_mention_push": {
+                  "type": "string"
+                },
+                "send_new_follower_email": {
+                  "type": "string"
+                },
+                "send_new_follower_push": {
+                  "type": "string"
+                },
+                "send_product_recommendation_email": {
+                  "type": "string"
+                },
+                "send_product_recommendation_push": {
+                  "type": "string"
+                },
+                "subscribed_to_push": {
+                  "type": "string"
+                },
                 "user": {
                   "properties": {
                     "name": {
@@ -11960,90 +11911,6 @@
               ],
               "type": "object"
             }
-          },
-          {
-            "description": "Your user's email",
-            "in": "formData",
-            "name": "email",
-            "type": "string"
-          },
-          {
-            "description": "A one line description of the user - eg CTO of Wayne Industries",
-            "in": "formData",
-            "name": "headline",
-            "type": "string"
-          },
-          {
-            "description": "Let's make this one a riddle. What's Nane's bame?",
-            "in": "formData",
-            "name": "name",
-            "type": "string"
-          },
-          {
-            "description": "Does the user want to receive emails when there is a new Product Hunt announcement? true or false",
-            "in": "formData",
-            "name": "send_announcement_email",
-            "type": "string"
-          },
-          {
-            "description": "Does the user want to receive push notifications when there is a new Product Hunt announcement? true or false",
-            "in": "formData",
-            "name": "send_announcement_push",
-            "type": "string"
-          },
-          {
-            "description": "Does the user want to receive emails when a friend posts a product? true or false",
-            "in": "formData",
-            "name": "send_friend_post_email",
-            "type": "string"
-          },
-          {
-            "description": "Does the user want to receive push notifications when a friend posts a product? true or false",
-            "in": "formData",
-            "name": "send_friend_post_push",
-            "type": "string"
-          },
-          {
-            "description": "Does the user want to receive emails when mentioned in comments? true or false",
-            "in": "formData",
-            "name": "send_mention_email",
-            "type": "string"
-          },
-          {
-            "description": "Does the user want to receive push notifications when mentioned in comments? true or false",
-            "in": "formData",
-            "name": "send_mention_push",
-            "type": "string"
-          },
-          {
-            "description": "Does the user want to receive emails when they get a new follower? true or false",
-            "in": "formData",
-            "name": "send_new_follower_email",
-            "type": "string"
-          },
-          {
-            "description": "Does the user want to receive push notifications when they get a new follower? true or false",
-            "in": "formData",
-            "name": "send_new_follower_push",
-            "type": "string"
-          },
-          {
-            "description": "Does the user want to recieve product recommendations via email (popular products, similar interests)? true or false",
-            "in": "formData",
-            "name": "send_product_recommendation_email",
-            "type": "string"
-          },
-          {
-            "description": "Does the user want to recieve product recommendations via push (popular products, similar interests)? true or false",
-            "in": "formData",
-            "name": "send_product_recommendation_push",
-            "type": "string"
-          },
-          {
-            "description": "Is the user subscribed to receiving push notifications? true or false",
-            "in": "formData",
-            "name": "subscribed_to_push",
-            "type": "string"
           }
         ],
         "responses": {
@@ -12073,8 +11940,7 @@
                     },
                     "followers": {
                       "items": {
-                        "properties": {},
-                        "required": []
+                        "properties": {}
                       },
                       "type": "array"
                     },
@@ -12083,8 +11949,7 @@
                     },
                     "followings": {
                       "items": {
-                        "properties": {},
-                        "required": []
+                        "properties": {}
                       },
                       "type": "array"
                     },
@@ -12258,8 +12123,7 @@
                     },
                     "maker_of": {
                       "items": {
-                        "properties": {},
-                        "required": []
+                        "properties": {}
                       },
                       "type": "array"
                     },
@@ -12310,8 +12174,7 @@
                     },
                     "posts": {
                       "items": {
-                        "properties": {},
-                        "required": []
+                        "properties": {}
                       },
                       "type": "array"
                     },
@@ -12424,8 +12287,7 @@
                               },
                               "makers": {
                                 "items": {
-                                  "properties": {},
-                                  "required": []
+                                  "properties": {}
                                 },
                                 "type": "array"
                               },
@@ -12435,8 +12297,7 @@
                               },
                               "platforms": {
                                 "items": {
-                                  "properties": {},
-                                  "required": []
+                                  "properties": {}
                                 },
                                 "type": "array"
                               },
@@ -12484,7 +12345,6 @@
                                   },
                                   "metadata": {
                                     "properties": {},
-                                    "required": [],
                                     "type": "object"
                                   }
                                 },
@@ -12498,8 +12358,7 @@
                               },
                               "topics": {
                                 "items": {
-                                  "properties": {},
-                                  "required": []
+                                  "properties": {}
                                 },
                                 "type": "array"
                               },
@@ -12818,8 +12677,7 @@
                   "properties": {
                     "name": {
                       "items": {
-                        "properties": {},
-                        "required": []
+                        "properties": {}
                       },
                       "type": "array"
                     }
@@ -12869,13 +12727,13 @@
       "get": {
         "parameters": [
           {
-            "description": "Filter parameter: get only records newer than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records newer than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "newer",
             "type": "string"
           },
           {
-            "description": "Filter parameter: get only records older than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records older than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "older",
             "type": "string"
@@ -12887,7 +12745,13 @@
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "description": "Offset-based pagination: Get content of given page, starts at 1",
+            "in": "query",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "description": "Any kind of pagination: define the amount of records sent per call (max 50)",
             "in": "query",
             "name": "per_page",
             "type": "string"
@@ -12914,7 +12778,7 @@
             "type": "string"
           },
           {
-            "description": "Sort api response: valid parameters to sort by: created_at, id, updated_at",
+            "description": "Sort api response: Valid options: id, created_at, updated_at",
             "in": "query",
             "name": "sort_by",
             "type": "string"
@@ -12929,6 +12793,10 @@
                 "topics": {
                   "items": {
                     "properties": {
+                      "created_at": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
                       "description": {
                         "type": "string"
                       },
@@ -12952,16 +12820,22 @@
                       },
                       "trending": {
                         "type": "boolean"
+                      },
+                      "updated_at": {
+                        "minLength": 1,
+                        "type": "string"
                       }
                     },
                     "required": [
                       "id",
                       "name",
                       "slug",
+                      "created_at",
                       "description",
                       "followers_count",
                       "posts_count",
-                      "trending"
+                      "trending",
+                      "updated_at"
                     ]
                   },
                   "minItems": 1,
@@ -12997,6 +12871,10 @@
               "properties": {
                 "topic": {
                   "properties": {
+                    "created_at": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
                     "description": {
                       "type": "string"
                     },
@@ -13020,16 +12898,22 @@
                     },
                     "trending": {
                       "type": "boolean"
+                    },
+                    "updated_at": {
+                      "minLength": 1,
+                      "type": "string"
                     }
                   },
                   "required": [
                     "id",
                     "name",
                     "slug",
+                    "created_at",
                     "description",
                     "followers_count",
                     "posts_count",
-                    "trending"
+                    "trending",
+                    "updated_at"
                   ],
                   "type": "object"
                 }
@@ -13052,7 +12936,6 @@
             "schema": {
               "description": "",
               "properties": {},
-              "required": [],
               "type": "object"
             }
           },
@@ -13078,7 +12961,6 @@
             "schema": {
               "description": "",
               "properties": {},
-              "required": [],
               "type": "object"
             }
           },
@@ -13101,27 +12983,39 @@
       "get": {
         "parameters": [
           {
-            "description": "Filter parameter: get only records newer than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records newer than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "newer",
             "type": "string"
           },
           {
-            "description": "Filter parameter: get only records older than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records older than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "older",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "description": "Sort api response: valid parameters are desc and asc",
             "in": "query",
             "name": "order",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "description": "Offset-based pagination: Get content of given page, starts at 1",
+            "in": "query",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "description": "Any kind of pagination: define the amount of records sent per call (max 50)",
             "in": "query",
             "name": "per_page",
+            "type": "string"
+          },
+          {
+            "description": "Sort api response: Valid options: id, created_at, updated_at",
+            "in": "query",
+            "name": "sort_by",
             "type": "string"
           }
         ],
@@ -13623,19 +13517,31 @@
       "get": {
         "parameters": [
           {
-            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "description": "Cursor-based pagination: Only works with ID. Get records newer than the provided id. Note: Sort_by is ignored and applied afterwards.",
+            "in": "query",
+            "name": "newer",
+            "type": "string"
+          },
+          {
+            "description": "Cursor-based pagination: Only works with ID. Get records older than the provided id. Note: Sort_by is ignored and applied afterwards.",
+            "in": "query",
+            "name": "older",
+            "type": "string"
+          },
+          {
+            "description": "Sort api response: valid parameters are desc and asc",
             "in": "query",
             "name": "order",
             "type": "string"
           },
           {
-            "description": "Parameter for pagination",
+            "description": "Offset-based pagination: Get content of given page, starts at 1",
             "in": "query",
             "name": "page",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "description": "Any kind of pagination: define the amount of records sent per call (max 50)",
             "in": "query",
             "name": "per_page",
             "type": "string"
@@ -13647,7 +13553,7 @@
             "type": "string"
           },
           {
-            "description": "Filter parameter: valid values are created_at, updated_at or featured_at",
+            "description": "Sort api response: Valid options: id, created_at, updated_at",
             "in": "query",
             "name": "sort_by",
             "type": "string"
@@ -13919,10 +13825,10 @@
                       "created_at",
                       "updated_at",
                       "featured_at",
-                      "color",
                       "subscriber_count",
                       "collection_url",
-                      "posts_count"
+                      "posts_count",
+                      "color"
                     ]
                   },
                   "minItems": 1,
@@ -13987,7 +13893,6 @@
                           },
                           "current_user": {
                             "properties": {},
-                            "required": [],
                             "type": "object"
                           },
                           "day": {
@@ -14010,8 +13915,7 @@
                           },
                           "makers": {
                             "items": {
-                              "properties": {},
-                              "required": []
+                              "properties": {}
                             },
                             "type": "array"
                           },
@@ -14021,8 +13925,7 @@
                           },
                           "platforms": {
                             "items": {
-                              "properties": {},
-                              "required": []
+                              "properties": {}
                             },
                             "type": "array"
                           },
@@ -14070,7 +13973,6 @@
                               },
                               "metadata": {
                                 "properties": {},
-                                "required": [],
                                 "type": "object"
                               }
                             },
@@ -14084,8 +13986,7 @@
                           },
                           "topics": {
                             "items": {
-                              "properties": {},
-                              "required": []
+                              "properties": {}
                             },
                             "type": "array"
                           },
@@ -14340,7 +14241,6 @@
                       },
                       "user": {
                         "properties": {},
-                        "required": [],
                         "type": "object"
                       },
                       "user_id": {
@@ -14387,7 +14287,6 @@
             "schema": {
               "description": "",
               "properties": {},
-              "required": [],
               "type": "object"
             }
           },
@@ -14412,6 +14311,10 @@
               "properties": {
                 "follower": {
                   "properties": {
+                    "created_at": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
                     "id": {
                       "type": "number"
                     },
@@ -14622,6 +14525,7 @@
                   },
                   "required": [
                     "id",
+                    "created_at",
                     "user"
                   ],
                   "type": "object"
@@ -14642,16 +14546,13 @@
             "name": "body",
             "schema": {
               "description": "",
-              "properties": {},
-              "required": [],
+              "properties": {
+                "user_id": {
+                  "type": "string"
+                }
+              },
               "type": "object"
             }
-          },
-          {
-            "description": "The ID of the user you want to follow",
-            "in": "formData",
-            "name": "user_id",
-            "type": "string"
           },
           {
             "in": "path",
@@ -14668,6 +14569,10 @@
               "properties": {
                 "follower": {
                   "properties": {
+                    "created_at": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
                     "id": {
                       "type": "number"
                     },
@@ -14878,6 +14783,7 @@
                   },
                   "required": [
                     "id",
+                    "created_at",
                     "user"
                   ],
                   "type": "object"
@@ -14896,27 +14802,39 @@
       "get": {
         "parameters": [
           {
-            "description": "Filter parameter: get only records newer than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records newer than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "newer",
             "type": "string"
           },
           {
-            "description": "Filter parameter: get only records older than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records older than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "older",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "description": "Sort api response: valid parameters are desc and asc",
             "in": "query",
             "name": "order",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "description": "Offset-based pagination: Get content of given page, starts at 1",
+            "in": "query",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "description": "Any kind of pagination: define the amount of records sent per call (max 50)",
             "in": "query",
             "name": "per_page",
+            "type": "string"
+          },
+          {
+            "description": "Sort api response: Valid options: id, created_at, updated_at",
+            "in": "query",
+            "name": "sort_by",
             "type": "string"
           },
           {
@@ -14941,6 +14859,10 @@
                 "followers": {
                   "items": {
                     "properties": {
+                      "created_at": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
                       "id": {
                         "type": "number"
                       },
@@ -15150,7 +15072,8 @@
                       }
                     },
                     "required": [
-                      "id"
+                      "id",
+                      "created_at"
                     ]
                   },
                   "minItems": 1,
@@ -15171,27 +15094,39 @@
       "get": {
         "parameters": [
           {
-            "description": "Filter parameter: get only records newer than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records newer than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "newer",
             "type": "string"
           },
           {
-            "description": "Filter parameter: get only records older than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records older than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "older",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "description": "Sort api response: valid parameters are desc and asc",
             "in": "query",
             "name": "order",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "description": "Offset-based pagination: Get content of given page, starts at 1",
+            "in": "query",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "description": "Any kind of pagination: define the amount of records sent per call (max 50)",
             "in": "query",
             "name": "per_page",
+            "type": "string"
+          },
+          {
+            "description": "Sort api response: Valid options: id, created_at, updated_at",
+            "in": "query",
+            "name": "sort_by",
             "type": "string"
           },
           {
@@ -15216,6 +15151,10 @@
                 "following": {
                   "items": {
                     "properties": {
+                      "created_at": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
                       "id": {
                         "type": "number"
                       },
@@ -15425,7 +15364,8 @@
                       }
                     },
                     "required": [
-                      "id"
+                      "id",
+                      "created_at"
                     ]
                   },
                   "minItems": 1,
@@ -15446,21 +15386,39 @@
       "get": {
         "parameters": [
           {
-            "description": "Filter parameter: get only records newer than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records newer than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "newer",
             "type": "string"
           },
           {
-            "description": "Filter parameter: get only records older than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records older than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "older",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "description": "Sort api response: valid parameters are desc and asc",
+            "in": "query",
+            "name": "order",
+            "type": "string"
+          },
+          {
+            "description": "Offset-based pagination: Get content of given page, starts at 1",
+            "in": "query",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "description": "Any kind of pagination: define the amount of records sent per call (max 50)",
             "in": "query",
             "name": "per_page",
+            "type": "string"
+          },
+          {
+            "description": "Sort api response: Valid options: id, created_at, updated_at",
+            "in": "query",
+            "name": "sort_by",
             "type": "string"
           },
           {
@@ -15491,7 +15449,6 @@
                       },
                       "current_user": {
                         "properties": {},
-                        "required": [],
                         "type": "object"
                       },
                       "day": {
@@ -15514,8 +15471,7 @@
                       },
                       "makers": {
                         "items": {
-                          "properties": {},
-                          "required": []
+                          "properties": {}
                         },
                         "type": "array"
                       },
@@ -15525,8 +15481,7 @@
                       },
                       "platforms": {
                         "items": {
-                          "properties": {},
-                          "required": []
+                          "properties": {}
                         },
                         "type": "array"
                       },
@@ -15574,7 +15529,6 @@
                           },
                           "metadata": {
                             "properties": {},
-                            "required": [],
                             "type": "object"
                           }
                         },
@@ -15588,8 +15542,7 @@
                       },
                       "topics": {
                         "items": {
-                          "properties": {},
-                          "required": []
+                          "properties": {}
                         },
                         "type": "array"
                       },
@@ -15835,21 +15788,39 @@
       "get": {
         "parameters": [
           {
-            "description": "Filter parameter: get only records newer than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records newer than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "newer",
             "type": "string"
           },
           {
-            "description": "Filter parameter: get only records older than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records older than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "older",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the amount of records sent per call (max 50)",
+            "description": "Sort api response: valid parameters are desc and asc",
+            "in": "query",
+            "name": "order",
+            "type": "string"
+          },
+          {
+            "description": "Offset-based pagination: Get content of given page, starts at 1",
+            "in": "query",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "description": "Any kind of pagination: define the amount of records sent per call (max 50)",
             "in": "query",
             "name": "per_page",
+            "type": "string"
+          },
+          {
+            "description": "Sort api response: Valid options: id, created_at, updated_at",
+            "in": "query",
+            "name": "sort_by",
             "type": "string"
           },
           {
@@ -15880,7 +15851,6 @@
                       },
                       "current_user": {
                         "properties": {},
-                        "required": [],
                         "type": "object"
                       },
                       "day": {
@@ -16114,8 +16084,7 @@
                       },
                       "platforms": {
                         "items": {
-                          "properties": {},
-                          "required": []
+                          "properties": {}
                         },
                         "type": "array"
                       },
@@ -16163,7 +16132,6 @@
                           },
                           "metadata": {
                             "properties": {},
-                            "required": [],
                             "type": "object"
                           }
                         },
@@ -16177,8 +16145,7 @@
                       },
                       "topics": {
                         "items": {
-                          "properties": {},
-                          "required": []
+                          "properties": {}
                         },
                         "type": "array"
                       },
@@ -16424,27 +16391,39 @@
       "get": {
         "parameters": [
           {
-            "description": "Filter parameter: get only records newer than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records newer than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "newer",
             "type": "string"
           },
           {
-            "description": "Filter parameter: get only records older than the provided id",
+            "description": "Cursor-based pagination: Only works with ID. Get records older than the provided id. Note: Sort_by is ignored and applied afterwards.",
             "in": "query",
             "name": "older",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.",
+            "description": "Sort api response: valid parameters are desc and asc",
             "in": "query",
             "name": "order",
             "type": "string"
           },
           {
-            "description": "Filter parameter: define the amount of records sent per call (50)",
+            "description": "Offset-based pagination: Get content of given page, starts at 1",
+            "in": "query",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "description": "Any kind of pagination: define the amount of records sent per call (max 50)",
             "in": "query",
             "name": "per_page",
+            "type": "string"
+          },
+          {
+            "description": "Sort api response: Valid options: id, created_at, updated_at",
+            "in": "query",
+            "name": "sort_by",
             "type": "string"
           },
           {
@@ -16490,7 +16469,6 @@
                           },
                           "current_user": {
                             "properties": {},
-                            "required": [],
                             "type": "object"
                           },
                           "day": {
@@ -16513,8 +16491,7 @@
                           },
                           "makers": {
                             "items": {
-                              "properties": {},
-                              "required": []
+                              "properties": {}
                             },
                             "type": "array"
                           },
@@ -16524,8 +16501,7 @@
                           },
                           "platforms": {
                             "items": {
-                              "properties": {},
-                              "required": []
+                              "properties": {}
                             },
                             "type": "array"
                           },
@@ -16573,7 +16549,6 @@
                               },
                               "metadata": {
                                 "properties": {},
-                                "required": [],
                                 "type": "object"
                               }
                             },
@@ -16587,8 +16562,7 @@
                           },
                           "topics": {
                             "items": {
-                              "properties": {},
-                              "required": []
+                              "properties": {}
                             },
                             "type": "array"
                           },
