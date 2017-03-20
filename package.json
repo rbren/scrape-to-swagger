@@ -14,6 +14,7 @@
     "deep-sort-object": "^1.0.1",
     "json-schema-generator": "^2.0.3",
     "request": "^2.67.0",
+    "swagger-cli": "^1.0.0-beta.2",
     "yargs": "^3.31.0"
   },
   "bin": {
