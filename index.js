@@ -1,5 +1,7 @@
 var METHODS = ['get', 'post', 'patch', 'put', 'delete', 'head', 'options'];
 var CREATE_METHODS = ['post', 'patch', 'put'];
+const swaggerSpecValidator = require('swagger-spec-validator');
+
 var getDefaultParameterLocation = function(method) {
   if (method === 'post' || method === 'patch' || method === 'put') return 'formData';
   return 'query';
@@ -140,6 +142,7 @@ function addOperationToSwagger($, op, method, path, qs) {
     }
     if (sParameter.in === 'field') {
       bodyParam = bodyParam || {name: 'body', in: 'body', schema: {properties: {}}};
+      bodyParam.schema.properties = bodyParam.schema.properties || {};
       bodyParam.schema.properties[sParameter.name] = bodyParam.schema.properties[sParameter.name] || {type: sParameter.type};
       sParameter = null;
     }
@@ -298,6 +301,17 @@ scrapeInfo(config.url, function(err) {
   scrapePage(config.url, config.depth === 0 ? 0 : (config.depth || 1), function(err) {
     if (err) throw err;
     fixErrors();
-    fs.writeFileSync(argv.output || 'swagger.json', JSON.stringify(deepSort(swagger), null, 2));
+    outputFile = argv.output || './swagger.json';
+    fs.writeFileSync(outputFile, JSON.stringify(deepSort(swagger), null, 2));
+    if (argv.validate) {
+      swaggerSpecValidator.validateFile(outputFile)
+          .then(result => {
+            if (Object.keys(result).length === 0) {
+              console.log('Spec is valid');
+            } else {
+              console.log('Spec is invalid');
+            }
+          })
+    }
   });
 });
