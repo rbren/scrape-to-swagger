@@ -47,6 +47,12 @@
             "type": "string"
           },
           {
+            "description": "Optional details on the refund",
+            "in": "formData",
+            "name": "Details",
+            "type": "string"
+          },
+          {
             "description": "* The API key provided to you by i-parcel.",
             "in": "formData",
             "name": "Key",
@@ -94,7 +100,7 @@
             "description": ""
           }
         },
-        "summary": "Global e-commerce merchants can issue returns with this API."
+        "summary": "Global e-commerce merchants can issue returns with this API"
       }
     },
     "/api/BannedCatalog": {
@@ -179,19 +185,25 @@
             "type": "string"
           },
           {
+            "description": "Return a quote even if there are inelible items (quote just what's eligible)",
+            "in": "formData",
+            "name": "AlwaysQuote",
+            "type": "string"
+          },
+          {
             "description": "The billing address for the parcel",
             "in": "formData",
             "name": "Billing",
             "type": "string"
           },
           {
-            "description": "* The consignee's city.",
+            "description": "* The consignee's city",
             "in": "formData",
             "name": "City",
             "type": "string"
           },
           {
-            "description": "The unit representing your company's currency, if different from your account settings.",
+            "description": "The unit representing your company's currency, if different from your account settings",
             "in": "formData",
             "name": "CompanyCurrency",
             "type": "string"
@@ -203,13 +215,13 @@
             "type": "string"
           },
           {
-            "description": "* The two-digit country code for the consignee.",
+            "description": "* The two-digit country code for the consignee",
             "in": "formData",
             "name": "CountryCode",
             "type": "string"
           },
           {
-            "description": "The country where the item originated. This is typically where the item was last assembled or manufactured.",
+            "description": "* The country where the item originated. This is typically where the item was last assembled or manufactured. Not required if your item is already in our catalog.",
             "in": "formData",
             "name": "CountryOfOrigin",
             "type": "string"
@@ -221,25 +233,25 @@
             "type": "string"
           },
           {
-            "description": "* The height of the item in inches. Not required if your item is already in our catalog.",
+            "description": "* The height of the item in inches. Not required if your item is already in our catalog",
             "in": "formData",
             "name": "CustHeightInches",
             "type": "string"
           },
           {
-            "description": "* The length of the item in inches. Not required if your item is already in our catalog.",
+            "description": "* The length of the item in inches. Not required if your item is already in our catalog",
             "in": "formData",
             "name": "CustLengthInches",
             "type": "string"
           },
           {
-            "description": "* The weight of the item in pounds. Not required if your item is already in our catalog.",
+            "description": "* The weight of the item in pounds. Not required if your item is already in our catalog",
             "in": "formData",
             "name": "CustWeightLbs",
             "type": "string"
           },
           {
-            "description": "* The width of the item in inches. Not required if your item is already in our catalog.",
+            "description": "* The width of the item in inches. Not required if your item is already in our catalog",
             "in": "formData",
             "name": "CustWidthInches",
             "type": "string"
@@ -251,19 +263,19 @@
             "type": "string"
           },
           {
-            "description": "* The consignee's email address.",
+            "description": "* The consignee's email address (not required for Quote)",
             "in": "formData",
             "name": "Email",
             "type": "string"
           },
           {
-            "description": "* The consignee's first name.",
+            "description": "* The consignee's first name (not required for Quote)",
             "in": "formData",
             "name": "FirstName",
             "type": "string"
           },
           {
-            "description": "* The international harmonization code of the item. This is not required if the item is already in our catalog and you've allowed a week for us to classify it.",
+            "description": "* The international harmonization code of the item. This is not required if the item is already in our catalog and you've allowed a week for us to classify it",
             "in": "formData",
             "name": "HTSCode",
             "type": "string"
@@ -293,7 +305,7 @@
             "type": "string"
           },
           {
-            "description": "* The consignee's last name.",
+            "description": "* The consignee's last name (not required for Quote)",
             "in": "formData",
             "name": "LastName",
             "type": "string"
@@ -305,7 +317,7 @@
             "type": "string"
           },
           {
-            "description": "* The price of the item in your currency.",
+            "description": "* The price of the item in your currency",
             "in": "formData",
             "name": "OriginalPrice",
             "type": "string"
@@ -335,19 +347,19 @@
             "type": "string"
           },
           {
-            "description": "* The consignee's phone number.",
+            "description": "* The consignee's phone number (not required for Quote)",
             "in": "formData",
             "name": "Phone",
             "type": "string"
           },
           {
-            "description": "* The consignee's postal code.",
+            "description": "* The consignee's postal code",
             "in": "formData",
             "name": "PostCode",
             "type": "string"
           },
           {
-            "description": "* A description of the item. Not required if your item is already in our catalog.",
+            "description": "* A description of the item. Not required if your item is already in our catalog",
             "in": "formData",
             "name": "ProductDescription",
             "type": "string"
@@ -365,19 +377,19 @@
             "type": "string"
           },
           {
-            "description": "* The quantity of this item being shipped.",
+            "description": "* The quantity of this item being shipped",
             "in": "formData",
             "name": "Quantity",
             "type": "string"
           },
           {
-            "description": "The consignee's province/region/state.",
+            "description": "The consignee's province/region/state",
             "in": "formData",
             "name": "Region",
             "type": "string"
           },
           {
-            "description": "* The sku identifier for the item.",
+            "description": "* The sku identifier for the item",
             "in": "formData",
             "name": "SKU",
             "type": "string"
@@ -389,31 +401,43 @@
             "type": "string"
           },
           {
+            "description": "Merchant-Provider Shipper (used by SF)",
+            "in": "formData",
+            "name": "Shipper",
+            "type": "string"
+          },
+          {
             "description": "The shipping address for the parcel",
             "in": "formData",
             "name": "Shipping",
             "type": "string"
           },
           {
-            "description": "The shopper's currency. The quote response will be converted to this currency.",
+            "description": "The shopper's currency. The quote response will be converted to this currency",
             "in": "formData",
             "name": "ShopperCurrency",
             "type": "string"
           },
           {
-            "description": "* Line 1 of the consignee's street address.",
+            "description": "* Line 1 of the consignee's street address",
             "in": "formData",
             "name": "Street1",
             "type": "string"
           },
           {
-            "description": "* Line 2 of the consignee's street address.",
+            "description": "* Line 2 of the consignee's street address",
             "in": "formData",
             "name": "Street2",
             "type": "string"
           },
           {
-            "description": "A presupplied tracking number. Must be globally unique to i-parcel. To ensure that, use your account number plus a string that is internally unique to you, plus the country code of the country of export",
+            "description": "Opts the consignee into tracking notifications by email",
+            "in": "formData",
+            "name": "TrackByEmail",
+            "type": "string"
+          },
+          {
+            "description": "A pre-supplied tracking number. Must be globally unique to i-parcel. To ensure that, use your account number plus a string that is internally unique to you, plus the country code of the country of export",
             "in": "formData",
             "name": "TrackingNumber",
             "type": "string"
@@ -425,13 +449,13 @@
             "type": "string"
           },
           {
-            "description": "* The value of the item in your currency. Not required if your item is already in our catalog.",
+            "description": "* The value of the item in your currency. Not required if your item is already in our catalog",
             "in": "formData",
             "name": "ValueCompanyCurrency",
             "type": "string"
           },
           {
-            "description": "The value of the item in the shopper's currency. Not required if the item is already in our catalog.",
+            "description": "The value of the item in the shopper's currency. Not required if the item is already in our catalog",
             "in": "formData",
             "name": "ValueShopperCurrency",
             "type": "string"
@@ -442,331 +466,7 @@
             "description": ""
           }
         },
-        "summary": "Returns item validity and pricing from our version of your product catalog."
-      }
-    },
-    "/api/Checkout": {
-      "post": {
-        "parameters": [
-          {
-            "description": "* The addresses of the sender and recipient. A recipient country and postcode is the minimum required for CheckItems. All fields are required for an actual order.",
-            "in": "formData",
-            "name": "AddressInfo",
-            "type": "string"
-          },
-          {
-            "description": "The billing address for the parcel",
-            "in": "formData",
-            "name": "Billing",
-            "type": "string"
-          },
-          {
-            "description": "* The consignee's city.",
-            "in": "formData",
-            "name": "City",
-            "type": "string"
-          },
-          {
-            "description": "The unit representing your company's currency, if different from your account settings.",
-            "in": "formData",
-            "name": "CompanyCurrency",
-            "type": "string"
-          },
-          {
-            "description": "Russia, Israel, Taiwan, Korea, South Africa, and Brazil require a control number from the consignee. This is also known as a Tax ID.",
-            "in": "formData",
-            "name": "ControlNumber",
-            "type": "string"
-          },
-          {
-            "description": "* The two-digit country code for the consignee.",
-            "in": "formData",
-            "name": "CountryCode",
-            "type": "string"
-          },
-          {
-            "description": "The country where the item originated. This is typically where the item was last assembled or manufactured.",
-            "in": "formData",
-            "name": "CountryOfOrigin",
-            "type": "string"
-          },
-          {
-            "description": "The card CCV number (global e-commerce).",
-            "in": "formData",
-            "name": "CreditCardCCV",
-            "type": "string"
-          },
-          {
-            "description": "The month that the credit card expires (global e-commerce only).",
-            "in": "formData",
-            "name": "CreditCardExpMonth",
-            "type": "string"
-          },
-          {
-            "description": "The year that the credit card expires (global e-commerce).",
-            "in": "formData",
-            "name": "CreditCardExpYear",
-            "type": "string"
-          },
-          {
-            "description": "The name on the credit card (global e-commerce only).",
-            "in": "formData",
-            "name": "CreditCardName",
-            "type": "string"
-          },
-          {
-            "description": "The credit card number (global e-commerce only).",
-            "in": "formData",
-            "name": "CreditCardNumber",
-            "type": "string"
-          },
-          {
-            "description": "The currency in which to return prices.",
-            "in": "formData",
-            "name": "CurrencyCode",
-            "type": "string"
-          },
-          {
-            "description": "* The height of the item in inches. Not required if your item is already in our catalog.",
-            "in": "formData",
-            "name": "CustHeightInches",
-            "type": "string"
-          },
-          {
-            "description": "* The length of the item in inches. Not required if your item is already in our catalog.",
-            "in": "formData",
-            "name": "CustLengthInches",
-            "type": "string"
-          },
-          {
-            "description": "* The weight of the item in pounds. Not required if your item is already in our catalog.",
-            "in": "formData",
-            "name": "CustWeightLbs",
-            "type": "string"
-          },
-          {
-            "description": "* The width of the item in inches. Not required if your item is already in our catalog.",
-            "in": "formData",
-            "name": "CustWidthInches",
-            "type": "string"
-          },
-          {
-            "description": "Whether to include duty and tax in the quote (and bill it to your shopper).",
-            "in": "formData",
-            "name": "DDP",
-            "type": "string"
-          },
-          {
-            "description": "* The consignee's email address.",
-            "in": "formData",
-            "name": "Email",
-            "type": "string"
-          },
-          {
-            "description": "* The consignee's first name.",
-            "in": "formData",
-            "name": "FirstName",
-            "type": "string"
-          },
-          {
-            "description": "* The international harmonization code of the item. This is not required if the item is already in our catalog and you've allowed a week for us to classify it.",
-            "in": "formData",
-            "name": "HTSCode",
-            "type": "string"
-          },
-          {
-            "description": "An identifier for the address if it is meant to be saved the shopper's i-parcel account.",
-            "in": "formData",
-            "name": "Id",
-            "type": "string"
-          },
-          {
-            "description": "Whether to insure the order.",
-            "in": "formData",
-            "name": "Insurance",
-            "type": "string"
-          },
-          {
-            "description": "* The items to apply to this request.",
-            "in": "formData",
-            "name": "ItemDetailsList",
-            "type": "string"
-          },
-          {
-            "description": "* Your API key",
-            "in": "formData",
-            "name": "Key",
-            "type": "string"
-          },
-          {
-            "description": "Pass through a language value from your shopper (subscribe to your newsletter, etc. global e-commerce only).",
-            "in": "formData",
-            "name": "Language",
-            "type": "string"
-          },
-          {
-            "description": "* The consignee's last name.",
-            "in": "formData",
-            "name": "LastName",
-            "type": "string"
-          },
-          {
-            "description": "Pass through an opt-in value from your shopper (subscribe to your newsletter, etc. global e-commerce only).",
-            "in": "formData",
-            "name": "OptIn",
-            "type": "string"
-          },
-          {
-            "description": "An order reference for your own internal tracking.",
-            "in": "formData",
-            "name": "OrderReference",
-            "type": "string"
-          },
-          {
-            "description": "* The price of the item in your currency.",
-            "in": "formData",
-            "name": "OriginalPrice",
-            "type": "string"
-          },
-          {
-            "description": "Any discounts you want to apply to the order.",
-            "in": "formData",
-            "name": "OtherDiscount",
-            "type": "string"
-          },
-          {
-            "description": "The currency in which you'd like to apply the discount.",
-            "in": "formData",
-            "name": "OtherDiscountCurrency",
-            "type": "string"
-          },
-          {
-            "description": "An optional parcel id.",
-            "in": "formData",
-            "name": "ParcelID",
-            "type": "string"
-          },
-          {
-            "description": "The payment method (global e-commerce merchants only).",
-            "in": "formData",
-            "name": "PaymentMethod",
-            "type": "string"
-          },
-          {
-            "description": "* The consignee's phone number.",
-            "in": "formData",
-            "name": "Phone",
-            "type": "string"
-          },
-          {
-            "description": "* The consignee's postal code.",
-            "in": "formData",
-            "name": "PostCode",
-            "type": "string"
-          },
-          {
-            "description": "* A description of the item. Not required if your item is already in our catalog.",
-            "in": "formData",
-            "name": "ProductDescription",
-            "type": "string"
-          },
-          {
-            "description": "A promotional or coupon code.",
-            "in": "formData",
-            "name": "PromoCode",
-            "type": "string"
-          },
-          {
-            "description": "* The quantity of this item being shipped.",
-            "in": "formData",
-            "name": "Quantity",
-            "type": "string"
-          },
-          {
-            "description": "The consignee's province/region/state.",
-            "in": "formData",
-            "name": "Region",
-            "type": "string"
-          },
-          {
-            "description": "If this is an SF Buy order, this is the unique SF Buy userid",
-            "in": "formData",
-            "name": "SFAddressId",
-            "type": "string"
-          },
-          {
-            "description": "If this is an SF Buy order, the flag/status they will pass to us",
-            "in": "formData",
-            "name": "SFUserFlag",
-            "type": "string"
-          },
-          {
-            "description": "* The sku identifier for the item.",
-            "in": "formData",
-            "name": "SKU",
-            "type": "string"
-          },
-          {
-            "description": "The shipping type (115 = i-parcel UPS Select, 112 = i-parcel UPS Express)",
-            "in": "formData",
-            "name": "ServiceLevel",
-            "type": "string"
-          },
-          {
-            "description": "An optional session id.",
-            "in": "formData",
-            "name": "SessionID",
-            "type": "string"
-          },
-          {
-            "description": "The shipping address for the parcel",
-            "in": "formData",
-            "name": "Shipping",
-            "type": "string"
-          },
-          {
-            "description": "The shopper's currency. The quote response will be converted to this currency.",
-            "in": "formData",
-            "name": "ShopperCurrency",
-            "type": "string"
-          },
-          {
-            "description": "* Line 1 of the consignee's street address.",
-            "in": "formData",
-            "name": "Street1",
-            "type": "string"
-          },
-          {
-            "description": "* Line 2 of the consignee's street address.",
-            "in": "formData",
-            "name": "Street2",
-            "type": "string"
-          },
-          {
-            "description": "\"Billing\" or \"Shipping\". Only required if the shopper is logged in and you want to save this address to their account.",
-            "in": "formData",
-            "name": "Type",
-            "type": "string"
-          },
-          {
-            "description": "* The value of the item in your currency. Not required if your item is already in our catalog.",
-            "in": "formData",
-            "name": "ValueCompanyCurrency",
-            "type": "string"
-          },
-          {
-            "description": "The value of the item in the shopper's currency. Not required if the item is already in our catalog.",
-            "in": "formData",
-            "name": "ValueShopperCurrency",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "summary": "Returns a payment link for your shoppers to finish checkout (Global-Ecommerce stores)."
+        "summary": "Returns item validity and pricing from our version of your product catalog"
       }
     },
     "/api/Currencies": {
@@ -787,11 +487,38 @@
         "summary": "Get exchange rates converted from your company's base currency. Exchange rates are updated every day at 6 AM ET / 11 AM GMT."
       }
     },
+    "/api/DockLabel": {
+      "get": {
+        "parameters": [
+          {
+            "in": "query",
+            "name": "key",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "trackingNumber",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "vendorTrackingNumber",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Returns a label for the given key and tracking number.  If a vendor tracking number is passed, no label will be returned"
+      }
+    },
     "/api/ExecuteReturn": {
       "post": {
         "parameters": [
           {
-            "description": "The amount to return in your shopper's currency. This won't be authorized until AuthorizeReturn is called.",
+            "description": "The amount to return in your shopper's currency.\r\n            This won't be authorized until AuthorizeReturn is called.",
             "in": "formData",
             "name": "Amount",
             "type": "string"
@@ -800,6 +527,12 @@
             "description": "Records who requested this return.",
             "in": "formData",
             "name": "ByWho",
+            "type": "string"
+          },
+          {
+            "description": "The refund details. Should add up to Amount",
+            "in": "formData",
+            "name": "Details",
             "type": "string"
           },
           {
@@ -844,7 +577,7 @@
             "description": ""
           }
         },
-        "summary": "Allows a merchant to create a return."
+        "summary": "Allows a merchant to create a return"
       }
     },
     "/api/GetLabel": {
@@ -869,20 +602,7 @@
         "summary": "Returns a label for the given key and tracking number"
       },
       "post": {
-        "parameters": [
-          {
-            "description": "* Your API key provided by i-parcel.",
-            "in": "formData",
-            "name": "Key",
-            "type": "string"
-          },
-          {
-            "description": "* The i-parcel tracking number of the original order.",
-            "in": "formData",
-            "name": "TrackingNumber",
-            "type": "string"
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": ""
@@ -901,19 +621,25 @@
             "type": "string"
           },
           {
+            "description": "Return a quote even if there are inelible items (quote just what's eligible)",
+            "in": "formData",
+            "name": "AlwaysQuote",
+            "type": "string"
+          },
+          {
             "description": "The billing address for the parcel",
             "in": "formData",
             "name": "Billing",
             "type": "string"
           },
           {
-            "description": "* The consignee's city.",
+            "description": "* The consignee's city",
             "in": "formData",
             "name": "City",
             "type": "string"
           },
           {
-            "description": "The unit representing your company's currency, if different from your account settings.",
+            "description": "The unit representing your company's currency, if different from your account settings",
             "in": "formData",
             "name": "CompanyCurrency",
             "type": "string"
@@ -925,13 +651,13 @@
             "type": "string"
           },
           {
-            "description": "* The two-digit country code for the consignee.",
+            "description": "* The two-digit country code for the consignee",
             "in": "formData",
             "name": "CountryCode",
             "type": "string"
           },
           {
-            "description": "The country where the item originated. This is typically where the item was last assembled or manufactured.",
+            "description": "* The country where the item originated. This is typically where the item was last assembled or manufactured. Not required if your item is already in our catalog.",
             "in": "formData",
             "name": "CountryOfOrigin",
             "type": "string"
@@ -943,25 +669,25 @@
             "type": "string"
           },
           {
-            "description": "* The height of the item in inches. Not required if your item is already in our catalog.",
+            "description": "* The height of the item in inches. Not required if your item is already in our catalog",
             "in": "formData",
             "name": "CustHeightInches",
             "type": "string"
           },
           {
-            "description": "* The length of the item in inches. Not required if your item is already in our catalog.",
+            "description": "* The length of the item in inches. Not required if your item is already in our catalog",
             "in": "formData",
             "name": "CustLengthInches",
             "type": "string"
           },
           {
-            "description": "* The weight of the item in pounds. Not required if your item is already in our catalog.",
+            "description": "* The weight of the item in pounds. Not required if your item is already in our catalog",
             "in": "formData",
             "name": "CustWeightLbs",
             "type": "string"
           },
           {
-            "description": "* The width of the item in inches. Not required if your item is already in our catalog.",
+            "description": "* The width of the item in inches. Not required if your item is already in our catalog",
             "in": "formData",
             "name": "CustWidthInches",
             "type": "string"
@@ -973,19 +699,19 @@
             "type": "string"
           },
           {
-            "description": "* The consignee's email address.",
+            "description": "* The consignee's email address (not required for Quote)",
             "in": "formData",
             "name": "Email",
             "type": "string"
           },
           {
-            "description": "* The consignee's first name.",
+            "description": "* The consignee's first name (not required for Quote)",
             "in": "formData",
             "name": "FirstName",
             "type": "string"
           },
           {
-            "description": "* The international harmonization code of the item. This is not required if the item is already in our catalog and you've allowed a week for us to classify it.",
+            "description": "* The international harmonization code of the item. This is not required if the item is already in our catalog and you've allowed a week for us to classify it",
             "in": "formData",
             "name": "HTSCode",
             "type": "string"
@@ -1015,7 +741,7 @@
             "type": "string"
           },
           {
-            "description": "* The consignee's last name.",
+            "description": "* The consignee's last name (not required for Quote)",
             "in": "formData",
             "name": "LastName",
             "type": "string"
@@ -1027,7 +753,7 @@
             "type": "string"
           },
           {
-            "description": "* The price of the item in your currency.",
+            "description": "* The price of the item in your currency",
             "in": "formData",
             "name": "OriginalPrice",
             "type": "string"
@@ -1057,19 +783,19 @@
             "type": "string"
           },
           {
-            "description": "* The consignee's phone number.",
+            "description": "* The consignee's phone number (not required for Quote)",
             "in": "formData",
             "name": "Phone",
             "type": "string"
           },
           {
-            "description": "* The consignee's postal code.",
+            "description": "* The consignee's postal code",
             "in": "formData",
             "name": "PostCode",
             "type": "string"
           },
           {
-            "description": "* A description of the item. Not required if your item is already in our catalog.",
+            "description": "* A description of the item. Not required if your item is already in our catalog",
             "in": "formData",
             "name": "ProductDescription",
             "type": "string"
@@ -1087,19 +813,19 @@
             "type": "string"
           },
           {
-            "description": "* The quantity of this item being shipped.",
+            "description": "* The quantity of this item being shipped",
             "in": "formData",
             "name": "Quantity",
             "type": "string"
           },
           {
-            "description": "The consignee's province/region/state.",
+            "description": "The consignee's province/region/state",
             "in": "formData",
             "name": "Region",
             "type": "string"
           },
           {
-            "description": "* The sku identifier for the item.",
+            "description": "* The sku identifier for the item",
             "in": "formData",
             "name": "SKU",
             "type": "string"
@@ -1111,31 +837,43 @@
             "type": "string"
           },
           {
+            "description": "Merchant-Provider Shipper (used by SF)",
+            "in": "formData",
+            "name": "Shipper",
+            "type": "string"
+          },
+          {
             "description": "The shipping address for the parcel",
             "in": "formData",
             "name": "Shipping",
             "type": "string"
           },
           {
-            "description": "The shopper's currency. The quote response will be converted to this currency.",
+            "description": "The shopper's currency. The quote response will be converted to this currency",
             "in": "formData",
             "name": "ShopperCurrency",
             "type": "string"
           },
           {
-            "description": "* Line 1 of the consignee's street address.",
+            "description": "* Line 1 of the consignee's street address",
             "in": "formData",
             "name": "Street1",
             "type": "string"
           },
           {
-            "description": "* Line 2 of the consignee's street address.",
+            "description": "* Line 2 of the consignee's street address",
             "in": "formData",
             "name": "Street2",
             "type": "string"
           },
           {
-            "description": "A presupplied tracking number. Must be globally unique to i-parcel. To ensure that, use your account number plus a string that is internally unique to you, plus the country code of the country of export",
+            "description": "Opts the consignee into tracking notifications by email",
+            "in": "formData",
+            "name": "TrackByEmail",
+            "type": "string"
+          },
+          {
+            "description": "A pre-supplied tracking number. Must be globally unique to i-parcel. To ensure that, use your account number plus a string that is internally unique to you, plus the country code of the country of export",
             "in": "formData",
             "name": "TrackingNumber",
             "type": "string"
@@ -1147,13 +885,13 @@
             "type": "string"
           },
           {
-            "description": "* The value of the item in your currency. Not required if your item is already in our catalog.",
+            "description": "* The value of the item in your currency. Not required if your item is already in our catalog",
             "in": "formData",
             "name": "ValueCompanyCurrency",
             "type": "string"
           },
           {
-            "description": "The value of the item in the shopper's currency. Not required if the item is already in our catalog.",
+            "description": "The value of the item in the shopper's currency. Not required if the item is already in our catalog",
             "in": "formData",
             "name": "ValueShopperCurrency",
             "type": "string"
@@ -1164,10 +902,62 @@
             "description": ""
           }
         },
-        "summary": "Quotes shipping, tax, and duty on a list of items for the given shipping address."
+        "summary": "Quotes shipping, tax, and duty on a list of items for the given shipping address"
       }
     },
     "/api/Split": {
+      "get": {
+        "parameters": [
+          {
+            "description": "* Your i-parcel API key (visible in your Dashboard via the Integrate link.)",
+            "in": "query",
+            "name": "Key",
+            "type": "string"
+          },
+          {
+            "description": "* The new tracking number.",
+            "in": "query",
+            "name": "NewTrackingNumber",
+            "type": "string"
+          },
+          {
+            "description": "* The original tracking number of the parcel.",
+            "in": "query",
+            "name": "OriginalTrackingNumber",
+            "type": "string"
+          },
+          {
+            "description": "The quantity of the item",
+            "in": "query",
+            "name": "Quantity",
+            "type": "string"
+          },
+          {
+            "description": "* The sku of the item",
+            "in": "query",
+            "name": "Sku",
+            "type": "string"
+          },
+          {
+            "description": "* The items and quantities.",
+            "in": "query",
+            "name": "SkuList",
+            "type": "string"
+          },
+          {
+            "description": "* The list of parcels to split the original into.",
+            "in": "query",
+            "name": "SplitParcelList",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "No documentation available."
+      },
       "post": {
         "parameters": [
           {
@@ -1216,6 +1006,38 @@
       }
     },
     "/api/SplitMultiple": {
+      "get": {
+        "parameters": [
+          {
+            "description": "The quantity of the item",
+            "in": "query",
+            "name": "Quantity",
+            "type": "string"
+          },
+          {
+            "description": "* The sku of the item",
+            "in": "query",
+            "name": "Sku",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "desiredCount",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "equalOrLessThanOrMoreThan",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "No documentation available."
+      },
       "post": {
         "parameters": [
           {
@@ -1483,19 +1305,25 @@
             "type": "string"
           },
           {
+            "description": "Return a quote even if there are inelible items (quote just what's eligible)",
+            "in": "formData",
+            "name": "AlwaysQuote",
+            "type": "string"
+          },
+          {
             "description": "The billing address for the parcel",
             "in": "formData",
             "name": "Billing",
             "type": "string"
           },
           {
-            "description": "* The consignee's city.",
+            "description": "* The consignee's city",
             "in": "formData",
             "name": "City",
             "type": "string"
           },
           {
-            "description": "The unit representing your company's currency, if different from your account settings.",
+            "description": "The unit representing your company's currency, if different from your account settings",
             "in": "formData",
             "name": "CompanyCurrency",
             "type": "string"
@@ -1507,13 +1335,13 @@
             "type": "string"
           },
           {
-            "description": "* The two-digit country code for the consignee.",
+            "description": "* The two-digit country code for the consignee",
             "in": "formData",
             "name": "CountryCode",
             "type": "string"
           },
           {
-            "description": "The country where the item originated. This is typically where the item was last assembled or manufactured.",
+            "description": "* The country where the item originated. This is typically where the item was last assembled or manufactured. Not required if your item is already in our catalog.",
             "in": "formData",
             "name": "CountryOfOrigin",
             "type": "string"
@@ -1525,25 +1353,25 @@
             "type": "string"
           },
           {
-            "description": "* The height of the item in inches. Not required if your item is already in our catalog.",
+            "description": "* The height of the item in inches. Not required if your item is already in our catalog",
             "in": "formData",
             "name": "CustHeightInches",
             "type": "string"
           },
           {
-            "description": "* The length of the item in inches. Not required if your item is already in our catalog.",
+            "description": "* The length of the item in inches. Not required if your item is already in our catalog",
             "in": "formData",
             "name": "CustLengthInches",
             "type": "string"
           },
           {
-            "description": "* The weight of the item in pounds. Not required if your item is already in our catalog.",
+            "description": "* The weight of the item in pounds. Not required if your item is already in our catalog",
             "in": "formData",
             "name": "CustWeightLbs",
             "type": "string"
           },
           {
-            "description": "* The width of the item in inches. Not required if your item is already in our catalog.",
+            "description": "* The width of the item in inches. Not required if your item is already in our catalog",
             "in": "formData",
             "name": "CustWidthInches",
             "type": "string"
@@ -1555,19 +1383,19 @@
             "type": "string"
           },
           {
-            "description": "* The consignee's email address.",
+            "description": "* The consignee's email address (not required for Quote)",
             "in": "formData",
             "name": "Email",
             "type": "string"
           },
           {
-            "description": "* The consignee's first name.",
+            "description": "* The consignee's first name (not required for Quote)",
             "in": "formData",
             "name": "FirstName",
             "type": "string"
           },
           {
-            "description": "* The international harmonization code of the item. This is not required if the item is already in our catalog and you've allowed a week for us to classify it.",
+            "description": "* The international harmonization code of the item. This is not required if the item is already in our catalog and you've allowed a week for us to classify it",
             "in": "formData",
             "name": "HTSCode",
             "type": "string"
@@ -1597,7 +1425,7 @@
             "type": "string"
           },
           {
-            "description": "* The consignee's last name.",
+            "description": "* The consignee's last name (not required for Quote)",
             "in": "formData",
             "name": "LastName",
             "type": "string"
@@ -1609,7 +1437,7 @@
             "type": "string"
           },
           {
-            "description": "* The price of the item in your currency.",
+            "description": "* The price of the item in your currency",
             "in": "formData",
             "name": "OriginalPrice",
             "type": "string"
@@ -1639,19 +1467,19 @@
             "type": "string"
           },
           {
-            "description": "* The consignee's phone number.",
+            "description": "* The consignee's phone number (not required for Quote)",
             "in": "formData",
             "name": "Phone",
             "type": "string"
           },
           {
-            "description": "* The consignee's postal code.",
+            "description": "* The consignee's postal code",
             "in": "formData",
             "name": "PostCode",
             "type": "string"
           },
           {
-            "description": "* A description of the item. Not required if your item is already in our catalog.",
+            "description": "* A description of the item. Not required if your item is already in our catalog",
             "in": "formData",
             "name": "ProductDescription",
             "type": "string"
@@ -1669,19 +1497,19 @@
             "type": "string"
           },
           {
-            "description": "* The quantity of this item being shipped.",
+            "description": "* The quantity of this item being shipped",
             "in": "formData",
             "name": "Quantity",
             "type": "string"
           },
           {
-            "description": "The consignee's province/region/state.",
+            "description": "The consignee's province/region/state",
             "in": "formData",
             "name": "Region",
             "type": "string"
           },
           {
-            "description": "* The sku identifier for the item.",
+            "description": "* The sku identifier for the item",
             "in": "formData",
             "name": "SKU",
             "type": "string"
@@ -1693,31 +1521,43 @@
             "type": "string"
           },
           {
+            "description": "Merchant-Provider Shipper (used by SF)",
+            "in": "formData",
+            "name": "Shipper",
+            "type": "string"
+          },
+          {
             "description": "The shipping address for the parcel",
             "in": "formData",
             "name": "Shipping",
             "type": "string"
           },
           {
-            "description": "The shopper's currency. The quote response will be converted to this currency.",
+            "description": "The shopper's currency. The quote response will be converted to this currency",
             "in": "formData",
             "name": "ShopperCurrency",
             "type": "string"
           },
           {
-            "description": "* Line 1 of the consignee's street address.",
+            "description": "* Line 1 of the consignee's street address",
             "in": "formData",
             "name": "Street1",
             "type": "string"
           },
           {
-            "description": "* Line 2 of the consignee's street address.",
+            "description": "* Line 2 of the consignee's street address",
             "in": "formData",
             "name": "Street2",
             "type": "string"
           },
           {
-            "description": "A presupplied tracking number. Must be globally unique to i-parcel. To ensure that, use your account number plus a string that is internally unique to you, plus the country code of the country of export",
+            "description": "Opts the consignee into tracking notifications by email",
+            "in": "formData",
+            "name": "TrackByEmail",
+            "type": "string"
+          },
+          {
+            "description": "A pre-supplied tracking number. Must be globally unique to i-parcel. To ensure that, use your account number plus a string that is internally unique to you, plus the country code of the country of export",
             "in": "formData",
             "name": "TrackingNumber",
             "type": "string"
@@ -1729,13 +1569,13 @@
             "type": "string"
           },
           {
-            "description": "* The value of the item in your currency. Not required if your item is already in our catalog.",
+            "description": "* The value of the item in your currency. Not required if your item is already in our catalog",
             "in": "formData",
             "name": "ValueCompanyCurrency",
             "type": "string"
           },
           {
-            "description": "The value of the item in the shopper's currency. Not required if the item is already in our catalog.",
+            "description": "The value of the item in the shopper's currency. Not required if the item is already in our catalog",
             "in": "formData",
             "name": "ValueShopperCurrency",
             "type": "string"
@@ -1746,7 +1586,7 @@
             "description": ""
           }
         },
-        "summary": "Acknowledges a quote as an actual parcel to be shipped to i-parcel."
+        "summary": "Acknowledges a quote as an actual parcel to be shipped to i-parcel"
       }
     },
     "/api/Track": {
@@ -1772,6 +1612,12 @@
       },
       "post": {
         "parameters": [
+          {
+            "description": "If set to true, this will include parcel data that the merchant attempted to submit that did not pass our validation.",
+            "in": "formData",
+            "name": "IncludeAttempts",
+            "type": "string"
+          },
           {
             "description": "* Your API key provided by i-parcel.",
             "in": "formData",

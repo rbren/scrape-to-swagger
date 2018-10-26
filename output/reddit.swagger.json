@@ -30,6 +30,12 @@
             "type": "string"
           },
           {
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_categories",
+            "type": "string"
+          },
+          {
             "description": "the maximum number of items desired (default: 25, maximum: 100)",
             "in": "query",
             "name": "limit",
@@ -150,6 +156,12 @@
             "type": "string"
           },
           {
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_categories",
+            "type": "string"
+          },
+          {
             "description": "the maximum number of items desired (default: 25, maximum: 100)",
             "in": "query",
             "name": "limit",
@@ -234,7 +246,7 @@
             "type": "string"
           },
           {
-            "description": "one of (banuser, unbanuser, spamlink, removelink, approvelink, spamcomment, removecomment, approvecomment, addmoderator, invitemoderator, uninvitemoderator, acceptmoderatorinvite, removemoderator, addcontributor, removecontributor, editsettings, editflair, distinguish, marknsfw, wikibanned, wikicontributor, wikiunbanned, wikipagelisted, removewikicontributor, wikirevise, wikipermlevel, ignorereports, unignorereports, setpermissions, setsuggestedsort, sticky, unsticky, setcontestmode, unsetcontestmode, lock, unlock, muteuser, unmuteuser, createrule, editrule, deleterule, spoiler, unspoiler, modmail_enrollment)",
+            "description": "one of (banuser, unbanuser, spamlink, removelink, approvelink, spamcomment, removecomment, approvecomment, addmoderator, invitemoderator, uninvitemoderator, acceptmoderatorinvite, removemoderator, addcontributor, removecontributor, editsettings, editflair, distinguish, marknsfw, wikibanned, wikicontributor, wikiunbanned, wikipagelisted, removewikicontributor, wikirevise, wikipermlevel, ignorereports, unignorereports, setpermissions, setsuggestedsort, sticky, unsticky, setcontestmode, unsetcontestmode, lock, unlock, muteuser, unmuteuser, createrule, editrule, deleterule, spoiler, unspoiler, modmail_enrollment, community_styling, community_widgets, markoriginalcontent)",
             "in": "query",
             "name": "type",
             "type": "string"
@@ -345,12 +357,48 @@
     },
     "/api/block": {
       "post": {
-        "description": "For blocking via inbox.",
+        "description": "For blocking the author of a thing via inbox.",
         "parameters": [
           {
             "description": "fullname of a thing",
             "in": "formData",
             "name": "id",
+            "type": "string"
+          },
+          {
+            "description": "a modhash",
+            "in": "formData",
+            "name": "uh",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/block_user": {
+      "post": {
+        "description": "For blocking a user.",
+        "parameters": [
+          {
+            "description": "fullname of a account",
+            "in": "formData",
+            "name": "account_id",
+            "type": "string"
+          },
+          {
+            "description": "the string json",
+            "in": "formData",
+            "name": "api_type",
+            "type": "string"
+          },
+          {
+            "description": "A valid, existing reddit username",
+            "in": "formData",
+            "name": "name",
             "type": "string"
           },
           {
@@ -428,6 +476,18 @@
             "description": "the string json",
             "in": "formData",
             "name": "api_type",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "formData",
+            "name": "return_rtjson",
+            "type": "string"
+          },
+          {
+            "description": "JSON data",
+            "in": "formData",
+            "name": "richtext_json",
             "type": "string"
           },
           {
@@ -718,7 +778,7 @@
     },
     "/api/distinguish": {
       "post": {
-        "description": "Distinguish a thing's author with a sigil.\n\nThis can be useful to draw attention to and confirm the identity of the\nuser in the context of a link or comment of theirs. The options for\ndistinguish are as follows:\n\n\nyes - add a moderator distinguish ([M]). only if the user is a\n      moderator of the subreddit the thing is in.\nno - remove any distinguishes.\nadmin - add an admin distinguish ([A]). admin accounts only.\nspecial - add a user-specific distinguish. depends on user.\n\n\nThe first time a top-level comment is moderator distinguished, the\nauthor of the link the comment is in reply to will get a notification\nin their inbox.",
+        "description": "Distinguish a thing's author with a sigil.\n\nThis can be useful to draw attention to and confirm the identity of the\nuser in the context of a link or comment of theirs. The options for\ndistinguish are as follows:\n\n\nyes - add a moderator distinguish ([M]). only if the user is a\n      moderator of the subreddit the thing is in.\nno - remove any distinguishes.\nadmin - add an admin distinguish ([A]). admin accounts only.\nspecial - add a user-specific distinguish. depends on user.\n\n\nThe first time a top-level comment is moderator distinguished, the\nauthor of the link the comment is in reply to will get a notification\nin their inbox.\n\nsticky is a boolean flag for comments, which will stick the\ndistingushed comment to the top of all comments threads. If a comment\nis marked sticky, it will override any other stickied comment for that\nlink (as only one comment may be stickied at a time.) Only top-level\ncomments may be stickied.",
         "parameters": [
           {
             "description": "the string json",
@@ -736,6 +796,12 @@
             "description": "fullname of a thing",
             "in": "formData",
             "name": "id",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "formData",
+            "name": "sticky",
             "type": "string"
           },
           {
@@ -763,13 +829,25 @@
             "type": "string"
           },
           {
+            "description": "boolean value",
+            "in": "formData",
+            "name": "return_rtjson",
+            "type": "string"
+          },
+          {
+            "description": "JSON data",
+            "in": "formData",
+            "name": "richtext_json",
+            "type": "string"
+          },
+          {
             "description": "raw markdown text",
             "in": "formData",
             "name": "text",
             "type": "string"
           },
           {
-            "description": "fullname of a thing created by the user",
+            "description": "fullname of a thing",
             "in": "formData",
             "name": "thing_id",
             "type": "string"
@@ -819,6 +897,36 @@
             "description": "a string no longer than 64 characters",
             "in": "formData",
             "name": "text",
+            "type": "string"
+          },
+          {
+            "description": "a modhash",
+            "in": "formData",
+            "name": "uh",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/flair_template_order": {
+      "patch": {
+        "description": "Update the order of flair templates in the specified subreddit.\n\nOrder should contain every single flair id for that flair type; omitting\nany id will result in a loss of data.",
+        "parameters": [
+          {
+            "description": "one of (USER_FLAIR, LINK_FLAIR)",
+            "in": "formData",
+            "name": "flair_type",
+            "type": "string"
+          },
+          {
+            "description": "subreddit name",
+            "in": "formData",
+            "name": "subreddit",
             "type": "string"
           },
           {
@@ -1042,6 +1150,71 @@
         }
       }
     },
+    "/api/flairtemplate_v2": {
+      "post": {
+        "description": "Create or update a flair template.\n\nThis new endpoint is primarily used for the redesign.",
+        "parameters": [
+          {
+            "description": "the string json",
+            "in": "formData",
+            "name": "api_type",
+            "type": "string"
+          },
+          {
+            "description": "a 6-digit rgb hex color, e.g. #AABBCC",
+            "in": "formData",
+            "name": "background_color",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "flair_template_id",
+            "type": "string"
+          },
+          {
+            "description": "one of (USER_FLAIR, LINK_FLAIR)",
+            "in": "formData",
+            "name": "flair_type",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "formData",
+            "name": "mod_only",
+            "type": "string"
+          },
+          {
+            "description": "a string no longer than 64 characters",
+            "in": "formData",
+            "name": "text",
+            "type": "string"
+          },
+          {
+            "description": "one of (light, dark)",
+            "in": "formData",
+            "name": "text_color",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "formData",
+            "name": "text_editable",
+            "type": "string"
+          },
+          {
+            "description": "a modhash",
+            "in": "formData",
+            "name": "uh",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/api/friend": {
       "post": {
         "description": "Create a relationship between a user and another user or subreddit\n\nOAuth2 use requires appropriate scope based\non the 'type' of the relationship:\n\n\nmoderator: Use \"moderator_invite\"\nmoderator_invite: modothers\ncontributor: modcontributors\nbanned: modcontributors\nmuted: modcontributors\nwikibanned: modcontributors and modwiki\nwikicontributor: modcontributors and modwiki\nfriend: Use /api/v1/me/friends/{username}\nenemy: Use /api/block\n\n\nComplement to POST_unfriend",
@@ -1050,6 +1223,12 @@
             "description": "the string json",
             "in": "formData",
             "name": "api_type",
+            "type": "string"
+          },
+          {
+            "description": "fullname of a thing",
+            "in": "formData",
+            "name": "ban_context",
             "type": "string"
           },
           {
@@ -1243,6 +1422,17 @@
         }
       }
     },
+    "/api/link_flair_v2": {
+      "get": {
+        "description": "Return list of available link flair for the current subreddit.\n\nWill not return flair if the user cannot set their own link flair and\nthey are not a moderator that can set flair.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/api/live/{thread}/accept_contributor_invite": {
       "post": {
         "description": "Accept a pending invitation to contribute to the thread.\n\nSee also: /api/live/thread/leave_contributor.",
@@ -1371,6 +1561,42 @@
             "description": "a string no longer than 120 characters",
             "in": "formData",
             "name": "title",
+            "type": "string"
+          },
+          {
+            "description": "a modhash",
+            "in": "formData",
+            "name": "uh",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "thread",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/live/{thread}/hide_discussion": {
+      "post": {
+        "description": "Hide a linked comment thread from the discussions sidebar and listing.\n\nRequires the discussions permission for this thread.\n\nSee also: /api/live/thread/unhide_discussion.",
+        "parameters": [
+          {
+            "description": "the string json",
+            "in": "formData",
+            "name": "api_type",
+            "type": "string"
+          },
+          {
+            "description": "The base 36 ID of a Link",
+            "in": "formData",
+            "name": "link",
             "type": "string"
           },
           {
@@ -1663,6 +1889,42 @@
         }
       }
     },
+    "/api/live/{thread}/unhide_discussion": {
+      "post": {
+        "description": "Unhide a linked comment thread from the discussions sidebar and listing..\n\nRequires the discussions permission for this thread.\n\nSee also: /api/live/thread/hide_discussion.",
+        "parameters": [
+          {
+            "description": "the string json",
+            "in": "formData",
+            "name": "api_type",
+            "type": "string"
+          },
+          {
+            "description": "The base 36 ID of a Link",
+            "in": "formData",
+            "name": "link",
+            "type": "string"
+          },
+          {
+            "description": "a modhash",
+            "in": "formData",
+            "name": "uh",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "thread",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/api/live/{thread}/update": {
       "post": {
         "description": "Post an update to the thread.\n\nRequires the update permission for this thread.\n\nSee also: /api/live/thread/strike_update, and\n/api/live/thread/delete_update.",
@@ -1704,7 +1966,7 @@
         "description": "Get a listing of live events by id.",
         "parameters": [
           {
-            "description": "A comma-separated list of ids",
+            "description": "a comma-delimited list of live thread fullnames or IDs",
             "in": "path",
             "name": "names",
             "required": true,
@@ -1891,7 +2153,7 @@
         }
       },
       "post": {
-        "description": "Creates a new conversation for a particular SR  \n\nThis endpoint will create a ModmailConversation object as\nwell as the first ModmailMessage within the ModmailConversation\nobject.",
+        "description": "Creates a new conversation for a particular SR\n\nThis endpoint will create a ModmailConversation object as\nwell as the first ModmailMessage within the ModmailConversation\nobject.",
         "parameters": [
           {
             "description": "raw markdown text",
@@ -2173,7 +2435,7 @@
     },
     "/api/morechildren": {
       "get": {
-        "description": "Retrieve additional comments omitted from a base comment tree.\n\nWhen a comment tree is rendered, the most relevant comments are\nselected for display first. Remaining comments are stubbed out with\n\"MoreComments\" links. This API call is used to retrieve the additional\ncomments represented by those stubs, up to 100 at a time.\n\nThe two core parameters required are link and children.  link is\nthe fullname of the link whose comments are being fetched. children\nis a comma-delimited list of comment ID36s that need to be fetched.\n\nIf id is passed, it should be the ID of the MoreComments object this\ncall is replacing. This is needed only for the HTML UI's purposes and\nis optional otherwise.\n\nNOTE: you may only make one request at a time to this API endpoint.\nHigher concurrency will result in an error being returned.",
+        "description": "Retrieve additional comments omitted from a base comment tree.\n\nWhen a comment tree is rendered, the most relevant comments are\nselected for display first. Remaining comments are stubbed out with\n\"MoreComments\" links. This API call is used to retrieve the additional\ncomments represented by those stubs, up to 100 at a time.\n\nThe two core parameters required are link and children.  link is\nthe fullname of the link whose comments are being fetched. children\nis a comma-delimited list of comment ID36s that need to be fetched.\n\nIf id is passed, it should be the ID of the MoreComments object this\ncall is replacing. This is needed only for the HTML UI's purposes and\nis optional otherwise.\n\nNOTE: you may only make one request at a time to this API endpoint.\nHigher concurrency will result in an error being returned.\n\nIf limit_children is True, only return the children requested.",
         "parameters": [
           {
             "description": "the string json",
@@ -2191,6 +2453,12 @@
             "description": "(optional) id of the associated MoreChildren object",
             "in": "query",
             "name": "id",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "query",
+            "name": "limit_children",
             "type": "string"
           },
           {
@@ -2632,6 +2900,12 @@
         "description": "Queue up marking all messages for a user as read.\n\nThis may take some time, and returns 202 to acknowledge acceptance of\nthe request.",
         "parameters": [
           {
+            "description": "A comma-separated list of items",
+            "in": "formData",
+            "name": "filter_types",
+            "type": "string"
+          },
+          {
             "description": "a modhash",
             "in": "formData",
             "name": "uh",
@@ -2731,12 +3005,36 @@
     },
     "/api/report": {
       "post": {
-        "description": "Report a link, comment or message.\n\nReporting a thing brings it to the attention of the subreddit's\nmoderators. Reporting a message sends it to a system for admin review.\n\nFor links and comments, the thing is implicitly hidden as well (see\n/api/hide for details).",
+        "description": "Report a link, comment or message.\nReporting a thing brings it to the attention of the subreddit's\nmoderators. Reporting a message sends it to a system for admin review.\nFor links and comments, the thing is implicitly hidden as well (see\n/api/hide for details).",
         "parameters": [
+          {
+            "description": "a string no longer than 2000 characters",
+            "in": "formData",
+            "name": "additional_info",
+            "type": "string"
+          },
           {
             "description": "the string json",
             "in": "formData",
             "name": "api_type",
+            "type": "string"
+          },
+          {
+            "description": "a string no longer than 1000 characters",
+            "in": "formData",
+            "name": "ban_evading_accounts_names",
+            "type": "string"
+          },
+          {
+            "description": "a string no longer than 250 characters",
+            "in": "formData",
+            "name": "custom_text",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "formData",
+            "name": "from_help_center",
             "type": "string"
           },
           {
@@ -2764,6 +3062,12 @@
             "type": "string"
           },
           {
+            "description": "a string no longer than 1000 characters",
+            "in": "formData",
+            "name": "sr_name",
+            "type": "string"
+          },
+          {
             "description": "fullname of a thing",
             "in": "formData",
             "name": "thing_id",
@@ -2773,6 +3077,42 @@
             "description": "a modhash",
             "in": "formData",
             "name": "uh",
+            "type": "string"
+          },
+          {
+            "description": "the name of an existing user",
+            "in": "formData",
+            "name": "violator_username",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/report_user": {
+      "post": {
+        "description": "Report a user.\nReporting a user brings it to the attention of a Reddit admin.",
+        "parameters": [
+          {
+            "description": "A valid, existing reddit username",
+            "in": "formData",
+            "name": "('user',)",
+            "type": "string"
+          },
+          {
+            "description": "JSON data",
+            "in": "formData",
+            "name": "details",
+            "type": "string"
+          },
+          {
+            "description": "a string no longer than 100 characters",
+            "in": "formData",
+            "name": "reason",
             "type": "string"
           }
         ],
@@ -2824,7 +3164,59 @@
         }
       }
     },
+    "/api/saved_media_text": {
+      "get": {
+        "description": "Retrieve the advisory text about saving media for relevant media links.\n\nThis endpoint returns a notice for display during the post submission\nprocess that is pertinent to media links.",
+        "parameters": [
+          {
+            "description": "a valid URL",
+            "in": "query",
+            "name": "url",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/api/search_reddit_names": {
+      "get": {
+        "description": "List subreddit names that begin with a query string.\n\nSubreddits whose names begin with query will be returned. If\ninclude_over_18 is false, subreddits with over-18 content\nrestrictions will be filtered from the results.\n\nIf include_unadvertisable is False, subreddits that have hide_ads\nset to True or are on the anti_ads_subreddits list will be filtered.\n\nIf exact is true, only an exact match will be returned. Exact matches\nare inclusive of over_18 subreddits, but not hide_ad subreddits\nwhen include_unadvertisable is False.",
+        "parameters": [
+          {
+            "description": "boolean value",
+            "in": "query",
+            "name": "exact",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_over_18",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_unadvertisable",
+            "type": "string"
+          },
+          {
+            "description": "a string up to 50 characters long, consisting of printable characters.",
+            "in": "query",
+            "name": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
       "post": {
         "description": "List subreddit names that begin with a query string.\n\nSubreddits whose names begin with query will be returned. If\ninclude_over_18 is false, subreddits with over-18 content\nrestrictions will be filtered from the results.\n\nIf include_unadvertisable is False, subreddits that have hide_ads\nset to True or are on the anti_ads_subreddits list will be filtered.\n\nIf exact is true, only an exact match will be returned. Exact matches\nare inclusive of over_18 subreddits, but not hide_ad subreddits\nwhen include_unadvertisable is False.",
         "parameters": [
@@ -2906,6 +3298,12 @@
             "type": "string"
           },
           {
+            "description": "a 6-digit rgb hex color, e.g. #AABBCC",
+            "in": "formData",
+            "name": "background_color",
+            "type": "string"
+          },
+          {
             "in": "formData",
             "name": "flair_template_id",
             "type": "string"
@@ -2923,9 +3321,21 @@
             "type": "string"
           },
           {
+            "description": "[all|only|none]: \"all\" saves attributes and returns rtjson \"only\" only returns rtjson\"none\" only saves attributes",
+            "in": "formData",
+            "name": "return_rtson",
+            "type": "string"
+          },
+          {
             "description": "a string no longer than 64 characters",
             "in": "formData",
             "name": "text",
+            "type": "string"
+          },
+          {
+            "description": "one of (light, dark)",
+            "in": "formData",
+            "name": "text_color",
             "type": "string"
           },
           {
@@ -3023,7 +3433,7 @@
             "type": "string"
           },
           {
-            "description": "an integer between 1 and 2",
+            "description": "an integer between 1 and 4",
             "in": "formData",
             "name": "num",
             "type": "string"
@@ -3032,6 +3442,12 @@
             "description": "boolean value",
             "in": "formData",
             "name": "state",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "formData",
+            "name": "to_profile",
             "type": "string"
           },
           {
@@ -3158,13 +3574,37 @@
           {
             "description": "boolean value",
             "in": "formData",
+            "name": "all_original_content",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "formData",
+            "name": "allow_discovery",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "formData",
             "name": "allow_images",
             "type": "string"
           },
           {
             "description": "boolean value",
             "in": "formData",
+            "name": "allow_post_crossposts",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "formData",
             "name": "allow_top",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "formData",
+            "name": "allow_videos",
             "type": "string"
           },
           {
@@ -3198,6 +3638,12 @@
             "type": "string"
           },
           {
+            "description": "boolean value",
+            "in": "formData",
+            "name": "free_form_reports",
+            "type": "string"
+          },
+          {
             "in": "formData",
             "name": "g-recaptcha-response",
             "type": "string"
@@ -3212,6 +3658,12 @@
             "description": "boolean value",
             "in": "formData",
             "name": "hide_ads",
+            "type": "string"
+          },
+          {
+            "description": "a 6-digit rgb hex color, e.g. #AABBCC",
+            "in": "formData",
+            "name": "key_color",
             "type": "string"
           },
           {
@@ -3235,6 +3687,12 @@
           {
             "description": "boolean value",
             "in": "formData",
+            "name": "original_content_tag_enabled",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "formData",
             "name": "over_18",
             "type": "string"
           },
@@ -3242,12 +3700,6 @@
             "description": "raw markdown text",
             "in": "formData",
             "name": "public_description",
-            "type": "string"
-          },
-          {
-            "description": "boolean value",
-            "in": "formData",
-            "name": "public_traffic",
             "type": "string"
           },
           {
@@ -3347,13 +3799,13 @@
             "type": "string"
           },
           {
-            "description": "an integer greater than 0 (default: 0)",
+            "description": "an integer between 0 and 36600 (default: 0)",
             "in": "formData",
             "name": "wiki_edit_age",
             "type": "string"
           },
           {
-            "description": "an integer greater than 0 (default: 0)",
+            "description": "an integer between 0 and 1000000000 (default: 0)",
             "in": "formData",
             "name": "wiki_edit_karma",
             "type": "string"
@@ -3397,7 +3849,7 @@
     },
     "/api/store_visits": {
       "post": {
-        "description": "Requires a subscription to reddit gold",
+        "description": "*Requires a subscription to [reddit premium]",
         "parameters": [
           {
             "description": "A comma-separated list of link fullnames",
@@ -3421,8 +3873,14 @@
     },
     "/api/submit": {
       "post": {
-        "description": "Submit a link to a subreddit.\n\nSubmit will create a link or self-post in the subreddit sr with the\ntitle title. If kind is \"link\", then url is expected to be a\nvalid URL to link to. Otherwise, text, if present, will be the\nbody of the self-post.\n\nIf a link with the same URL has already been submitted to the specified\nsubreddit an error will be returned unless resubmit is true.\nextension is used for determining which view-type (e.g. json,\ncompact etc.) to use for the redirect that is generated if the\nresubmit error occurs.",
+        "description": "Submit a link to a subreddit.\n\nSubmit will create a link or self-post in the subreddit sr with the\ntitle title. If kind is \"link\", then url is expected to be a\nvalid URL to link to. Otherwise, text, if present, will be the\nbody of the self-post unless richtext_json is present, in which case\nit will be converted into the body of the self-post. An error is thrown\nif both text and richtext_json are present.\n\nIf a link with the same URL has already been submitted to the specified\nsubreddit an error will be returned unless resubmit is true.\nextension is used for determining which view-type (e.g. json,\ncompact etc.) to use for the redirect that is generated if the\nresubmit error occurs.",
         "parameters": [
+          {
+            "description": "boolean value",
+            "in": "formData",
+            "name": "ad",
+            "type": "string"
+          },
           {
             "description": "the string json",
             "in": "formData",
@@ -3458,25 +3916,15 @@
             "type": "string"
           },
           {
-            "description": "one of (link, self, image)",
+            "description": "one of (link, self, image, video, videogif)",
             "in": "formData",
             "name": "kind",
             "type": "string"
           },
           {
+            "description": "boolean value",
             "in": "formData",
-            "name": "location_lat",
-            "type": "string"
-          },
-          {
-            "in": "formData",
-            "name": "location_long",
-            "type": "string"
-          },
-          {
-            "description": "a string no longer than 1024 characters",
-            "in": "formData",
-            "name": "location_name",
+            "name": "nsfw",
             "type": "string"
           },
           {
@@ -3486,13 +3934,25 @@
             "type": "string"
           },
           {
+            "description": "JSON data",
+            "in": "formData",
+            "name": "richtext_json",
+            "type": "string"
+          },
+          {
             "description": "boolean value",
             "in": "formData",
             "name": "sendreplies",
             "type": "string"
           },
           {
-            "description": "subreddit name",
+            "description": "boolean value",
+            "in": "formData",
+            "name": "spoiler",
+            "type": "string"
+          },
+          {
+            "description": "name of a subreddit",
             "in": "formData",
             "name": "sr",
             "type": "string"
@@ -3520,6 +3980,12 @@
             "in": "formData",
             "name": "url",
             "type": "string"
+          },
+          {
+            "description": "a valid URL",
+            "in": "formData",
+            "name": "video_poster_url",
+            "type": "string"
           }
         ],
         "responses": {
@@ -3540,12 +4006,65 @@
         }
       }
     },
-    "/api/subreddits_by_topic": {
+    "/api/subreddit_autocomplete": {
       "get": {
-        "description": "Return a list of subreddits that are relevant to a search query.",
+        "description": "Return a list of subreddits and data for subreddits whose names start\nwith 'query'.\n\nUses typeahead endpoint to recieve the list of subreddits names.\nTypeahead provides exact matches, typo correction, fuzzy matching and\nboosts subreddits to the top that the user is subscribed to.",
         "parameters": [
           {
-            "description": "a string no longer than 50 characters",
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_over_18",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_profiles",
+            "type": "string"
+          },
+          {
+            "description": "a string up to 50 characters long, consisting of printable characters.",
+            "in": "query",
+            "name": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/subreddit_autocomplete_v2": {
+      "get": {
+        "parameters": [
+          {
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_categories",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_over_18",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_profiles",
+            "type": "string"
+          },
+          {
+            "description": "an integer between 1 and 10 (default: 5)",
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "description": "a string up to 50 characters long, consisting of printable characters.",
             "in": "query",
             "name": "query",
             "type": "string"
@@ -3937,6 +4456,45 @@
         }
       }
     },
+    "/api/user_data_by_account_ids": {
+      "get": {
+        "parameters": [
+          {
+            "description": "A comma-separated list of account fullnames",
+            "in": "query",
+            "name": "ids",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/user_flair": {
+      "get": {
+        "description": "Return list of available user flair for the current subreddit.\n\nWill not return flair if flair is disabled on the subreddit,\nthe user cannot set their own flair, or they are not a moderator\nthat can set flair.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/user_flair_v2": {
+      "get": {
+        "description": "Return list of available user flair for the current subreddit.\n\nIf user is not a mod of the subreddit, this endpoint filters\nout mod_only templates.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/api/username_available": {
       "get": {
         "description": "Check whether a username is available for registration.",
@@ -3945,6 +4503,138 @@
             "description": "a valid, unused, username",
             "in": "query",
             "name": "user",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/v1/{subreddit}/emoji_asset_upload_s3.json": {
+      "post": {
+        "description": "Acquire and return an upload lease to s3 temp bucket. The return value\nof this function is a json object containing credentials for uploading\nassets to S3 bucket, S3 url for upload request and the key to use for\nuploading. Using this lease the client will upload the emoji image to\nS3 temp bucket (included as part of the S3 URL).\n\nThis lease is used by S3 to verify that the upload is authorized.",
+        "parameters": [
+          {
+            "description": "name and extension of the image file e.g. image1.png",
+            "in": "formData",
+            "name": "filepath",
+            "type": "string"
+          },
+          {
+            "description": "mime type of the image e.g. image/png",
+            "in": "formData",
+            "name": "mimetype",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "subreddit",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/v1/{subreddit}/emoji_custom_size": {
+      "post": {
+        "description": "Set custom emoji size.\n\nOmitting width or height will disable custom emoji sizing.",
+        "parameters": [
+          {
+            "description": "an integer between 1 and 40 (default: 0)",
+            "in": "formData",
+            "name": "height",
+            "type": "string"
+          },
+          {
+            "description": "an integer between 1 and 40 (default: 0)",
+            "in": "formData",
+            "name": "width",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "subreddit",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/v1/{subreddit}/emoji.json": {
+      "post": {
+        "description": "Add an emoji to the DB by posting a message on emoji_upload_q.\nA job processor that listens on a queue, uses the s3_key provided\nin the request to locate the image in S3 Temp Bucket and moves it\nto the PERM bucket. It also adds it to the DB using name as the column\nand sr_fullname as the key and sends the status on the websocket URL\nthat is provided as part of this response.",
+        "parameters": [
+          {
+            "description": "Name of the emoji to be created. It can be  alphanumeric without any special characters except '-' & '_' and cannot exceed 24 characters.",
+            "in": "formData",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "description": "S3 key of the uploaded image which can be obtained from the S3 url. This is of the form subreddit/hash_value.",
+            "in": "formData",
+            "name": "s3_key",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "subreddit",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/v1/{subreddit}/emoji/{emoji_name}": {
+      "delete": {
+        "description": "Delete a Subreddit emoji.\nRemove the emoji from Cassandra and purge the assets from S3\nand the image resizing provider.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "subreddit",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "emoji_name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/v1/{subreddit}/emojis/all": {
+      "get": {
+        "description": "Get all emojis for a SR. The response inclueds reddit emojis\nas well as emojis for the SR specified in the request.\n\nThe response has 2 keys:\n - Reddit emojis (snoomoji)\n - SR emojis",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "subreddit",
+            "required": true,
             "type": "string"
           }
         ],
@@ -3999,7 +4689,7 @@
     },
     "/api/v1/me": {
       "get": {
-        "description": "Returns the identity of the user currently authenticated via OAuth.",
+        "description": "\"Returns the identity of the user.\n\nIf they are not authenticated via OAuth, then this will provide\nfeatures data based on the loid.",
         "parameters": [],
         "responses": {
           "200": {
@@ -4092,7 +4782,7 @@
         "description": "Return the preference settings of the logged in user",
         "parameters": [
           {
-            "description": "A comma-separated list of items from this set:\n\nthreaded_messages\nhide_downs\nemail_messages\nshow_link_flair\ncreddit_autorenew\nshow_trending\nprivate_feeds\nmonitor_mentions\nresearch\nignore_suggested_sort\nemail_digests\nmedia\nclickgadget\nuse_global_defaults\nlabel_nsfw\ndomain_details\nshow_stylesheets\nlive_orangereds\nhighlight_controversial\nno_profanity\ndefault_theme_sr\nlang\nhide_ups\nallow_clicktracking\nhide_from_robots\ncompress\nstore_visits\nthreaded_modmail\nbeta\nother_theme\nmedia_preview\nover_18\nenable_default_themes\nshow_promote\nmin_comment_score\npublic_votes\norganic\ncollapse_read_messages\nshow_flair\nmark_messages_read\nhide_ads\nmin_link_score\nnewwindow\nnumsites\nlegacy_search\nnum_comments\nshow_gold_expiration\nhighlight_new_comments\ndefault_comment_sort\nhide_locationbar",
+            "description": "A comma-separated list of items from this set:\n\nthreaded_messages\nhide_downs\nactivity_relevant_ads\nshow_stylesheets\nprofile_opt_out\nvideo_autoplay\nthird_party_site_data_personalized_content\nshow_link_flair\ncreddit_autorenew\nshow_trending\nprivate_feeds\ntheme_selector\nmonitor_mentions\nresearch\nignore_suggested_sort\nemail_digests\nnum_comments\nclickgadget\nuse_global_defaults\nlabel_nsfw\ndomain_details\nemail_messages\nlive_orangereds\nhighlight_controversial\nno_profanity\nemail_unsubscribe_all\nlang\nin_redesign_beta\nhide_ups\nthird_party_data_personalized_ads\nallow_clicktracking\nhide_from_robots\nshow_twitter\ncompress\nstore_visits\nthreaded_modmail\nmin_link_score\nother_theme\nmedia_preview\nover_18\nnightmode\nenable_default_themes\ngeopopular\nthird_party_site_data_personalized_ads\nshow_promote\nmin_comment_score\npublic_votes\nno_video_autoplay\norganic\ncollapse_read_messages\nshow_flair\nmark_messages_read\nsearch_include_over_18\nhide_ads\nbeta\ntop_karma_subreddits\nnewwindow\nnumsites\nlegacy_search\nmedia\nshow_gold_expiration\nhighlight_new_comments\nautoplay\ndefault_comment_sort\nhide_locationbar\naccept_pms",
             "in": "query",
             "name": "fields",
             "type": "string"
@@ -4107,7 +4797,7 @@
       "patch": {
         "parameters": [
           {
-            "description": "{\n  \"allow_clicktracking\": boolean value,\n  \"beta\": boolean value,\n  \"clickgadget\": boolean value,\n  \"collapse_read_messages\": boolean value,\n  \"compress\": boolean value,\n  \"creddit_autorenew\": boolean value,\n  \"default_comment_sort\": one of (`confidence`, `old`, `top`, `qa`, `controversial`, `new`),\n  \"domain_details\": boolean value,\n  \"email_digests\": boolean value,\n  \"email_messages\": boolean value,\n  \"enable_default_themes\": boolean value,\n  \"hide_ads\": boolean value,\n  \"hide_downs\": boolean value,\n  \"hide_from_robots\": boolean value,\n  \"hide_locationbar\": boolean value,\n  \"hide_ups\": boolean value,\n  \"highlight_controversial\": boolean value,\n  \"highlight_new_comments\": boolean value,\n  \"ignore_suggested_sort\": boolean value,\n  \"label_nsfw\": boolean value,\n  \"lang\": a valid IETF language tag (underscore separated),\n  \"legacy_search\": boolean value,\n  \"live_orangereds\": boolean value,\n  \"mark_messages_read\": boolean value,\n  \"media\": one of (`on`, `off`, `subreddit`),\n  \"media_preview\": one of (`on`, `off`, `subreddit`),\n  \"min_comment_score\": an integer between -100 and 100,\n  \"min_link_score\": an integer between -100 and 100,\n  \"monitor_mentions\": boolean value,\n  \"newwindow\": boolean value,\n  \"no_profanity\": boolean value,\n  \"num_comments\": an integer between 1 and 500,\n  \"numsites\": an integer between 1 and 100,\n  \"organic\": boolean value,\n  \"other_theme\": subreddit name,\n  \"over_18\": boolean value,\n  \"private_feeds\": boolean value,\n  \"public_votes\": boolean value,\n  \"research\": boolean value,\n  \"show_flair\": boolean value,\n  \"show_gold_expiration\": boolean value,\n  \"show_link_flair\": boolean value,\n  \"show_promote\": boolean value,\n  \"show_stylesheets\": boolean value,\n  \"show_trending\": boolean value,\n  \"store_visits\": boolean value,\n  \"theme_selector\": subreddit name,\n  \"threaded_messages\": boolean value,\n  \"threaded_modmail\": boolean value,\n  \"use_global_defaults\": boolean value,\n}",
+            "description": "{\n  \"accept_pms\": one of (`everyone`, `whitelisted`),\n  \"activity_relevant_ads\": boolean value,\n  \"allow_clicktracking\": boolean value,\n  \"autoplay\": boolean value,\n  \"beta\": boolean value,\n  \"clickgadget\": boolean value,\n  \"collapse_read_messages\": boolean value,\n  \"compress\": boolean value,\n  \"creddit_autorenew\": boolean value,\n  \"default_comment_sort\": one of (`confidence`, `top`, `new`, `controversial`, `old`, `random`, `qa`, `live`),\n  \"domain_details\": boolean value,\n  \"email_digests\": boolean value,\n  \"email_messages\": boolean value,\n  \"email_unsubscribe_all\": boolean value,\n  \"enable_default_themes\": boolean value,\n  \"g\": one of (`GLOBAL`, `US`, `AR`, `AU`, `BG`, `CA`, `CL`, `CO`, `HR`, `CZ`, `FI`, `GR`, `HU`, `IS`, `IN`, `IE`, `JP`, `MY`, `MX`, `NZ`, `PH`, `PL`, `PT`, `PR`, `RO`, `RS`, `SG`, `SE`, `TW`, `TH`, `TR`, `GB`, `US_WA`, `US_DE`, `US_DC`, `US_WI`, `US_WV`, `US_HI`, `US_FL`, `US_WY`, `US_NH`, `US_NJ`, `US_NM`, `US_TX`, `US_LA`, `US_NC`, `US_ND`, `US_NE`, `US_TN`, `US_NY`, `US_PA`, `US_CA`, `US_NV`, `US_VA`, `US_CO`, `US_AK`, `US_AL`, `US_AR`, `US_VT`, `US_IL`, `US_GA`, `US_IN`, `US_IA`, `US_OK`, `US_AZ`, `US_ID`, `US_CT`, `US_ME`, `US_MD`, `US_MA`, `US_OH`, `US_UT`, `US_MO`, `US_MN`, `US_MI`, `US_RI`, `US_KS`, `US_MT`, `US_MS`, `US_SC`, `US_KY`, `US_OR`, `US_SD`),\n  \"hide_ads\": boolean value,\n  \"hide_downs\": boolean value,\n  \"hide_from_robots\": boolean value,\n  \"hide_locationbar\": boolean value,\n  \"hide_ups\": boolean value,\n  \"highlight_controversial\": boolean value,\n  \"highlight_new_comments\": boolean value,\n  \"ignore_suggested_sort\": boolean value,\n  \"in_redesign_beta\": boolean value,\n  \"label_nsfw\": boolean value,\n  \"lang\": a valid IETF language tag (underscore separated),\n  \"legacy_search\": boolean value,\n  \"live_orangereds\": boolean value,\n  \"mark_messages_read\": boolean value,\n  \"media\": one of (`on`, `off`, `subreddit`),\n  \"media_preview\": one of (`on`, `off`, `subreddit`),\n  \"min_comment_score\": an integer between -100 and 100,\n  \"min_link_score\": an integer between -100 and 100,\n  \"monitor_mentions\": boolean value,\n  \"newwindow\": boolean value,\n  \"nightmode\": boolean value,\n  \"no_profanity\": boolean value,\n  \"no_video_autoplay\": boolean value,\n  \"num_comments\": an integer between 1 and 500,\n  \"numsites\": an integer between 1 and 100,\n  \"organic\": boolean value,\n  \"other_theme\": subreddit name,\n  \"over_18\": boolean value,\n  \"private_feeds\": boolean value,\n  \"profile_opt_out\": boolean value,\n  \"public_votes\": boolean value,\n  \"research\": boolean value,\n  \"search_include_over_18\": boolean value,\n  \"show_flair\": boolean value,\n  \"show_gold_expiration\": boolean value,\n  \"show_link_flair\": boolean value,\n  \"show_promote\": boolean value,\n  \"show_stylesheets\": boolean value,\n  \"show_trending\": boolean value,\n  \"show_twitter\": boolean value,\n  \"store_visits\": boolean value,\n  \"theme_selector\": subreddit name,\n  \"third_party_data_personalized_ads\": boolean value,\n  \"third_party_site_data_personalized_ads\": boolean value,\n  \"third_party_site_data_personalized_content\": boolean value,\n  \"threaded_messages\": boolean value,\n  \"threaded_modmail\": boolean value,\n  \"top_karma_subreddits\": boolean value,\n  \"use_global_defaults\": boolean value,\n  \"video_autoplay\": boolean value,\n}",
             "in": "formData",
             "name": "This",
             "type": "string"
@@ -4199,6 +4889,133 @@
             "description": "a modhash",
             "in": "formData",
             "name": "uh",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/widget": {
+      "post": {
+        "description": "Add and return a widget to the specified subreddit\n\nAccepts a JSON payload representing the widget data to be saved.\nValid payloads differ in shape based on the \"kind\" attribute passed on\nthe root object, which must be a valid widget kind.",
+        "parameters": [
+          {
+            "description": "json data:\n\n{\n  \"data\": [\n    {\n      \"height\": an integer,\n      \"linkUrl\": A valid URL (optional),\n      \"url\": a valid URL of a reddit-hosted image,\n      \"width\": an integer,\n    },\n    ...\n  ],\n  \"kind\": one of (`image`),\n  \"shortName\": a string no longer than 30 characters,\n  \"styles\": {\n    \"backgroundColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n    \"headerColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n  },\n}\n\nOR\n\n{\n  \"configuration\": {\n    \"numEvents\": an integer between 1 and 50 (default: 10),\n    \"showDate\": boolean value,\n    \"showDescription\": boolean value,\n    \"showLocation\": boolean value,\n    \"showTime\": boolean value,\n    \"showTitle\": boolean value,\n  },\n  \"googleCalendarId\": a valid email address,\n  \"kind\": one of (`calendar`),\n  \"requiresSync\": boolean value,\n  \"shortName\": a string no longer than 30 characters,\n  \"styles\": {\n    \"backgroundColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n    \"headerColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n  },\n}\n\nOR\n\n{\n  \"kind\": one of (`textarea`),\n  \"shortName\": a string no longer than 30 characters,\n  \"styles\": {\n    \"backgroundColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n    \"headerColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n  },\n  \"text\": raw markdown text,\n}\n\nOR\n\n{\n  \"data\": [\n    {\n      \"text\": a string no longer than 20 characters,\n      \"url\": a valid URL,\n    }\n\n    OR\n\n    {\n      \"children\": [\n        {\n          \"text\": a string no longer than 20 characters,\n          \"url\": a valid URL,\n        },\n        ...\n      ],\n      \"text\": a string no longer than 20 characters,\n    },\n    ...\n  ],\n  \"kind\": one of (`menu`),\n}\n\nOR\n\n{\n  \"buttons\": [\n    {\n      \"color\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n      \"fillColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n      \"hoverState\": {\n        \"color\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n        \"fillColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n        \"kind\": one of (`text`),\n        \"text\": a string no longer than 30 characters,\n        \"textColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n      }\n\n      OR\n\n      {\n        \"height\": an integer,\n        \"imageUrl\": a valid URL of a reddit-hosted image,\n        \"kind\": one of (`image`),\n        \"width\": an integer,\n      },\n      \"kind\": one of (`text`),\n      \"text\": a string no longer than 30 characters,\n      \"textColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n      \"url\": a valid URL,\n    }\n\n    OR\n\n    {\n      \"height\": an integer,\n      \"hoverState\": {\n        \"color\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n        \"fillColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n        \"kind\": one of (`text`),\n        \"text\": a string no longer than 30 characters,\n        \"textColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n      }\n\n      OR\n\n      {\n        \"height\": an integer,\n        \"imageUrl\": a valid URL of a reddit-hosted image,\n        \"kind\": one of (`image`),\n        \"width\": an integer,\n      },\n      \"imageUrl\": a valid URL of a reddit-hosted image,\n      \"kind\": one of (`image`),\n      \"linkUrl\": a valid URL,\n      \"text\": a string no longer than 30 characters,\n      \"width\": an integer,\n    },\n    ...\n  ],\n  \"description\": raw markdown text,\n  \"kind\": one of (`button`),\n  \"shortName\": a string no longer than 30 characters,\n  \"styles\": {\n    \"backgroundColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n    \"headerColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n  },\n}\n\nOR\n\n{\n  \"data\": [\n    subreddit name,\n    ...\n  ],\n  \"kind\": one of (`community-list`),\n  \"shortName\": a string no longer than 30 characters,\n  \"styles\": {\n    \"backgroundColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n    \"headerColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n  },\n}\n\nOR\n\n{\n  \"css\": a string no longer than 100000 characters,\n  \"height\": an integer between 50 and 500,\n  \"imageData\": [\n    {\n      \"height\": an integer,\n      \"name\": a string no longer than 20 characters,\n      \"url\": a valid URL of a reddit-hosted image,\n      \"width\": an integer,\n    },\n    ...\n  ],\n  \"kind\": one of (`custom`),\n  \"shortName\": a string no longer than 30 characters,\n  \"styles\": {\n    \"backgroundColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n    \"headerColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n  },\n  \"text\": raw markdown text,\n}\n\nOR\n\n{\n  \"display\": one of (`cloud`, `list`),\n  \"kind\": one of (`post-flair`),\n  \"order\": [\n    a flair template ID,\n    ...\n  ],\n  \"shortName\": a string no longer than 30 characters,\n  \"styles\": {\n    \"backgroundColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n    \"headerColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n  },\n}",
+            "in": "formData",
+            "name": "json",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/widget_image_upload_s3": {
+      "post": {
+        "description": "Acquire and return an upload lease to s3 temp bucket.\n\nThe return value of this function is a json object containing\ncredentials for uploading assets to S3 bucket, S3 url for upload\nrequest and the key to use for uploading. Using this lease the client\nwill upload the emoji image to S3 temp bucket (included as part of\nthe S3 URL).\n\nThis lease is used by S3 to verify that the upload is authorized.",
+        "parameters": [
+          {
+            "description": "name and extension of the image file e.g. image1.png",
+            "in": "formData",
+            "name": "filepath",
+            "type": "string"
+          },
+          {
+            "description": "mime type of the image e.g. image/png",
+            "in": "formData",
+            "name": "mimetype",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/widget_order/{section}": {
+      "patch": {
+        "description": "Update the order of widget_ids in the specified subreddit",
+        "parameters": [
+          {
+            "description": "json data:\n\n[\n  a string,\n  ...\n]",
+            "in": "formData",
+            "name": "json",
+            "type": "string"
+          },
+          {
+            "description": "one of (sidebar)",
+            "in": "path",
+            "name": "section",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/widget/{widget_id}": {
+      "delete": {
+        "description": "Delete a widget from the specified subreddit (if it exists)",
+        "parameters": [
+          {
+            "description": "id of an existing widget",
+            "in": "path",
+            "name": "widget_id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "Update and return the data of a widget.\n\nAccepts a JSON payload representing the widget data to be saved.\nValid payloads differ in shape based on the \"kind\" attribute passed on\nthe root object, which must be a valid widget kind.",
+        "parameters": [
+          {
+            "description": "json data:\n\n{\n  \"data\": [\n    {\n      \"height\": an integer,\n      \"linkUrl\": A valid URL (optional),\n      \"url\": a valid URL of a reddit-hosted image,\n      \"width\": an integer,\n    },\n    ...\n  ],\n  \"kind\": one of (`image`),\n  \"shortName\": a string no longer than 30 characters,\n  \"styles\": {\n    \"backgroundColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n    \"headerColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n  },\n}\n\nOR\n\n{\n  \"configuration\": {\n    \"numEvents\": an integer between 1 and 50 (default: 10),\n    \"showDate\": boolean value,\n    \"showDescription\": boolean value,\n    \"showLocation\": boolean value,\n    \"showTime\": boolean value,\n    \"showTitle\": boolean value,\n  },\n  \"googleCalendarId\": a valid email address,\n  \"kind\": one of (`calendar`),\n  \"requiresSync\": boolean value,\n  \"shortName\": a string no longer than 30 characters,\n  \"styles\": {\n    \"backgroundColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n    \"headerColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n  },\n}\n\nOR\n\n{\n  \"kind\": one of (`textarea`),\n  \"shortName\": a string no longer than 30 characters,\n  \"styles\": {\n    \"backgroundColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n    \"headerColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n  },\n  \"text\": raw markdown text,\n}\n\nOR\n\n{\n  \"display\": one of (`full`, `compact`),\n  \"kind\": one of (`subreddit-rules`),\n  \"shortName\": a string no longer than 30 characters,\n  \"styles\": {\n    \"backgroundColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n    \"headerColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n  },\n}\n\nOR\n\n{\n  \"data\": [\n    {\n      \"text\": a string no longer than 20 characters,\n      \"url\": a valid URL,\n    }\n\n    OR\n\n    {\n      \"children\": [\n        {\n          \"text\": a string no longer than 20 characters,\n          \"url\": a valid URL,\n        },\n        ...\n      ],\n      \"text\": a string no longer than 20 characters,\n    },\n    ...\n  ],\n  \"kind\": one of (`menu`),\n}\n\nOR\n\n{\n  \"buttons\": [\n    {\n      \"color\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n      \"fillColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n      \"hoverState\": {\n        \"color\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n        \"fillColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n        \"kind\": one of (`text`),\n        \"text\": a string no longer than 30 characters,\n        \"textColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n      }\n\n      OR\n\n      {\n        \"height\": an integer,\n        \"imageUrl\": a valid URL of a reddit-hosted image,\n        \"kind\": one of (`image`),\n        \"width\": an integer,\n      },\n      \"kind\": one of (`text`),\n      \"text\": a string no longer than 30 characters,\n      \"textColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n      \"url\": a valid URL,\n    }\n\n    OR\n\n    {\n      \"height\": an integer,\n      \"hoverState\": {\n        \"color\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n        \"fillColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n        \"kind\": one of (`text`),\n        \"text\": a string no longer than 30 characters,\n        \"textColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n      }\n\n      OR\n\n      {\n        \"height\": an integer,\n        \"imageUrl\": a valid URL of a reddit-hosted image,\n        \"kind\": one of (`image`),\n        \"width\": an integer,\n      },\n      \"imageUrl\": a valid URL of a reddit-hosted image,\n      \"kind\": one of (`image`),\n      \"linkUrl\": a valid URL,\n      \"text\": a string no longer than 30 characters,\n      \"width\": an integer,\n    },\n    ...\n  ],\n  \"description\": raw markdown text,\n  \"kind\": one of (`button`),\n  \"shortName\": a string no longer than 30 characters,\n  \"styles\": {\n    \"backgroundColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n    \"headerColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n  },\n}\n\nOR\n\n{\n  \"currentlyViewingText\": a string no longer than 30 characters,\n  \"kind\": one of (`id-card`),\n  \"shortName\": a string no longer than 30 characters,\n  \"styles\": {\n    \"backgroundColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n    \"headerColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n  },\n  \"subscribersText\": a string no longer than 30 characters,\n}\n\nOR\n\n{\n  \"data\": [\n    subreddit name,\n    ...\n  ],\n  \"kind\": one of (`community-list`),\n  \"shortName\": a string no longer than 30 characters,\n  \"styles\": {\n    \"backgroundColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n    \"headerColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n  },\n}\n\nOR\n\n{\n  \"css\": a string no longer than 100000 characters,\n  \"height\": an integer between 50 and 500,\n  \"imageData\": [\n    {\n      \"height\": an integer,\n      \"name\": a string no longer than 20 characters,\n      \"url\": a valid URL of a reddit-hosted image,\n      \"width\": an integer,\n    },\n    ...\n  ],\n  \"kind\": one of (`custom`),\n  \"shortName\": a string no longer than 30 characters,\n  \"styles\": {\n    \"backgroundColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n    \"headerColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n  },\n  \"text\": raw markdown text,\n}\n\nOR\n\n{\n  \"display\": one of (`cloud`, `list`),\n  \"kind\": one of (`post-flair`),\n  \"order\": [\n    a flair template ID,\n    ...\n  ],\n  \"shortName\": a string no longer than 30 characters,\n  \"styles\": {\n    \"backgroundColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n    \"headerColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n  },\n}\n\nOR\n\n{\n  \"kind\": one of (`moderators`),\n  \"styles\": {\n    \"backgroundColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n    \"headerColor\": a 6-digit rgb hex color, e.g. `#AABBCC`,\n  },\n}",
+            "in": "formData",
+            "name": "json",
+            "type": "string"
+          },
+          {
+            "description": "a valid widget id",
+            "in": "path",
+            "name": "widget_id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/widgets": {
+      "get": {
+        "description": "Return all widgets for the given subreddit",
+        "parameters": [
+          {
+            "description": "boolean value",
+            "in": "query",
+            "name": "progressive_images",
             "type": "string"
           }
         ],
@@ -4347,6 +5164,60 @@
         }
       }
     },
+    "/best": {
+      "get": {
+        "description": "This endpoint is a listing.",
+        "parameters": [
+          {
+            "description": "fullname of a thing",
+            "in": "query",
+            "name": "after",
+            "type": "string"
+          },
+          {
+            "description": "fullname of a thing",
+            "in": "query",
+            "name": "before",
+            "type": "string"
+          },
+          {
+            "description": "a positive integer (default: 0)",
+            "in": "query",
+            "name": "count",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_categories",
+            "type": "string"
+          },
+          {
+            "description": "the maximum number of items desired (default: 25, maximum: 100)",
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "description": "(optional) the string all",
+            "in": "query",
+            "name": "show",
+            "type": "string"
+          },
+          {
+            "description": "(optional) expand subreddits",
+            "in": "query",
+            "name": "sr_detail",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/by_id/{names}": {
       "get": {
         "description": "Get a listing of links by fullname.\n\nnames is a list of fullnames for links separated by commas or spaces.",
@@ -4475,6 +5346,12 @@
             "type": "string"
           },
           {
+            "description": "boolean value",
+            "in": "query",
+            "name": "crossposts_only",
+            "type": "string"
+          },
+          {
             "description": "the maximum number of items desired (default: 25, maximum: 100)",
             "in": "query",
             "name": "limit",
@@ -4484,6 +5361,18 @@
             "description": "(optional) the string all",
             "in": "query",
             "name": "show",
+            "type": "string"
+          },
+          {
+            "description": "one of (num_comments, new)",
+            "in": "query",
+            "name": "sort",
+            "type": "string"
+          },
+          {
+            "description": "subreddit name",
+            "in": "query",
+            "name": "sr",
             "type": "string"
           },
           {
@@ -4520,6 +5409,18 @@
             "description": "a positive integer (default: 0)",
             "in": "query",
             "name": "count",
+            "type": "string"
+          },
+          {
+            "description": "one of (GLOBAL, US, AR, AU, BG, CA, CL, CO, HR, CZ, FI, GR, HU, IS, IN, IE, JP, MY, MX, NZ, PH, PL, PT, PR, RO, RS, SG, SE, TW, TH, TR, GB, US_WA, US_DE, US_DC, US_WI, US_WV, US_HI, US_FL, US_WY, US_NH, US_NJ, US_NM, US_TX, US_LA, US_NC, US_ND, US_NE, US_TN, US_NY, US_PA, US_CA, US_NV, US_VA, US_CO, US_AK, US_AL, US_AR, US_VT, US_IL, US_GA, US_IN, US_IA, US_OK, US_AZ, US_ID, US_CT, US_ME, US_MD, US_MA, US_OH, US_UT, US_MO, US_MN, US_MI, US_RI, US_KS, US_MT, US_MS, US_SC, US_KY, US_OR, US_SD)",
+            "in": "query",
+            "name": "g",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_categories",
             "type": "string"
           },
           {
@@ -4692,6 +5593,30 @@
         }
       }
     },
+    "/live/{thread}/updates/{update_id}": {
+      "get": {
+        "description": "Get details about a specific update in a live thread.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "thread",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "update_id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/message/{where}": {
       "get": {
         "description": "This endpoint is a listing.",
@@ -4712,6 +5637,12 @@
             "description": "a positive integer (default: 0)",
             "in": "query",
             "name": "count",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_categories",
             "type": "string"
           },
           {
@@ -4780,6 +5711,12 @@
             "type": "string"
           },
           {
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_categories",
+            "type": "string"
+          },
+          {
             "description": "the maximum number of items desired (default: 25, maximum: 100)",
             "in": "query",
             "name": "limit",
@@ -4828,6 +5765,12 @@
             "type": "string"
           },
           {
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_categories",
+            "type": "string"
+          },
+          {
             "description": "the maximum number of items desired (default: 25, maximum: 100)",
             "in": "query",
             "name": "limit",
@@ -4859,6 +5802,66 @@
         }
       }
     },
+    "/profiles/search": {
+      "get": {
+        "description": "Search user profiles by title and description.\n\nThis endpoint is a listing.",
+        "parameters": [
+          {
+            "description": "fullname of a thing",
+            "in": "query",
+            "name": "after",
+            "type": "string"
+          },
+          {
+            "description": "fullname of a thing",
+            "in": "query",
+            "name": "before",
+            "type": "string"
+          },
+          {
+            "description": "a positive integer (default: 0)",
+            "in": "query",
+            "name": "count",
+            "type": "string"
+          },
+          {
+            "description": "the maximum number of items desired (default: 25, maximum: 100)",
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "description": "a search query",
+            "in": "query",
+            "name": "q",
+            "type": "string"
+          },
+          {
+            "description": "(optional) the string all",
+            "in": "query",
+            "name": "show",
+            "type": "string"
+          },
+          {
+            "description": "one of (relevance, activity)",
+            "in": "query",
+            "name": "sort",
+            "type": "string"
+          },
+          {
+            "description": "(optional) expand subreddits",
+            "in": "query",
+            "name": "sr_detail",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/r/{subreddit}/{sort}": {
       "get": {
         "description": "This endpoint is a listing.",
@@ -4879,6 +5882,12 @@
             "description": "a positive integer (default: 0)",
             "in": "query",
             "name": "count",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_categories",
             "type": "string"
           },
           {
@@ -5032,6 +6041,12 @@
             "type": "string"
           },
           {
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_categories",
+            "type": "string"
+          },
+          {
             "description": "the maximum number of items desired (default: 25, maximum: 100)",
             "in": "query",
             "name": "limit",
@@ -5151,7 +6166,7 @@
             "type": "string"
           },
           {
-            "description": "one of (banuser, unbanuser, spamlink, removelink, approvelink, spamcomment, removecomment, approvecomment, addmoderator, invitemoderator, uninvitemoderator, acceptmoderatorinvite, removemoderator, addcontributor, removecontributor, editsettings, editflair, distinguish, marknsfw, wikibanned, wikicontributor, wikiunbanned, wikipagelisted, removewikicontributor, wikirevise, wikipermlevel, ignorereports, unignorereports, setpermissions, setsuggestedsort, sticky, unsticky, setcontestmode, unsetcontestmode, lock, unlock, muteuser, unmuteuser, createrule, editrule, deleterule, spoiler, unspoiler, modmail_enrollment)",
+            "description": "one of (banuser, unbanuser, spamlink, removelink, approvelink, spamcomment, removecomment, approvecomment, addmoderator, invitemoderator, uninvitemoderator, acceptmoderatorinvite, removemoderator, addcontributor, removecontributor, editsettings, editflair, distinguish, marknsfw, wikibanned, wikicontributor, wikiunbanned, wikipagelisted, removewikicontributor, wikirevise, wikipermlevel, ignorereports, unignorereports, setpermissions, setsuggestedsort, sticky, unsticky, setcontestmode, unsetcontestmode, lock, unlock, muteuser, unmuteuser, createrule, editrule, deleterule, spoiler, unspoiler, modmail_enrollment, community_styling, community_widgets, markoriginalcontent)",
             "in": "query",
             "name": "type",
             "type": "string"
@@ -5173,6 +6188,23 @@
     "/r/{subreddit}/about/rules": {
       "get": {
         "description": "Get the rules for the current subreddit",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "subreddit",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/r/{subreddit}/about/traffic": {
+      "get": {
         "parameters": [
           {
             "in": "path",
@@ -5501,6 +6533,37 @@
         }
       }
     },
+    "/r/{subreddit}/api/flair_template_order": {
+      "patch": {
+        "description": "Update the order of flair templates in the specified subreddit.\n\nOrder should contain every single flair id for that flair type; omitting\nany id will result in a loss of data.",
+        "parameters": [
+          {
+            "description": "one of (USER_FLAIR, LINK_FLAIR)",
+            "in": "formData",
+            "name": "flair_type",
+            "type": "string"
+          },
+          {
+            "description": "subreddit name",
+            "in": "path",
+            "name": "subreddit",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "a modhash",
+            "in": "formData",
+            "name": "uh",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/r/{subreddit}/api/flairconfig": {
       "post": {
         "parameters": [
@@ -5738,6 +6801,77 @@
         }
       }
     },
+    "/r/{subreddit}/api/flairtemplate_v2": {
+      "post": {
+        "description": "Create or update a flair template.\n\nThis new endpoint is primarily used for the redesign.",
+        "parameters": [
+          {
+            "description": "the string json",
+            "in": "formData",
+            "name": "api_type",
+            "type": "string"
+          },
+          {
+            "description": "a 6-digit rgb hex color, e.g. #AABBCC",
+            "in": "formData",
+            "name": "background_color",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "flair_template_id",
+            "type": "string"
+          },
+          {
+            "description": "one of (USER_FLAIR, LINK_FLAIR)",
+            "in": "formData",
+            "name": "flair_type",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "formData",
+            "name": "mod_only",
+            "type": "string"
+          },
+          {
+            "description": "a string no longer than 64 characters",
+            "in": "formData",
+            "name": "text",
+            "type": "string"
+          },
+          {
+            "description": "one of (light, dark)",
+            "in": "formData",
+            "name": "text_color",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "formData",
+            "name": "text_editable",
+            "type": "string"
+          },
+          {
+            "description": "a modhash",
+            "in": "formData",
+            "name": "uh",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "subreddit",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/r/{subreddit}/api/friend": {
       "post": {
         "description": "Create a relationship between a user and another user or subreddit\n\nOAuth2 use requires appropriate scope based\non the 'type' of the relationship:\n\n\nmoderator: Use \"moderator_invite\"\nmoderator_invite: modothers\ncontributor: modcontributors\nbanned: modcontributors\nmuted: modcontributors\nwikibanned: modcontributors and modwiki\nwikicontributor: modcontributors and modwiki\nfriend: Use /api/v1/me/friends/{username}\nenemy: Use /api/block\n\n\nComplement to POST_unfriend",
@@ -5746,6 +6880,12 @@
             "description": "the string json",
             "in": "formData",
             "name": "api_type",
+            "type": "string"
+          },
+          {
+            "description": "fullname of a thing",
+            "in": "formData",
+            "name": "ban_context",
             "type": "string"
           },
           {
@@ -5862,6 +7002,48 @@
         }
       }
     },
+    "/r/{subreddit}/api/link_flair_v2": {
+      "get": {
+        "description": "Return list of available link flair for the current subreddit.\n\nWill not return flair if the user cannot set their own link flair and\nthey are not a moderator that can set flair.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "subreddit",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/r/{subreddit}/api/saved_media_text": {
+      "get": {
+        "description": "Retrieve the advisory text about saving media for relevant media links.\n\nThis endpoint returns a notice for display during the post submission\nprocess that is pertinent to media links.",
+        "parameters": [
+          {
+            "description": "a valid URL",
+            "in": "query",
+            "name": "url",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "subreddit",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/r/{subreddit}/api/selectflair": {
       "post": {
         "parameters": [
@@ -5869,6 +7051,12 @@
             "description": "the string json",
             "in": "formData",
             "name": "api_type",
+            "type": "string"
+          },
+          {
+            "description": "a 6-digit rgb hex color, e.g. #AABBCC",
+            "in": "formData",
+            "name": "background_color",
             "type": "string"
           },
           {
@@ -5889,9 +7077,21 @@
             "type": "string"
           },
           {
+            "description": "[all|only|none]: \"all\" saves attributes and returns rtjson \"only\" only returns rtjson\"none\" only saves attributes",
+            "in": "formData",
+            "name": "return_rtson",
+            "type": "string"
+          },
+          {
             "description": "a string no longer than 64 characters",
             "in": "formData",
             "name": "text",
+            "type": "string"
+          },
+          {
+            "description": "one of (light, dark)",
+            "in": "formData",
+            "name": "text_color",
             "type": "string"
           },
           {
@@ -6153,6 +7353,42 @@
             "name": "upload_type",
             "type": "string"
           },
+          {
+            "in": "path",
+            "name": "subreddit",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/r/{subreddit}/api/user_flair": {
+      "get": {
+        "description": "Return list of available user flair for the current subreddit.\n\nWill not return flair if flair is disabled on the subreddit,\nthe user cannot set their own flair, or they are not a moderator\nthat can set flair.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "subreddit",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/r/{subreddit}/api/user_flair_v2": {
+      "get": {
+        "description": "Return list of available user flair for the current subreddit.\n\nIf user is not a mod of the subreddit, this endpoint filters\nout mod_only templates.",
+        "parameters": [
           {
             "in": "path",
             "name": "subreddit",
@@ -6437,6 +7673,18 @@
             "type": "string"
           },
           {
+            "description": "one of (GLOBAL, US, AR, AU, BG, CA, CL, CO, HR, CZ, FI, GR, HU, IS, IN, IE, JP, MY, MX, NZ, PH, PL, PT, PR, RO, RS, SG, SE, TW, TH, TR, GB, US_WA, US_DE, US_DC, US_WI, US_WV, US_HI, US_FL, US_WY, US_NH, US_NJ, US_NM, US_TX, US_LA, US_NC, US_ND, US_NE, US_TN, US_NY, US_PA, US_CA, US_NV, US_VA, US_CO, US_AK, US_AL, US_AR, US_VT, US_IL, US_GA, US_IN, US_IA, US_OK, US_AZ, US_ID, US_CT, US_ME, US_MD, US_MA, US_OH, US_UT, US_MO, US_MN, US_MI, US_RI, US_KS, US_MT, US_MS, US_SC, US_KY, US_OR, US_SD)",
+            "in": "query",
+            "name": "g",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_categories",
+            "type": "string"
+          },
+          {
             "description": "the maximum number of items desired (default: 25, maximum: 100)",
             "in": "query",
             "name": "limit",
@@ -6488,6 +7736,12 @@
             "description": "a positive integer (default: 0)",
             "in": "query",
             "name": "count",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_categories",
             "type": "string"
           },
           {
@@ -6563,6 +7817,12 @@
             "type": "string"
           },
           {
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_categories",
+            "type": "string"
+          },
+          {
             "description": "the maximum number of items desired (default: 25, maximum: 100)",
             "in": "query",
             "name": "limit",
@@ -6611,6 +7871,12 @@
             "type": "string"
           },
           {
+            "description": "a string no longer than 5 characters",
+            "in": "query",
+            "name": "category",
+            "type": "string"
+          },
+          {
             "description": "a positive integer (default: 0)",
             "in": "query",
             "name": "count",
@@ -6656,12 +7922,6 @@
             "description": "(optional) expand subreddits",
             "in": "query",
             "name": "sr_detail",
-            "type": "string"
-          },
-          {
-            "description": "one of (cloudsearch, lucene, plain)",
-            "in": "query",
-            "name": "syntax",
             "type": "string"
           },
           {
@@ -7081,6 +8341,12 @@
             "type": "string"
           },
           {
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_categories",
+            "type": "string"
+          },
+          {
             "description": "the maximum number of items desired (default: 25, maximum: 100)",
             "in": "query",
             "name": "limit",
@@ -7120,6 +8386,12 @@
             "description": "fullname of a thing",
             "in": "query",
             "name": "before",
+            "type": "string"
+          },
+          {
+            "description": "a string no longer than 5 characters",
+            "in": "query",
+            "name": "category",
             "type": "string"
           },
           {
@@ -7168,12 +8440,6 @@
             "description": "(optional) expand subreddits",
             "in": "query",
             "name": "sr_detail",
-            "type": "string"
-          },
-          {
-            "description": "one of (cloudsearch, lucene, plain)",
-            "in": "query",
-            "name": "syntax",
             "type": "string"
           },
           {
@@ -7259,6 +8525,12 @@
             "type": "string"
           },
           {
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_categories",
+            "type": "string"
+          },
+          {
             "description": "the maximum number of items desired (default: 25, maximum: 100)",
             "in": "query",
             "name": "limit",
@@ -7292,7 +8564,7 @@
     },
     "/subreddits/mine/{where}": {
       "get": {
-        "description": "Get subreddits the user has a relationship with.\n\nThe where parameter chooses which subreddits are returned as follows:\n\n\nsubscriber - subreddits the user is subscribed to\ncontributor - subreddits the user is an approved submitter in\nmoderator - subreddits the user is a moderator of\n\n\nSee also: /api/subscribe,\n/api/friend, and\n/api/accept_moderator_invite.\n\nThis endpoint is a listing.",
+        "description": "Get subreddits the user has a relationship with.\n\nThe where parameter chooses which subreddits are returned as follows:\n\n\nsubscriber - subreddits the user is subscribed to\ncontributor - subreddits the user is an approved submitter in\nmoderator - subreddits the user is a moderator of\nstreams - subscribed to subreddits that contain hosted video links\n\n\nSee also: /api/subscribe,\n/api/friend, and\n/api/accept_moderator_invite.\n\nThis endpoint is a listing.",
         "parameters": [
           {
             "description": "fullname of a thing",
@@ -7310,6 +8582,12 @@
             "description": "a positive integer (default: 0)",
             "in": "query",
             "name": "count",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_categories",
             "type": "string"
           },
           {
@@ -7385,6 +8663,12 @@
             "type": "string"
           },
           {
+            "description": "boolean value",
+            "in": "query",
+            "name": "show_users",
+            "type": "string"
+          },
+          {
             "description": "one of (relevance, activity)",
             "in": "query",
             "name": "sort",
@@ -7421,9 +8705,21 @@
             "type": "string"
           },
           {
+            "description": "an integer between 2 and 10",
+            "in": "query",
+            "name": "context",
+            "type": "string"
+          },
+          {
             "description": "a positive integer (default: 0)",
             "in": "query",
             "name": "count",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_categories",
             "type": "string"
           },
           {
@@ -7491,6 +8787,66 @@
             "description": "the name of an existing user",
             "in": "path",
             "name": "username",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/users/{where}": {
+      "get": {
+        "description": "Get all user subreddits.\n\nThe where parameter chooses the order in which the subreddits are\ndisplayed. popular sorts on the activity of the subreddit and the\nposition of the subreddits can shift around. new sorts the user\nsubreddits based on their creation date, newest first.\n\nThis endpoint is a listing.",
+        "parameters": [
+          {
+            "description": "fullname of a thing",
+            "in": "query",
+            "name": "after",
+            "type": "string"
+          },
+          {
+            "description": "fullname of a thing",
+            "in": "query",
+            "name": "before",
+            "type": "string"
+          },
+          {
+            "description": "a positive integer (default: 0)",
+            "in": "query",
+            "name": "count",
+            "type": "string"
+          },
+          {
+            "description": "boolean value",
+            "in": "query",
+            "name": "include_categories",
+            "type": "string"
+          },
+          {
+            "description": "the maximum number of items desired (default: 25, maximum: 100)",
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "description": "(optional) the string all",
+            "in": "query",
+            "name": "show",
+            "type": "string"
+          },
+          {
+            "description": "(optional) expand subreddits",
+            "in": "query",
+            "name": "sr_detail",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "where",
             "required": true,
             "type": "string"
           }
@@ -7763,7 +9119,7 @@
   "securityDefinitions": {
     "OAuth": {
       "authorizationUrl": "https://www.reddit.com/api/v1/authorize",
-      "flow": "application",
+      "flow": "accessCode",
       "scopes": {
         "account": "Update preferences and related account information. Will not have access to your email or password.",
         "creddits": "Spend my reddit gold creddits on giving gold to other users.",

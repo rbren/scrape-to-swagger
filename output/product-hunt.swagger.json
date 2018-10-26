@@ -7,61 +7,7 @@
     "version": ""
   },
   "paths": {
-    "/v1/categories": {
-      "get": {
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "description": "",
-              "properties": {
-                "categories": {
-                  "items": {
-                    "properties": {
-                      "color": {
-                        "minLength": 1,
-                        "type": "string"
-                      },
-                      "id": {
-                        "type": "number"
-                      },
-                      "item_name": {
-                        "minLength": 1,
-                        "type": "string"
-                      },
-                      "name": {
-                        "minLength": 1,
-                        "type": "string"
-                      },
-                      "slug": {
-                        "minLength": 1,
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "id",
-                      "slug",
-                      "name",
-                      "color",
-                      "item_name"
-                    ]
-                  },
-                  "minItems": 1,
-                  "type": "array",
-                  "uniqueItems": true
-                }
-              },
-              "required": [
-                "categories"
-              ],
-              "type": "object"
-            }
-          }
-        }
-      }
-    },
-    "/v1/categories/{category}/posts": {
+    "/v1/categories/topic-4/posts": {
       "get": {
         "parameters": [
           {
@@ -75,12 +21,6 @@
             "in": "query",
             "name": "days_ago",
             "type": "string"
-          },
-          {
-            "in": "path",
-            "name": "category",
-            "required": true,
-            "type": "string"
           }
         ],
         "responses": {
@@ -92,9 +32,7 @@
                 "posts": {
                   "items": {
                     "properties": {
-                      "category_id": {
-                        "type": "number"
-                      },
+                      "category_id": {},
                       "comments_count": {
                         "type": "number"
                       },
@@ -121,6 +59,7 @@
                       "id": {
                         "type": "number"
                       },
+                      "ios_featured_at": {},
                       "maker_inside": {
                         "type": "boolean"
                       },
@@ -197,9 +136,28 @@
                       },
                       "topics": {
                         "items": {
-                          "properties": {}
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "name": {
+                              "minLength": 1,
+                              "type": "string"
+                            },
+                            "slug": {
+                              "minLength": 1,
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "slug"
+                          ]
                         },
-                        "type": "array"
+                        "minItems": 1,
+                        "type": "array",
+                        "uniqueItems": true
                       },
                       "user": {
                         "properties": {
@@ -410,13 +368,788 @@
                       }
                     },
                     "required": [
-                      "category_id",
+                      "comments_count",
                       "day",
                       "id",
                       "name",
                       "product_state",
                       "tagline",
+                      "created_at",
+                      "discussion_url",
+                      "featured",
+                      "maker_inside",
+                      "redirect_url",
+                      "votes_count"
+                    ]
+                  },
+                  "minItems": 1,
+                  "type": "array",
+                  "uniqueItems": true
+                }
+              },
+              "required": [
+                "posts"
+              ],
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/v1/categories/topic-6/posts": {
+      "get": {
+        "parameters": [
+          {
+            "description": "Alternate parameter for requesting specific days (Format: day=YYYY-MM-DD)",
+            "in": "query",
+            "name": "day",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "days_ago",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "description": "",
+              "properties": {
+                "posts": {
+                  "items": {
+                    "properties": {
+                      "category_id": {},
+                      "comments_count": {
+                        "type": "number"
+                      },
+                      "created_at": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "current_user": {
+                        "properties": {},
+                        "type": "object"
+                      },
+                      "day": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "discussion_url": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "exclusive": {},
+                      "featured": {
+                        "type": "boolean"
+                      },
+                      "id": {
+                        "type": "number"
+                      },
+                      "ios_featured_at": {},
+                      "maker_inside": {
+                        "type": "boolean"
+                      },
+                      "makers": {
+                        "items": {
+                          "properties": {}
+                        },
+                        "type": "array"
+                      },
+                      "name": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "platforms": {
+                        "items": {
+                          "properties": {}
+                        },
+                        "type": "array"
+                      },
+                      "product_state": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "redirect_url": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "screenshot_url": {
+                        "properties": {
+                          "300px": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "850px": {
+                            "minLength": 1,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "300px",
+                          "850px"
+                        ],
+                        "type": "object"
+                      },
+                      "tagline": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "thumbnail": {
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "image_url": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "media_type": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "metadata": {
+                            "properties": {},
+                            "type": "object"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "media_type",
+                          "image_url",
+                          "metadata"
+                        ],
+                        "type": "object"
+                      },
+                      "topics": {
+                        "items": {
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "name": {
+                              "minLength": 1,
+                              "type": "string"
+                            },
+                            "slug": {
+                              "minLength": 1,
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "slug"
+                          ]
+                        },
+                        "minItems": 1,
+                        "type": "array",
+                        "uniqueItems": true
+                      },
+                      "user": {
+                        "properties": {
+                          "created_at": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "headline": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "number"
+                          },
+                          "image_url": {
+                            "properties": {
+                              "100px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "110px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "120px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "132px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "146px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "160px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "176px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "220px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "264px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "30px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "32px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "32px@2X": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "32px@3X": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "40px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "40px@2X": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "40px@3X": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "44px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "44px@2X": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "44px@3X": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "48px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "50px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "60px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "64px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "73px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "80px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "88px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "88px@2X": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "88px@3X": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "96px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "original": {
+                                "minLength": 1,
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "30px",
+                              "32px",
+                              "40px",
+                              "44px",
+                              "48px",
+                              "50px",
+                              "60px",
+                              "64px",
+                              "73px",
+                              "80px",
+                              "88px",
+                              "96px",
+                              "100px",
+                              "110px",
+                              "120px",
+                              "132px",
+                              "146px",
+                              "160px",
+                              "176px",
+                              "220px",
+                              "264px",
+                              "32px@2X",
+                              "40px@2X",
+                              "44px@2X",
+                              "88px@2X",
+                              "32px@3X",
+                              "40px@3X",
+                              "44px@3X",
+                              "88px@3X",
+                              "original"
+                            ],
+                            "type": "object"
+                          },
+                          "name": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "profile_url": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "twitter_username": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "username": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "website_url": {
+                            "minLength": 1,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "created_at",
+                          "name",
+                          "username",
+                          "headline",
+                          "twitter_username",
+                          "website_url",
+                          "profile_url",
+                          "image_url"
+                        ],
+                        "type": "object"
+                      },
+                      "votes_count": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
                       "comments_count",
+                      "day",
+                      "id",
+                      "name",
+                      "product_state",
+                      "tagline",
+                      "created_at",
+                      "discussion_url",
+                      "featured",
+                      "maker_inside",
+                      "redirect_url",
+                      "votes_count"
+                    ]
+                  },
+                  "minItems": 1,
+                  "type": "array",
+                  "uniqueItems": true
+                }
+              },
+              "required": [
+                "posts"
+              ],
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/v1/categories/topic-7/posts": {
+      "get": {
+        "parameters": [
+          {
+            "in": "query",
+            "name": "day",
+            "type": "string"
+          },
+          {
+            "description": "Parameter for pagination",
+            "in": "query",
+            "name": "days_ago",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "description": "",
+              "properties": {
+                "posts": {
+                  "items": {
+                    "properties": {
+                      "category_id": {},
+                      "comments_count": {
+                        "type": "number"
+                      },
+                      "created_at": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "current_user": {
+                        "properties": {},
+                        "type": "object"
+                      },
+                      "day": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "discussion_url": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "exclusive": {},
+                      "featured": {
+                        "type": "boolean"
+                      },
+                      "id": {
+                        "type": "number"
+                      },
+                      "ios_featured_at": {},
+                      "maker_inside": {
+                        "type": "boolean"
+                      },
+                      "makers": {
+                        "items": {
+                          "properties": {}
+                        },
+                        "type": "array"
+                      },
+                      "name": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "platforms": {
+                        "items": {
+                          "properties": {}
+                        },
+                        "type": "array"
+                      },
+                      "product_state": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "redirect_url": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "screenshot_url": {
+                        "properties": {
+                          "300px": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "850px": {
+                            "minLength": 1,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "300px",
+                          "850px"
+                        ],
+                        "type": "object"
+                      },
+                      "tagline": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "thumbnail": {
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "image_url": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "media_type": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "metadata": {
+                            "properties": {},
+                            "type": "object"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "media_type",
+                          "image_url",
+                          "metadata"
+                        ],
+                        "type": "object"
+                      },
+                      "topics": {
+                        "items": {
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "name": {
+                              "minLength": 1,
+                              "type": "string"
+                            },
+                            "slug": {
+                              "minLength": 1,
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "slug"
+                          ]
+                        },
+                        "minItems": 1,
+                        "type": "array",
+                        "uniqueItems": true
+                      },
+                      "user": {
+                        "properties": {
+                          "created_at": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "headline": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "number"
+                          },
+                          "image_url": {
+                            "properties": {
+                              "100px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "110px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "120px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "132px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "146px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "160px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "176px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "220px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "264px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "30px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "32px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "32px@2X": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "32px@3X": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "40px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "40px@2X": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "40px@3X": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "44px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "44px@2X": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "44px@3X": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "48px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "50px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "60px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "64px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "73px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "80px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "88px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "88px@2X": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "88px@3X": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "96px": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "original": {
+                                "minLength": 1,
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "30px",
+                              "32px",
+                              "40px",
+                              "44px",
+                              "48px",
+                              "50px",
+                              "60px",
+                              "64px",
+                              "73px",
+                              "80px",
+                              "88px",
+                              "96px",
+                              "100px",
+                              "110px",
+                              "120px",
+                              "132px",
+                              "146px",
+                              "160px",
+                              "176px",
+                              "220px",
+                              "264px",
+                              "32px@2X",
+                              "40px@2X",
+                              "44px@2X",
+                              "88px@2X",
+                              "32px@3X",
+                              "40px@3X",
+                              "44px@3X",
+                              "88px@3X",
+                              "original"
+                            ],
+                            "type": "object"
+                          },
+                          "name": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "profile_url": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "twitter_username": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "username": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "website_url": {
+                            "minLength": 1,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "created_at",
+                          "name",
+                          "username",
+                          "headline",
+                          "twitter_username",
+                          "website_url",
+                          "profile_url",
+                          "image_url"
+                        ],
+                        "type": "object"
+                      },
+                      "votes_count": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "comments_count",
+                      "day",
+                      "id",
+                      "name",
+                      "product_state",
+                      "tagline",
                       "created_at",
                       "discussion_url",
                       "featured",
@@ -473,14 +1206,9 @@
             "type": "string"
           },
           {
-            "description": "Filter by the url slug of the collection",
+            "description": "Only return collections that have been featured on Product Hunt. true or false. Default = false.",
             "in": "query",
             "name": "search",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "search[category]",
             "type": "string"
           },
           {
@@ -768,8 +1496,8 @@
                       "updated_at",
                       "subscriber_count",
                       "collection_url",
-                      "posts_count",
-                      "color"
+                      "color",
+                      "posts_count"
                     ]
                   },
                   "minItems": 1,
@@ -793,9 +1521,6 @@
             "schema": {
               "description": "",
               "properties": {
-                "background_image": {
-                  "type": "string"
-                },
                 "collection": {
                   "properties": {
                     "name": {
@@ -1090,9 +1815,9 @@
                     "updated_at",
                     "subscriber_count",
                     "collection_url",
+                    "color",
                     "posts_count",
                     "user",
-                    "color",
                     "posts"
                   ],
                   "type": "object"
@@ -1383,9 +2108,9 @@
                     "updated_at",
                     "subscriber_count",
                     "collection_url",
+                    "color",
                     "posts_count",
-                    "user",
-                    "color"
+                    "user"
                   ],
                   "type": "object"
                 }
@@ -1441,9 +2166,7 @@
                     "posts": {
                       "items": {
                         "properties": {
-                          "category_id": {
-                            "type": "number"
-                          },
+                          "category_id": {},
                           "comments_count": {
                             "type": "number"
                           },
@@ -1470,6 +2193,7 @@
                           "id": {
                             "type": "number"
                           },
+                          "ios_featured_at": {},
                           "maker_inside": {
                             "type": "boolean"
                           },
@@ -1759,13 +2483,12 @@
                           }
                         },
                         "required": [
-                          "category_id",
+                          "comments_count",
                           "day",
                           "id",
                           "name",
                           "product_state",
                           "tagline",
-                          "comments_count",
                           "created_at",
                           "discussion_url",
                           "featured",
@@ -2005,9 +2728,9 @@
                     "updated_at",
                     "subscriber_count",
                     "collection_url",
+                    "color",
                     "posts_count",
                     "user",
-                    "color",
                     "posts"
                   ],
                   "type": "object"
@@ -2029,9 +2752,6 @@
             "schema": {
               "description": "",
               "properties": {
-                "background_image": {
-                  "type": "string"
-                },
                 "collection": {
                   "properties": {
                     "title": {
@@ -2327,9 +3047,9 @@
                     "updated_at",
                     "subscriber_count",
                     "collection_url",
+                    "color",
                     "posts_count",
                     "user",
-                    "color",
                     "posts"
                   ],
                   "type": "object"
@@ -2735,12 +3455,12 @@
                       "created_at",
                       "parent_comment_id",
                       "user_id",
-                      "votes",
                       "subject_id",
                       "child_comments_count",
                       "url",
                       "subject_type",
-                      "sticky"
+                      "sticky",
+                      "votes"
                     ]
                   },
                   "minItems": 1,
@@ -3019,12 +3739,12 @@
                     "created_at",
                     "parent_comment_id",
                     "user_id",
-                    "votes",
                     "subject_id",
                     "child_comments_count",
                     "url",
                     "subject_type",
                     "sticky",
+                    "votes",
                     "post",
                     "user"
                   ],
@@ -3075,9 +3795,7 @@
                     "parent_comment_id": {},
                     "post": {
                       "properties": {
-                        "category_id": {
-                          "type": "number"
-                        },
+                        "category_id": {},
                         "comments_count": {
                           "type": "number"
                         },
@@ -3115,6 +3833,7 @@
                         "id": {
                           "type": "number"
                         },
+                        "ios_featured_at": {},
                         "maker_inside": {
                           "type": "boolean"
                         },
@@ -3404,13 +4123,12 @@
                         }
                       },
                       "required": [
-                        "category_id",
+                        "comments_count",
                         "day",
                         "id",
                         "name",
                         "product_state",
                         "tagline",
-                        "comments_count",
                         "created_at",
                         "current_user",
                         "discussion_url",
@@ -3418,10 +4136,10 @@
                         "maker_inside",
                         "makers",
                         "platforms",
-                        "topics",
                         "redirect_url",
                         "screenshot_url",
                         "thumbnail",
+                        "topics",
                         "user",
                         "votes_count"
                       ],
@@ -3660,13 +4378,13 @@
                     "body",
                     "created_at",
                     "user_id",
-                    "votes",
                     "subject_id",
                     "child_comments_count",
                     "url",
                     "post_id",
                     "subject_type",
                     "sticky",
+                    "votes",
                     "post",
                     "user"
                   ],
@@ -3936,8 +4654,8 @@
                   "required": [
                     "id",
                     "created_at",
-                    "comment_id",
                     "user_id",
+                    "comment_id",
                     "user"
                   ],
                   "type": "object"
@@ -4202,8 +4920,8 @@
                   "required": [
                     "id",
                     "created_at",
-                    "comment_id",
                     "user_id",
+                    "comment_id",
                     "user"
                   ],
                   "type": "object"
@@ -4500,8 +5218,8 @@
                     "required": [
                       "id",
                       "created_at",
-                      "comment_id",
-                      "user_id"
+                      "user_id",
+                      "comment_id"
                     ]
                   },
                   "minItems": 1,
@@ -4551,14 +5269,9 @@
             "type": "string"
           },
           {
-            "description": "Retrieve LIVE on camera events. true or false. Default: false",
+            "description": "Retrieve events for a specific month (format \"YYYY-MM\"), use \"false\" for events without a start_at date",
             "in": "query",
             "name": "search",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "search[category]",
             "type": "string"
           },
           {
@@ -4587,9 +5300,7 @@
                   "items": {
                     "properties": {
                       "background_image_url": {},
-                      "category_id": {
-                        "type": "number"
-                      },
+                      "category_id": {},
                       "ends_at": {
                         "minLength": 1,
                         "type": "string"
@@ -4629,7 +5340,6 @@
                       }
                     },
                     "required": [
-                      "category_id",
                       "ends_at",
                       "id",
                       "name",
@@ -4674,9 +5384,7 @@
                 "live_event": {
                   "properties": {
                     "background_image_url": {},
-                    "category_id": {
-                      "type": "number"
-                    },
+                    "category_id": {},
                     "ends_at": {
                       "minLength": 1,
                       "type": "string"
@@ -4920,7 +5628,6 @@
                     }
                   },
                   "required": [
-                    "category_id",
                     "ends_at",
                     "id",
                     "name",
@@ -5280,12 +5987,12 @@
                             "created_at",
                             "parent_comment_id",
                             "user_id",
-                            "votes",
                             "subject_id",
                             "child_comments_count",
                             "url",
                             "subject_type",
                             "sticky",
+                            "votes",
                             "maker",
                             "hunter",
                             "live_guest"
@@ -5550,12 +6257,12 @@
                       "body",
                       "created_at",
                       "user_id",
-                      "votes",
                       "subject_id",
                       "child_comments_count",
                       "url",
                       "subject_type",
                       "sticky",
+                      "votes",
                       "maker",
                       "hunter",
                       "live_guest"
@@ -5908,6 +6615,9 @@
                     "send_announcement_push": {
                       "type": "boolean"
                     },
+                    "send_email_digest_email": {
+                      "type": "boolean"
+                    },
                     "send_friend_post_email": {
                       "type": "boolean"
                     },
@@ -5982,7 +6692,8 @@
                     "send_announcement_push",
                     "send_product_recommendation_email",
                     "send_product_recommendation_push",
-                    "subscribed_to_push"
+                    "subscribed_to_push",
+                    "send_email_digest_email"
                   ],
                   "type": "object"
                 }
@@ -6067,87 +6778,6 @@
         }
       }
     },
-    "/v1/me/notifications_subscribers": {
-      "post": {
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "description": "",
-              "properties": {
-                "browser_push_token": {
-                  "type": "string"
-                },
-                "desktop_push_token": {
-                  "type": "string"
-                },
-                "mobile_push_token": {
-                  "type": "string"
-                },
-                "notification_subscriber": {
-                  "properties": {
-                    "desktop_push_token": {
-                      "minLength": 1,
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "desktop_push_token"
-                  ],
-                  "type": "object"
-                }
-              },
-              "required": [
-                "notification_subscriber"
-              ],
-              "type": "object"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "schema": {
-              "description": "",
-              "properties": {
-                "details": {
-                  "properties": {
-                    "base": {
-                      "items": {
-                        "properties": {}
-                      },
-                      "type": "array"
-                    }
-                  },
-                  "required": [
-                    "base"
-                  ],
-                  "type": "object"
-                },
-                "error": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "error_description": {
-                  "minLength": 1,
-                  "type": "string"
-                }
-              },
-              "required": [
-                "error",
-                "error_description",
-                "details"
-              ],
-              "type": "object"
-            }
-          }
-        }
-      }
-    },
     "/v1/notifications": {
       "delete": {
         "parameters": [
@@ -6194,11 +6824,6 @@
             "description": "Type of reference object accepted, defaults to 'Post', use 'all' for every notification type",
             "in": "query",
             "name": "search",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "search[type]",
             "type": "string"
           }
         ],
@@ -6426,349 +7051,7 @@
                       "id": {
                         "type": "number"
                       },
-                      "reference": {
-                        "properties": {
-                          "category_id": {
-                            "type": "number"
-                          },
-                          "comments_count": {
-                            "type": "number"
-                          },
-                          "created_at": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "current_user": {
-                            "properties": {},
-                            "type": "object"
-                          },
-                          "day": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "discussion_url": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "exclusive": {},
-                          "featured": {
-                            "type": "boolean"
-                          },
-                          "id": {
-                            "type": "number"
-                          },
-                          "maker_inside": {
-                            "type": "boolean"
-                          },
-                          "makers": {
-                            "items": {
-                              "properties": {}
-                            },
-                            "type": "array"
-                          },
-                          "name": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "platforms": {
-                            "items": {
-                              "properties": {}
-                            },
-                            "type": "array"
-                          },
-                          "product_state": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "redirect_url": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "screenshot_url": {
-                            "properties": {
-                              "300px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "850px": {
-                                "minLength": 1,
-                                "type": "string"
-                              }
-                            },
-                            "required": [
-                              "300px",
-                              "850px"
-                            ],
-                            "type": "object"
-                          },
-                          "tagline": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "thumbnail": {
-                            "properties": {
-                              "id": {
-                                "type": "number"
-                              },
-                              "image_url": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "media_type": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "metadata": {
-                                "properties": {},
-                                "type": "object"
-                              }
-                            },
-                            "required": [
-                              "id",
-                              "media_type",
-                              "image_url",
-                              "metadata"
-                            ],
-                            "type": "object"
-                          },
-                          "topics": {
-                            "items": {
-                              "properties": {}
-                            },
-                            "type": "array"
-                          },
-                          "user": {
-                            "properties": {
-                              "created_at": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "headline": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "id": {
-                                "type": "number"
-                              },
-                              "image_url": {
-                                "properties": {
-                                  "100px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "110px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "120px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "132px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "146px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "160px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "176px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "220px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "264px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "30px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "32px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "32px@2X": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "32px@3X": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "40px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "40px@2X": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "40px@3X": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "44px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "44px@2X": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "44px@3X": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "48px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "50px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "60px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "64px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "73px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "80px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "88px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "88px@2X": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "88px@3X": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "96px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "original": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  }
-                                },
-                                "required": [
-                                  "30px",
-                                  "32px",
-                                  "40px",
-                                  "44px",
-                                  "48px",
-                                  "50px",
-                                  "60px",
-                                  "64px",
-                                  "73px",
-                                  "80px",
-                                  "88px",
-                                  "96px",
-                                  "100px",
-                                  "110px",
-                                  "120px",
-                                  "132px",
-                                  "146px",
-                                  "160px",
-                                  "176px",
-                                  "220px",
-                                  "264px",
-                                  "32px@2X",
-                                  "40px@2X",
-                                  "44px@2X",
-                                  "88px@2X",
-                                  "32px@3X",
-                                  "40px@3X",
-                                  "44px@3X",
-                                  "88px@3X",
-                                  "original"
-                                ],
-                                "type": "object"
-                              },
-                              "name": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "profile_url": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "twitter_username": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "username": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "website_url": {
-                                "minLength": 1,
-                                "type": "string"
-                              }
-                            },
-                            "required": [
-                              "id",
-                              "created_at",
-                              "name",
-                              "username",
-                              "headline",
-                              "twitter_username",
-                              "website_url",
-                              "profile_url",
-                              "image_url"
-                            ],
-                            "type": "object"
-                          },
-                          "votes_count": {
-                            "type": "number"
-                          }
-                        },
-                        "required": [
-                          "category_id",
-                          "day",
-                          "id",
-                          "name",
-                          "product_state",
-                          "tagline",
-                          "comments_count",
-                          "created_at",
-                          "current_user",
-                          "discussion_url",
-                          "featured",
-                          "maker_inside",
-                          "makers",
-                          "platforms",
-                          "topics",
-                          "redirect_url",
-                          "screenshot_url",
-                          "thumbnail",
-                          "user",
-                          "votes_count"
-                        ],
-                        "type": "object"
-                      },
+                      "reference": {},
                       "seen": {
                         "type": "boolean"
                       },
@@ -6920,9 +7203,20 @@
             "type": "string"
           },
           {
-            "description": "Parameter for pagination",
             "in": "query",
             "name": "days_ago",
+            "type": "string"
+          },
+          {
+            "description": "Offset-based pagination: Get content of given page, starts at 1",
+            "in": "query",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "description": "Any kind of pagination: define the amount of records sent per call (max 50)",
+            "in": "query",
+            "name": "per_page",
             "type": "string"
           }
         ],
@@ -6970,9 +7264,7 @@
               "properties": {
                 "post": {
                   "properties": {
-                    "category_id": {
-                      "type": "number"
-                    },
+                    "category_id": {},
                     "comments": {
                       "items": {
                         "properties": {
@@ -7243,13 +7535,13 @@
                           "body",
                           "created_at",
                           "user_id",
-                          "votes",
                           "subject_id",
                           "child_comments_count",
                           "url",
                           "post_id",
                           "subject_type",
                           "sticky",
+                          "votes",
                           "maker",
                           "hunter",
                           "live_guest"
@@ -7320,6 +7612,7 @@
                       "type": "array",
                       "uniqueItems": true
                     },
+                    "ios_featured_at": {},
                     "maker_inside": {
                       "type": "boolean"
                     },
@@ -7408,9 +7701,7 @@
                     "related_posts": {
                       "items": {
                         "properties": {
-                          "category_id": {
-                            "type": "number"
-                          },
+                          "category_id": {},
                           "comments_count": {
                             "type": "number"
                           },
@@ -7437,6 +7728,7 @@
                           "id": {
                             "type": "number"
                           },
+                          "ios_featured_at": {},
                           "maker_inside": {
                             "type": "boolean"
                           },
@@ -7726,13 +8018,12 @@
                           }
                         },
                         "required": [
-                          "category_id",
+                          "comments_count",
                           "day",
                           "id",
                           "name",
                           "product_state",
                           "tagline",
-                          "comments_count",
                           "created_at",
                           "discussion_url",
                           "featured",
@@ -8004,248 +8295,21 @@
                     },
                     "votes": {
                       "items": {
-                        "properties": {
-                          "created_at": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "id": {
-                            "type": "number"
-                          },
-                          "post_id": {
-                            "type": "number"
-                          },
-                          "user": {
-                            "properties": {
-                              "created_at": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "headline": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "id": {
-                                "type": "number"
-                              },
-                              "image_url": {
-                                "properties": {
-                                  "100px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "110px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "120px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "132px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "146px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "160px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "176px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "220px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "264px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "30px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "32px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "32px@2X": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "32px@3X": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "40px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "40px@2X": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "40px@3X": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "44px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "44px@2X": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "44px@3X": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "48px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "50px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "60px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "64px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "73px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "80px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "88px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "88px@2X": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "88px@3X": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "96px": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "original": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  }
-                                },
-                                "required": [
-                                  "30px",
-                                  "32px",
-                                  "40px",
-                                  "44px",
-                                  "48px",
-                                  "50px",
-                                  "60px",
-                                  "64px",
-                                  "73px",
-                                  "80px",
-                                  "88px",
-                                  "96px",
-                                  "100px",
-                                  "110px",
-                                  "120px",
-                                  "132px",
-                                  "146px",
-                                  "160px",
-                                  "176px",
-                                  "220px",
-                                  "264px",
-                                  "32px@2X",
-                                  "40px@2X",
-                                  "44px@2X",
-                                  "88px@2X",
-                                  "32px@3X",
-                                  "40px@3X",
-                                  "44px@3X",
-                                  "88px@3X",
-                                  "original"
-                                ],
-                                "type": "object"
-                              },
-                              "name": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "profile_url": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "twitter_username": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "username": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "website_url": {
-                                "minLength": 1,
-                                "type": "string"
-                              }
-                            },
-                            "required": [
-                              "id",
-                              "created_at",
-                              "name",
-                              "username",
-                              "headline",
-                              "twitter_username",
-                              "website_url",
-                              "profile_url",
-                              "image_url"
-                            ],
-                            "type": "object"
-                          },
-                          "user_id": {
-                            "type": "number"
-                          }
-                        },
-                        "required": [
-                          "id",
-                          "created_at",
-                          "post_id",
-                          "user_id"
-                        ]
+                        "properties": {}
                       },
-                      "minItems": 1,
-                      "type": "array",
-                      "uniqueItems": true
+                      "type": "array"
                     },
                     "votes_count": {
                       "type": "number"
                     }
                   },
                   "required": [
-                    "category_id",
+                    "comments_count",
                     "day",
                     "id",
                     "name",
                     "product_state",
                     "tagline",
-                    "comments_count",
                     "created_at",
                     "current_user",
                     "discussion_url",
@@ -8253,10 +8317,10 @@
                     "maker_inside",
                     "makers",
                     "platforms",
-                    "topics",
                     "redirect_url",
                     "screenshot_url",
                     "thumbnail",
+                    "topics",
                     "user",
                     "votes_count",
                     "comments",
@@ -8339,9 +8403,7 @@
                         "posts": {
                           "items": {
                             "properties": {
-                              "category_id": {
-                                "type": "number"
-                              },
+                              "category_id": {},
                               "comments_count": {
                                 "type": "number"
                               },
@@ -8379,6 +8441,7 @@
                               "id": {
                                 "type": "number"
                               },
+                              "ios_featured_at": {},
                               "maker_inside": {
                                 "type": "boolean"
                               },
@@ -8668,13 +8731,12 @@
                               }
                             },
                             "required": [
-                              "category_id",
+                              "comments_count",
                               "day",
                               "id",
                               "name",
                               "product_state",
                               "tagline",
-                              "comments_count",
                               "created_at",
                               "discussion_url",
                               "featured",
@@ -8914,9 +8976,9 @@
                         "updated_at",
                         "subscriber_count",
                         "collection_url",
+                        "color",
                         "posts_count",
                         "user",
-                        "color",
                         "posts"
                       ],
                       "type": "object"
@@ -8984,9 +9046,7 @@
                     "collection": {
                       "properties": {
                         "background_image_url": {},
-                        "category_id": {
-                          "type": "number"
-                        },
+                        "category_id": {},
                         "collection_url": {
                           "minLength": 1,
                           "type": "string"
@@ -9010,9 +9070,7 @@
                         "posts": {
                           "items": {
                             "properties": {
-                              "category_id": {
-                                "type": "number"
-                              },
+                              "category_id": {},
                               "comments_count": {
                                 "type": "number"
                               },
@@ -9050,6 +9108,7 @@
                               "id": {
                                 "type": "number"
                               },
+                              "ios_featured_at": {},
                               "maker_inside": {
                                 "type": "boolean"
                               },
@@ -9339,13 +9398,12 @@
                               }
                             },
                             "required": [
-                              "category_id",
+                              "comments_count",
                               "day",
                               "id",
                               "name",
                               "product_state",
                               "tagline",
-                              "comments_count",
                               "created_at",
                               "discussion_url",
                               "featured",
@@ -9584,11 +9642,10 @@
                         "created_at",
                         "updated_at",
                         "subscriber_count",
-                        "category_id",
                         "collection_url",
+                        "color",
                         "posts_count",
                         "user",
-                        "color",
                         "posts"
                       ],
                       "type": "object"
@@ -9931,8 +9988,8 @@
                       "updated_at",
                       "subscriber_count",
                       "collection_url",
-                      "posts_count",
-                      "color"
+                      "color",
+                      "posts_count"
                     ]
                   },
                   "minItems": 1,
@@ -10287,13 +10344,13 @@
                             "created_at",
                             "parent_comment_id",
                             "user_id",
-                            "votes",
                             "subject_id",
                             "child_comments_count",
                             "url",
                             "post_id",
                             "subject_type",
                             "sticky",
+                            "votes",
                             "maker",
                             "hunter",
                             "live_guest"
@@ -10560,13 +10617,13 @@
                       "body",
                       "created_at",
                       "user_id",
-                      "votes",
                       "subject_id",
                       "child_comments_count",
                       "url",
                       "post_id",
                       "subject_type",
                       "sticky",
+                      "votes",
                       "maker",
                       "hunter",
                       "live_guest"
@@ -10840,8 +10897,8 @@
                   "required": [
                     "id",
                     "created_at",
-                    "post_id",
                     "user_id",
+                    "post_id",
                     "user"
                   ],
                   "type": "object"
@@ -11106,8 +11163,8 @@
                   "required": [
                     "id",
                     "created_at",
-                    "post_id",
                     "user_id",
+                    "post_id",
                     "user"
                   ],
                   "type": "object"
@@ -11404,8 +11461,8 @@
                     "required": [
                       "id",
                       "created_at",
-                      "post_id",
-                      "user_id"
+                      "user_id",
+                      "post_id"
                     ]
                   },
                   "minItems": 1,
@@ -11456,7 +11513,7 @@
             "type": "string"
           },
           {
-            "description": "Filter parameter: can filter posts by category. Default = unspecified (All categories)",
+            "description": "Filter parameter: can filter posts by url",
             "in": "query",
             "name": "search",
             "type": "string"
@@ -11464,6 +11521,16 @@
           {
             "in": "query",
             "name": "search[category]",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "search[featured_month]",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "search[featured_year]",
             "type": "string"
           },
           {
@@ -11492,9 +11559,7 @@
                 "posts": {
                   "items": {
                     "properties": {
-                      "category_id": {
-                        "type": "number"
-                      },
+                      "category_id": {},
                       "comments_count": {
                         "type": "number"
                       },
@@ -11521,6 +11586,7 @@
                       "id": {
                         "type": "number"
                       },
+                      "ios_featured_at": {},
                       "maker_inside": {
                         "type": "boolean"
                       },
@@ -11810,13 +11876,12 @@
                       }
                     },
                     "required": [
-                      "category_id",
+                      "comments_count",
                       "day",
                       "id",
                       "name",
                       "product_state",
                       "tagline",
-                      "comments_count",
                       "created_at",
                       "discussion_url",
                       "featured",
@@ -12195,6 +12260,9 @@
                     "send_announcement_push": {
                       "type": "boolean"
                     },
+                    "send_email_digest_email": {
+                      "type": "boolean"
+                    },
                     "send_friend_post_email": {
                       "type": "boolean"
                     },
@@ -12242,9 +12310,7 @@
                           },
                           "post": {
                             "properties": {
-                              "category_id": {
-                                "type": "number"
-                              },
+                              "category_id": {},
                               "comments_count": {
                                 "type": "number"
                               },
@@ -12282,6 +12348,7 @@
                               "id": {
                                 "type": "number"
                               },
+                              "ios_featured_at": {},
                               "maker_inside": {
                                 "type": "boolean"
                               },
@@ -12571,13 +12638,12 @@
                               }
                             },
                             "required": [
-                              "category_id",
+                              "comments_count",
                               "day",
                               "id",
                               "name",
                               "product_state",
                               "tagline",
-                              "comments_count",
                               "created_at",
                               "current_user",
                               "discussion_url",
@@ -12585,10 +12651,10 @@
                               "maker_inside",
                               "makers",
                               "platforms",
-                              "topics",
                               "redirect_url",
                               "screenshot_url",
                               "thumbnail",
+                              "topics",
                               "user",
                               "votes_count"
                             ],
@@ -12604,8 +12670,8 @@
                         "required": [
                           "id",
                           "created_at",
-                          "post_id",
-                          "user_id"
+                          "user_id",
+                          "post_id"
                         ]
                       },
                       "minItems": 1,
@@ -12657,7 +12723,8 @@
                     "send_announcement_push",
                     "send_product_recommendation_email",
                     "send_product_recommendation_push",
-                    "subscribed_to_push"
+                    "subscribed_to_push",
+                    "send_email_digest_email"
                   ],
                   "type": "object"
                 }
@@ -12757,7 +12824,7 @@
             "type": "string"
           },
           {
-            "description": "Filter parameter: can filter only trending topics",
+            "description": "Filter parameter: can filter topics by follower user id",
             "in": "query",
             "name": "search",
             "type": "string"
@@ -12770,11 +12837,6 @@
           {
             "in": "query",
             "name": "search[slug]",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "search[trending]",
             "type": "string"
           },
           {
@@ -13827,8 +13889,8 @@
                       "featured_at",
                       "subscriber_count",
                       "collection_url",
-                      "posts_count",
-                      "color"
+                      "color",
+                      "posts_count"
                     ]
                   },
                   "minItems": 1,
@@ -13881,9 +13943,7 @@
                       "parent_comment_id": {},
                       "post": {
                         "properties": {
-                          "category_id": {
-                            "type": "number"
-                          },
+                          "category_id": {},
                           "comments_count": {
                             "type": "number"
                           },
@@ -13910,6 +13970,7 @@
                           "id": {
                             "type": "number"
                           },
+                          "ios_featured_at": {},
                           "maker_inside": {
                             "type": "boolean"
                           },
@@ -14199,13 +14260,12 @@
                           }
                         },
                         "required": [
-                          "category_id",
+                          "comments_count",
                           "day",
                           "id",
                           "name",
                           "product_state",
                           "tagline",
-                          "comments_count",
                           "created_at",
                           "current_user",
                           "discussion_url",
@@ -14213,10 +14273,10 @@
                           "maker_inside",
                           "makers",
                           "platforms",
-                          "topics",
                           "redirect_url",
                           "screenshot_url",
                           "thumbnail",
+                          "topics",
                           "user",
                           "votes_count"
                         ],
@@ -14255,13 +14315,13 @@
                       "body",
                       "created_at",
                       "user_id",
-                      "votes",
                       "subject_id",
                       "child_comments_count",
                       "url",
                       "post_id",
                       "subject_type",
-                      "sticky"
+                      "sticky",
+                      "votes"
                     ]
                   },
                   "minItems": 1,
@@ -15437,9 +15497,7 @@
                 "posts": {
                   "items": {
                     "properties": {
-                      "category_id": {
-                        "type": "number"
-                      },
+                      "category_id": {},
                       "comments_count": {
                         "type": "number"
                       },
@@ -15466,6 +15524,7 @@
                       "id": {
                         "type": "number"
                       },
+                      "ios_featured_at": {},
                       "maker_inside": {
                         "type": "boolean"
                       },
@@ -15755,13 +15814,12 @@
                       }
                     },
                     "required": [
-                      "category_id",
+                      "comments_count",
                       "day",
                       "id",
                       "name",
                       "product_state",
                       "tagline",
-                      "comments_count",
                       "created_at",
                       "discussion_url",
                       "featured",
@@ -15839,9 +15897,7 @@
                 "posts": {
                   "items": {
                     "properties": {
-                      "category_id": {
-                        "type": "number"
-                      },
+                      "category_id": {},
                       "comments_count": {
                         "type": "number"
                       },
@@ -15868,6 +15924,7 @@
                       "id": {
                         "type": "number"
                       },
+                      "ios_featured_at": {},
                       "maker_inside": {
                         "type": "boolean"
                       },
@@ -16358,13 +16415,12 @@
                       }
                     },
                     "required": [
-                      "category_id",
+                      "comments_count",
                       "day",
                       "id",
                       "name",
                       "product_state",
                       "tagline",
-                      "comments_count",
                       "created_at",
                       "discussion_url",
                       "featured",
@@ -16457,9 +16513,7 @@
                       },
                       "post": {
                         "properties": {
-                          "category_id": {
-                            "type": "number"
-                          },
+                          "category_id": {},
                           "comments_count": {
                             "type": "number"
                           },
@@ -16486,6 +16540,7 @@
                           "id": {
                             "type": "number"
                           },
+                          "ios_featured_at": {},
                           "maker_inside": {
                             "type": "boolean"
                           },
@@ -16775,13 +16830,12 @@
                           }
                         },
                         "required": [
-                          "category_id",
+                          "comments_count",
                           "day",
                           "id",
                           "name",
                           "product_state",
                           "tagline",
-                          "comments_count",
                           "created_at",
                           "current_user",
                           "discussion_url",
@@ -16789,10 +16843,10 @@
                           "maker_inside",
                           "makers",
                           "platforms",
-                          "topics",
                           "redirect_url",
                           "screenshot_url",
                           "thumbnail",
+                          "topics",
                           "user",
                           "votes_count"
                         ],
@@ -16808,8 +16862,8 @@
                     "required": [
                       "id",
                       "created_at",
-                      "post_id",
-                      "user_id"
+                      "user_id",
+                      "post_id"
                     ]
                   },
                   "minItems": 1,

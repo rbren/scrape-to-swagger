@@ -53,7 +53,7 @@ var config = module.exports = {
 config.securityDefinitions = {
   "OAuth": {
     "type": "oauth2",
-    "flow": "application",
+    "flow": "accessCode",
     "authorizationUrl": "https://www.reddit.com/api/v1/authorize",
     "tokenUrl": "https://www.reddit.com/api/v1/access_token",
     "scopes": {
