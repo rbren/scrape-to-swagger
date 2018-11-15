@@ -2031,7 +2031,14 @@
     "/api/live/happening_now": {
       "get": {
         "description": "Get some basic information about the currently featured live thread.\n\nReturns an empty 204 response for api requests if no thread is currently featured.\n\nSee also: /api/live/thread/about.",
-        "parameters": [],
+        "parameters": [
+          {
+            "description": "boolean value",
+            "in": "query",
+            "name": "show_announcements",
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": ""

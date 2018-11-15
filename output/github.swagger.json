@@ -1967,89 +1967,6 @@
         }
       }
     },
-    "/codes_of_conduct": {
-      "get": {
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "description": "",
-              "items": {
-                "properties": {
-                  "key": {
-                    "minLength": 1,
-                    "type": "string"
-                  },
-                  "name": {
-                    "minLength": 1,
-                    "type": "string"
-                  },
-                  "url": {
-                    "minLength": 1,
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "key",
-                  "name",
-                  "url"
-                ],
-                "type": "object"
-              },
-              "minItems": 1,
-              "type": "array",
-              "uniqueItems": true
-            }
-          }
-        }
-      }
-    },
-    "/codes_of_conduct/{key}": {
-      "get": {
-        "parameters": [
-          {
-            "in": "path",
-            "name": "key",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "description": "",
-              "properties": {
-                "body": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "key": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "name": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "url": {
-                  "minLength": 1,
-                  "type": "string"
-                }
-              },
-              "required": [
-                "key",
-                "name",
-                "url",
-                "body"
-              ],
-              "type": "object"
-            }
-          }
-        }
-      }
-    },
     "/events": {
       "get": {
         "parameters": [],
@@ -5104,6 +5021,17 @@
       "post": {
         "parameters": [
           {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "properties": {
+                "body": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          {
             "in": "path",
             "name": "gist_id",
             "required": true,
@@ -7511,6 +7439,89 @@
                   "minLength": 1,
                   "type": "string"
                 },
+                "marketplace_pending_change": {
+                  "properties": {
+                    "effective_date": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "number"
+                    },
+                    "plan": {
+                      "properties": {
+                        "accounts_url": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "bullets": {
+                          "items": {
+                            "properties": {}
+                          },
+                          "type": "array"
+                        },
+                        "description": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "has_free_trial": {
+                          "type": "boolean"
+                        },
+                        "id": {
+                          "type": "number"
+                        },
+                        "monthly_price_in_cents": {
+                          "type": "number"
+                        },
+                        "name": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "number": {
+                          "type": "number"
+                        },
+                        "price_model": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "state": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "unit_name": {},
+                        "url": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "yearly_price_in_cents": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "url",
+                        "accounts_url",
+                        "id",
+                        "number",
+                        "name",
+                        "description",
+                        "monthly_price_in_cents",
+                        "yearly_price_in_cents",
+                        "price_model",
+                        "has_free_trial",
+                        "state",
+                        "bullets"
+                      ],
+                      "type": "object"
+                    },
+                    "unit_count": {}
+                  },
+                  "required": [
+                    "effective_date",
+                    "id",
+                    "plan"
+                  ],
+                  "type": "object"
+                },
                 "marketplace_purchase": {
                   "properties": {
                     "billing_cycle": {
@@ -7557,6 +7568,9 @@
                           "minLength": 1,
                           "type": "string"
                         },
+                        "number": {
+                          "type": "number"
+                        },
                         "price_model": {
                           "minLength": 1,
                           "type": "string"
@@ -7578,6 +7592,7 @@
                         "url",
                         "accounts_url",
                         "id",
+                        "number",
                         "name",
                         "description",
                         "monthly_price_in_cents",
@@ -7624,6 +7639,7 @@
                 "id",
                 "login",
                 "organization_billing_email",
+                "marketplace_pending_change",
                 "marketplace_purchase"
               ],
               "type": "object"
@@ -7669,6 +7685,9 @@
                     "minLength": 1,
                     "type": "string"
                   },
+                  "number": {
+                    "type": "number"
+                  },
                   "price_model": {
                     "minLength": 1,
                     "type": "string"
@@ -7690,6 +7709,7 @@
                   "url",
                   "accounts_url",
                   "id",
+                  "number",
                   "name",
                   "description",
                   "monthly_price_in_cents",
@@ -7746,6 +7766,89 @@
                     "minLength": 1,
                     "type": "string"
                   },
+                  "marketplace_pending_change": {
+                    "properties": {
+                      "effective_date": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "number"
+                      },
+                      "plan": {
+                        "properties": {
+                          "accounts_url": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "bullets": {
+                            "items": {
+                              "properties": {}
+                            },
+                            "type": "array"
+                          },
+                          "description": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "has_free_trial": {
+                            "type": "boolean"
+                          },
+                          "id": {
+                            "type": "number"
+                          },
+                          "monthly_price_in_cents": {
+                            "type": "number"
+                          },
+                          "name": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "number": {
+                            "type": "number"
+                          },
+                          "price_model": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "state": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "unit_name": {},
+                          "url": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "yearly_price_in_cents": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "url",
+                          "accounts_url",
+                          "id",
+                          "number",
+                          "name",
+                          "description",
+                          "monthly_price_in_cents",
+                          "yearly_price_in_cents",
+                          "price_model",
+                          "has_free_trial",
+                          "state",
+                          "bullets"
+                        ],
+                        "type": "object"
+                      },
+                      "unit_count": {}
+                    },
+                    "required": [
+                      "effective_date",
+                      "id",
+                      "plan"
+                    ],
+                    "type": "object"
+                  },
                   "marketplace_purchase": {
                     "properties": {
                       "billing_cycle": {
@@ -7792,6 +7895,9 @@
                             "minLength": 1,
                             "type": "string"
                           },
+                          "number": {
+                            "type": "number"
+                          },
                           "price_model": {
                             "minLength": 1,
                             "type": "string"
@@ -7813,6 +7919,7 @@
                           "url",
                           "accounts_url",
                           "id",
+                          "number",
                           "name",
                           "description",
                           "monthly_price_in_cents",
@@ -7859,6 +7966,7 @@
                   "id",
                   "login",
                   "organization_billing_email",
+                  "marketplace_pending_change",
                   "marketplace_purchase"
                 ],
                 "type": "object"
@@ -11976,15 +12084,6 @@
               "description": "",
               "items": {
                 "properties": {
-                  "allow_merge_commit": {
-                    "type": "boolean"
-                  },
-                  "allow_rebase_merge": {
-                    "type": "boolean"
-                  },
-                  "allow_squash_merge": {
-                    "type": "boolean"
-                  },
                   "archive_url": {
                     "minLength": 1,
                     "type": "string"
@@ -12464,9 +12563,6 @@
                   "created_at",
                   "updated_at",
                   "permissions",
-                  "allow_rebase_merge",
-                  "allow_squash_merge",
-                  "allow_merge_commit",
                   "subscribers_count",
                   "network_count",
                   "license"
@@ -15742,20 +15838,6 @@
       "get": {
         "parameters": [
           {
-            "description": "Can be either tarball or zipball. Default: tarball",
-            "in": "path",
-            "name": "archive_format",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "description": "A valid Git reference. Default: the repository’s default branch (usually master)",
-            "in": "path",
-            "name": "ref",
-            "required": true,
-            "type": "string"
-          },
-          {
             "in": "path",
             "name": "owner",
             "required": true,
@@ -15764,6 +15846,18 @@
           {
             "in": "path",
             "name": "repo",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "archive_format",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "ref",
             "required": true,
             "type": "string"
           }
@@ -18457,6 +18551,23 @@
       "patch": {
         "parameters": [
           {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "description": "",
+              "properties": {
+                "body": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "body"
+              ],
+              "type": "object"
+            }
+          },
+          {
             "in": "path",
             "name": "owner",
             "required": true,
@@ -20284,6 +20395,33 @@
       "post": {
         "parameters": [
           {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "description": "",
+              "properties": {
+                "body": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "line": {},
+                "path": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "position": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "body",
+                "path",
+                "position"
+              ],
+              "type": "object"
+            }
+          },
+          {
             "in": "path",
             "name": "owner",
             "required": true,
@@ -20457,57 +20595,6 @@
                 "user",
                 "created_at",
                 "updated_at"
-              ],
-              "type": "object"
-            }
-          }
-        }
-      }
-    },
-    "/repos/{owner}/{repo}/community/code_of_conduct": {
-      "get": {
-        "parameters": [
-          {
-            "in": "path",
-            "name": "owner",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "path",
-            "name": "repo",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "description": "",
-              "properties": {
-                "body": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "key": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "name": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "url": {
-                  "minLength": 1,
-                  "type": "string"
-                }
-              },
-              "required": [
-                "key",
-                "name",
-                "url",
-                "body"
               ],
               "type": "object"
             }
@@ -21949,10 +22036,15 @@
             "type": "string"
           },
           {
-            "description": "Required. The content path.",
-            "in": "path",
-            "name": "path",
-            "required": true,
+            "description": "Required. The commit message.",
+            "in": "query",
+            "name": "message",
+            "type": "string"
+          },
+          {
+            "description": "Required. The blob SHA of the file being replaced.",
+            "in": "query",
+            "name": "sha",
             "type": "string"
           },
           {
@@ -21964,6 +22056,12 @@
           {
             "in": "path",
             "name": "repo",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "path",
             "required": true,
             "type": "string"
           }
@@ -22129,13 +22227,6 @@
       "get": {
         "parameters": [
           {
-            "description": "The content path.",
-            "in": "path",
-            "name": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
             "description": "The name of the commit/branch/tag. Default: the repository’s default branch (usually master)",
             "in": "query",
             "name": "ref",
@@ -22150,6 +22241,12 @@
           {
             "in": "path",
             "name": "repo",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "path",
             "required": true,
             "type": "string"
           }
@@ -23138,15 +23235,6 @@
               "description": "",
               "items": {
                 "properties": {
-                  "allow_merge_commit": {
-                    "type": "boolean"
-                  },
-                  "allow_rebase_merge": {
-                    "type": "boolean"
-                  },
-                  "allow_squash_merge": {
-                    "type": "boolean"
-                  },
                   "archive_url": {
                     "minLength": 1,
                     "type": "string"
@@ -23626,9 +23714,6 @@
                   "created_at",
                   "updated_at",
                   "permissions",
-                  "allow_rebase_merge",
-                  "allow_squash_merge",
-                  "allow_merge_commit",
                   "subscribers_count",
                   "network_count",
                   "license"
@@ -30863,6 +30948,37 @@
       "post": {
         "parameters": [
           {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "description": "",
+              "properties": {
+                "body": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "commit_id": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "path": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "position": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "body",
+                "commit_id",
+                "path",
+                "position"
+              ],
+              "type": "object"
+            }
+          },
+          {
             "in": "path",
             "name": "owner",
             "required": true,
@@ -32121,6 +32237,59 @@
       },
       "post": {
         "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "description": "",
+              "properties": {
+                "body": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "comments": {
+                  "items": {
+                    "properties": {
+                      "body": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "path": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "position": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "path",
+                      "position",
+                      "body"
+                    ]
+                  },
+                  "minItems": 1,
+                  "type": "array",
+                  "uniqueItems": true
+                },
+                "commit_id": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "event": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "commit_id",
+                "body",
+                "event",
+                "comments"
+              ],
+              "type": "object"
+            }
+          },
           {
             "in": "path",
             "name": "owner",
@@ -33959,6 +34128,23 @@
       "patch": {
         "parameters": [
           {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "description": "",
+              "properties": {
+                "body": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "body"
+              ],
+              "type": "object"
+            }
+          },
+          {
             "in": "path",
             "name": "owner",
             "required": true,
@@ -34696,6 +34882,46 @@
       "post": {
         "parameters": [
           {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "description": "",
+              "properties": {
+                "body": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "draft": {
+                  "type": "boolean"
+                },
+                "name": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "prerelease": {
+                  "type": "boolean"
+                },
+                "tag_name": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "target_commitish": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "tag_name",
+                "target_commitish",
+                "name",
+                "body",
+                "draft",
+                "prerelease"
+              ],
+              "type": "object"
+            }
+          },
+          {
             "in": "path",
             "name": "owner",
             "required": true,
@@ -35302,6 +35528,46 @@
       },
       "patch": {
         "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "description": "",
+              "properties": {
+                "body": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "draft": {
+                  "type": "boolean"
+                },
+                "name": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "prerelease": {
+                  "type": "boolean"
+                },
+                "tag_name": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "target_commitish": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "tag_name",
+                "target_commitish",
+                "name",
+                "body",
+                "draft",
+                "prerelease"
+              ],
+              "type": "object"
+            }
+          },
           {
             "in": "path",
             "name": "owner",
@@ -38744,240 +39010,12 @@
         }
       }
     },
-    "/scim/v2/organizations/{organization_id}/Users": {
+    "/scim/v2/organizations/{org}/Users/{external_identity_guid}": {
       "get": {
         "parameters": [
           {
-            "description": "Used for pagination: the number of results to return",
-            "in": "query",
-            "name": "count",
-            "type": "integer"
-          },
-          {
-            "description": "Only eq type filters are supported",
-            "in": "query",
-            "name": "filter",
-            "type": "string"
-          },
-          {
-            "description": "Used for pagination: the index of the first result to return",
-            "in": "query",
-            "name": "startIndex",
-            "type": "integer"
-          },
-          {
             "in": "path",
-            "name": "organization_id",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "description": "",
-              "properties": {
-                "itemsPerPage": {
-                  "type": "number"
-                },
-                "Resources": {
-                  "items": {
-                    "properties": {
-                      "active": {
-                        "type": "boolean"
-                      },
-                      "externalId": {
-                        "minLength": 1,
-                        "type": "string"
-                      },
-                      "id": {
-                        "minLength": 1,
-                        "type": "string"
-                      },
-                      "meta": {
-                        "properties": {
-                          "created": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "lastModified": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "resourceType": {
-                            "minLength": 1,
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "resourceType",
-                          "created",
-                          "lastModified"
-                        ],
-                        "type": "object"
-                      },
-                      "name": {
-                        "properties": {
-                          "familyName": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "givenName": {
-                            "minLength": 1,
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "givenName",
-                          "familyName"
-                        ],
-                        "type": "object"
-                      },
-                      "schemas": {
-                        "items": {
-                          "properties": {}
-                        },
-                        "type": "array"
-                      },
-                      "userName": {
-                        "minLength": 1,
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "id",
-                      "externalId",
-                      "userName",
-                      "active"
-                    ]
-                  },
-                  "minItems": 1,
-                  "type": "array",
-                  "uniqueItems": true
-                },
-                "schemas": {
-                  "items": {
-                    "properties": {}
-                  },
-                  "type": "array"
-                },
-                "startIndex": {
-                  "type": "number"
-                },
-                "totalResults": {
-                  "type": "number"
-                }
-              },
-              "required": [
-                "schemas",
-                "totalResults",
-                "itemsPerPage",
-                "startIndex",
-                "Resources"
-              ],
-              "type": "object"
-            }
-          }
-        }
-      },
-      "post": {
-        "parameters": [
-          {
-            "in": "path",
-            "name": "organization_id",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "description": "",
-              "properties": {
-                "active": {
-                  "type": "boolean"
-                },
-                "externalId": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "id": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "meta": {
-                  "properties": {
-                    "created": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "lastModified": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "resourceType": {
-                      "minLength": 1,
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "resourceType",
-                    "created",
-                    "lastModified"
-                  ],
-                  "type": "object"
-                },
-                "name": {
-                  "properties": {
-                    "familyName": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "givenName": {
-                      "minLength": 1,
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "givenName",
-                    "familyName"
-                  ],
-                  "type": "object"
-                },
-                "schemas": {
-                  "items": {
-                    "properties": {}
-                  },
-                  "type": "array"
-                },
-                "userName": {
-                  "minLength": 1,
-                  "type": "string"
-                }
-              },
-              "required": [
-                "schemas",
-                "id",
-                "externalId",
-                "userName",
-                "name",
-                "active",
-                "meta"
-              ],
-              "type": "object"
-            }
-          }
-        }
-      }
-    },
-    "/scim/v2/organizations/{organization_id}/Users/{external_identity_guid}": {
-      "delete": {
-        "parameters": [
-          {
-            "in": "path",
-            "name": "organization_id",
+            "name": "org",
             "required": true,
             "type": "string"
           },
@@ -38989,299 +39027,8 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
-          }
-        }
-      },
-      "get": {
-        "parameters": [
-          {
-            "in": "path",
-            "name": "organization_id",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "path",
-            "name": "external_identity_guid",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "description": "",
-              "properties": {
-                "active": {
-                  "type": "boolean"
-                },
-                "externalId": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "id": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "meta": {
-                  "properties": {
-                    "created": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "lastModified": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "resourceType": {
-                      "minLength": 1,
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "resourceType",
-                    "created",
-                    "lastModified"
-                  ],
-                  "type": "object"
-                },
-                "name": {
-                  "properties": {
-                    "familyName": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "givenName": {
-                      "minLength": 1,
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "givenName",
-                    "familyName"
-                  ],
-                  "type": "object"
-                },
-                "schemas": {
-                  "items": {
-                    "properties": {}
-                  },
-                  "type": "array"
-                },
-                "userName": {
-                  "minLength": 1,
-                  "type": "string"
-                }
-              },
-              "required": [
-                "schemas",
-                "id",
-                "externalId",
-                "userName",
-                "name",
-                "active",
-                "meta"
-              ],
-              "type": "object"
-            }
-          },
           "default": {
             "description": "Unknown"
-          }
-        }
-      },
-      "patch": {
-        "parameters": [
-          {
-            "in": "path",
-            "name": "organization_id",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "path",
-            "name": "external_identity_guid",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "description": "",
-              "properties": {
-                "active": {
-                  "type": "boolean"
-                },
-                "externalId": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "id": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "meta": {
-                  "properties": {
-                    "created": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "lastModified": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "resourceType": {
-                      "minLength": 1,
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "resourceType",
-                    "created",
-                    "lastModified"
-                  ],
-                  "type": "object"
-                },
-                "name": {
-                  "properties": {
-                    "familyName": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "givenName": {
-                      "minLength": 1,
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "givenName",
-                    "familyName"
-                  ],
-                  "type": "object"
-                },
-                "schemas": {
-                  "items": {
-                    "properties": {}
-                  },
-                  "type": "array"
-                },
-                "userName": {
-                  "minLength": 1,
-                  "type": "string"
-                }
-              },
-              "required": [
-                "schemas",
-                "id",
-                "externalId",
-                "userName",
-                "name",
-                "active",
-                "meta"
-              ],
-              "type": "object"
-            }
-          }
-        }
-      },
-      "put": {
-        "parameters": [
-          {
-            "in": "path",
-            "name": "organization_id",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "path",
-            "name": "external_identity_guid",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "description": "",
-              "properties": {
-                "active": {
-                  "type": "boolean"
-                },
-                "externalId": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "id": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "meta": {
-                  "properties": {
-                    "created": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "lastModified": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "resourceType": {
-                      "minLength": 1,
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "resourceType",
-                    "created",
-                    "lastModified"
-                  ],
-                  "type": "object"
-                },
-                "name": {
-                  "properties": {
-                    "familyName": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "givenName": {
-                      "minLength": 1,
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "givenName",
-                    "familyName"
-                  ],
-                  "type": "object"
-                },
-                "schemas": {
-                  "items": {
-                    "properties": {}
-                  },
-                  "type": "array"
-                },
-                "userName": {
-                  "minLength": 1,
-                  "type": "string"
-                }
-              },
-              "required": [
-                "schemas",
-                "id",
-                "externalId",
-                "userName",
-                "name",
-                "active",
-                "meta"
-              ],
-              "type": "object"
-            }
           }
         }
       }
@@ -40750,6 +40497,15 @@
               ],
               "type": "object"
             }
+          },
+          {
+            "description": "Required. Deletes one or more email addresses from your GitHub account. Must contain at least one email address. Note: Alternatively, you can pass a single email address or an array of emails addresses directly, but we recommend that you pass an object using the emails key.",
+            "in": "query",
+            "items": {
+              "type": "string"
+            },
+            "name": "emails",
+            "type": "array"
           }
         ],
         "responses": {
@@ -41865,6 +41621,9 @@
                         "minLength": 1,
                         "type": "string"
                       },
+                      "number": {
+                        "type": "number"
+                      },
                       "price_model": {
                         "minLength": 1,
                         "type": "string"
@@ -41886,6 +41645,7 @@
                       "url",
                       "accounts_url",
                       "id",
+                      "number",
                       "name",
                       "description",
                       "monthly_price_in_cents",
@@ -46525,15 +46285,6 @@
               "description": "",
               "items": {
                 "properties": {
-                  "allow_merge_commit": {
-                    "type": "boolean"
-                  },
-                  "allow_rebase_merge": {
-                    "type": "boolean"
-                  },
-                  "allow_squash_merge": {
-                    "type": "boolean"
-                  },
                   "archive_url": {
                     "minLength": 1,
                     "type": "string"
@@ -47013,9 +46764,6 @@
                   "created_at",
                   "updated_at",
                   "permissions",
-                  "allow_rebase_merge",
-                  "allow_squash_merge",
-                  "allow_merge_commit",
                   "subscribers_count",
                   "network_count",
                   "license"

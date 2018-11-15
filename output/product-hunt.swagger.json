@@ -3477,7 +3477,53 @@
         }
       },
       "post": {
-        "parameters": [],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "description": "",
+              "properties": {
+                "body": {
+                  "type": "string"
+                },
+                "comment": {
+                  "properties": {
+                    "body": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "live_event_id": {
+                      "type": "number"
+                    },
+                    "parent_comment_id": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "body",
+                    "live_event_id",
+                    "parent_comment_id"
+                  ],
+                  "type": "object"
+                },
+                "live_event_id": {
+                  "type": "string"
+                },
+                "parent_comment_id": {
+                  "type": "string"
+                },
+                "post_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "comment"
+              ],
+              "type": "object"
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created",
@@ -3763,6 +3809,37 @@
     "/v1/comments/{id}": {
       "put": {
         "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "description": "",
+              "properties": {
+                "body": {
+                  "type": "string"
+                },
+                "comment": {
+                  "properties": {
+                    "body": {
+                      "minLength": 1,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "body"
+                  ],
+                  "type": "object"
+                },
+                "parent_comment_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "comment"
+              ],
+              "type": "object"
+            }
+          },
           {
             "in": "path",
             "name": "id",
@@ -8360,6 +8437,12 @@
               ],
               "type": "object"
             }
+          },
+          {
+            "description": "The numeric ID of the collection",
+            "in": "query",
+            "name": "collection_id",
+            "type": "string"
           },
           {
             "in": "path",
