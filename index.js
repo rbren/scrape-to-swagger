@@ -1,6 +1,7 @@
 var METHODS = ['get', 'post', 'patch', 'put', 'delete', 'head', 'options'];
 var CREATE_METHODS = ['post', 'patch', 'put'];
 const swaggerSpecValidator = require('swagger-spec-validator');
+const _ = require('lodash');
 
 var getDefaultParameterLocation = function(method) {
   if (method === 'post' || method === 'patch' || method === 'put') return 'formData';
@@ -123,18 +124,70 @@ function addOperationToSwagger($, op, method, path, qs) {
     log('    param', 'body');
     bodyParam = {name: 'body', in: 'body', schema: body};
   }
+  var bodyFields = resolveSelector(op, config.requestBodyFields);
+  if (config.requestBodyFields && bodyFields && bodyFields.length) {
+    bodyParam = {name: 'body', in: 'body', schema: {type: 'object', properties: {}}};
+    props = bodyParam.schema.properties;
+    bodyFields.each(function() {
+      var field = $(this);
+      var schema = {};
+      var name = extractText(field, config.parameterName);
+      if (!name) return;
+      var description = extractText(field, config.parameterDescription);
+      if (description) schema.description = description.trim();
+      schema.type = extractText(field, config.parameterType).toLowerCase();
+      if (schema.type === 'array') {
+        schema.items = {type: 'string'};
+        if (config.parameterArrayType) {
+          schema.items.type = extractText(field, config.paramterArrayType).toLowerCase();
+        }
+      }
+      if (config.requestBodyFieldsEnum) {
+        var enm = resolveSelector(field, config.requestBodyFieldsEnum);
+        enm = resolveSelector(enm, config.requestBodyFieldsEnumValues);
+        if (enm.length) {
+          schema.enum = [];
+          enm.each(function() {
+            schema.enum.push($(this).text());
+          })
+          schema.enum = _.uniq(schema.enum);
+        }
+      }
+      props[name] = schema;
+    })
+  }
   if (parameters) parameters.each(function() {
     var param = $(this);
     var name = extractText(param, config.parameterName);
     log('    param', name);
-    if (!name) return;
+    if (!name) {
+      log('      no name!')
+      return;
+    }
     var sParameter = {name: name};
     var description = extractText(param, config.parameterDescription);
     if (description) sParameter.description = description.trim();
     var required = extractBoolean(param, config.parameterRequired);
     if (required === true || required === false) sParameter.required = required;
     sParameter.type = extractText(param, config.parameterType).toLowerCase() || 'string';
-    if (sParameter.type === 'array') sParameter.items = {type: 'string'}; // FIXME: add items schema extractor
+    if (sParameter.type === 'array') {
+      sParameter.items = {type: 'string'};
+      if (config.parameterArrayType) {
+        sParameter.items.type = extractText(param, config.paramterArrayType).toLowerCase() || 'string';
+      }
+    }
+    if (config.parameterEnum) {
+      var enm = resolveSelector(param, config.parameterEnum);
+      enm = resolveSelector(enm, config.parameterEnumValues);
+      if (enm.length) {
+        sParameter.enum = [];
+        enm.each(function() {
+          var val = $(this);
+          sParameter.enum.push(val.text());
+        })
+        sParameter.enum = _.uniq(sParameter.enum);
+      }
+    }
     if (path.match(new RegExp('\\{' + sParameter.name + '\\}'))) {
       sParameter.in = 'path';
     } else {
@@ -265,6 +318,9 @@ function fixErrors() {
           }
           return 0;
         })[0];
+        if (p !== bestParamWithName) {
+          console.log('dropping parameter', p.name, 'in', method, path);
+        }
         return p === bestParamWithName;
       }).sort(function(p1, p2) {
         if (p1.name < p2.name) return -1;
@@ -283,13 +339,15 @@ function fixErrors() {
         else op.parameters.push({in: 'path', name: paramName, type: 'string', required: true})
       }
 
-      var bodyParam = op.parameters.filter(function(p) {return p.in === 'body'})[0];
-      if (bodyParam && bodyParam.schema) {
-        var props = bodyParam.schema.properties || {};
-        op.parameters = op.parameters.filter(function(p) {
-          if (props[p.name]) return false;
-          return true;
-        })
+      if (config.deduplicateBodyParameter) {
+        var bodyParam = op.parameters.filter(function(p) {return p.in === 'body'})[0];
+        if (bodyParam && bodyParam.schema) {
+          var props = bodyParam.schema.properties || {};
+          op.parameters = op.parameters.filter(function(p) {
+            if (props[p.name]) return false;
+            return true;
+          })
+        }
       }
     }
   }
