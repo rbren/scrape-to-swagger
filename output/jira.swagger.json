@@ -1115,7 +1115,7 @@
                 "ids": {
                   "description": "The list of comment IDs. Maximum of 1000 IDs can be specified. Required",
                   "items": {
-                    "type": "string"
+                    "type": "integer"
                   },
                   "type": "array"
                 }
@@ -4362,7 +4362,7 @@
                 "sharePermissions": {
                   "description": "The groups and projects that the filter is shared with. This can be specified when updating a filter, but not when creating a filter.",
                   "items": {
-                    "type": "string"
+                    "type": "object"
                   },
                   "type": "array"
                 },
@@ -4770,7 +4770,7 @@
                 "sharePermissions": {
                   "description": "The groups and projects that the filter is shared with. This can be specified when updating a filter, but not when creating a filter.",
                   "items": {
-                    "type": "string"
+                    "type": "object"
                   },
                   "type": "array"
                 },
@@ -7257,7 +7257,7 @@
                 "properties": {
                   "description": "Details of issue properties to be add or update.",
                   "items": {
-                    "type": "string"
+                    "type": "object"
                   },
                   "type": "array"
                 },
@@ -8322,7 +8322,7 @@
                 "properties": {
                   "description": "Details of issue properties to be add or update.",
                   "items": {
-                    "type": "string"
+                    "type": "object"
                   },
                   "type": "array"
                 },
@@ -9023,7 +9023,7 @@
                 "properties": {
                   "description": "A list of comment properties. Optional on create and update.",
                   "items": {
-                    "type": "string"
+                    "type": "object"
                   },
                   "type": "array"
                 },
@@ -9440,7 +9440,7 @@
                 "properties": {
                   "description": "A list of comment properties. Optional on create and update.",
                   "items": {
-                    "type": "string"
+                    "type": "object"
                   },
                   "type": "array"
                 },
@@ -10656,7 +10656,7 @@
                 "properties": {
                   "description": "Details of issue properties to be add or update.",
                   "items": {
-                    "type": "string"
+                    "type": "object"
                   },
                   "type": "array"
                 },
@@ -11208,7 +11208,7 @@
                 "properties": {
                   "description": "Details of properties for the worklog. Optional when creating or updating a worklog.",
                   "items": {
-                    "type": "string"
+                    "type": "object"
                   },
                   "type": "array"
                 },
@@ -11583,7 +11583,7 @@
                 "properties": {
                   "description": "Details of properties for the worklog. Optional when creating or updating a worklog.",
                   "items": {
-                    "type": "string"
+                    "type": "object"
                   },
                   "type": "array"
                 },
@@ -12022,7 +12022,7 @@
               "properties": {
                 "issueUpdates": {
                   "items": {
-                    "type": "string"
+                    "type": "object"
                   },
                   "type": "array"
                 }
@@ -12350,7 +12350,7 @@
                 "entityIds": {
                   "description": "List of issues to perform the bulk delete operation on.",
                   "items": {
-                    "type": "string"
+                    "type": "integer"
                   },
                   "type": "array"
                 }
@@ -14946,7 +14946,7 @@
                 "permissions": {
                   "description": "The permission scheme to create or update. See About permission schemes and grants for more information.",
                   "items": {
-                    "type": "string"
+                    "type": "object"
                   },
                   "type": "array"
                 },
@@ -15198,7 +15198,7 @@
                 "permissions": {
                   "description": "The permission scheme to create or update. See About permission schemes and grants for more information.",
                   "items": {
-                    "type": "string"
+                    "type": "object"
                   },
                   "type": "array"
                 },
@@ -24924,7 +24924,7 @@
                 "operations": {
                   "description": "If the expand option operations is used, returns the list of operations available for this version. Read only.",
                   "items": {
-                    "type": "string"
+                    "type": "object"
                   },
                   "type": "array"
                 },
@@ -24947,7 +24947,7 @@
                 "remotelinks": {
                   "description": "If the expand option remotelinks is used, returns the list of remote links stored against this version. Read only.",
                   "items": {
-                    "type": "string"
+                    "type": "object"
                   },
                   "type": "array"
                 },
@@ -25154,7 +25154,7 @@
                 "operations": {
                   "description": "If the expand option operations is used, returns the list of operations available for this version. Read only.",
                   "items": {
-                    "type": "string"
+                    "type": "object"
                   },
                   "type": "array"
                 },
@@ -25177,7 +25177,7 @@
                 "remotelinks": {
                   "description": "If the expand option remotelinks is used, returns the list of remote links stored against this version. Read only.",
                   "items": {
-                    "type": "string"
+                    "type": "object"
                   },
                   "type": "array"
                 },
@@ -25407,7 +25407,7 @@
                 "customFieldReplacementList": {
                   "description": "A JSON array of custom field IDs (customFieldId) and version IDs (moveTo) to update when the fields contain the deleted version.",
                   "items": {
-                    "type": "string"
+                    "type": "object"
                   },
                   "type": "array"
                 },
@@ -28893,7 +28893,7 @@
                 "ids": {
                   "description": "A list of worklog IDs.",
                   "items": {
-                    "type": "string"
+                    "type": "integer"
                   },
                   "type": "array"
                 }
@@ -29178,7 +29178,7 @@
       "type": "basic"
     },
     "OAuth": {
-      "authorizationUrl": "https://auth.atlassian.com/authorize?prompt=true",
+      "authorizationUrl": "https://auth.atlassian.com/authorize?prompt=true&audience=api.atlassian.com",
       "flow": "accessCode",
       "scopes": {
         "manage:jira-configuration": "Take Jira administration actions (for example, create projects and custom fields, view workflows, and manage issue link types)",

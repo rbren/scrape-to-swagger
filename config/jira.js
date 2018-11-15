@@ -16,7 +16,7 @@ var config = module.exports = {
     "OAuth": {
       "type": "oauth2",
       "flow": "accessCode",
-      "authorizationUrl": "https://auth.atlassian.com/authorize?prompt=true",
+      "authorizationUrl": "https://auth.atlassian.com/authorize?prompt=true&audience=api.atlassian.com",
       "tokenUrl": "https://auth.atlassian.com/oauth/token",
       "scopes": {
         "read:jira-user": "View user information in Jira that the user has access to, including usernames, email addresses, and avatars",
@@ -41,7 +41,12 @@ var config = module.exports = {
     if (VALID_TYPES.indexOf(str) === -1) return 'object';
     return str;
   }},
-  parameterArrayType: {selector: 'span.sc-bsbRJL.euTMce', regex: /<(\w+)>/},
+  parameterArrayType: {selector: 'p.sc-iQNlJl.ccMJBl', parse: el => {
+    let type = el.text().match(/<(\w+)>/)[1];
+    console.log(type);
+    if (VALID_TYPES.indexOf(type) === -1) return 'object';
+    return type;
+  }},
   parameterRequeried: {selector: 'span.sc-epnACN.fIVUua'},
   parameterDescription: {selector: '.sc-gqPbQI.cIQxHh p'},
   parameterEnum: {selector: 'ul'},

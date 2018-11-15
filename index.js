@@ -139,7 +139,7 @@ function addOperationToSwagger($, op, method, path, qs) {
       if (schema.type === 'array') {
         schema.items = {type: 'string'};
         if (config.parameterArrayType) {
-          schema.items.type = extractText(field, config.paramterArrayType).toLowerCase();
+          schema.items.type = extractText(field, config.parameterArrayType).toLowerCase();
         }
       }
       if (config.requestBodyFieldsEnum) {
@@ -173,7 +173,7 @@ function addOperationToSwagger($, op, method, path, qs) {
     if (sParameter.type === 'array') {
       sParameter.items = {type: 'string'};
       if (config.parameterArrayType) {
-        sParameter.items.type = extractText(param, config.paramterArrayType).toLowerCase() || 'string';
+        sParameter.items.type = extractText(param, config.parameterArrayType).toLowerCase() || 'string';
       }
     }
     if (config.parameterEnum) {
