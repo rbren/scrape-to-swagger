@@ -185,7 +185,7 @@
             "type": "string"
           },
           {
-            "description": "Return a quote even if there are inelible items (quote just what's eligible)",
+            "description": "Return a quote even if there are ineligible items (quote just what's eligible)",
             "in": "formData",
             "name": "AlwaysQuote",
             "type": "string"
@@ -585,6 +585,11 @@
         "parameters": [
           {
             "in": "query",
+            "name": "groupId",
+            "type": "string"
+          },
+          {
+            "in": "query",
             "name": "key",
             "type": "string"
           },
@@ -621,7 +626,7 @@
             "type": "string"
           },
           {
-            "description": "Return a quote even if there are inelible items (quote just what's eligible)",
+            "description": "Return a quote even if there are ineligible items (quote just what's eligible)",
             "in": "formData",
             "name": "AlwaysQuote",
             "type": "string"
@@ -1247,6 +1252,30 @@
         "summary": "Add to or update your catalog."
       }
     },
+    "/api/SubmitFixedPricing": {
+      "post": {
+        "parameters": [
+          {
+            "description": "* A list of the items to submit.",
+            "in": "formData",
+            "name": "CountryPrices",
+            "type": "string"
+          },
+          {
+            "description": "* Your API key",
+            "in": "formData",
+            "name": "Key",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "No documentation available."
+      }
+    },
     "/api/SubmitKit": {
       "post": {
         "parameters": [
@@ -1305,7 +1334,7 @@
             "type": "string"
           },
           {
-            "description": "Return a quote even if there are inelible items (quote just what's eligible)",
+            "description": "Return a quote even if there are ineligible items (quote just what's eligible)",
             "in": "formData",
             "name": "AlwaysQuote",
             "type": "string"

@@ -3173,11 +3173,6 @@
           },
           {
             "in": "query",
-            "name": "search[ama_event_id]",
-            "type": "string"
-          },
-          {
-            "in": "query",
             "name": "search[post_id]",
             "type": "string"
           },
@@ -3216,14 +3211,14 @@
                       "id": {
                         "type": "number"
                       },
-                      "parent_comment_id": {
-                        "type": "number"
-                      },
+                      "parent_comment_id": {},
                       "post": {
                         "properties": {},
                         "type": "object"
                       },
-                      "post_id": {},
+                      "post_id": {
+                        "type": "number"
+                      },
                       "sticky": {
                         "type": "boolean"
                       },
@@ -3239,207 +3234,7 @@
                         "type": "string"
                       },
                       "user": {
-                        "properties": {
-                          "created_at": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "headline": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "id": {
-                            "type": "number"
-                          },
-                          "image_url": {
-                            "properties": {
-                              "100px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "110px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "120px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "132px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "146px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "160px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "176px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "220px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "264px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "30px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "32px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "32px@2X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "32px@3X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "40px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "40px@2X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "40px@3X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "44px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "44px@2X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "44px@3X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "48px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "50px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "60px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "64px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "73px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "80px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "88px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "88px@2X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "88px@3X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "96px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "original": {
-                                "minLength": 1,
-                                "type": "string"
-                              }
-                            },
-                            "required": [
-                              "30px",
-                              "32px",
-                              "40px",
-                              "44px",
-                              "48px",
-                              "50px",
-                              "60px",
-                              "64px",
-                              "73px",
-                              "80px",
-                              "88px",
-                              "96px",
-                              "100px",
-                              "110px",
-                              "120px",
-                              "132px",
-                              "146px",
-                              "160px",
-                              "176px",
-                              "220px",
-                              "264px",
-                              "32px@2X",
-                              "40px@2X",
-                              "44px@2X",
-                              "88px@2X",
-                              "32px@3X",
-                              "40px@3X",
-                              "44px@3X",
-                              "88px@3X",
-                              "original"
-                            ],
-                            "type": "object"
-                          },
-                          "name": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "profile_url": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "twitter_username": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "username": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "website_url": {
-                            "minLength": 1,
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "id",
-                          "created_at",
-                          "name",
-                          "username",
-                          "headline",
-                          "twitter_username",
-                          "website_url",
-                          "profile_url",
-                          "image_url"
-                        ],
+                        "properties": {},
                         "type": "object"
                       },
                       "user_id": {
@@ -3453,11 +3248,11 @@
                       "id",
                       "body",
                       "created_at",
-                      "parent_comment_id",
                       "user_id",
                       "subject_id",
                       "child_comments_count",
                       "url",
+                      "post_id",
                       "subject_type",
                       "sticky",
                       "votes"
@@ -3493,22 +3288,19 @@
                       "minLength": 1,
                       "type": "string"
                     },
-                    "live_event_id": {
+                    "parent_comment_id": {
                       "type": "number"
                     },
-                    "parent_comment_id": {
+                    "post_id": {
                       "type": "number"
                     }
                   },
                   "required": [
                     "body",
-                    "live_event_id",
+                    "post_id",
                     "parent_comment_id"
                   ],
                   "type": "object"
-                },
-                "live_event_id": {
-                  "type": "string"
                 },
                 "parent_comment_id": {
                   "type": "string"
@@ -3550,10 +3342,360 @@
                       "type": "number"
                     },
                     "post": {
-                      "properties": {},
+                      "properties": {
+                        "category_id": {},
+                        "comments_count": {
+                          "type": "number"
+                        },
+                        "created_at": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "current_user": {
+                          "properties": {
+                            "commented_on_post": {
+                              "type": "boolean"
+                            },
+                            "voted_for_post": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "voted_for_post",
+                            "commented_on_post"
+                          ],
+                          "type": "object"
+                        },
+                        "day": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "discussion_url": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "exclusive": {},
+                        "featured": {
+                          "type": "boolean"
+                        },
+                        "id": {
+                          "type": "number"
+                        },
+                        "ios_featured_at": {},
+                        "maker_inside": {
+                          "type": "boolean"
+                        },
+                        "makers": {
+                          "items": {
+                            "properties": {}
+                          },
+                          "type": "array"
+                        },
+                        "name": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "platforms": {
+                          "items": {
+                            "properties": {}
+                          },
+                          "type": "array"
+                        },
+                        "product_state": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "redirect_url": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "screenshot_url": {
+                          "properties": {
+                            "300px": {
+                              "minLength": 1,
+                              "type": "string"
+                            },
+                            "850px": {
+                              "minLength": 1,
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "300px",
+                            "850px"
+                          ],
+                          "type": "object"
+                        },
+                        "tagline": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "thumbnail": {
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "image_url": {
+                              "minLength": 1,
+                              "type": "string"
+                            },
+                            "media_type": {
+                              "minLength": 1,
+                              "type": "string"
+                            },
+                            "metadata": {
+                              "properties": {},
+                              "type": "object"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "media_type",
+                            "image_url",
+                            "metadata"
+                          ],
+                          "type": "object"
+                        },
+                        "topics": {
+                          "items": {
+                            "properties": {}
+                          },
+                          "type": "array"
+                        },
+                        "user": {
+                          "properties": {
+                            "created_at": {
+                              "minLength": 1,
+                              "type": "string"
+                            },
+                            "headline": {
+                              "minLength": 1,
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "number"
+                            },
+                            "image_url": {
+                              "properties": {
+                                "100px": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "110px": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "120px": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "132px": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "146px": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "160px": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "176px": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "220px": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "264px": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "30px": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "32px": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "32px@2X": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "32px@3X": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "40px": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "40px@2X": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "40px@3X": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "44px": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "44px@2X": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "44px@3X": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "48px": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "50px": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "60px": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "64px": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "73px": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "80px": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "88px": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "88px@2X": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "88px@3X": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "96px": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "original": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "30px",
+                                "32px",
+                                "40px",
+                                "44px",
+                                "48px",
+                                "50px",
+                                "60px",
+                                "64px",
+                                "73px",
+                                "80px",
+                                "88px",
+                                "96px",
+                                "100px",
+                                "110px",
+                                "120px",
+                                "132px",
+                                "146px",
+                                "160px",
+                                "176px",
+                                "220px",
+                                "264px",
+                                "32px@2X",
+                                "40px@2X",
+                                "44px@2X",
+                                "88px@2X",
+                                "32px@3X",
+                                "40px@3X",
+                                "44px@3X",
+                                "88px@3X",
+                                "original"
+                              ],
+                              "type": "object"
+                            },
+                            "name": {
+                              "minLength": 1,
+                              "type": "string"
+                            },
+                            "profile_url": {
+                              "minLength": 1,
+                              "type": "string"
+                            },
+                            "twitter_username": {
+                              "minLength": 1,
+                              "type": "string"
+                            },
+                            "username": {
+                              "minLength": 1,
+                              "type": "string"
+                            },
+                            "website_url": {
+                              "minLength": 1,
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "created_at",
+                            "name",
+                            "username",
+                            "headline",
+                            "twitter_username",
+                            "website_url",
+                            "profile_url",
+                            "image_url"
+                          ],
+                          "type": "object"
+                        },
+                        "votes_count": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "comments_count",
+                        "day",
+                        "id",
+                        "name",
+                        "product_state",
+                        "tagline",
+                        "created_at",
+                        "current_user",
+                        "discussion_url",
+                        "featured",
+                        "maker_inside",
+                        "makers",
+                        "platforms",
+                        "redirect_url",
+                        "screenshot_url",
+                        "thumbnail",
+                        "topics",
+                        "user",
+                        "votes_count"
+                      ],
                       "type": "object"
                     },
-                    "post_id": {},
+                    "post_id": {
+                      "type": "number"
+                    },
                     "sticky": {
                       "type": "boolean"
                     },
@@ -3788,6 +3930,7 @@
                     "subject_id",
                     "child_comments_count",
                     "url",
+                    "post_id",
                     "subject_type",
                     "sticky",
                     "votes",
@@ -5309,1120 +5452,6 @@
               ],
               "type": "object"
             }
-          }
-        }
-      }
-    },
-    "/v1/live": {
-      "get": {
-        "parameters": [
-          {
-            "in": "query",
-            "name": "limit",
-            "type": "string"
-          },
-          {
-            "description": "Filter parameter: get only records with newer \"start_at\" date (includes events with unspeficifed date) than the provided date (format \"YYYY-MM-DD\")",
-            "in": "query",
-            "name": "newer",
-            "type": "string"
-          },
-          {
-            "description": "Filter parameter: define the amount of records to be skipped",
-            "in": "query",
-            "name": "offset",
-            "type": "string"
-          },
-          {
-            "description": "Filter parameter: get only records with older \"start_at\" date than the provided date (format \"YYYY-MM-DD\")",
-            "in": "query",
-            "name": "older",
-            "type": "string"
-          },
-          {
-            "description": "Filter parameter: define the amount of records sent per call (default 20, max 50)",
-            "in": "query",
-            "name": "per_page",
-            "type": "string"
-          },
-          {
-            "description": "Retrieve events for a specific month (format \"YYYY-MM\"), use \"false\" for events without a start_at date",
-            "in": "query",
-            "name": "search",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "search[date]",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "search[live_video]",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "search[slug]",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "description": "",
-              "properties": {
-                "live_events": {
-                  "items": {
-                    "properties": {
-                      "background_image_url": {},
-                      "category_id": {},
-                      "ends_at": {
-                        "minLength": 1,
-                        "type": "string"
-                      },
-                      "guests": {
-                        "items": {
-                          "properties": {}
-                        },
-                        "type": "array"
-                      },
-                      "id": {
-                        "type": "number"
-                      },
-                      "live_video": {
-                        "type": "boolean"
-                      },
-                      "name": {
-                        "minLength": 1,
-                        "type": "string"
-                      },
-                      "schedule_image_url": {},
-                      "starts_at": {
-                        "minLength": 1,
-                        "type": "string"
-                      },
-                      "subscriber_count": {
-                        "type": "number"
-                      },
-                      "tagline": {
-                        "minLength": 1,
-                        "type": "string"
-                      },
-                      "twitter_username": {},
-                      "url": {
-                        "minLength": 1,
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "ends_at",
-                      "id",
-                      "name",
-                      "starts_at",
-                      "subscriber_count",
-                      "tagline",
-                      "live_video",
-                      "url"
-                    ]
-                  },
-                  "minItems": 1,
-                  "type": "array",
-                  "uniqueItems": true
-                }
-              },
-              "required": [
-                "live_events"
-              ],
-              "type": "object"
-            }
-          }
-        }
-      }
-    },
-    "/v1/live/{id}": {
-      "get": {
-        "parameters": [
-          {
-            "description": "The numeric ID of the live event you want to fetch",
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "description": "",
-              "properties": {
-                "live_event": {
-                  "properties": {
-                    "background_image_url": {},
-                    "category_id": {},
-                    "ends_at": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "guests": {
-                      "items": {
-                        "properties": {
-                          "created_at": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "headline": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "id": {
-                            "type": "number"
-                          },
-                          "image_url": {
-                            "properties": {
-                              "100px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "110px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "120px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "132px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "146px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "160px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "176px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "220px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "264px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "30px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "32px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "32px@2X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "32px@3X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "40px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "40px@2X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "40px@3X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "44px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "44px@2X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "44px@3X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "48px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "50px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "60px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "64px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "73px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "80px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "88px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "88px@2X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "88px@3X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "96px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "original": {
-                                "minLength": 1,
-                                "type": "string"
-                              }
-                            },
-                            "required": [
-                              "30px",
-                              "32px",
-                              "40px",
-                              "44px",
-                              "48px",
-                              "50px",
-                              "60px",
-                              "64px",
-                              "73px",
-                              "80px",
-                              "88px",
-                              "96px",
-                              "100px",
-                              "110px",
-                              "120px",
-                              "132px",
-                              "146px",
-                              "160px",
-                              "176px",
-                              "220px",
-                              "264px",
-                              "32px@2X",
-                              "40px@2X",
-                              "44px@2X",
-                              "88px@2X",
-                              "32px@3X",
-                              "40px@3X",
-                              "44px@3X",
-                              "88px@3X",
-                              "original"
-                            ],
-                            "type": "object"
-                          },
-                          "name": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "profile_url": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "twitter_username": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "username": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "website_url": {
-                            "minLength": 1,
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "id",
-                          "created_at",
-                          "name",
-                          "username",
-                          "headline",
-                          "twitter_username",
-                          "website_url",
-                          "profile_url"
-                        ]
-                      },
-                      "minItems": 1,
-                      "type": "array",
-                      "uniqueItems": true
-                    },
-                    "id": {
-                      "type": "number"
-                    },
-                    "live_video": {
-                      "type": "boolean"
-                    },
-                    "name": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "schedule_image_url": {},
-                    "starts_at": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "subscriber_count": {
-                      "type": "number"
-                    },
-                    "tagline": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "twitter_username": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "url": {
-                      "minLength": 1,
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "ends_at",
-                    "id",
-                    "name",
-                    "starts_at",
-                    "subscriber_count",
-                    "tagline",
-                    "live_video",
-                    "guests",
-                    "twitter_username",
-                    "url"
-                  ],
-                  "type": "object"
-                }
-              },
-              "required": [
-                "live_event"
-              ],
-              "type": "object"
-            }
-          }
-        }
-      }
-    },
-    "/v1/live/{id}/comments": {
-      "get": {
-        "parameters": [
-          {
-            "description": "The id the live event the comment belongs to (passed via URL)",
-            "in": "query",
-            "name": "live_event_id",
-            "type": "string"
-          },
-          {
-            "description": "Cursor-based pagination: Only works with ID. Get records newer than the provided id. Note: Sort_by is ignored and applied afterwards.",
-            "in": "query",
-            "name": "newer",
-            "type": "string"
-          },
-          {
-            "description": "Cursor-based pagination: Only works with ID. Get records older than the provided id. Note: Sort_by is ignored and applied afterwards.",
-            "in": "query",
-            "name": "older",
-            "type": "string"
-          },
-          {
-            "description": "Sort api response: valid parameters are desc and asc",
-            "in": "query",
-            "name": "order",
-            "type": "string"
-          },
-          {
-            "description": "Offset-based pagination: Get content of given page, starts at 1",
-            "in": "query",
-            "name": "page",
-            "type": "string"
-          },
-          {
-            "description": "Any kind of pagination: define the amount of records sent per call (max 50)",
-            "in": "query",
-            "name": "per_page",
-            "type": "string"
-          },
-          {
-            "description": "Sort api response: Valid options: id, created_at, updated_at",
-            "in": "query",
-            "name": "sort_by",
-            "type": "string"
-          },
-          {
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "description": "",
-              "properties": {
-                "comments": {
-                  "items": {
-                    "properties": {
-                      "body": {
-                        "minLength": 1,
-                        "type": "string"
-                      },
-                      "child_comments": {
-                        "items": {
-                          "properties": {
-                            "body": {
-                              "minLength": 1,
-                              "type": "string"
-                            },
-                            "child_comments": {
-                              "items": {
-                                "properties": {}
-                              },
-                              "type": "array"
-                            },
-                            "child_comments_count": {
-                              "type": "number"
-                            },
-                            "created_at": {
-                              "minLength": 1,
-                              "type": "string"
-                            },
-                            "hunter": {
-                              "type": "boolean"
-                            },
-                            "id": {
-                              "type": "number"
-                            },
-                            "live_guest": {
-                              "type": "boolean"
-                            },
-                            "maker": {
-                              "type": "boolean"
-                            },
-                            "parent_comment_id": {
-                              "type": "number"
-                            },
-                            "post": {
-                              "properties": {},
-                              "type": "object"
-                            },
-                            "post_id": {},
-                            "sticky": {
-                              "type": "boolean"
-                            },
-                            "subject_id": {
-                              "type": "number"
-                            },
-                            "subject_type": {
-                              "minLength": 1,
-                              "type": "string"
-                            },
-                            "url": {
-                              "minLength": 1,
-                              "type": "string"
-                            },
-                            "user": {
-                              "properties": {
-                                "created_at": {
-                                  "minLength": 1,
-                                  "type": "string"
-                                },
-                                "headline": {
-                                  "minLength": 1,
-                                  "type": "string"
-                                },
-                                "id": {
-                                  "type": "number"
-                                },
-                                "image_url": {
-                                  "properties": {
-                                    "100px": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "110px": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "120px": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "132px": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "146px": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "160px": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "176px": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "220px": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "264px": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "30px": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "32px": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "32px@2X": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "32px@3X": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "40px": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "40px@2X": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "40px@3X": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "44px": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "44px@2X": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "44px@3X": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "48px": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "50px": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "60px": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "64px": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "73px": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "80px": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "88px": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "88px@2X": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "88px@3X": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "96px": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    },
-                                    "original": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    }
-                                  },
-                                  "required": [
-                                    "30px",
-                                    "32px",
-                                    "40px",
-                                    "44px",
-                                    "48px",
-                                    "50px",
-                                    "60px",
-                                    "64px",
-                                    "73px",
-                                    "80px",
-                                    "88px",
-                                    "96px",
-                                    "100px",
-                                    "110px",
-                                    "120px",
-                                    "132px",
-                                    "146px",
-                                    "160px",
-                                    "176px",
-                                    "220px",
-                                    "264px",
-                                    "32px@2X",
-                                    "40px@2X",
-                                    "44px@2X",
-                                    "88px@2X",
-                                    "32px@3X",
-                                    "40px@3X",
-                                    "44px@3X",
-                                    "88px@3X",
-                                    "original"
-                                  ],
-                                  "type": "object"
-                                },
-                                "name": {
-                                  "minLength": 1,
-                                  "type": "string"
-                                },
-                                "profile_url": {
-                                  "minLength": 1,
-                                  "type": "string"
-                                },
-                                "twitter_username": {
-                                  "minLength": 1,
-                                  "type": "string"
-                                },
-                                "username": {
-                                  "minLength": 1,
-                                  "type": "string"
-                                },
-                                "website_url": {
-                                  "minLength": 1,
-                                  "type": "string"
-                                }
-                              },
-                              "required": [
-                                "id",
-                                "created_at",
-                                "name",
-                                "username",
-                                "headline",
-                                "twitter_username",
-                                "website_url",
-                                "profile_url",
-                                "image_url"
-                              ],
-                              "type": "object"
-                            },
-                            "user_id": {
-                              "type": "number"
-                            },
-                            "votes": {
-                              "type": "number"
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "body",
-                            "created_at",
-                            "parent_comment_id",
-                            "user_id",
-                            "subject_id",
-                            "child_comments_count",
-                            "url",
-                            "subject_type",
-                            "sticky",
-                            "votes",
-                            "maker",
-                            "hunter",
-                            "live_guest"
-                          ]
-                        },
-                        "minItems": 1,
-                        "type": "array",
-                        "uniqueItems": true
-                      },
-                      "child_comments_count": {
-                        "type": "number"
-                      },
-                      "created_at": {
-                        "minLength": 1,
-                        "type": "string"
-                      },
-                      "hunter": {
-                        "type": "boolean"
-                      },
-                      "id": {
-                        "type": "number"
-                      },
-                      "live_guest": {
-                        "type": "boolean"
-                      },
-                      "maker": {
-                        "type": "boolean"
-                      },
-                      "parent_comment_id": {},
-                      "post": {
-                        "properties": {},
-                        "type": "object"
-                      },
-                      "post_id": {},
-                      "sticky": {
-                        "type": "boolean"
-                      },
-                      "subject_id": {
-                        "type": "number"
-                      },
-                      "subject_type": {
-                        "minLength": 1,
-                        "type": "string"
-                      },
-                      "url": {
-                        "minLength": 1,
-                        "type": "string"
-                      },
-                      "user": {
-                        "properties": {
-                          "created_at": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "headline": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "id": {
-                            "type": "number"
-                          },
-                          "image_url": {
-                            "properties": {
-                              "100px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "110px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "120px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "132px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "146px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "160px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "176px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "220px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "264px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "30px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "32px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "32px@2X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "32px@3X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "40px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "40px@2X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "40px@3X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "44px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "44px@2X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "44px@3X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "48px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "50px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "60px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "64px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "73px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "80px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "88px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "88px@2X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "88px@3X": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "96px": {
-                                "minLength": 1,
-                                "type": "string"
-                              },
-                              "original": {
-                                "minLength": 1,
-                                "type": "string"
-                              }
-                            },
-                            "required": [
-                              "30px",
-                              "32px",
-                              "40px",
-                              "44px",
-                              "48px",
-                              "50px",
-                              "60px",
-                              "64px",
-                              "73px",
-                              "80px",
-                              "88px",
-                              "96px",
-                              "100px",
-                              "110px",
-                              "120px",
-                              "132px",
-                              "146px",
-                              "160px",
-                              "176px",
-                              "220px",
-                              "264px",
-                              "32px@2X",
-                              "40px@2X",
-                              "44px@2X",
-                              "88px@2X",
-                              "32px@3X",
-                              "40px@3X",
-                              "44px@3X",
-                              "88px@3X",
-                              "original"
-                            ],
-                            "type": "object"
-                          },
-                          "name": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "profile_url": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "twitter_username": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "username": {
-                            "minLength": 1,
-                            "type": "string"
-                          },
-                          "website_url": {
-                            "minLength": 1,
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "id",
-                          "created_at",
-                          "name",
-                          "username",
-                          "headline",
-                          "twitter_username",
-                          "website_url",
-                          "profile_url",
-                          "image_url"
-                        ],
-                        "type": "object"
-                      },
-                      "user_id": {
-                        "type": "number"
-                      },
-                      "votes": {
-                        "type": "number"
-                      }
-                    },
-                    "required": [
-                      "id",
-                      "body",
-                      "created_at",
-                      "user_id",
-                      "subject_id",
-                      "child_comments_count",
-                      "url",
-                      "subject_type",
-                      "sticky",
-                      "votes",
-                      "maker",
-                      "hunter",
-                      "live_guest"
-                    ]
-                  },
-                  "minItems": 1,
-                  "type": "array",
-                  "uniqueItems": true
-                }
-              },
-              "required": [
-                "comments"
-              ],
-              "type": "object"
-            }
-          }
-        }
-      }
-    },
-    "/v1/live/{id}/subscribe": {
-      "delete": {
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "description": "",
-              "properties": {
-                "email": {
-                  "minLength": 1,
-                  "type": "string"
-                }
-              },
-              "required": [
-                "email"
-              ],
-              "type": "object"
-            }
-          },
-          {
-            "description": "The ID of the LIVE event you want to unsubscribe",
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          }
-        }
-      },
-      "post": {
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "description": "",
-              "properties": {
-                "email": {
-                  "minLength": 1,
-                  "type": "string"
-                }
-              },
-              "required": [
-                "email"
-              ],
-              "type": "object"
-            }
-          },
-          {
-            "description": "The ID of the LIVE event you want to subscribe",
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
           }
         }
       }

@@ -9,7 +9,7 @@
   "paths": {
     "/{platform}/{name}": {
       "get": {
-        "description": "Get information about a package and it's versions.",
+        "description": "Get information about a package and its versions.",
         "parameters": [
           {
             "in": "query",
