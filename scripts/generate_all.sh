@@ -1,4 +1,4 @@
-declare -a arr=("github" "product-hunt" "libraries.io" "ups" "reddit")
+declare -a arr=("confluence" "github" "product-hunt" "libraries.io" "ups" "reddit")
 
 for name in "${arr[@]}"
 do

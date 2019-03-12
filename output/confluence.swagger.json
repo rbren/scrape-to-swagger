@@ -1,0 +1,19 @@
+{
+  "basePath": "/rest/api",
+  "host": "myhost:port",
+  "info": {
+    "description": "The Confluence Cloud REST API",
+    "title": "Confluence",
+    "version": "v1"
+  },
+  "paths": {},
+  "schemes": [
+    "https"
+  ],
+  "securityDefinitions": {
+    "HTTP Basic": {
+      "type": "basic"
+    }
+  },
+  "swagger": "2.0"
+}
